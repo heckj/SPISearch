@@ -11,6 +11,7 @@
 		1A1650462870F98F00AC4DB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1650452870F98F00AC4DB2 /* ContentView.swift */; };
 		1A1650482870F99000AC4DB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A1650472870F99000AC4DB2 /* Assets.xcassets */; };
 		1A16504C2870F99000AC4DB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */; };
+		1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1650532870F9B700AC4DB2 /* SwiftSoup */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		1A1650472870F99000AC4DB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A1650492870F99000AC4DB2 /* SPISearch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SPISearch.entitlements; sourceTree = "<group>"; };
 		1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1A1650552871014E00AC4DB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +55,7 @@
 		1A1650422870F98F00AC4DB2 /* SPISearch */ = {
 			isa = PBXGroup;
 			children = (
+				1A1650552871014E00AC4DB2 /* Info.plist */,
 				1A1650432870F98F00AC4DB2 /* SPISearchApp.swift */,
 				1A1650452870F98F00AC4DB2 /* ContentView.swift */,
 				1A1650472870F99000AC4DB2 /* Assets.xcassets */,
@@ -85,6 +89,9 @@
 			dependencies = (
 			);
 			name = SPISearch;
+			packageProductDependencies = (
+				1A1650532870F9B700AC4DB2 /* SwiftSoup */,
+			);
 			productName = SPISearch;
 			productReference = 1A1650402870F98F00AC4DB2 /* SPISearch.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +120,9 @@
 				Base,
 			);
 			mainGroup = 1A1650372870F98F00AC4DB2;
+			packageReferences = (
+				1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+			);
 			productRefGroup = 1A1650412870F98F00AC4DB2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -269,6 +279,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SPISearch/Info.plist;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -301,6 +312,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SPISearch/Info.plist;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -342,6 +354,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1A1650532870F9B700AC4DB2 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1A1650382870F98F00AC4DB2 /* Project object */;
 }

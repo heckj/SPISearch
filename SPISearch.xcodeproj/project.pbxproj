@@ -22,6 +22,7 @@
 		1A1650492870F99000AC4DB2 /* SPISearch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SPISearch.entitlements; sourceTree = "<group>"; };
 		1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1A1650552871014E00AC4DB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1ADA990F287106AD008FACDF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +40,7 @@
 		1A1650372870F98F00AC4DB2 = {
 			isa = PBXGroup;
 			children = (
+				1ADA990F287106AD008FACDF /* README.md */,
 				1A1650422870F98F00AC4DB2 /* SPISearch */,
 				1A1650412870F98F00AC4DB2 /* Products */,
 			);

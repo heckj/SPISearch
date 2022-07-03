@@ -5,6 +5,7 @@
 //  Created by Joseph Heck on 7/3/22.
 //
 
+import Foundation
 import SwiftSoup
 
 struct PackageSearchResult: Identifiable, Hashable {
@@ -19,9 +20,47 @@ struct SearchResult {
     var matched_keywords: [String] = []
     var nextHref: String?
     var prevHref: String?
+    var errorMessage: String?
 }
 
 enum SPISearchParser {
+    static func search(_ url: String) async -> SearchResult {
+        var result = SearchResult()
+        guard let url = URL(string: url) else {
+            // print("Invalid URL")
+            result.errorMessage = "Invalid URL"
+            return result
+        }
+
+        do {
+            let (data, response) = try await URLSession.shared.data(from: url)
+            // more code to come
+            if let httpresponse = response as? HTTPURLResponse {
+                if httpresponse.statusCode != 200 {
+                    result.errorMessage = httpresponse.debugDescription
+                    return result
+                }
+            }
+            let HTMLString = String(data: data, encoding: .utf8)!
+            let resultSet = try await SPISearchParser.parse(HTMLString)
+            return resultSet
+        } catch {
+            if let urlerr = error as? URLError {
+                // print("URLError")
+                // print("unavailableReason: \(String(describing: urlerr.networkUnavailableReason))")
+                // print("errorCode: \(String(describing: urlerr.errorCode))")
+                // print("localizedDescription: \(String(describing: urlerr.localizedDescription))")
+                // print("backgroundTaskCancelledReason: \(String(describing: urlerr.backgroundTaskCancelledReason))")
+                // print("failureURLString: \(String(describing: urlerr.failureURLString))")
+                result.errorMessage = "\(urlerr.localizedDescription)"
+            } else {
+                // print("Invalid data")
+                result.errorMessage = "Invalid data \(error)"
+            }
+            return result
+        }
+    }
+
     static func parse(_ raw_html: String) async throws -> SearchResult {
         let doc: Document = try SwiftSoup.parse(raw_html)
         var results = SearchResult()

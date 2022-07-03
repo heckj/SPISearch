@@ -14,12 +14,14 @@ struct SearchResultsView: View {
             // Display any error messages in red
             Text(resultSet.errorMessage ?? "")
                 .foregroundColor(.red)
+                .textSelection(.enabled)
         } else {
             VStack {
                 Text("Matched Keywords").font(.title2)
                 HStack {
                     ForEach(resultSet.matched_keywords, id: \.self) { word in
                         CapsuleText(word)
+                            .textSelection(.enabled)
                     }
                 }
                 List(resultSet.results) { result in
@@ -27,12 +29,17 @@ struct SearchResultsView: View {
                         HStack(alignment: .firstTextBaseline) {
                             Text(result.name)
                                 .font(.title)
+                                .textSelection(.enabled)
+                            Text("(\(result.id))")
+                                .textSelection(.enabled)
                             ForEach(result.keywords, id: \.self) { word in
                                 CapsuleText(word)
+                                    .textSelection(.enabled)
                             }
                         }
                         Text(result.summary)
                             .fixedSize(horizontal: false, vertical: true)
+                            .textSelection(.enabled)
                     }
                     Divider()
                 }
@@ -53,6 +60,6 @@ struct SearchResultsView: View {
 
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultsView(SearchResult())
+        SearchResultsView(SearchResult.example)
     }
 }

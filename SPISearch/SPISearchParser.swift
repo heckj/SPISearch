@@ -7,7 +7,7 @@
 
 import SwiftSoup
 
-struct PackageSearchResult: Identifiable {
+struct PackageSearchResult: Identifiable, Hashable {
     var id: String
     var name: String = ""
     var summary: String = ""

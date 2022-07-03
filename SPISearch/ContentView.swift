@@ -17,35 +17,35 @@ struct ContentView: View {
     @State var matchedKeywords: [String] = []
 
     var body: some View {
-//        NavigationView {
-            VStack {
-                Form {
-                    TextField("Search", text: $searchURL)
-                        .onSubmit {
-                            Task {
-                                self.err = false
-                                await loadData(searchURL)
-                            }
+        VStack {
+            Form {
+                TextField("Search", text: $searchURL)
+                    .onSubmit {
+                        Task {
+                            self.err = false
+                            await loadData(searchURL)
                         }
-                    if err {
-                        // Display any error messages in red
-                        Text(errmsg)
-                            .foregroundColor(.red)
                     }
-                }.padding()
-                List(searchresults) { result in
-                    VStack {
-                        Text(result.name)
-                        HStack {
-                            ForEach(result.keywords, id: \.self) { word in
-                                Text(word)
-                            }
-                        }
-                        Text(result.summary)
-                    }
-                    .border(.blue)
+                if err {
+                    // Display any error messages in red
+                    Text(errmsg)
+                        .foregroundColor(.red)
                 }
-//            }
+            }.padding()
+            List(searchresults) { result in
+                VStack(alignment: .leading) {
+                    HStack(alignment: .firstTextBaseline) {
+                        Text(result.name)
+                            .font(.title)
+                        ForEach(result.keywords, id: \.self) { word in
+                            CapsuleText(word)
+                        }
+                    }
+                    Text(result.summary)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                Divider()
+            }
         }
         // Applied to the top level view in a macOS App, this controls both the initial size
         // of the window that appears and the maximum size to which it can be expanded.

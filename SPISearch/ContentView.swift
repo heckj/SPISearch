@@ -9,12 +9,11 @@ import SwiftSoup
 import SwiftUI
 
 struct ContentView: View {
-    @State var searchURL = "https://swiftpackageindex.com/search?query=bezier"
+    @State var searchURL = "https://swiftpackageindex.com/search?query=ping"
     @State var err: Bool = false
     @State var errmsg: String = ""
 
-    @State var searchresults: [PackageSearchResult] = []
-    @State var matchedKeywords: [String] = []
+    @State var resultSet: SearchResult? = nil
 
     var body: some View {
         VStack {
@@ -32,19 +31,11 @@ struct ContentView: View {
                         .foregroundColor(.red)
                 }
             }.padding()
-            List(searchresults) { result in
-                VStack(alignment: .leading) {
-                    HStack(alignment: .firstTextBaseline) {
-                        Text(result.name)
-                            .font(.title)
-                        ForEach(result.keywords, id: \.self) { word in
-                            CapsuleText(word)
-                        }
-                    }
-                    Text(result.summary)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                Divider()
+            if let resultSet = resultSet {
+                SearchResultsView(resultSet)
+                    .padding()
+            } else {
+                Spacer()
             }
         }
         // Applied to the top level view in a macOS App, this controls both the initial size
@@ -70,9 +61,7 @@ struct ContentView: View {
                 }
             }
             let HTMLString = String(data: data, encoding: .utf8)!
-            let results = try await SPISearchParser.parse(HTMLString)
-            searchresults = results.results
-            matchedKeywords = results.matched_keywords
+            resultSet = try await SPISearchParser.parse(HTMLString)
         } catch {
             if let urlerr = error as? URLError {
                 // print("URLError")

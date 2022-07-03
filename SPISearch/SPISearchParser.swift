@@ -14,15 +14,17 @@ struct PackageSearchResult: Identifiable, Hashable {
     var keywords: [String] = []
 }
 
-struct SinglePageSearchResults {
+struct SearchResult {
     var results: [PackageSearchResult] = []
     var matched_keywords: [String] = []
+    var nextHref: String?
+    var prevHref: String?
 }
 
 enum SPISearchParser {
-    static func parse(_ raw_html: String) async throws -> SinglePageSearchResults {
+    static func parse(_ raw_html: String) async throws -> SearchResult {
         let doc: Document = try SwiftSoup.parse(raw_html)
-        var results = SinglePageSearchResults()
+        var results = SearchResult()
 
         let elements = try doc.select("#package_list>li")
         // print("Found \(elements.count) #package_list elements")
@@ -75,10 +77,12 @@ enum SPISearchParser {
         }
 
         // Parsing pagination if available
-        let next_pagination = try doc.select("ul.pagination li.next")
-        let previous_pagination = try doc.select("ul.pagination li.previous")
-        print("Found \(next_pagination.count) next pagination links")
-        print("Found \(previous_pagination.count) previous pagination links")
+        let next_pagination = try doc.select("ul.pagination li.next a")
+        let previous_pagination = try doc.select("ul.pagination li.previous a")
+        // print("Found \(next_pagination.count) next pagination links")
+        results.nextHref = try next_pagination.attr("href")
+        // print("Found \(previous_pagination.count) previous pagination links")
+        results.prevHref = try previous_pagination.attr("href")
 
         // let titleString = try doc.title()
         // print("Title: \(titleString)")

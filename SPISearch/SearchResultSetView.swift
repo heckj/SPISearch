@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SearchResultSetView: View {
-    let resultSet: SearchResult
+    let resultSet: SearchResultSet
     var body: some View {
-        if resultSet.errorMessage != nil {
+        if !resultSet.errorMessage.isEmpty {
             // Display any error messages in red
-            Text(resultSet.errorMessage ?? "")
+            Text(resultSet.errorMessage)
                 .foregroundColor(.red)
                 .textSelection(.enabled)
         } else {
@@ -43,13 +43,13 @@ struct SearchResultSetView: View {
         }
     }
 
-    init(_ resultSet: SearchResult) {
+    init(_ resultSet: SearchResultSet) {
         self.resultSet = resultSet
     }
 }
 
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultSetView(SearchResult.example)
+        SearchResultSetView(SearchResultSet.example)
     }
 }

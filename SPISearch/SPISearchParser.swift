@@ -15,15 +15,15 @@ struct PackageSearchResult: Identifiable, Hashable {
     var keywords: [String] = []
 }
 
-struct SearchResult {
+struct SearchResultSet {
     var results: [PackageSearchResult] = []
     var matched_keywords: [String] = []
     var nextHref: String?
     var prevHref: String?
-    var errorMessage: String?
+    var errorMessage: String = ""
 
-    static var example: SearchResult {
-        var ex = SearchResult()
+    static var example: SearchResultSet {
+        var ex = SearchResultSet()
         ex.matched_keywords = ["bezier", "bezier-path", "uibezierpath", "bezier-animation", "bezier-curve"]
         ex.results = [
             PackageSearchResult(id: "pocketsvg/PocketSVG", name: "PocketSVG", summary: "Easily convert your SVG files into CGPaths, CAShapeLayers, and UIBezierPaths", keywords: []),
@@ -38,11 +38,16 @@ struct SearchResult {
 }
 
 enum SPISearchParser {
-    static func search(_ url: String) async -> SearchResult {
-        var result = SearchResult()
-        guard let url = URL(string: url) else {
+    static var baseURL: URL {
+        URL(string: "https://swiftpackageindex.com/")!
+    }
+
+    static func search(_ uri: String = "/search?query=ping", addingTo: SearchResultSet = SearchResultSet()) async -> SearchResultSet {
+        // make a copy of the incoming result set, upon which we'll add...
+        var result = addingTo
+        guard let url = URL(string: uri, relativeTo: baseURL) else {
             // print("Invalid URL")
-            result.errorMessage = "Invalid URL"
+            result.errorMessage.append("Invalid URL: \(uri)")
             return result
         }
 
@@ -52,12 +57,13 @@ enum SPISearchParser {
             if let httpresponse = response as? HTTPURLResponse {
                 if httpresponse.statusCode != 200 {
                     result.errorMessage = httpresponse.debugDescription
-                    return result
                 }
             }
             let HTMLString = String(data: data, encoding: .utf8)!
-            let resultSet = try await SPISearchParser.parse(HTMLString)
-            return resultSet
+            let parseResults = try await SPISearchParser.parse(HTMLString)
+            result.matched_keywords.append(contentsOf: parseResults.matched_keywords)
+            result.errorMessage.append(parseResults.errorMessage)
+            result.results.append(contentsOf: parseResults.results)
         } catch {
             if let urlerr = error as? URLError {
                 // print("URLError")
@@ -66,18 +72,19 @@ enum SPISearchParser {
                 // print("localizedDescription: \(String(describing: urlerr.localizedDescription))")
                 // print("backgroundTaskCancelledReason: \(String(describing: urlerr.backgroundTaskCancelledReason))")
                 // print("failureURLString: \(String(describing: urlerr.failureURLString))")
-                result.errorMessage = "\(urlerr.localizedDescription)"
+
+                result.errorMessage.append("\(urlerr.localizedDescription)")
             } else {
                 // print("Invalid data")
-                result.errorMessage = "Invalid data \(error)"
+                result.errorMessage.append("Invalid data \(error)")
             }
-            return result
         }
+        return result
     }
 
-    static func parse(_ raw_html: String) async throws -> SearchResult {
+    static func parse(_ raw_html: String) async throws -> SearchResultSet {
         let doc: Document = try SwiftSoup.parse(raw_html)
-        var results = SearchResult()
+        var results = SearchResultSet()
 
         let elements = try doc.select("#package_list>li")
         // print("Found \(elements.count) #package_list elements")

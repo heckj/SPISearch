@@ -30,6 +30,7 @@ struct PackageSearchResultView: View {
                 .textSelection(.enabled)
         }
     }
+
     init(_ result: PackageSearchResult) {
         self.result = result
     }
@@ -37,6 +38,6 @@ struct PackageSearchResultView: View {
 
 struct SearchResultView_Previews: PreviewProvider {
     static var previews: some View {
-        PackageSearchResultView(SearchResult.example.results[1])
+        PackageSearchResultView(SearchResultSet.example.results[1])
     }
 }

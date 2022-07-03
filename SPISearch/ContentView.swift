@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var searchURL = "https://swiftpackageindex.com/search?query=ping"
-    @State var resultSet: SearchResult? = nil
+    @State var resultSet: SearchResultSet? = nil
 
     var body: some View {
         VStack {

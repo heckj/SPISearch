@@ -17,6 +17,7 @@ struct SearchResultSetView: View {
                 .textSelection(.enabled)
         } else {
             VStack {
+                Text("**\(resultSet.results.count)** results")
                 Text("Matched Keywords").font(.title2)
                 HStack {
                     ForEach(resultSet.matched_keywords, id: \.self) { word in

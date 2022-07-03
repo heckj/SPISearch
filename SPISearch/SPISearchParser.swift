@@ -38,19 +38,24 @@ struct SearchResultSet {
 }
 
 enum SPISearchParser {
-    static var baseURL: URL {
-        URL(string: "https://swiftpackageindex.com/")!
+    static var serverHost = "https://swiftpackageindex.com/"
+    static var localHost = "http://localhost:8080/"
+    static var hostedURL: URL? {
+        URL(string: serverHost)
     }
 
     static func search(_ uri: String = "/search?query=ping", addingTo: SearchResultSet = SearchResultSet()) async -> SearchResultSet {
         // make a copy of the incoming result set, upon which we'll add...
         var result = addingTo
-        guard let url = URL(string: uri, relativeTo: baseURL) else {
-            // print("Invalid URL")
-            result.errorMessage.append("Invalid URL: \(uri)")
+
+        // print("URI incoming is \(uri) with a result set of \(result.results.count) results.")
+
+        guard let url = URL(string: uri, relativeTo: hostedURL) else {
+            // print("ERROR ASSEMBLING URL: uri: \(uri) base: \(hostedURL)")
+            result.errorMessage.append("Invalid URL: base: \(hostedURL) + uri: \(uri)")
             return result
         }
-
+        // print("URL after composition is \(url)")
         do {
             let (data, response) = try await URLSession.shared.data(from: url)
             // more code to come
@@ -64,6 +69,10 @@ enum SPISearchParser {
             result.matched_keywords.append(contentsOf: parseResults.matched_keywords)
             result.errorMessage.append(parseResults.errorMessage)
             result.results.append(contentsOf: parseResults.results)
+            if let nextURI = parseResults.nextHref, !nextURI.isEmpty {
+                print("NextURI isn't null: \(nextURI), continuing to request values")
+                return await search(nextURI, addingTo: result)
+            }
         } catch {
             if let urlerr = error as? URLError {
                 // print("URLError")

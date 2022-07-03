@@ -9,7 +9,7 @@ import SwiftSoup
 import SwiftUI
 
 struct ContentView: View {
-    @State var searchURL = "https://swiftpackageindex.com/search?query=ping"
+    @State var searchURL = "/search?query=ping"
     @State var resultSet: SearchResultSet? = nil
 
     var body: some View {

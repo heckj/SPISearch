@@ -14,6 +14,7 @@ struct ContentView: View {
     @State var err: Bool = false
     @State var errmsg: String = ""
     
+    @State var titleString: String = ""
     var body: some View {
         VStack {
             HStack {
@@ -23,8 +24,9 @@ struct ContentView: View {
                         self.err = false
                         await loadData(searchURL)
                     }
+                    
                 } label: {
-                    Image(systemName: "tray.and.arrow.down")
+                    Image(systemName: "magnifyingglass.circle")
                 }
             }
             if (err) {
@@ -33,7 +35,9 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text(titleString)
+                .frame(width: 300)
+                .lineLimit(5)
         }
     }
     
@@ -53,15 +57,18 @@ struct ContentView: View {
 //                   + "<body><p>Parsed HTML into a doc.</p></body></html>"
                 let HTMLString = String(data: data, encoding: .utf8)!
                 let doc: Document = try SwiftSoup.parse(HTMLString)
-                try print(doc.text())
-//               return try doc.text()
+//                try print(doc.text())
+                self.titleString = try doc.text()
             } catch Exception.Error(_, let message) {
                 print(message)
+                self.errmsg = message
             } catch {
                 print("error")
+                self.errmsg = "generic error"
             }
         } catch {
             print("Invalid data")
+            self.errmsg = "Invalid data"
         }
     }
 }

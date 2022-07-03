@@ -12,6 +12,7 @@
 		1A1650482870F99000AC4DB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A1650472870F99000AC4DB2 /* Assets.xcassets */; };
 		1A16504C2870F99000AC4DB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */; };
 		1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1650532870F9B700AC4DB2 /* SwiftSoup */; };
+		1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		1A1650492870F99000AC4DB2 /* SPISearch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SPISearch.entitlements; sourceTree = "<group>"; };
 		1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1A1650552871014E00AC4DB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPISearchParser.swift; sourceTree = "<group>"; };
 		1ADA990F287106AD008FACDF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +62,7 @@
 				1A1650552871014E00AC4DB2 /* Info.plist */,
 				1A1650432870F98F00AC4DB2 /* SPISearchApp.swift */,
 				1A1650452870F98F00AC4DB2 /* ContentView.swift */,
+				1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */,
 				1A1650472870F99000AC4DB2 /* Assets.xcassets */,
 				1A1650492870F99000AC4DB2 /* SPISearch.entitlements */,
 				1A16504A2870F99000AC4DB2 /* Preview Content */,
@@ -153,6 +156,7 @@
 			files = (
 				1A1650462870F98F00AC4DB2 /* ContentView.swift in Sources */,
 				1A1650442870F98F00AC4DB2 /* SPISearchApp.swift in Sources */,
+				1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

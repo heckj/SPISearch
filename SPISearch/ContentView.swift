@@ -11,16 +11,23 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            List {
-                NavigationLink(destination: SearchingView()) {
-                    Text("invoke search")
+            VStack {
+                NavigationLink(destination: SearchingView(searchHostURL: SPISearchParser.hostedURL)) {
+                    Text("hosted search")
+                }
+                NavigationLink(destination: SearchingView(searchHostURL: SPISearchParser.localURL)) {
+                    Text("local search")
+                }
+                NavigationLink(destination: EmptyView()) {
+                    Text("compare search")
+                }
+                NavigationLink(destination: EmptyView()) {
+                    Text("relevance")
                 }
                 Spacer()
             }
             VStack {
-                Button("search") {
-                    print("hi")
-                }.padding()
+                EmptyView()
             }
         }
         // Applied to the top level view in a macOS App, this controls both the initial size

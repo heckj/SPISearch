@@ -44,15 +44,19 @@ enum SPISearchParser {
         URL(string: serverHost)
     }
 
-    static func search(_ uri: String = "/search?query=ping", addingTo: SearchResultSet = SearchResultSet()) async -> SearchResultSet {
+    static var localURL: URL? {
+        URL(string: localHost)
+    }
+
+    static func search(_ uri: String = "/search?query=ping", addingTo: SearchResultSet = SearchResultSet(), at searchHost: URL? = hostedURL) async -> SearchResultSet {
         // make a copy of the incoming result set, upon which we'll add...
         var result = addingTo
 
         // print("URI incoming is \(uri) with a result set of \(result.results.count) results.")
 
-        guard let url = URL(string: uri, relativeTo: hostedURL) else {
-            // print("ERROR ASSEMBLING URL: uri: \(uri) base: \(hostedURL)")
-            result.errorMessage.append("Invalid URL: base: \(String(describing: hostedURL)) + uri: \(uri)")
+        guard let url = URL(string: uri, relativeTo: searchHost) else {
+            // print("ERROR ASSEMBLING URL: uri: \(uri) base: \(searchHost)")
+            result.errorMessage.append("Invalid URL: base: \(String(describing: searchHost)) + uri: \(uri)")
             return result
         }
         // print("URL after composition is \(url)")

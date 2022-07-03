@@ -23,7 +23,7 @@ struct ContentView: View {
                     }
             }.padding()
             if let resultSet = resultSet {
-                SearchResultsView(resultSet)
+                SearchResultSetView(resultSet)
                     .padding()
             }
             Spacer()

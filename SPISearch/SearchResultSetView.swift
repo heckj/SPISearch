@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchResultsView: View {
+struct SearchResultSetView: View {
     let resultSet: SearchResult
     var body: some View {
         if resultSet.errorMessage != nil {
@@ -25,21 +25,11 @@ struct SearchResultsView: View {
                     }
                 }
                 List(resultSet.results) { result in
-                    VStack(alignment: .leading) {
-                        HStack(alignment: .firstTextBaseline) {
-                            Text(result.name)
-                                .font(.title)
-                                .textSelection(.enabled)
-                            Text("(\(result.id))")
-                                .textSelection(.enabled)
-                            ForEach(result.keywords, id: \.self) { word in
-                                CapsuleText(word)
-                                    .textSelection(.enabled)
-                            }
-                        }
-                        Text(result.summary)
-                            .fixedSize(horizontal: false, vertical: true)
-                            .textSelection(.enabled)
+                    HStack {
+                        PackageSearchResultView(result)
+                        Spacer()
+                        RelevanceReview()
+                            .frame(width: 200)
                     }
                     Divider()
                 }
@@ -60,6 +50,6 @@ struct SearchResultsView: View {
 
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultsView(SearchResult.example)
+        SearchResultSetView(SearchResult.example)
     }
 }

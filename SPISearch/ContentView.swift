@@ -10,9 +10,6 @@ import SwiftUI
 
 struct ContentView: View {
     @State var searchURL = "https://swiftpackageindex.com/search?query=ping"
-    @State var err: Bool = false
-    @State var errmsg: String = ""
-
     @State var resultSet: SearchResult? = nil
 
     var body: some View {
@@ -21,22 +18,15 @@ struct ContentView: View {
                 TextField("Search", text: $searchURL)
                     .onSubmit {
                         Task {
-                            self.err = false
                             resultSet = await SPISearchParser.search(searchURL)
                         }
                     }
-                if err {
-                    // Display any error messages in red
-                    Text(errmsg)
-                        .foregroundColor(.red)
-                }
             }.padding()
             if let resultSet = resultSet {
                 SearchResultsView(resultSet)
                     .padding()
-            } else {
-                Spacer()
             }
+            Spacer()
         }
         // Applied to the top level view in a macOS App, this controls both the initial size
         // of the window that appears and the maximum size to which it can be expanded.

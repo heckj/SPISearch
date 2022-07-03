@@ -52,7 +52,7 @@ enum SPISearchParser {
 
         guard let url = URL(string: uri, relativeTo: hostedURL) else {
             // print("ERROR ASSEMBLING URL: uri: \(uri) base: \(hostedURL)")
-            result.errorMessage.append("Invalid URL: base: \(hostedURL) + uri: \(uri)")
+            result.errorMessage.append("Invalid URL: base: \(String(describing: hostedURL)) + uri: \(uri)")
             return result
         }
         // print("URL after composition is \(url)")
@@ -69,8 +69,10 @@ enum SPISearchParser {
             result.matched_keywords.append(contentsOf: parseResults.matched_keywords)
             result.errorMessage.append(parseResults.errorMessage)
             result.results.append(contentsOf: parseResults.results)
+            // Check to see if there's more to get (if there's a nextHref defined from the page)
+            // and if so, recursively follow those "next page" URLs
             if let nextURI = parseResults.nextHref, !nextURI.isEmpty {
-                print("NextURI isn't null: \(nextURI), continuing to request values")
+                // print("NextURI isn't null: \(nextURI), continuing to request values")
                 return await search(nextURI, addingTo: result)
             }
         } catch {
@@ -81,7 +83,6 @@ enum SPISearchParser {
                 // print("localizedDescription: \(String(describing: urlerr.localizedDescription))")
                 // print("backgroundTaskCancelledReason: \(String(describing: urlerr.backgroundTaskCancelledReason))")
                 // print("failureURLString: \(String(describing: urlerr.failureURLString))")
-
                 result.errorMessage.append("\(urlerr.localizedDescription)")
             } else {
                 // print("Invalid data")

@@ -9,24 +9,19 @@ import SwiftSoup
 import SwiftUI
 
 struct ContentView: View {
-    @State var searchURL = "/search?query=ping"
-    @State var resultSet: SearchResultSet? = nil
-
     var body: some View {
-        VStack {
-            Form {
-                TextField("Search", text: $searchURL)
-                    .onSubmit {
-                        Task {
-                            resultSet = await SPISearchParser.search(searchURL)
-                        }
-                    }
-            }.padding()
-            if let resultSet = resultSet {
-                SearchResultSetView(resultSet)
-                    .padding()
+        NavigationView {
+            List {
+                NavigationLink(destination: SearchingView()) {
+                    Text("invoke search")
+                }
+                Spacer()
             }
-            Spacer()
+            VStack {
+                Button("search") {
+                    print("hi")
+                }.padding()
+            }
         }
         // Applied to the top level view in a macOS App, this controls both the initial size
         // of the window that appears and the maximum size to which it can be expanded.

@@ -17,6 +17,7 @@
 		1A8144AC28720E7000F58B48 /* SearchResultSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144AB28720E7000F58B48 /* SearchResultSetView.swift */; };
 		1A8144AE287218F900F58B48 /* RelevanceReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144AD287218F900F58B48 /* RelevanceReview.swift */; };
 		1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */; };
+		1AE2268328725560008C4ED1 /* SearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2268228725560008C4ED1 /* SearchingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		1A8144AD287218F900F58B48 /* RelevanceReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceReview.swift; sourceTree = "<group>"; };
 		1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPISearchParser.swift; sourceTree = "<group>"; };
 		1ADA990F287106AD008FACDF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1AE2268228725560008C4ED1 /* SearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				1A1650552871014E00AC4DB2 /* Info.plist */,
 				1A1650432870F98F00AC4DB2 /* SPISearchApp.swift */,
 				1A1650452870F98F00AC4DB2 /* ContentView.swift */,
+				1AE2268228725560008C4ED1 /* SearchingView.swift */,
 				1A8144AB28720E7000F58B48 /* SearchResultSetView.swift */,
 				1A789D7628721EE700E8108A /* PackageSearchResultView.swift */,
 				1A8144AD287218F900F58B48 /* RelevanceReview.swift */,
@@ -171,6 +174,7 @@
 				1A1650442870F98F00AC4DB2 /* SPISearchApp.swift in Sources */,
 				1A8144AC28720E7000F58B48 /* SearchResultSetView.swift in Sources */,
 				1A8144AA2872056300F58B48 /* CapsuleText.swift in Sources */,
+				1AE2268328725560008C4ED1 /* SearchingView.swift in Sources */,
 				1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */,
 				1A8144AE287218F900F58B48 /* RelevanceReview.swift in Sources */,
 			);

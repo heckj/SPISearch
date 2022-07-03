@@ -34,11 +34,11 @@ struct SearchResultSetView: View {
                     }
                     Divider()
                 }
-                HStack {
-                    Text(resultSet.prevHref ?? "")
-                    Spacer()
-                    Text(resultSet.nextHref ?? "")
-                }
+//                HStack {
+//                    Text(resultSet.prevHref ?? "")
+//                    Spacer()
+//                    Text(resultSet.nextHref ?? "")
+//                }
             }
             .padding()
         }

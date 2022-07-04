@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SearchResultSetView: View {
+struct RecordedSearchResultView: View {
     let recordedSearch: RecordedSearchResult
     var body: some View {
         if !recordedSearch.resultSet.errorMessage.isEmpty {
@@ -47,7 +47,7 @@ struct SearchResultSetView: View {
 
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultSetView(
+        RecordedSearchResultView(
             RecordedSearchResult(recordedDate: Date.now, url: SPISearchParser.hostedURL!, resultSet: SearchResultSet.example)
         )
     }

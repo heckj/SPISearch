@@ -14,6 +14,7 @@ enum Relevance: Int, CaseIterable, Identifiable, Codable {
     var id: Self { self }
 }
 
+/// The recorded relevance ratings for a set of search results.
 struct RelevanceRecord: Hashable, Codable {
     var reviewer: String
     var _ratings: [String: Relevance]

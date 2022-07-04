@@ -22,7 +22,7 @@ struct SearchingView: View {
                 }
         }.padding()
         if let recordedSearch = recordedSearch {
-            SearchResultSetView(recordedSearch)
+            RecordedSearchResultView(recordedSearch)
                 .padding()
         }
         Spacer()

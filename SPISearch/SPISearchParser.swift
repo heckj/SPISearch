@@ -12,8 +12,8 @@ import SwiftSoup
 ///
 /// The results are parsed into a ``SPISearch/SearchResultSet``.
 enum SPISearchParser {
-    static var serverHost = "https://swiftpackageindex.com/"
-    static var localHost = "http://localhost:8080/"
+    static var serverHost = "https://swiftpackageindex.com/search?query=ping"
+    static var localHost = "http://localhost:8080/search?query=ping"
     static var hostedURL: URL? {
         URL(string: serverHost)
     }
@@ -22,24 +22,28 @@ enum SPISearchParser {
         URL(string: localHost)
     }
 
+    static func assembleQueryURI(_ terms: String, from _: String = serverHost) -> URL? {
+        var urlComponents = URLComponents(string: serverHost)
+        urlComponents?.queryItems = [URLQueryItem(name: "query", value: terms)]
+        return urlComponents?.url
+    }
+
+    static func recordSearch(terms: String) async -> RecordedSearchResult {
+        let searchURL = assembleQueryURI(terms)!
+        let resultSet = await search(searchURL)
+        return RecordedSearchResult(recordedDate: Date.now, url: searchURL, resultSet: resultSet)
+    }
+
     /// Iteratively searches through Swift Package Index for all results, collecting search results for the query URI you provide.
     /// - Parameters:
     ///   - uri: The query URI to use to invoke the search
     ///   - addingTo: The base set of set of results onto which to append, default is an empty set of results.
     ///   - searchHost: The host against which to use, defaulting to the production host at `swiftpackageindex.com`
     /// - Returns: An instance of ``SPISearch/SearchResultSet`` containing the results.
-    static func search(_ uri: String = "/search?query=ping", addingTo: SearchResultSet = SearchResultSet(), at searchHost: URL? = hostedURL) async -> SearchResultSet {
+    static func search(_ url: URL, addingTo: SearchResultSet = SearchResultSet()) async -> SearchResultSet {
         // make a copy of the incoming result set, upon which we'll add...
         var result = addingTo
 
-        // print("URI incoming is \(uri) with a result set of \(result.results.count) results.")
-
-        guard let url = URL(string: uri, relativeTo: searchHost) else {
-            // print("ERROR ASSEMBLING URL: uri: \(uri) base: \(searchHost)")
-            result.errorMessage.append("Invalid URL: base: \(String(describing: searchHost)) + uri: \(uri)")
-            return result
-        }
-        // print("URL after composition is \(url)")
         do {
             let (data, response) = try await URLSession.shared.data(from: url)
             // more code to come
@@ -55,9 +59,11 @@ enum SPISearchParser {
             result.results.append(contentsOf: parseResults.results)
             // Check to see if there's more to get (if there's a nextHref defined from the page)
             // and if so, recursively follow those "next page" URLs
-            if let nextURI = parseResults.nextHref, !nextURI.isEmpty {
+            if let nextURI = parseResults.nextHref, !nextURI.isEmpty,
+               let nextUrl = URL(string: nextURI, relativeTo: url)
+            {
                 // print("NextURI isn't null: \(nextURI), continuing to request values")
-                return await search(nextURI, addingTo: result)
+                return await search(nextUrl, addingTo: result)
             }
         } catch {
             if let urlerr = error as? URLError {

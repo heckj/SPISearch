@@ -16,10 +16,24 @@ enum Relevance: Int, CaseIterable, Identifiable, Codable {
     var id: Self { self }
 }
 
+struct RecordedSearchResult: Identifiable, Hashable, Codable {
+    var id: UUID = .init()
+    var recordedDate: Date
+    var url: URL
+    var resultSet: SearchResultSet
+
+    init(recordedDate: Date, url: URL, resultSet: SearchResultSet) {
+        self.recordedDate = recordedDate
+        self.url = url
+        self.resultSet = resultSet
+    }
+}
+
 /// The SPISearch data model that encodes searches and ranked relevance reviews for those searches.
 struct SearchRank: Identifiable, Codable {
     var id = UUID()
     var queryURI: String
+    var SearchResults: [SearchResultSet] = []
 
     init(id: UUID = UUID(), query: String) {
         self.id = id

@@ -4,6 +4,7 @@
 //
 //  Created by Joseph Heck on 7/4/22.
 //
+import Foundation
 
 /// An individual search result that represents a package found from Swift Package Index.
 struct PackageSearchResult: Identifiable, Hashable, Codable {
@@ -14,7 +15,8 @@ struct PackageSearchResult: Identifiable, Hashable, Codable {
 }
 
 /// A collection of search results and the keywords matched for a search.
-struct SearchResultSet: Hashable, Codable {
+struct SearchResultSet: Identifiable, Hashable, Codable {
+    var id: UUID = .init()
     /// The list of individual search results.
     var results: [PackageSearchResult] = []
     /// The list of keywords that the search matched.

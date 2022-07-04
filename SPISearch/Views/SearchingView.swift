@@ -10,19 +10,19 @@ import SwiftUI
 struct SearchingView: View {
     let searchHostURL: URL?
     @State var searchTerms: String = "bezier"
-    @State var resultSet: SearchResultSet? = nil
+    @State var recordedSearch: RecordedSearchResult? = nil
 
     var body: some View {
         Form {
             TextField("Search", text: $searchTerms)
                 .onSubmit {
                     Task {
-                        resultSet = await SPISearchParser.recordSearch(terms: searchTerms).resultSet
+                        recordedSearch = await SPISearchParser.recordSearch(terms: searchTerms)
                     }
                 }
         }.padding()
-        if let resultSet = resultSet {
-            SearchResultSetView(resultSet)
+        if let recordedSearch = recordedSearch {
+            SearchResultSetView(recordedSearch)
                 .padding()
         }
         Spacer()

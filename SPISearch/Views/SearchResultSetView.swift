@@ -8,24 +8,25 @@
 import SwiftUI
 
 struct SearchResultSetView: View {
-    let resultSet: SearchResultSet
+    let recordedSearch: RecordedSearchResult
     var body: some View {
-        if !resultSet.errorMessage.isEmpty {
+        if !recordedSearch.resultSet.errorMessage.isEmpty {
             // Display any error messages in red
-            Text(resultSet.errorMessage)
+            Text(recordedSearch.resultSet.errorMessage)
                 .foregroundColor(.red)
                 .textSelection(.enabled)
         } else {
             VStack {
-                Text("**\(resultSet.results.count)** results")
+                Text("**\(recordedSearch.resultSet.results.count)** results recorded  \(recordedSearch.recordedDate.formatted()) from `\(recordedSearch.host)`")
+                    .textSelection(.enabled)
                 Text("Matched Keywords").font(.title2)
                 HStack {
-                    ForEach(resultSet.matched_keywords, id: \.self) { word in
+                    ForEach(recordedSearch.resultSet.matched_keywords, id: \.self) { word in
                         CapsuleText(word)
                             .textSelection(.enabled)
                     }
                 }
-                List(resultSet.results) { result in
+                List(recordedSearch.resultSet.results) { result in
                     HStack {
                         PackageSearchResultView(result)
                         Spacer()
@@ -34,23 +35,20 @@ struct SearchResultSetView: View {
                     }
                     Divider()
                 }
-//                HStack {
-//                    Text(resultSet.prevHref ?? "")
-//                    Spacer()
-//                    Text(resultSet.nextHref ?? "")
-//                }
             }
             .padding()
         }
     }
 
-    init(_ resultSet: SearchResultSet) {
-        self.resultSet = resultSet
+    init(_ recordedSearch: RecordedSearchResult) {
+        self.recordedSearch = recordedSearch
     }
 }
 
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultSetView(SearchResultSet.example)
+        SearchResultSetView(
+            RecordedSearchResult(recordedDate: Date.now, url: SPISearchParser.hostedURL!, resultSet: SearchResultSet.example)
+        )
     }
 }

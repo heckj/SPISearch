@@ -22,6 +22,10 @@ struct RecordedSearchResult: Identifiable, Hashable, Codable {
     var url: URL
     var resultSet: SearchResultSet
 
+    var host: String {
+        URLComponents(string: url.absoluteString)?.host ?? ""
+    }
+    
     init(recordedDate: Date, url: URL, resultSet: SearchResultSet) {
         self.recordedDate = recordedDate
         self.url = url

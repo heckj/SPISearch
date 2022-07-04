@@ -8,6 +8,9 @@
 import Foundation
 import SwiftSoup
 
+/// A type that invokes a search and collects results from Swift Package Index.
+///
+/// The results are parsed into a ``SPISearch/SearchResultSet``.
 enum SPISearchParser {
     static var serverHost = "https://swiftpackageindex.com/"
     static var localHost = "http://localhost:8080/"
@@ -19,6 +22,12 @@ enum SPISearchParser {
         URL(string: localHost)
     }
 
+    /// Iteratively searches through Swift Package Index for all results, collecting search results for the query URI you provide.
+    /// - Parameters:
+    ///   - uri: The query URI to use to invoke the search
+    ///   - addingTo: The base set of set of results onto which to append, default is an empty set of results.
+    ///   - searchHost: The host against which to use, defaulting to the production host at `swiftpackageindex.com`
+    /// - Returns: An instance of ``SPISearch/SearchResultSet`` containing the results.
     static func search(_ uri: String = "/search?query=ping", addingTo: SearchResultSet = SearchResultSet(), at searchHost: URL? = hostedURL) async -> SearchResultSet {
         // make a copy of the incoming result set, upon which we'll add...
         var result = addingTo
@@ -67,6 +76,9 @@ enum SPISearchParser {
         return result
     }
 
+    /// Parses the HTML you provide into search results.
+    /// - Parameter raw_html: The html to parse.
+    /// - Returns: The search results encapsulated within ``SPISearch/SearchResultSet``.
     static func parse(_ raw_html: String) async throws -> SearchResultSet {
         let doc: Document = try SwiftSoup.parse(raw_html)
         var results = SearchResultSet()

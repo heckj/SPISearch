@@ -14,7 +14,4 @@ struct SPISearchApp: App {
             SearchRankEditorView(ranking: file.$document)
         }
     }
-//        WindowGroup {
-//            ContentView()
-//        }
 }

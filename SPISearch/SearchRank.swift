@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// An individual search result that represents a package found from Swift Package Index.
 struct PackageSearchResult: Identifiable, Hashable, Codable {
     var id: String
     var name: String = ""
@@ -14,6 +15,7 @@ struct PackageSearchResult: Identifiable, Hashable, Codable {
     var keywords: [String] = []
 }
 
+/// A type that indicates the perceived relevance of a search result.
 enum Relevance: Int, CaseIterable, Identifiable, Codable {
     case unknown = -1
     case none = 0
@@ -22,23 +24,32 @@ enum Relevance: Int, CaseIterable, Identifiable, Codable {
     var id: Self { self }
 }
 
+/// The SPISearch data model that encodes searches and ranked relevance reviews for those searches.
 struct SearchRank: Identifiable, Codable {
     var id = UUID()
     var queryURI: String
-    
+
     init(id: UUID = UUID(), query: String) {
         self.id = id
-        self.queryURI = query
+        queryURI = query
     }
 }
 
+/// A collection of search results and the keywords matched for a search.
 struct SearchResultSet: Hashable, Codable {
+    /// The list of individual search results.
     var results: [PackageSearchResult] = []
+    /// The list of keywords that the search matched.
     var matched_keywords: [String] = []
+
+    /// The URI string, if available, for the next set of results
     var nextHref: String?
+    /// The URI string, if available, for the previous set of results
     var prevHref: String?
+    /// Any error messages from the attempted search.
     var errorMessage: String = ""
 
+    /// A sample result-set for `bezier` to use in designing and building views.
     static var example: SearchResultSet {
         var ex = SearchResultSet()
         ex.matched_keywords = ["bezier", "bezier-path", "uibezierpath", "bezier-animation", "bezier-curve"]

@@ -16,7 +16,6 @@ struct SearchRankEditorView: View {
         // Applied to the top level view in a macOS App, this controls both the initial size
         // of the window that appears and the maximum size to which it can be expanded.
         .frame(idealWidth: 500, maxWidth: .infinity, idealHeight: 300, maxHeight: .infinity)
-
     }
 }
 

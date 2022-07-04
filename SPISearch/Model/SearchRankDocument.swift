@@ -19,9 +19,8 @@ extension UTType {
 struct SearchRankDocument: FileDocument {
     var searchrank: SearchRank
 
-    init(text: [String] = ["bezier"]) {
-        let uri = "/search?query=\(text.joined(separator: "%20"))"
-        searchrank = SearchRank(query: uri)
+    init() {
+        searchrank = SearchRank()
     }
 
     static var readableContentTypes: [UTType] { [.SPISearchRank] }

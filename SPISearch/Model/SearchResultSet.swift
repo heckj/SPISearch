@@ -44,3 +44,21 @@ struct SearchResultSet: Identifiable, Hashable, Codable {
         return ex
     }
 }
+
+/// A recorded search result
+struct RecordedSearchResult: Identifiable, Hashable, Codable {
+    var id: UUID = .init()
+    var recordedDate: Date
+    var url: URL
+    var resultSet: SearchResultSet
+
+    var host: String {
+        URLComponents(string: url.absoluteString)?.host ?? ""
+    }
+
+    init(recordedDate: Date, url: URL, resultSet: SearchResultSet) {
+        self.recordedDate = recordedDate
+        self.url = url
+        self.resultSet = resultSet
+    }
+}

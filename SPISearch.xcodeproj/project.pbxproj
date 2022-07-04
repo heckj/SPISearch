@@ -16,6 +16,7 @@
 		1A78500328733B5500AFB33F /* SearchRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500228733B5500AFB33F /* SearchRank.swift */; };
 		1A78500528733F0500AFB33F /* SearchRankEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500428733F0500AFB33F /* SearchRankEditorView.swift */; };
 		1A789D7728721EE700E8108A /* PackageSearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A789D7628721EE700E8108A /* PackageSearchResultView.swift */; };
+		1A7FD6AB2873797E008C76AB /* RelevanceRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7FD6AA2873797E008C76AB /* RelevanceRecord.swift */; };
 		1A8144AA2872056300F58B48 /* CapsuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144A92872056300F58B48 /* CapsuleText.swift */; };
 		1A8144AC28720E7000F58B48 /* SearchResultSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144AB28720E7000F58B48 /* SearchResultSetView.swift */; };
 		1A8144AE287218F900F58B48 /* RelevanceReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144AD287218F900F58B48 /* RelevanceReview.swift */; };
@@ -47,6 +48,7 @@
 		1A78500228733B5500AFB33F /* SearchRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRank.swift; sourceTree = "<group>"; };
 		1A78500428733F0500AFB33F /* SearchRankEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankEditorView.swift; sourceTree = "<group>"; };
 		1A789D7628721EE700E8108A /* PackageSearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageSearchResultView.swift; sourceTree = "<group>"; };
+		1A7FD6AA2873797E008C76AB /* RelevanceRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceRecord.swift; sourceTree = "<group>"; };
 		1A8144A92872056300F58B48 /* CapsuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleText.swift; sourceTree = "<group>"; };
 		1A8144AB28720E7000F58B48 /* SearchResultSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSetView.swift; sourceTree = "<group>"; };
 		1A8144AD287218F900F58B48 /* RelevanceReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceReview.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				1A78500228733B5500AFB33F /* SearchRank.swift */,
+				1A7FD6AA2873797E008C76AB /* RelevanceRecord.swift */,
 				1AC55375287362BE0050F0D6 /* SearchResultSet.swift */,
 				1A7850002873380B00AFB33F /* SearchRankDocument.swift */,
 			);
@@ -273,6 +276,7 @@
 				1A78500328733B5500AFB33F /* SearchRank.swift in Sources */,
 				1A7850012873380B00AFB33F /* SearchRankDocument.swift in Sources */,
 				1A8144AA2872056300F58B48 /* CapsuleText.swift in Sources */,
+				1A7FD6AB2873797E008C76AB /* RelevanceRecord.swift in Sources */,
 				1AE2268328725560008C4ED1 /* SearchingView.swift in Sources */,
 				1AC55376287362BE0050F0D6 /* SearchResultSet.swift in Sources */,
 				1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */,

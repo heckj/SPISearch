@@ -5,23 +5,25 @@
 //  Created by Joseph Heck on 7/2/22.
 //
 
-import SwiftSoup
 import SwiftUI
 
-struct ContentView: View {
-    @Binding var document: SearchRankDocument
-
-    var body: some View {
-        TextEditor(text: $document.text)
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView(document: .constant(SearchRankDocument()))
-    }
-}
-
+//struct ContentView: View {
+//    @Binding var document: SearchRankDocument
+//
+//    var body: some View {
+//        SearchRankEditorView(ranking: $document.searchrank)
+//        // Applied to the top level view in a macOS App, this controls both the initial size
+//        // of the window that appears and the maximum size to which it can be expanded.
+//        .frame(idealWidth: 500, maxWidth: .infinity, idealHeight: 300, maxHeight: .infinity)
+//    }
+//}
+//
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(document: .constant(SearchRankDocument()))
+//    }
+//}
+//
 //
 // struct ContentView: View {
 //    var body: some View {

@@ -22,6 +22,16 @@ enum Relevance: Int, CaseIterable, Identifiable, Codable {
     var id: Self { self }
 }
 
+struct SearchRank: Identifiable, Codable {
+    var id = UUID()
+    var queryURI: String
+    
+    init(id: UUID = UUID(), query: String) {
+        self.id = id
+        self.queryURI = query
+    }
+}
+
 struct SearchResultSet: Hashable, Codable {
     var results: [PackageSearchResult] = []
     var matched_keywords: [String] = []

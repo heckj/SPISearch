@@ -15,38 +15,26 @@ extension UTType {
 }
 
 struct SearchRankDocument: FileDocument {
-    var text: String
+    var searchrank: SearchRank
 
-    init(text: String = "Hello, world!") {
-        self.text = text
+    init(text: [String] = ["bezier"]) {
+        let uri = "/search?query=\(text.joined(separator: "%20"))"
+        self.searchrank = SearchRank(query: uri)
     }
 
-    static var readableContentTypes: [UTType] { [.json] }
+    static var readableContentTypes: [UTType] { [.SPISearchRank] }
 
     init(configuration: ReadConfiguration) throws {
-        guard let data = configuration.file.regularFileContents,
-              let string = String(data: data, encoding: .utf8)
+        guard let data = configuration.file.regularFileContents
         else {
             throw CocoaError(.fileReadCorruptFile)
         }
-        text = string
-
-        /*
-         guard let data = configuration.file.regularFileContents
-             else {
-                 throw CocoaError(.fileReadCorruptFile)
-             }
-             self.checklist = try JSONDecoder().decode(Checklist.self, from: data)
-         */
+        self.searchrank = try JSONDecoder().decode(SearchRank.self, from: data)
     }
 
     func fileWrapper(configuration _: WriteConfiguration) throws -> FileWrapper {
-        let data = text.data(using: .utf8)!
-        return .init(regularFileWithContents: data)
-        /*
-         let data = try JSONEncoder().encode(snapshot)
-             let fileWrapper = FileWrapper(regularFileWithContents: data)
-             return fileWrapper
-         */
+         let data = try JSONEncoder().encode(searchrank)
+         let fileWrapper = FileWrapper(regularFileWithContents: data)
+         return fileWrapper
     }
 }

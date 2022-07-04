@@ -9,6 +9,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 extension UTType {
+    /// The Universal Type Identifier for a ``SPISearch/SearchRankDocument``
     static var SPISearchRank: UTType {
         UTType(exportedAs: "com.github.heckj.SPISearch.searchrank", conformingTo: .json)
     }

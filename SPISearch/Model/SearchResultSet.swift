@@ -1,11 +1,9 @@
 //
-//  SearchRanking.swift
+//  SearchResultSet.swift
 //  SPISearch
 //
 //  Created by Joseph Heck on 7/4/22.
 //
-
-import Foundation
 
 /// An individual search result that represents a package found from Swift Package Index.
 struct PackageSearchResult: Identifiable, Hashable, Codable {
@@ -13,26 +11,6 @@ struct PackageSearchResult: Identifiable, Hashable, Codable {
     var name: String = ""
     var summary: String = ""
     var keywords: [String] = []
-}
-
-/// A type that indicates the perceived relevance of a search result.
-enum Relevance: Int, CaseIterable, Identifiable, Codable {
-    case unknown = -1
-    case none = 0
-    case partial = 1
-    case relevant = 2
-    var id: Self { self }
-}
-
-/// The SPISearch data model that encodes searches and ranked relevance reviews for those searches.
-struct SearchRank: Identifiable, Codable {
-    var id = UUID()
-    var queryURI: String
-
-    init(id: UUID = UUID(), query: String) {
-        self.id = id
-        queryURI = query
-    }
 }
 
 /// A collection of search results and the keywords matched for a search.

@@ -10,8 +10,14 @@ import SwiftUI
 @main
 struct SPISearchApp: App {
     var body: some Scene {
-        WindowGroup {
-            ContentView()
+        DocumentGroup(newDocument: SearchRankDocument()) { _ in
+            EmptyView()
+            // file.$document <- Binding<SearchRankDocument>
+            // SearchRankView(document: file.$document)
         }
+
+//        WindowGroup {
+//            ContentView()
+//        }
     }
 }

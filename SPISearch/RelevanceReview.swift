@@ -7,14 +7,6 @@
 
 import SwiftUI
 
-enum Relevance: Int, CaseIterable, Identifiable {
-    case unknown = -1
-    case none = 0
-    case partial = 1
-    case relevant = 2
-    var id: Self { self }
-}
-
 struct RelevanceReview: View {
     @State var relevance: Relevance = .unknown
     @State var notes: String = ""

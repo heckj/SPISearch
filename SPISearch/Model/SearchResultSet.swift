@@ -61,4 +61,10 @@ struct RecordedSearchResult: Identifiable, Hashable, Codable {
         self.url = url
         self.resultSet = resultSet
     }
+
+    static var example: RecordedSearchResult = .init(
+        recordedDate: Date.now,
+        url: SPISearchParser.hostedURL!,
+        resultSet: SearchResultSet.example
+    )
 }

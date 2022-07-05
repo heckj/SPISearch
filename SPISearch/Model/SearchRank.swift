@@ -11,10 +11,17 @@ import Foundation
 struct SearchRank: Identifiable, Codable {
     var id = UUID()
 
-    var searchResults: [SearchResultSet] = []
+    var searchResults: [RecordedSearchResult] = []
     var rankings: [RelevanceRecord] = []
 
-    init(id: UUID = UUID()) {
+    init(id: UUID = UUID(), _ result: RecordedSearchResult? = nil) {
         self.id = id
+        if let result = result {
+            searchResults.append(result)
+        }
+    }
+
+    static var example: SearchRank {
+        SearchRank(RecordedSearchResult.example)
     }
 }

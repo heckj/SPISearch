@@ -19,8 +19,8 @@ extension UTType {
 struct SearchRankDocument: FileDocument {
     var searchrank: SearchRank
 
-    init() {
-        searchrank = SearchRank()
+    init(_ searchResult: RecordedSearchResult? = nil) {
+        searchrank = SearchRank(searchResult)
     }
 
     static var readableContentTypes: [UTType] { [.SPISearchRank] }

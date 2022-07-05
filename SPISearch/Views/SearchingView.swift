@@ -13,19 +13,24 @@ struct SearchingView: View {
     @State var recordedSearch: RecordedSearchResult? = nil
 
     var body: some View {
-        Form {
+        VStack {
             TextField("Search", text: $searchTerms)
                 .onSubmit {
                     Task {
                         recordedSearch = await SPISearchParser.recordSearch(terms: searchTerms)
                     }
                 }
-        }.padding()
-        if let recordedSearch = recordedSearch {
-            RecordedSearchResultView(recordedSearch)
+                .textFieldStyle(.roundedBorder)
                 .padding()
+            if let recordedSearch = recordedSearch {
+                RecordedSearchResultView(recordedSearch)
+                    .padding()
+            }
+//            Spacer().layoutPriority(1)
+            Button("Save as search ranking") {
+                print("saving...")
+            }.padding()
         }
-        Spacer()
     }
 
     init(searchHostURL: URL?,

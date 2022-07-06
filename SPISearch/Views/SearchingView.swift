@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// The initial document view that is presented to request and capture search results into the searchrank document.
 struct SearchingView: View {
     @Binding var searchDoc: SearchRankDocument
     let searchHostURL: URL?
@@ -15,15 +16,23 @@ struct SearchingView: View {
 
     var body: some View {
         VStack {
-            TextField("Search", text: $searchTerms)
-                .onSubmit {
-                    Task {
-                        let searchResults = await SPISearchParser.recordSearch(terms: searchTerms)
-                        searchDoc = SearchRankDocument(searchResults)
+            HStack {
+                TextField("Search", text: $searchTerms)
+                    .onSubmit {
+                        Task {
+                            let searchResults = await SPISearchParser.recordSearch(terms: searchTerms)
+                            searchDoc = SearchRankDocument(searchResults)
+                        }
                     }
+                    .textFieldStyle(.roundedBorder)
+                Button {
+                    print("hi")
+                } label: {
+                    Image(systemName: "magnifyingglass.circle.fill")
                 }
-                .textFieldStyle(.roundedBorder)
-                .padding()
+            }
+            .padding()
+
             if let searchResults = searchResults {
                 Button(action: { print("doing something about saving this...") }, label: {
                     Text("Export")
@@ -31,6 +40,9 @@ struct SearchingView: View {
                 RecordedSearchResultView(searchResults)
                     .padding()
             } else {
+                Form {
+                    Text("Enter or update search terms in the text field to retrieve and initial set of search results.")
+                }
                 Spacer()
             }
         }

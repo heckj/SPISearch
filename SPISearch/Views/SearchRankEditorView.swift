@@ -12,10 +12,8 @@ struct SearchRankEditorView: View {
     var body: some View {
         VStack {
             if let firstSearchResults = ranking.searchrank.searchResults.first {
-                Text("this is my search rank view/editor view")
                 RecordedSearchResultView(firstSearchResults)
             } else {
-                Text("Using SearchingView to initialize the empty document")
                 SearchingView(searchDoc: $ranking, searchHostURL: SPISearchParser.hostedURL)
             }
         }

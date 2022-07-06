@@ -22,3 +22,16 @@ The provided test queries:
 - https://swiftpackageindex.com/search?query=具方法 (=> chinese for 'method')
 - https://swiftpackageindex.com/search?query=作为弹幕 (=> chinese for 'as a barrage')
 
+## Using the App
+
+This utility app is a document-based app, which unfortunately makes understanding what it is, and does, quite obtuse - as it starts with a document browser and no explanation or detail.
+To start, make a new document - and with any empty new document, the app presents a text field for query terms. 
+Update the terms to your liking, hit return (or the search button), and a new document will be created with the search results.
+
+Once the search results are stored, you can see any sets of stored search results, store another set of search results for the same query, and add relevance review details to the results.
+
+The primary goal of this utility app is to have a single set of query terms, and to capture one or more sets of search results, add relevancy rankings to them - to be be able to compare those to saved or future searches.
+
+## Document Format
+
+The app uses a `Codable` data model, so the end results stored from the document as straight JSON that can be opened and read by any text editor, or processed conveniently using tools such as [jq](https://stedolan.github.io/jq/).

@@ -19,7 +19,7 @@ struct RecordedSearchResultView: View {
             VStack {
                 Text("**\(recordedSearch.resultSet.results.count)** results recorded  \(recordedSearch.recordedDate.formatted()) from `\(recordedSearch.host)`")
                     .textSelection(.enabled)
-                Text("Matched Keywords").font(.title2)
+                    .padding(.bottom)
                 HStack {
                     ForEach(recordedSearch.resultSet.matched_keywords, id: \.self) { word in
                         CapsuleText(word)
@@ -27,13 +27,10 @@ struct RecordedSearchResultView: View {
                     }
                 }
                 List(recordedSearch.resultSet.results) { result in
-//                    HStack {
-                        PackageSearchResultView(result)
-//                        Spacer()
-//                        RelevanceReview()
-//                            .frame(width: 200)
-//                    }
-//                    Divider()
+                    PackageSearchResultView(result)
+                    #if os(macOS)
+                        Divider()
+                    #endif
                 }
             }
             .padding()

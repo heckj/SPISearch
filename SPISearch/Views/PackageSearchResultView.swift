@@ -8,26 +8,48 @@
 import SwiftUI
 
 struct PackageSearchResultView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+
     let result: PackageSearchResult
     var body: some View {
         VStack(alignment: .leading) {
-            HStack(alignment: .firstTextBaseline) {
-                Text(result.name)
-                    .font(.title)
-                    .textSelection(.enabled)
-                Text("\(result.id)")
-                    .font(.callout)
-                    .textSelection(.enabled)
-            }
-            HStack(alignment: .firstTextBaseline) {
-                ForEach(result.keywords, id: \.self) { word in
-                    CapsuleText(word)
+            if horizontalSizeClass == .compact {
+                VStack(alignment: .leading) {
+                    Text(result.name)
+                        .font(.title)
+                        .textSelection(.enabled)
+                    Text("\(result.id)")
+                        .font(.callout)
                         .textSelection(.enabled)
                 }
+                HStack(alignment: .firstTextBaseline) {
+                    ForEach(result.keywords, id: \.self) { word in
+                        CapsuleText(word)
+                            .textSelection(.enabled)
+                    }
+                }
+                Text(result.summary)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .textSelection(.enabled)
+            } else {
+                HStack(alignment: .firstTextBaseline) {
+                    Text(result.name)
+                        .font(.title)
+                        .textSelection(.enabled)
+                    Text("\(result.id)")
+                        .font(.callout)
+                        .textSelection(.enabled)
+                }
+                HStack(alignment: .firstTextBaseline) {
+                    ForEach(result.keywords, id: \.self) { word in
+                        CapsuleText(word)
+                            .textSelection(.enabled)
+                    }
+                }
+                Text(result.summary)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .textSelection(.enabled)
             }
-            Text(result.summary)
-                .fixedSize(horizontal: false, vertical: true)
-                .textSelection(.enabled)
         }
     }
 

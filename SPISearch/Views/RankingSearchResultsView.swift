@@ -11,7 +11,7 @@ struct RankingSearchResultsView: View {
     @Binding var rankdoc: SearchRank
     var body: some View {
         HStack {
-            RecordedSearchResultView(rankdoc.searchResults.first!)
+            RecordedSearchResultView(rankdoc.storedSearches.first!)
         }
     }
 }

@@ -11,13 +11,13 @@ import Foundation
 struct SearchRank: Identifiable, Codable {
     var id = UUID()
 
-    var searchResults: [RecordedSearchResult] = []
-    var rankings: [RelevanceRecord] = []
+    var storedSearches: [RecordedSearchResult] = []
+    var relevanceSets: [RelevanceRecord] = []
 
     init(id: UUID = UUID(), _ result: RecordedSearchResult? = nil) {
         self.id = id
         if let result = result {
-            searchResults.append(result)
+            storedSearches.append(result)
         }
     }
 

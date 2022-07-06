@@ -25,6 +25,8 @@
 		1AC5538028736A590050F0D6 /* SPISearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC5537F28736A590050F0D6 /* SPISearchTests.swift */; };
 		1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */; };
 		1AE2268328725560008C4ED1 /* SearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2268228725560008C4ED1 /* SearchingView.swift */; };
+		1AEB000328760E3E009055BE /* SearchRankDocumentOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */; };
+		1AEB0005287611EF009055BE /* SearchResultSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPISearchParser.swift; sourceTree = "<group>"; };
 		1ADA990F287106AD008FACDF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1AE2268228725560008C4ED1 /* SearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingView.swift; sourceTree = "<group>"; };
+		1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankDocumentOverview.swift; sourceTree = "<group>"; };
+		1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSetSummaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,8 @@
 				1A789D7628721EE700E8108A /* PackageSearchResultView.swift */,
 				1A8144AD287218F900F58B48 /* RelevanceReview.swift */,
 				1A78500428733F0500AFB33F /* SearchRankEditorView.swift */,
+				1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */,
+				1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -281,9 +287,11 @@
 				1A7850012873380B00AFB33F /* SearchRankDocument.swift in Sources */,
 				1A8144AA2872056300F58B48 /* CapsuleText.swift in Sources */,
 				1A7FD6AB2873797E008C76AB /* RelevanceRecord.swift in Sources */,
+				1AEB0005287611EF009055BE /* SearchResultSetSummaryView.swift in Sources */,
 				1AE2268328725560008C4ED1 /* SearchingView.swift in Sources */,
 				1AC55376287362BE0050F0D6 /* SearchResultSet.swift in Sources */,
 				1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */,
+				1AEB000328760E3E009055BE /* SearchRankDocumentOverview.swift in Sources */,
 				1A8144AE287218F900F58B48 /* RelevanceReview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

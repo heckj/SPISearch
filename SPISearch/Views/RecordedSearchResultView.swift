@@ -27,13 +27,13 @@ struct RecordedSearchResultView: View {
                     }
                 }
                 List(recordedSearch.resultSet.results) { result in
-                    HStack {
+//                    HStack {
                         PackageSearchResultView(result)
-                        Spacer()
-                        RelevanceReview()
-                            .frame(width: 200)
-                    }
-                    Divider()
+//                        Spacer()
+//                        RelevanceReview()
+//                            .frame(width: 200)
+//                    }
+//                    Divider()
                 }
             }
             .padding()

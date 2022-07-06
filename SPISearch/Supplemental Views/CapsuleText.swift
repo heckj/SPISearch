@@ -9,18 +9,30 @@ import SwiftUI
 
 struct CapsuleText: View {
     var text: String
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    #if os(iOS)
+        @Environment(\.horizontalSizeClass) var horizontalSizeClass
 
-    var body: some View {
-        if horizontalSizeClass == .compact {
-            Text(text)
-                .font(.caption.bold())
-                .padding(.horizontal, 4)
-                .padding(.vertical, 1)
-                .foregroundColor(.white)
-                .background(.secondary)
-                .clipShape(RoundedRectangle(cornerRadius: 6))
-        } else {
+        var body: some View {
+            if horizontalSizeClass == .compact {
+                Text(text)
+                    .font(.caption.bold())
+                    .padding(.horizontal, 4)
+                    .padding(.vertical, 1)
+                    .foregroundColor(.white)
+                    .background(.secondary)
+                    .clipShape(RoundedRectangle(cornerRadius: 6))
+            } else {
+                Text(text)
+                    .font(.callout.bold())
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 2)
+                    .foregroundColor(.white)
+                    .background(.secondary)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+            }
+        }
+    #else
+        var body: some View {
             Text(text)
                 .font(.callout.bold())
                 .padding(.horizontal, 6)
@@ -29,7 +41,7 @@ struct CapsuleText: View {
                 .background(.secondary)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
         }
-    }
+    #endif
 
     init(_ text: String) {
         self.text = text

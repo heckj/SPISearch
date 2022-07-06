@@ -56,6 +56,10 @@ struct RecordedSearchResult: Identifiable, Hashable, Codable {
         URLComponents(string: url.absoluteString)?.host ?? ""
     }
 
+    var searchTerms: String {
+        URLComponents(string: url.absoluteString)?.queryItems?.first(where: { $0.name == "query" })?.value ?? ""
+    }
+
     init(recordedDate: Date, url: URL, resultSet: SearchResultSet) {
         self.recordedDate = recordedDate
         self.url = url

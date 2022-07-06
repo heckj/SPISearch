@@ -10,11 +10,11 @@ import SwiftUI
 @main
 struct SPISearchApp: App {
     var body: some Scene {
-        WindowGroup(Text("window title")) {
-            SearchingView(searchHostURL: SPISearchParser.hostedURL)
-        }
         DocumentGroup(newDocument: SearchRankDocument()) { file in
             SearchRankEditorView(ranking: file.$document)
         }
+        //        #if os(macOS) // macOS 13+ only
+        //        .defaultSize(width: 1000, height: 650)
+        //        #endif
     }
 }

@@ -36,6 +36,7 @@ struct SearchRankDocument: FileDocument {
     func fileWrapper(configuration _: WriteConfiguration) throws -> FileWrapper {
         let data = try JSONEncoder().encode(searchrank)
         let fileWrapper = FileWrapper(regularFileWithContents: data)
+        fileWrapper.preferredFilename = "RankedSPISearch"
         return fileWrapper
     }
 }

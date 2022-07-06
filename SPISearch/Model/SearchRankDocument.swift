@@ -17,10 +17,10 @@ extension UTType {
 
 /// The document wrapper around the struct-based `Codable` data model for the app: ``SPISearch/SearchRank``.
 struct SearchRankDocument: FileDocument {
-    var searchranking: SearchRank
+    var searchRanking: SearchRank
 
     init(_ searchResult: RecordedSearchResult? = nil) {
-        searchranking = SearchRank(searchResult)
+        searchRanking = SearchRank(searchResult)
     }
 
     static var readableContentTypes: [UTType] { [.SPISearchRank] }
@@ -30,11 +30,11 @@ struct SearchRankDocument: FileDocument {
         else {
             throw CocoaError(.fileReadCorruptFile)
         }
-        searchranking = try JSONDecoder().decode(SearchRank.self, from: data)
+        searchRanking = try JSONDecoder().decode(SearchRank.self, from: data)
     }
 
     func fileWrapper(configuration _: WriteConfiguration) throws -> FileWrapper {
-        let data = try JSONEncoder().encode(searchranking)
+        let data = try JSONEncoder().encode(searchRanking)
         let fileWrapper = FileWrapper(regularFileWithContents: data)
         fileWrapper.preferredFilename = "RankedSPISearch"
         return fileWrapper

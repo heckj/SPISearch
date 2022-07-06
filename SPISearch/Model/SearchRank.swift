@@ -24,6 +24,14 @@ struct SearchRank: Identifiable, Codable {
     var storedSearches: [RecordedSearchResult] = []
     var relevanceSets: [RelevanceRecord] = []
 
+    var identifiers: [String] {
+        storedSearches.flatMap { storedSearch in
+            storedSearch.resultSet.results.map(\.id)
+        }
+    }
+
+    func searchMetrics(searchResult _: RecordedSearchResult, ranking _: RelevanceRecord) {}
+
     init(id: UUID = UUID(), _ result: RecordedSearchResult? = nil) {
         self.id = id
         if let result = result {

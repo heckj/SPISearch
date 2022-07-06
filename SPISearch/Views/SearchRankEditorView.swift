@@ -16,7 +16,7 @@ struct SearchRankEditorView: View {
     @Binding var ranking: SearchRankDocument
     var body: some View {
         VStack {
-            if let firstSearchResults = ranking.searchranking.storedSearches.first {
+            if let firstSearchResults = ranking.searchRanking.storedSearches.first {
                 RecordedSearchResultView(firstSearchResults)
             } else {
                 SearchingView(searchDoc: $ranking, searchHostURL: SPISearchParser.hostedURL)

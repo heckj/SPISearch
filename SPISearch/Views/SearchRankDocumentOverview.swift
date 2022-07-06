@@ -14,13 +14,13 @@ struct SearchRankDocumentOverview: View {
             Text("Stored Searches")
                 .font(.headline)
             HStack {
-                ForEach(document.searchranking.storedSearches) { result in
+                ForEach(document.searchRanking.storedSearches) { result in
                     SearchResultSetSummaryView(result)
                 }
             }
             Text("Relevance Rankings")
                 .font(.headline)
-            if document.searchranking.relevanceSets.isEmpty {
+            if document.searchRanking.relevanceSets.isEmpty {
                 Text("No relevance rankings stored.")
             } else {
                 HStack {

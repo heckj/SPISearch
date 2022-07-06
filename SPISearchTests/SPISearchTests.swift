@@ -25,4 +25,11 @@ final class SPISearchTests: XCTestCase {
         XCTAssertNotNil(result)
         XCTAssertEqual(result?.query, "query=ui%20bezier")
     }
+
+    func testIdentifierExtraction() throws {
+        let ranking = SearchRank(RecordedSearchResult.example)
+        XCTAssertEqual(ranking.identifiers.count, 6)
+
+        XCTAssertEqual(SearchRank().identifiers.count, 0)
+    }
 }

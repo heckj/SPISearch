@@ -51,7 +51,7 @@ struct SearchingView: View {
     init(searchDoc: Binding<SearchRankDocument>, searchHostURL: URL?, searchResults _: RecordedSearchResult? = nil) {
         _searchDoc = searchDoc
         self.searchHostURL = searchHostURL
-        searchTerms = self.searchDoc.searchranking.storedSearches.first?.searchTerms ?? "bezier"
+        searchTerms = self.searchDoc.searchRanking.storedSearches.first?.searchTerms ?? "bezier"
         searchResults = nil
     }
 }

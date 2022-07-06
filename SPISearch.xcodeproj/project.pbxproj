@@ -13,6 +13,7 @@
 		1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1650532870F9B700AC4DB2 /* SwiftSoup */; };
 		1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CBC9428734A7A0033EE43 /* Documentation.docc */; };
 		1A1FADF028737BFF0037D674 /* RankingSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */; };
+		1A6A29C828762B6D0096F600 /* SearchMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A29C728762B6C0096F600 /* SearchMetrics.swift */; };
 		1A7850012873380B00AFB33F /* SearchRankDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7850002873380B00AFB33F /* SearchRankDocument.swift */; };
 		1A78500328733B5500AFB33F /* SearchRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500228733B5500AFB33F /* SearchRank.swift */; };
 		1A78500528733F0500AFB33F /* SearchRankEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500428733F0500AFB33F /* SearchRankEditorView.swift */; };
@@ -48,6 +49,7 @@
 		1A1650552871014E00AC4DB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1A1CBC9428734A7A0033EE43 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSearchResultsView.swift; sourceTree = "<group>"; };
+		1A6A29C728762B6C0096F600 /* SearchMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetrics.swift; sourceTree = "<group>"; };
 		1A7850002873380B00AFB33F /* SearchRankDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankDocument.swift; sourceTree = "<group>"; };
 		1A78500228733B5500AFB33F /* SearchRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRank.swift; sourceTree = "<group>"; };
 		1A78500428733F0500AFB33F /* SearchRankEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankEditorView.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				1A7FD6AA2873797E008C76AB /* RelevanceRecord.swift */,
 				1AC55375287362BE0050F0D6 /* SearchResultSet.swift */,
 				1A7850002873380B00AFB33F /* SearchRankDocument.swift */,
+				1A6A29C728762B6C0096F600 /* SearchMetrics.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				1A1FADF028737BFF0037D674 /* RankingSearchResultsView.swift in Sources */,
 				1A8144AC28720E7000F58B48 /* RecordedSearchResultView.swift in Sources */,
 				1A78500328733B5500AFB33F /* SearchRank.swift in Sources */,
+				1A6A29C828762B6D0096F600 /* SearchMetrics.swift in Sources */,
 				1A7850012873380B00AFB33F /* SearchRankDocument.swift in Sources */,
 				1A8144AA2872056300F58B48 /* CapsuleText.swift in Sources */,
 				1A7FD6AB2873797E008C76AB /* RelevanceRecord.swift in Sources */,

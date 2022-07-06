@@ -21,6 +21,7 @@ A utility application to capture, review, compare, and rank search results from 
 - ``SPISearch/Relevance``
 - ``SPISearch/RecordedSearchResult``
 - ``SPISearch/PackageSearchResult``
+- ``SPISearch/SearchMetrics``
 
 ### Collector and Parser
 

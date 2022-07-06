@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// The cross-platform document-based utility application.
 @main
 struct SPISearchApp: App {
     var body: some Scene {

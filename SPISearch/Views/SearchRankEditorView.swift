@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+/// The primary document editor view.
+///
+/// If the associated document is "empty" (no searches), this view
+/// is responsible for displaying the view to populate and initially create
+/// a searchrank document.
 struct SearchRankEditorView: View {
     @Binding var ranking: SearchRankDocument
     var body: some View {

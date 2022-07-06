@@ -4,7 +4,7 @@ A tool for capturing, evaluating, and comparing search results for Swift Package
 
 ## Overview
 
-Overview here...
+A utility application to capture, review, compare, and rank search results from Swift Package Index.
 
 ## Topics
 
@@ -17,7 +17,9 @@ Overview here...
 
 - ``SPISearch/SearchRank``
 - ``SPISearch/SearchResultSet``
+- ``SPISearch/RelevanceRecord``
 - ``SPISearch/Relevance``
+- ``SPISearch/RecordedSearchResult``
 - ``SPISearch/PackageSearchResult``
 
 ### Collector and Parser
@@ -27,8 +29,11 @@ Overview here...
 ### App Views
 
 - ``SPISearch/SearchRankEditorView``
-- ``SPISearch/SearchResultSetView``
 - ``SPISearch/SearchingView``
+- ``SPISearch/SearchRankDocumentOverview``
+- ``SPISearch/RankingSearchResultsView``
+- ``SPISearch/RecordedSearchResultView``
+- ``SPISearch/SearchResultSetSummaryView``
 - ``SPISearch/PackageSearchResultView``
 - ``SPISearch/RelevanceReview``
 

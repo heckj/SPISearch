@@ -60,12 +60,12 @@ struct RecordedSearchResult: Identifiable, Hashable, Codable {
     var url: URL
     /// The set of stored search results.
     var resultSet: SearchResultSet
-    
+
     /// The hostname from the recorded ``url``.
     var host: String {
         URLComponents(string: url.absoluteString)?.host ?? ""
     }
-    
+
     /// The search term or terms from the recorded ``url``.
     var searchTerms: String {
         URLComponents(string: url.absoluteString)?.queryItems?.first(where: { $0.name == "query" })?.value ?? ""
@@ -76,7 +76,7 @@ struct RecordedSearchResult: Identifiable, Hashable, Codable {
         self.url = url
         self.resultSet = resultSet
     }
-    
+
     /// An example recorded search result for designing views.
     static var example: RecordedSearchResult = .init(
         recordedDate: Date.now,

@@ -60,9 +60,25 @@ struct SearchMetrics {
     /// - Returns: A value between `0` and `1` that represents the recall of the search results.
     ///
     /// The recall of a set of search results is defined as ratio of the number of relevant documents compared to the total number of relevant documents available.
-    static func calculateRecall(searchResult _: RecordedSearchResult, ranking _: RelevanceRecord) -> Double {
-        #warning("Implement calculateRecall")
-        return 0
+    static func calculateRecall(searchResult: RecordedSearchResult, ranking: RelevanceRecord) -> Double {
+        let countOfRelevantResults: Double = searchResult.resultSet.results.reduce(into: 0) { value, result in
+            switch ranking[result.id] {
+            case .relevant:
+                value = value + 1
+            case .partial:
+                value =  value + 0.5
+            case .none, .unknown:
+                break
+            }
+        }
+        // Since we don't actively know how many relevant results existed that _weren't_ returned from a search,
+        // we'll base this count on the total number of entries in the relevant ranking dictionary.
+        // That makes it useful for comparing between search results with a common relevance ranking,
+        // where some results might be omitted, but also provides a fairly "invalid" value for any single, arbitrary search.
+        
+        // We might look at enhancing this by allowing a relevance dictionary to get manual additions in case there
+        // _are_ known relevant documents that we expect to be returned, but aren't.
+        return countOfRelevantResults / Double(ranking._ratings.count)
     }
 
     /// Calculates the mean reciprocal rank for a set of search results.

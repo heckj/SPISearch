@@ -40,8 +40,17 @@ struct SearchMetrics {
     ///
     /// The precision of a set of search results is defined as ratio of the number of relevant documents compared to the total number of results retrieved.
     static func calculatePrecision(searchResult: RecordedSearchResult, ranking: RelevanceRecord) -> Double {
-        #warning("Implement calculatePrecision")
-        return 0
+        let countOfRelevantResults: Double = searchResult.resultSet.results.reduce(into: 0) { value, result in
+            switch ranking[result.id] {
+            case .relevant:
+                value = value + 1
+            case .partial:
+                value =  value + 0.5
+            case .none, .unknown:
+                break
+            }
+        }
+        return countOfRelevantResults / Double(searchResult.resultSet.results.count)
     }
 
     /// Calculates the recall for a set of search results.

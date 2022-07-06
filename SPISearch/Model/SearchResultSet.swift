@@ -8,9 +8,13 @@ import Foundation
 
 /// An individual search result that represents a package found from Swift Package Index.
 struct PackageSearchResult: Identifiable, Hashable, Codable {
+    /// The identifier of the search result.
     var id: String
+    /// The package name.
     var name: String = ""
+    /// The summary of the package provided from the index.
     var summary: String = ""
+    /// The list of keywords that were provided with the search result.
     var keywords: [String] = []
 }
 
@@ -29,7 +33,7 @@ struct SearchResultSet: Identifiable, Hashable, Codable {
     /// Any error messages from the attempted search.
     var errorMessage: String = ""
 
-    /// A sample result-set for `bezier` to use in designing and building views.
+    /// A sample search result set for `bezier` to use in designing and building views.
     static var example: SearchResultSet {
         var ex = SearchResultSet()
         ex.matched_keywords = ["bezier", "bezier-path", "uibezierpath", "bezier-animation", "bezier-curve"]
@@ -48,14 +52,21 @@ struct SearchResultSet: Identifiable, Hashable, Codable {
 /// A recorded search result
 struct RecordedSearchResult: Identifiable, Hashable, Codable {
     var id: UUID = .init()
+    /// The date the search was recorded.
     var recordedDate: Date
+    /// The URL providing the search results.
+    ///
+    /// In practice, this should be either the hosted version or `localhost` to compare a development version.
     var url: URL
+    /// The set of stored search results.
     var resultSet: SearchResultSet
-
+    
+    /// The hostname from the recorded ``url``.
     var host: String {
         URLComponents(string: url.absoluteString)?.host ?? ""
     }
-
+    
+    /// The search term or terms from the recorded ``url``.
     var searchTerms: String {
         URLComponents(string: url.absoluteString)?.queryItems?.first(where: { $0.name == "query" })?.value ?? ""
     }
@@ -65,7 +76,8 @@ struct RecordedSearchResult: Identifiable, Hashable, Codable {
         self.url = url
         self.resultSet = resultSet
     }
-
+    
+    /// An example recorded search result for designing views.
     static var example: RecordedSearchResult = .init(
         recordedDate: Date.now,
         url: SPISearchParser.hostedURL!,

@@ -15,8 +15,14 @@ enum Relevance: Int, CaseIterable, Identifiable, Codable {
 }
 
 /// The recorded relevance ratings for a set of search results.
+///
+/// Each relevance record should be specific to an individual, hence the ``reviewer`` property on it.
+/// A complete set of relevance ratings includes a dictionary entry for every search result identifier in
+/// the collection of search results stored in a SearchRank document.
 struct RelevanceRecord: Hashable, Codable {
+    /// The name (or identifier) for the person providing the relevance review.
     var reviewer: String
+    /// A dictionary of the relevance reviews, keyed by identifier of individual search results.
     var _ratings: [String: Relevance]
 
     subscript(identifier: String) -> Relevance {

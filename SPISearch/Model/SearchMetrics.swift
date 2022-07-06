@@ -31,7 +31,7 @@ struct SearchMetrics {
         recall = SearchMetrics.calculateRecall(searchResult: searchResult, ranking: ranking)
         meanReciprocalRank = SearchMetrics.calculateMeanReciprocalRank(searchResult: searchResult, ranking: ranking)
     }
-    
+
     /// Calculates the precision for a set of search results.
     /// - Parameters:
     ///   - searchResult: The search results to process.
@@ -45,7 +45,7 @@ struct SearchMetrics {
             case .relevant:
                 value = value + 1
             case .partial:
-                value =  value + 0.5
+                value = value + 0.5
             case .none, .unknown:
                 break
             }
@@ -66,7 +66,7 @@ struct SearchMetrics {
             case .relevant:
                 value = value + 1
             case .partial:
-                value =  value + 0.5
+                value = value + 0.5
             case .none, .unknown:
                 break
             }
@@ -75,7 +75,7 @@ struct SearchMetrics {
         // we'll base this count on the total number of entries in the relevant ranking dictionary.
         // That makes it useful for comparing between search results with a common relevance ranking,
         // where some results might be omitted, but also provides a fairly "invalid" value for any single, arbitrary search.
-        
+
         // We might look at enhancing this by allowing a relevance dictionary to get manual additions in case there
         // _are_ known relevant documents that we expect to be returned, but aren't.
         return countOfRelevantResults / Double(ranking._ratings.count)

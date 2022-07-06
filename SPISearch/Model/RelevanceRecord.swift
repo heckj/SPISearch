@@ -37,4 +37,20 @@ struct RelevanceRecord: Hashable, Codable {
             _ratings[identifier] = ranking
         }
     }
+
+    init(_ reviewer: String) {
+        self.reviewer = reviewer
+        _ratings = [:]
+    }
+
+    static var example: RelevanceRecord {
+        var ex = RelevanceRecord("exampler")
+        ex._ratings["pocketsvg/PocketSVG"] = .relevant
+        ex._ratings["maxxfrazer/SceneKit-Bezier-Animations"] = .relevant
+        ex._ratings["fummicc1/SimpleRoulette"] = .relevant
+        ex._ratings["antoniocasero/Arrows"] = .relevant
+        ex._ratings["AndreasVerhoeven/BalloonView"] = .relevant
+        ex._ratings["bradhowes/ArrowView"] = .relevant
+        return ex
+    }
 }

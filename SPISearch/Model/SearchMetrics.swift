@@ -41,14 +41,7 @@ struct SearchMetrics {
     /// The precision of a set of search results is defined as ratio of the number of relevant documents compared to the total number of results retrieved.
     static func calculatePrecision(searchResult: RecordedSearchResult, ranking: RelevanceRecord) -> Double {
         let countOfRelevantResults: Double = searchResult.resultSet.results.reduce(into: 0) { value, result in
-            switch ranking[result.id] {
-            case .relevant:
-                value = value + 1
-            case .partial:
-                value = value + 0.5
-            case .none, .unknown:
-                break
-            }
+            value = value + ranking.relevanceValue(result.id)
         }
         return countOfRelevantResults / Double(searchResult.resultSet.results.count)
     }
@@ -62,14 +55,7 @@ struct SearchMetrics {
     /// The recall of a set of search results is defined as ratio of the number of relevant documents compared to the total number of relevant documents available.
     static func calculateRecall(searchResult: RecordedSearchResult, ranking: RelevanceRecord) -> Double {
         let countOfRelevantResults: Double = searchResult.resultSet.results.reduce(into: 0) { value, result in
-            switch ranking[result.id] {
-            case .relevant:
-                value = value + 1
-            case .partial:
-                value = value + 0.5
-            case .none, .unknown:
-                break
-            }
+            value = value + ranking.relevanceValue(result.id)
         }
         // Since we don't actively know how many relevant results existed that _weren't_ returned from a search,
         // we'll base this count on the total number of entries in the relevant ranking dictionary.
@@ -88,8 +74,11 @@ struct SearchMetrics {
     /// - Returns: A value between `0` and `1` that represents the mean reciprocal rank of the search results.
     ///
     /// The mean reciprocal rank is a summed relevance rating for the search results, weighting earlier relevant results higher than later relevant results.
-    static func calculateMeanReciprocalRank(searchResult _: RecordedSearchResult, ranking _: RelevanceRecord) -> Double {
+    static func calculateMeanReciprocalRank(searchResult: RecordedSearchResult, ranking: RelevanceRecord) -> Double {
         #warning("Implement calculateMeanReciprocalRank")
+        let relevanceValues: [Double] = searchResult.resultSet.results.map { result in
+            ranking.relevanceValue(result.id)
+        }
         return 0
     }
 }

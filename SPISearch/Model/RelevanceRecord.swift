@@ -9,7 +9,7 @@ import Foundation
 /// A type that indicates the perceived relevance of a search result.
 enum Relevance: Int, CaseIterable, Identifiable, Codable {
     case unknown = -1
-    case none = 0
+    case no = 0
     case partial = 1
     case relevant = 2
     var id: Self { self }
@@ -26,6 +26,23 @@ struct RelevanceRecord: Identifiable, Hashable, Codable {
     var reviewer: String
     /// A dictionary of the relevance reviews, keyed by identifier of individual search results.
     var _ratings: [String: Relevance]
+
+    func relevanceValue(_ id: String, binary: Bool = false) -> Double {
+        let graduatedValue: Double
+        switch _ratings[id] {
+        case .relevant:
+            graduatedValue = 1
+        case .partial:
+            graduatedValue = 0.5
+        case nil, .no, .unknown:
+            graduatedValue = 0
+        }
+        if binary {
+            // if we want a yes/no threshold value, then collapse the 0.5 down to 0.
+            return floor(graduatedValue)
+        }
+        return graduatedValue
+    }
 
     subscript(identifier: String) -> Relevance {
         get {

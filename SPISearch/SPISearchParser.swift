@@ -12,8 +12,8 @@ import SwiftSoup
 ///
 /// The results are parsed into a ``SPISearch/SearchResultSet``.
 enum SPISearchParser {
-    static var serverHost = "https://swiftpackageindex.com/search?query=ping"
-    static var localHost = "http://localhost:8080/search?query=ping"
+    static var serverHost = "https://swiftpackageindex.com/search?query=bezier"
+    static var localHost = "http://localhost:8080/search?query=bezier"
     static var hostedURL: URL? {
         URL(string: serverHost)
     }

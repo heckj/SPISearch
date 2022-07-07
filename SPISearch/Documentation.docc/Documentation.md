@@ -36,7 +36,7 @@ A utility application to capture, review, compare, and rank search results from 
 - ``SPISearch/RecordedSearchResultView``
 - ``SPISearch/SearchResultSetSummaryView``
 - ``SPISearch/PackageSearchResultView``
-- ``SPISearch/RelevanceReview``
+- ``SPISearch/RelevanceRecord``
 
 ### Supplementary Views
 

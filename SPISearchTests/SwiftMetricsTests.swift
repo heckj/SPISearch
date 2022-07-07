@@ -18,4 +18,9 @@ final class SwiftMetricsTests: XCTestCase {
         let recall = SearchMetrics.calculateRecall(searchResult: RecordedSearchResult.example, ranking: RelevanceRecord.example)
         XCTAssertEqual(recall, 1.0, accuracy: 0.001)
     }
+
+    func testMeanReciprocalRankCalculation() throws {
+        let mrr = SearchMetrics.calculateMeanReciprocalRank(searchResult: RecordedSearchResult.example, ranking: RelevanceRecord.example)
+        XCTAssertEqual(mrr, 1, accuracy: 0.001)
+    }
 }

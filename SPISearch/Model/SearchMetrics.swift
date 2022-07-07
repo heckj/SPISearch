@@ -4,6 +4,7 @@
 //
 //  Created by Joseph Heck on 7/6/22.
 //
+import Foundation
 
 /// A collection of search metrics calculated for a stored search result against a relevance ranking.
 struct SearchMetrics {
@@ -73,12 +74,59 @@ struct SearchMetrics {
     ///   - ranking: The rankings used to evaluate the search results.
     /// - Returns: A value between `0` and `1` that represents the mean reciprocal rank of the search results.
     ///
-    /// The mean reciprocal rank is a summed relevance rating for the search results, weighting earlier relevant results higher than later relevant results.
+    /// The [mean reciprocal rank](https://en.wikipedia.org/wiki/Mean_reciprocal_rank) is a summed relevance rating for the search results,
+    /// weighting earlier relevant results higher than later relevant results.
     static func calculateMeanReciprocalRank(searchResult: RecordedSearchResult, ranking: RelevanceRecord) -> Double {
-        #warning("Implement calculateMeanReciprocalRank")
         let relevanceValues: [Double] = searchResult.resultSet.results.map { result in
             ranking.relevanceValue(result.id)
         }
+        if let firstRelevantResultPosition = relevanceValues.firstIndex(of: 1.0) {
+            return 1.0 / Double(firstRelevantResultPosition + 1)
+        } else if let firstPartialRelevantResultPosition = relevanceValues.firstIndex(of: 1.0) {
+            return 0.5 / Double(firstPartialRelevantResultPosition + 1)
+        }
         return 0
+    }
+
+    // https://blog.thedigitalgroup.com/measuring-search-relevance-using-ndcg
+    // https://medium.com/@_init_/notes-on-the-ndcg-metric-used-in-the-visual-dialog-challenge-2019-90cf443b93dc
+    // (Normalized Discounted Cumulative Gain)
+    // Cumulative Gain = sum of the relevance values
+    // Discounted Cumulative Gain = sum of the relevance value / log(index pos + 1)
+    // https://arxiv.org/pdf/1302.2318.pdf (On Search Engine Evaluation Metrics)
+    // pg 87 discusses NDCG and various discount values
+
+    /// Calculates the normalized discounted cumulative gain (NDGC) for a set of search results.
+    /// - Parameters:
+    ///   - searchResult: The search results to process.
+    ///   - ranking: The rankings used to evaluate the search results.
+    /// - Returns: A value between `0` and `1` that represents the normalized discounted cumulative relevance gain of the search results.
+    ///
+    /// The [NDGC](https://en.wikipedia.org/wiki/Discounted_cumulative_gain) compares a discounted cumulative gain
+    /// against a potentially ideal cumulative gain for a set of results to highlight improvements in ordering that wouldn't otherwise be visible in
+    /// search metrics.
+    static func calculateNDCG(searchResult: RecordedSearchResult, ranking: RelevanceRecord) -> Double {
+        let relevanceValues: [Double] = searchResult.resultSet.results.map { result in
+            ranking.relevanceValue(result.id)
+        }
+        let dcg = relevanceValues.enumerated()
+            .map { indexPosition, value in
+                // print("+ \(value)/log(\(indexPosition + 2))")
+                // return the reciprocal value
+                value / log(Double(indexPosition + 2))
+            }
+            .reduce(into: 0) { partialResult, reciprocalValue in
+                partialResult += reciprocalValue
+            }
+        let idealDCG = relevanceValues.sorted(by: >).enumerated()
+            .map { indexPosition, value in
+                // print("+ \(value)/log(\(indexPosition + 2))")
+                // return the reciprocal value
+                value / log(Double(indexPosition + 2))
+            }
+            .reduce(into: 0) { partialResult, reciprocalValue in
+                partialResult += reciprocalValue
+            }
+        return dcg / idealDCG
     }
 }

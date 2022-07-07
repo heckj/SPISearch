@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-struct RelevanceReview: View {
-    @State var relevance: Relevance = .unknown
-    @State var notes: String = ""
+struct RelevanceSelectorView: View {
+    @Binding var relevance: Relevance
     var body: some View {
         VStack {
             HStack {
@@ -20,15 +19,18 @@ struct RelevanceReview: View {
                 }
                 .pickerStyle(.segmented)
             }
-            TextField("Notes", text: $notes)
         }
         .padding()
+        .frame(maxWidth: 150)
+    }
+
+    init(_ relevance: Binding<Relevance>) {
+        _relevance = relevance
     }
 }
 
 struct RelevanceReview_Previews: PreviewProvider {
     static var previews: some View {
-        RelevanceReview()
-            .frame(width: 200)
+        RelevanceSelectorView(.constant(.partial))
     }
 }

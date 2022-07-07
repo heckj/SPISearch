@@ -27,7 +27,9 @@ struct RankingReviewerView: View {
                     TextField(text: $reviewerId) {
                         Text("reviewer id")
                     }
+                    #if os(iOS)
                     .textInputAutocapitalization(.never)
+                    #endif
                     .disableAutocorrection(true)
                     .textFieldStyle(.roundedBorder)
                     Button {

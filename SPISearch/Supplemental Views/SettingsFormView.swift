@@ -16,9 +16,11 @@ struct SettingsFormView: View {
                 TextField(text: $reviewerId) {
                     Text("reviewer id")
                 }
-                .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
-                .textFieldStyle(.roundedBorder)
+                #if os(iOS)
+                    .textInputAutocapitalization(.never)
+                #endif
+                    .textFieldStyle(.roundedBorder)
             }
             .padding()
         }

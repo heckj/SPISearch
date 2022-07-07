@@ -69,4 +69,17 @@ struct SearchRank: Identifiable, Codable {
     static var example: SearchRank {
         SearchRank(RecordedSearchResult.example)
     }
+
+    static var extendedExample: SearchRankDocument {
+        var doc = SearchRankDocument(.example)
+        var secondSearch = RecordedSearchResult.example
+        secondSearch.id = UUID()
+        doc.searchRanking.storedSearches.append(secondSearch)
+        doc.searchRanking.relevanceSets.append(RelevanceRecord.example)
+        var secondRanking = RelevanceRecord.example
+        secondRanking.id = UUID()
+        secondRanking.reviewer = "heckj"
+        doc.searchRanking.relevanceSets.append(secondRanking)
+        return doc
+    }
 }

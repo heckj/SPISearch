@@ -65,20 +65,7 @@ struct SearchRankDocumentOverview: View {
 }
 
 struct SearchRankDocumentOverview_Previews: PreviewProvider {
-    static func extendedExample() -> SearchRankDocument {
-        var doc = SearchRankDocument(.example)
-        var secondSearch = RecordedSearchResult.example
-        secondSearch.id = UUID()
-        doc.searchRanking.storedSearches.append(secondSearch)
-        doc.searchRanking.relevanceSets.append(RelevanceRecord.example)
-        var secondRanking = RelevanceRecord.example
-        secondRanking.id = UUID()
-        secondRanking.reviewer = "heckj"
-        doc.searchRanking.relevanceSets.append(secondRanking)
-        return doc
-    }
-
     static var previews: some View {
-        SearchRankDocumentOverview(.constant(extendedExample()))
+        SearchRankDocumentOverview(.constant(SearchRank.extendedExample))
     }
 }

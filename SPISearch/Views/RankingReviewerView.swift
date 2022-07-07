@@ -41,11 +41,12 @@ struct RankingReviewerView: View {
         } else {
             VStack {
                 Text("Hello \(localReviewer)")
-                Button {
-                    localReviewer = ""
-                } label: {
-                    Text("CLEAR")
-                }
+                // Used for debugging the preview
+//                Button {
+//                    localReviewer = ""
+//                } label: {
+//                    Text("CLEAR")
+//                }
                 if let relevanceSet = relevanceSetBinding() {
                     RankingSearchResultsView(
                         ranking: relevanceSet,
@@ -63,6 +64,6 @@ struct RankingReviewerView: View {
 
 struct RankingReviewerView_Previews: PreviewProvider {
     static var previews: some View {
-        RankingReviewerView(.constant(SearchRankDocument(.example)))
+        RankingReviewerView(.constant(SearchRank.extendedExample))
     }
 }

@@ -21,7 +21,7 @@ enum Relevance: Int, CaseIterable, Identifiable, Codable {
 /// A complete set of relevance ratings includes a dictionary entry for every search result identifier in
 /// the collection of search results stored in a SearchRank document.
 struct RelevanceRecord: Identifiable, Hashable, Codable {
-    let id: UUID
+    var id: UUID
     /// The name (or identifier) for the person providing the relevance review.
     var reviewer: String
     /// A dictionary of the relevance reviews, keyed by identifier of individual search results.

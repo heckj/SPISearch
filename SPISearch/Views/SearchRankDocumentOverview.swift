@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SearchRankDocumentOverview: View {
     @Binding var document: SearchRankDocument
+    @State var selectedSearchResultSet: UUID? = nil
+    @State var selectedRanking: UUID? = nil
     var body: some View {
         VStack(alignment: .leading) {
             Text("Stored Searches")
@@ -16,7 +18,11 @@ struct SearchRankDocumentOverview: View {
             HStack(alignment: .top) {
                 ForEach(document.searchRanking.storedSearches) { result in
                     SearchResultSetSummaryView(result)
-                        .padding().border(.gray)
+                        .padding()
+                        .background(selectedSearchResultSet == result.id ? .blue : .clear)
+                        .onTapGesture {
+                            selectedSearchResultSet = result.id
+                        }
                 }
                 Spacer()
             }
@@ -29,6 +35,9 @@ struct SearchRankDocumentOverview: View {
                     ForEach(document.searchRanking.relevanceSets) { ranking in
                         VStack {
                             RelevanceSetSummaryView(ranking)
+                                .onTapGesture {
+                                    selectedRanking = ranking.id
+                                }
                             Button {
                                 print("deleting \(ranking.id)")
                             } label: {
@@ -36,12 +45,19 @@ struct SearchRankDocumentOverview: View {
                                     .font(.title)
                             }
 
-                        }.padding().border(.gray)
+                        }
+                        .padding()
+                        .background(selectedRanking == ranking.id ? .blue : .clear)
                     }
                 }
             }
             Spacer()
-        }.border(.blue)
+        }
+        .padding()
+        .onAppear {
+            selectedSearchResultSet = document.searchRanking.storedSearches.first?.id
+            selectedRanking = document.searchRanking.relevanceSets.first?.id
+        }
     }
 
     init(_ document: Binding<SearchRankDocument>) {
@@ -49,10 +65,17 @@ struct SearchRankDocumentOverview: View {
     }
 }
 
-struct SaerchRankDocumentOverview_Previews: PreviewProvider {
+struct SearchRankDocumentOverview_Previews: PreviewProvider {
     static func extendedExample() -> SearchRankDocument {
         var doc = SearchRankDocument(.example)
+        var secondSearch = RecordedSearchResult.example
+        secondSearch.id = UUID()
+        doc.searchRanking.storedSearches.append(secondSearch)
         doc.searchRanking.relevanceSets.append(RelevanceRecord.example)
+        var secondRanking = RelevanceRecord.example
+        secondRanking.id = UUID()
+        secondRanking.reviewer = "heckj"
+        doc.searchRanking.relevanceSets.append(secondRanking)
         return doc
     }
 

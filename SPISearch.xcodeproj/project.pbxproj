@@ -67,6 +67,7 @@
 		1A8144A92872056300F58B48 /* CapsuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleText.swift; sourceTree = "<group>"; };
 		1A8144AB28720E7000F58B48 /* RecordedSearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedSearchResultView.swift; sourceTree = "<group>"; };
 		1A8144AD287218F900F58B48 /* RelevanceSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceSelectorView.swift; sourceTree = "<group>"; };
+		1A98A1452877A1D00021E214 /* AppPrivacyPolicy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AppPrivacyPolicy.md; sourceTree = "<group>"; };
 		1AC55375287362BE0050F0D6 /* SearchResultSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSet.swift; sourceTree = "<group>"; };
 		1AC5537D28736A590050F0D6 /* SPISearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPISearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC5537F28736A590050F0D6 /* SPISearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPISearchTests.swift; sourceTree = "<group>"; };
@@ -101,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				1ADA990F287106AD008FACDF /* README.md */,
+				1A98A1452877A1D00021E214 /* AppPrivacyPolicy.md */,
 				1A1650422870F98F00AC4DB2 /* SPISearch */,
 				1AC5537E28736A590050F0D6 /* SPISearchTests */,
 				1A1650412870F98F00AC4DB2 /* Products */,

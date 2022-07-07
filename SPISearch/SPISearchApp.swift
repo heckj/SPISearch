@@ -24,5 +24,6 @@ struct SPISearchApp: App {
         //        #endif
     }
 
+    /// The key used for storing the identity of the reviwer in AppStorage (UserDefaults).
     static var reviewerKey: String = "reviewer"
 }

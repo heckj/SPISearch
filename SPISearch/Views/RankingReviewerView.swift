@@ -42,7 +42,7 @@ struct RankingReviewerView: View {
             }
         } else {
             VStack {
-                Text("Hello \(localReviewer)")
+//                Text("Hello \(localReviewer)")
                 // Used for debugging the preview
 //                Button {
 //                    localReviewer = ""

@@ -7,7 +7,11 @@
 import Foundation
 
 /// An individual search result that represents a package found from Swift Package Index.
-struct PackageSearchResult: Identifiable, Hashable, Codable {
+struct PackageSearchResult: Identifiable, Hashable, Codable, Comparable {
+    static func < (lhs: PackageSearchResult, rhs: PackageSearchResult) -> Bool {
+        lhs.id < rhs.id
+    }
+
     /// The identifier of the search result.
     var id: String
     /// The package name.

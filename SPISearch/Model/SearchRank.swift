@@ -39,8 +39,8 @@ struct SearchRank: Identifiable, Codable {
             recordedDate: firstSearch?.recordedDate ?? Date.now,
             url: firstSearch?.url ?? SPISearchParser.hostedURL!,
             resultSet: SearchResultSet(id: UUID(),
-                                       results: Array(setOfPackageResults).shuffled(),
-                                       matched_keywords: Array(setOfMatchedKeywords).shuffled())
+                                       results: Array(setOfPackageResults).sorted(),
+                                       matched_keywords: Array(setOfMatchedKeywords).sorted())
         )
     }
 

@@ -44,7 +44,6 @@ struct SearchRankDocumentOverview: View {
                                 Image(systemName: "minus.circle.fill").foregroundColor(.red)
                                     .font(.title)
                             }
-
                         }
                         .padding()
                         .background(selectedRanking == ranking.id ? .blue : .clear)

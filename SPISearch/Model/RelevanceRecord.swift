@@ -4,6 +4,7 @@
 //
 //  Created by Joseph Heck on 7/4/22.
 //
+import Foundation
 
 /// A type that indicates the perceived relevance of a search result.
 enum Relevance: Int, CaseIterable, Identifiable, Codable {
@@ -19,7 +20,8 @@ enum Relevance: Int, CaseIterable, Identifiable, Codable {
 /// Each relevance record should be specific to an individual, hence the ``reviewer`` property on it.
 /// A complete set of relevance ratings includes a dictionary entry for every search result identifier in
 /// the collection of search results stored in a SearchRank document.
-struct RelevanceRecord: Hashable, Codable {
+struct RelevanceRecord: Identifiable, Hashable, Codable {
+    let id: UUID
     /// The name (or identifier) for the person providing the relevance review.
     var reviewer: String
     /// A dictionary of the relevance reviews, keyed by identifier of individual search results.
@@ -39,6 +41,7 @@ struct RelevanceRecord: Hashable, Codable {
     }
 
     init(_ reviewer: String) {
+        id = UUID()
         self.reviewer = reviewer
         _ratings = [:]
     }

@@ -12,23 +12,36 @@ struct SearchRankDocumentOverview: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("Stored Searches")
-                .font(.headline)
-            HStack {
+                .font(.title)
+            HStack(alignment: .top) {
                 ForEach(document.searchRanking.storedSearches) { result in
                     SearchResultSetSummaryView(result)
+                        .padding().border(.gray)
                 }
+                Spacer()
             }
             Text("Relevance Rankings")
-                .font(.headline)
+                .font(.title)
             if document.searchRanking.relevanceSets.isEmpty {
                 Text("No relevance rankings stored.")
             } else {
-                HStack {
-                    Text("hi")
+                HStack(alignment: .top) {
+                    ForEach(document.searchRanking.relevanceSets) { ranking in
+                        VStack {
+                            RelevanceSetSummaryView(ranking)
+                            Button {
+                                print("deleting \(ranking.id)")
+                            } label: {
+                                Image(systemName: "minus.circle.fill").foregroundColor(.red)
+                                    .font(.title)
+                            }
+
+                        }.padding().border(.gray)
+                    }
                 }
             }
             Spacer()
-        }
+        }.border(.blue)
     }
 
     init(_ document: Binding<SearchRankDocument>) {
@@ -37,7 +50,13 @@ struct SearchRankDocumentOverview: View {
 }
 
 struct SaerchRankDocumentOverview_Previews: PreviewProvider {
+    static func extendedExample() -> SearchRankDocument {
+        var doc = SearchRankDocument(.example)
+        doc.searchRanking.relevanceSets.append(RelevanceRecord.example)
+        return doc
+    }
+
     static var previews: some View {
-        SearchRankDocumentOverview(.constant(SearchRankDocument(.example)))
+        SearchRankDocumentOverview(.constant(extendedExample()))
     }
 }

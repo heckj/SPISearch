@@ -14,8 +14,15 @@ struct SPISearchApp: App {
         DocumentGroup(newDocument: SearchRankDocument()) { file in
             SearchRankEditorView(ranking: file.$document)
         }
+        #if os(macOS)
+            Settings {
+                SettingsFormView()
+            }
+        #endif
         //        #if os(macOS) // macOS 13+ only
         //        .defaultSize(width: 1000, height: 650)
         //        #endif
     }
+
+    static var reviewerKey: String = "reviewer"
 }

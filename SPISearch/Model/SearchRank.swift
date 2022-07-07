@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 /// The SPISearch data model that encodes searches and ranked relevance reviews for those searches.
 ///
@@ -24,6 +25,32 @@ struct SearchRank: Identifiable, Codable {
     var storedSearches: [RecordedSearchResult] = []
     var relevanceSets: [RelevanceRecord] = []
 
+    func combinedRandomizedSearchResult() -> RecordedSearchResult {
+        // pull all of the individual package results for the stores searches into a set - effectively
+        // deduplicating them (and somewhat randomizing them)
+        let setOfPackageResults: Set<PackageSearchResult> = Set(storedSearches.flatMap(\.resultSet.results))
+        // pull all of the matched keywords for the stores searches into a set
+        let setOfMatchedKeywords: Set<String> = Set(storedSearches.flatMap(\.resultSet.matched_keywords))
+        // use the first search - which *should* exist in most cases, with fallbacks to an empty default
+        let firstSearch = storedSearches.first
+        // Assemble a synthetic result - keeping the URL from the first search for terms - with a new UUID
+        // and shuffled results for the ordering of matched keywords and package results.
+        return RecordedSearchResult(
+            recordedDate: firstSearch?.recordedDate ?? Date.now,
+            url: firstSearch?.url ?? SPISearchParser.hostedURL!,
+            resultSet: SearchResultSet(id: UUID(),
+                                       results: Array(setOfPackageResults).shuffled(),
+                                       matched_keywords: Array(setOfMatchedKeywords).shuffled())
+        )
+    }
+
+    mutating func addRelevanceSet(for reviewer: String) {
+        if !relevanceSets.contains(where: { $0.reviewer == reviewer }) {
+            relevanceSets.append(RelevanceRecord(reviewer))
+        }
+    }
+
+    /// Returns a list of all the search result identifiers from all stored searches.
     var identifiers: [String] {
         storedSearches.flatMap { storedSearch in
             storedSearch.resultSet.results.map(\.id)

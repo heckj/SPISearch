@@ -12,6 +12,8 @@
 		1A16504C2870F99000AC4DB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */; };
 		1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1650532870F9B700AC4DB2 /* SwiftSoup */; };
 		1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CBC9428734A7A0033EE43 /* Documentation.docc */; };
+		1A1CEABE287760BE00BFE37A /* SearchRankTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CEABD287760BE00BFE37A /* SearchRankTabView.swift */; };
+		1A1CEAC0287763F600BFE37A /* RankingReviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CEABF287763F600BFE37A /* RankingReviewerView.swift */; };
 		1A1FADF028737BFF0037D674 /* RankingSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */; };
 		1A45D916287634650077EC9E /* SwiftMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D915287634650077EC9E /* SwiftMetricsTests.swift */; };
 		1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */; };
@@ -28,6 +30,7 @@
 		1AC5538028736A590050F0D6 /* SPISearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC5537F28736A590050F0D6 /* SPISearchTests.swift */; };
 		1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */; };
 		1AE2268328725560008C4ED1 /* SearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2268228725560008C4ED1 /* SearchingView.swift */; };
+		1AEADD522877916900023487 /* SettingsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEADD512877916900023487 /* SettingsFormView.swift */; };
 		1AEB000328760E3E009055BE /* SearchRankDocumentOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */; };
 		1AEB0005287611EF009055BE /* SearchResultSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +53,8 @@
 		1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1A1650552871014E00AC4DB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1A1CBC9428734A7A0033EE43 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
+		1A1CEABD287760BE00BFE37A /* SearchRankTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankTabView.swift; sourceTree = "<group>"; };
+		1A1CEABF287763F600BFE37A /* RankingReviewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingReviewerView.swift; sourceTree = "<group>"; };
 		1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSearchResultsView.swift; sourceTree = "<group>"; };
 		1A45D915287634650077EC9E /* SwiftMetricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMetricsTests.swift; sourceTree = "<group>"; };
 		1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceSetSummaryView.swift; sourceTree = "<group>"; };
@@ -68,6 +73,7 @@
 		1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPISearchParser.swift; sourceTree = "<group>"; };
 		1ADA990F287106AD008FACDF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1AE2268228725560008C4ED1 /* SearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingView.swift; sourceTree = "<group>"; };
+		1AEADD512877916900023487 /* SettingsFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFormView.swift; sourceTree = "<group>"; };
 		1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankDocumentOverview.swift; sourceTree = "<group>"; };
 		1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSetSummaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,8 +160,10 @@
 				1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */,
 				1A8144AB28720E7000F58B48 /* RecordedSearchResultView.swift */,
 				1A789D7628721EE700E8108A /* PackageSearchResultView.swift */,
-				1A8144AD287218F900F58B48 /* RelevanceSelectorView.swift */,
+				1AEADD512877916900023487 /* SettingsFormView.swift */,
 				1A78500428733F0500AFB33F /* SearchRankEditorView.swift */,
+				1A1CEABD287760BE00BFE37A /* SearchRankTabView.swift */,
+				1A1CEABF287763F600BFE37A /* RankingReviewerView.swift */,
 				1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */,
 				1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */,
 				1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */,
@@ -166,6 +174,7 @@
 		1AC55378287363930050F0D6 /* Supplemental Views */ = {
 			isa = PBXGroup;
 			children = (
+				1A8144AD287218F900F58B48 /* RelevanceSelectorView.swift */,
 				1A8144A92872056300F58B48 /* CapsuleText.swift */,
 			);
 			path = "Supplemental Views";
@@ -291,10 +300,13 @@
 				1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */,
 				1A78500528733F0500AFB33F /* SearchRankEditorView.swift in Sources */,
 				1A1FADF028737BFF0037D674 /* RankingSearchResultsView.swift in Sources */,
+				1A1CEABE287760BE00BFE37A /* SearchRankTabView.swift in Sources */,
+				1A1CEAC0287763F600BFE37A /* RankingReviewerView.swift in Sources */,
 				1A8144AC28720E7000F58B48 /* RecordedSearchResultView.swift in Sources */,
 				1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */,
 				1A78500328733B5500AFB33F /* SearchRank.swift in Sources */,
 				1A6A29C828762B6D0096F600 /* SearchMetrics.swift in Sources */,
+				1AEADD522877916900023487 /* SettingsFormView.swift in Sources */,
 				1A7850012873380B00AFB33F /* SearchRankDocument.swift in Sources */,
 				1A8144AA2872056300F58B48 /* CapsuleText.swift in Sources */,
 				1A7FD6AB2873797E008C76AB /* RelevanceRecord.swift in Sources */,

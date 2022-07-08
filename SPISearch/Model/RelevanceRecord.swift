@@ -68,7 +68,7 @@ struct PackageIdentifierRelevance: Identifiable, Hashable, Codable {
 struct KeywordRelevance: Identifiable, Hashable, Codable {
     var id: UUID = .init()
     internal var ratings: [String: Relevance] = [:]
-    
+
     /// Returns the number of entries in the keyword relevance dictionary.
     var count: Int {
         ratings.count
@@ -105,12 +105,12 @@ struct RelevanceRecord: Identifiable, Hashable, Codable {
     var id: UUID
     /// The name (or identifier) for the person providing the relevance review.
     var reviewer: String
-    
+
     /// The relevance reviews for package search results.
     var packages: PackageIdentifierRelevance
     /// The relevance reviews for keywords.
     var keywords: KeywordRelevance
-    
+
     init(_ reviewer: String) {
         id = UUID()
         self.reviewer = reviewer

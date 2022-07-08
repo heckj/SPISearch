@@ -137,6 +137,11 @@ enum SPISearchParser {
              let count = try keyword_element.select(".count_tag")
             // If we want to capture the keyword count presented, we have it here...
             // print("count element -> \(try count.text())")
+            
+            // This strips out the span that includes the keyword count value
+            // for the matched keywords so that it doesn't 'pollute' the keyword
+            // value we pull with .text(), which otherwise includes the text from this
+            // span node appended on the end.
             try count.remove()
             // DEBUGGING
             // let children = keyword_element.children()

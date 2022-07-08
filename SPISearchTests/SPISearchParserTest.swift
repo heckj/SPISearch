@@ -31,10 +31,11 @@ final class SPISearchParserTest: XCTestCase {
         let searchResultSet = try await SPISearchParser.parse(htmlSample)
         XCTAssertNotNil(searchResultSet)
         XCTAssertEqual(searchResultSet.matched_keywords.count, 5)
+        // verifying https://github.com/heckj/SPISearch/issues/15 is resolved
         XCTAssertEqual(searchResultSet.matched_keywords.sorted(),
                        ["bezier","bezier-animation", "bezier-curve", "bezier-path", "uibezierpath"])
         XCTAssertEqual(searchResultSet.results.count, 6)
-        print(searchResultSet)
+        XCTAssertEqual(searchResultSet.results[0].id, "pocketsvg/PocketSVG")
     }
 
 }

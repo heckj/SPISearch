@@ -17,6 +17,7 @@
 		1A1FADF028737BFF0037D674 /* RankingSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */; };
 		1A2DF7F728789E580070841E /* bezier_query_8jul22.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */; };
 		1A45D916287634650077EC9E /* SwiftMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D915287634650077EC9E /* SwiftMetricsTests.swift */; };
+		1A562F6E2878C681006B29A8 /* ComputedRelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */; };
 		1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */; };
 		1A6A29C828762B6D0096F600 /* SearchMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A29C728762B6C0096F600 /* SearchMetrics.swift */; };
 		1A7850012873380B00AFB33F /* SearchRankDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7850002873380B00AFB33F /* SearchRankDocument.swift */; };
@@ -61,6 +62,7 @@
 		1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSearchResultsView.swift; sourceTree = "<group>"; };
 		1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bezier_query_8jul22.txt; sourceTree = "<group>"; };
 		1A45D915287634650077EC9E /* SwiftMetricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMetricsTests.swift; sourceTree = "<group>"; };
+		1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputedRelevancyValues.swift; sourceTree = "<group>"; };
 		1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceSetSummaryView.swift; sourceTree = "<group>"; };
 		1A6A29C728762B6C0096F600 /* SearchMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetrics.swift; sourceTree = "<group>"; };
 		1A7850002873380B00AFB33F /* SearchRankDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankDocument.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				1AC55375287362BE0050F0D6 /* SearchResultSet.swift */,
 				1A7850002873380B00AFB33F /* SearchRankDocument.swift */,
 				1A6A29C728762B6C0096F600 /* SearchMetrics.swift */,
+				1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				1A1CEAC0287763F600BFE37A /* RankingReviewerView.swift in Sources */,
 				1A8144AC28720E7000F58B48 /* RecordedSearchResultView.swift in Sources */,
 				1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */,
+				1A562F6E2878C681006B29A8 /* ComputedRelevancyValues.swift in Sources */,
 				1A78500328733B5500AFB33F /* SearchRank.swift in Sources */,
 				1A6A29C828762B6D0096F600 /* SearchMetrics.swift in Sources */,
 				1AEADD522877916900023487 /* SettingsFormView.swift in Sources */,

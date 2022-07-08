@@ -53,22 +53,11 @@ struct SearchRank: Identifiable, Codable {
         }
     }
 
-    /// A type that holds the average relevancy values computed from the stored rankings in the document.
-    struct AverageComputedRelevancy {
-        var packages: [String: Double] = [:]
-        var keywords: [String: Double] = [:]
-
-        func isComplete(keywords: [String], packages: [String]) -> Bool {
-            self.keywords.keys.sorted() == keywords.sorted() &&
-                self.packages.keys.sorted() == packages.sorted()
-        }
-    }
-
-    var medianRelevancyRanking: AverageComputedRelevancy? {
+    var medianRelevancyRanking: ComputedRelevancyValues? {
         if relevanceSets.isEmpty {
             return nil
         }
-        var medianRecord = AverageComputedRelevancy()
+        var medianRecord = ComputedRelevancyValues()
 
         // retrieve a list of matched keywords from all the relevance sets
         // and toss them into a Set to de-duplicate them.

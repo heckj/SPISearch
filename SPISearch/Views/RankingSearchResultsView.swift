@@ -53,7 +53,6 @@ struct RankingSearchResultsView: View {
                     // replace with `.listRowSeparator(.visible)` for macOS 13+
                 #endif
             }
-
         }
     }
 

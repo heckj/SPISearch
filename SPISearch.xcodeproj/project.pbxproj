@@ -15,6 +15,7 @@
 		1A1CEABE287760BE00BFE37A /* SearchRankTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CEABD287760BE00BFE37A /* SearchRankTabView.swift */; };
 		1A1CEAC0287763F600BFE37A /* RankingReviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CEABF287763F600BFE37A /* RankingReviewerView.swift */; };
 		1A1FADF028737BFF0037D674 /* RankingSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */; };
+		1A2DF7F728789E580070841E /* bezier_query_8jul22.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */; };
 		1A45D916287634650077EC9E /* SwiftMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D915287634650077EC9E /* SwiftMetricsTests.swift */; };
 		1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */; };
 		1A6A29C828762B6D0096F600 /* SearchMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A29C728762B6C0096F600 /* SearchMetrics.swift */; };
@@ -26,6 +27,7 @@
 		1A8144AA2872056300F58B48 /* CapsuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144A92872056300F58B48 /* CapsuleText.swift */; };
 		1A8144AC28720E7000F58B48 /* RecordedSearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144AB28720E7000F58B48 /* RecordedSearchResultView.swift */; };
 		1A8144AE287218F900F58B48 /* RelevanceSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144AD287218F900F58B48 /* RelevanceSelectorView.swift */; };
+		1AA317EC28789BBC009CD13F /* SPISearchParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA317EB28789BBC009CD13F /* SPISearchParserTest.swift */; };
 		1AC55376287362BE0050F0D6 /* SearchResultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC55375287362BE0050F0D6 /* SearchResultSet.swift */; };
 		1AC5538028736A590050F0D6 /* SPISearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC5537F28736A590050F0D6 /* SPISearchTests.swift */; };
 		1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */; };
@@ -56,6 +58,7 @@
 		1A1CEABD287760BE00BFE37A /* SearchRankTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankTabView.swift; sourceTree = "<group>"; };
 		1A1CEABF287763F600BFE37A /* RankingReviewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingReviewerView.swift; sourceTree = "<group>"; };
 		1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSearchResultsView.swift; sourceTree = "<group>"; };
+		1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bezier_query_8jul22.txt; sourceTree = "<group>"; };
 		1A45D915287634650077EC9E /* SwiftMetricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMetricsTests.swift; sourceTree = "<group>"; };
 		1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceSetSummaryView.swift; sourceTree = "<group>"; };
 		1A6A29C728762B6C0096F600 /* SearchMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetrics.swift; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 		1A8144AB28720E7000F58B48 /* RecordedSearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedSearchResultView.swift; sourceTree = "<group>"; };
 		1A8144AD287218F900F58B48 /* RelevanceSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceSelectorView.swift; sourceTree = "<group>"; };
 		1A98A1452877A1D00021E214 /* AppPrivacyPolicy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AppPrivacyPolicy.md; sourceTree = "<group>"; };
+		1AA317EB28789BBC009CD13F /* SPISearchParserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPISearchParserTest.swift; sourceTree = "<group>"; };
 		1AC55375287362BE0050F0D6 /* SearchResultSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSet.swift; sourceTree = "<group>"; };
 		1AC5537D28736A590050F0D6 /* SPISearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPISearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC5537F28736A590050F0D6 /* SPISearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPISearchTests.swift; sourceTree = "<group>"; };
@@ -185,8 +189,10 @@
 		1AC5537E28736A590050F0D6 /* SPISearchTests */ = {
 			isa = PBXGroup;
 			children = (
+				1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */,
 				1AC5537F28736A590050F0D6 /* SPISearchTests.swift */,
 				1A45D915287634650077EC9E /* SwiftMetricsTests.swift */,
+				1AA317EB28789BBC009CD13F /* SPISearchParserTest.swift */,
 			);
 			path = SPISearchTests;
 			sourceTree = "<group>";
@@ -287,6 +293,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A2DF7F728789E580070841E /* bezier_query_8jul22.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +334,7 @@
 			files = (
 				1AC5538028736A590050F0D6 /* SPISearchTests.swift in Sources */,
 				1A45D916287634650077EC9E /* SwiftMetricsTests.swift in Sources */,
+				1AA317EC28789BBC009CD13F /* SPISearchParserTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,11 +531,13 @@
 		1AC5538428736A590050F0D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BDV4VC27D3;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SPISearch;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.0;
@@ -545,11 +555,13 @@
 		1AC5538528736A590050F0D6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BDV4VC27D3;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = SPISearch;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MARKETING_VERSION = 1.0;

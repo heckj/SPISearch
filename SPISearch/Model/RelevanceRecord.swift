@@ -13,7 +13,7 @@ enum Relevance: Int, CaseIterable, Identifiable, Codable {
     case partial = 1
     case relevant = 2
     var id: Self { self }
-    
+
     func relevanceValue(binary: Bool = false) -> Double {
         let graduatedValue: Double
         switch self {
@@ -33,15 +33,22 @@ enum Relevance: Int, CaseIterable, Identifiable, Codable {
 }
 
 struct PackageIdentifierRelevance: Identifiable, Hashable, Codable {
-    var id: UUID = UUID()
-    var ratings: [String: Relevance] = [:]
-    
+    var id: UUID = .init()
+    private var ratings: [String: Relevance] = [:]
+
     /// Provides read-only relevance for a package search result.
     func package_relevance(_ packageIdentifier: String) -> Relevance {
-        return ratings[packageIdentifier, default: .unknown]
+        ratings[packageIdentifier, default: .unknown]
     }
-    
+
+    /// Returns the number of entries in the package search result relevance dictionary.
+    var count: Int {
+        ratings.count
+    }
+
     /// Provides read-write relevance instance for a package search result
+    ///
+    /// Used to get `Binding` access to a specific instance within the enclosed dictionary.
     subscript(identifier: String) -> Relevance {
         get {
             if let ranking = ratings[identifier] {
@@ -57,15 +64,22 @@ struct PackageIdentifierRelevance: Identifiable, Hashable, Codable {
 }
 
 struct KeywordRelevance: Identifiable, Hashable, Codable {
-    var id: UUID = UUID()
-    var ratings: [String: Relevance] = [:]
+    var id: UUID = .init()
+    private var ratings: [String: Relevance] = [:]
     
+    /// Returns the number of entries in the keyword relevance dictionary.
+    var count: Int {
+        ratings.count
+    }
+
     /// Provides read-only relevance for a package search result.
     func package_relevance(_ packageIdentifier: String) -> Relevance {
-        return ratings[packageIdentifier, default: .unknown]
+        ratings[packageIdentifier, default: .unknown]
     }
-    
-    /// Provides read-write relevance instance for a package search result
+
+    /// Provides read-write relevance instance for a package search result.
+    ///
+    /// Used to get `Binding` access to a specific instance within the enclosed dictionary.
     subscript(identifier: String) -> Relevance {
         get {
             if let ranking = ratings[identifier] {
@@ -89,64 +103,35 @@ struct RelevanceRecord: Identifiable, Hashable, Codable {
     var id: UUID
     /// The name (or identifier) for the person providing the relevance review.
     var reviewer: String
-    /// A dictionary of the relevance reviews, keyed by identifier of individual search results.
-    var _ratings: [String: Relevance]
     
-//    /// A dictionary of the relevance reviews for keywords.
-//    var keyword_ratings: [String: Relevance]
-//
-//    /// Provides read-only relevance for a keyword.
-//    func keyword_relevance(_ key: String) -> Relevance {
-//        return keyword_ratings[key, default: .unknown]
-//    }
-//
-//    /// Provides read-only relevance value for a keyword.
-//    func keyword_relevance_value(_ key: String) -> Double {
-//        return keyword_ratings[key, default: .unknown].relevanceValue()
-//    }
+    /// The relevance reviews for package search results.
+    var packages: PackageIdentifierRelevance
+    /// The relevance reviews for keywords.
+    var keywords: KeywordRelevance
     
-    /// Provides read-only relevance for a package search result.
-    func package_relevance(_ packageIdentifier: String) -> Relevance {
-        return _ratings[packageIdentifier, default: .unknown]
-    }
-    
-    /// Provides read-write relevance instance for a package search result
-    subscript(identifier: String) -> Relevance {
-        get {
-            if let ranking = _ratings[identifier] {
-                return ranking
-            } else {
-                return .unknown
-            }
-        }
-        set(ranking) {
-            _ratings[identifier] = ranking
-        }
-    }
-
     init(_ reviewer: String) {
         id = UUID()
         self.reviewer = reviewer
-        _ratings = [:]
-//        keyword_ratings = [:]
+        packages = PackageIdentifierRelevance()
+        keywords = KeywordRelevance()
     }
 
     static var example: RelevanceRecord {
         var ex = RelevanceRecord("exampler")
-        ex._ratings["pocketsvg/PocketSVG"] = .relevant
-        ex._ratings["maxxfrazer/SceneKit-Bezier-Animations"] = .relevant
-        ex._ratings["fummicc1/SimpleRoulette"] = .relevant
-        ex._ratings["antoniocasero/Arrows"] = .relevant
-        ex._ratings["AndreasVerhoeven/BalloonView"] = .relevant
-        ex._ratings["bradhowes/ArrowView"] = .relevant
-        
+        ex.packages["pocketsvg/PocketSVG"] = .relevant
+        ex.packages["maxxfrazer/SceneKit-Bezier-Animations"] = .relevant
+        ex.packages["fummicc1/SimpleRoulette"] = .relevant
+        ex.packages["antoniocasero/Arrows"] = .relevant
+        ex.packages["AndreasVerhoeven/BalloonView"] = .relevant
+        ex.packages["bradhowes/ArrowView"] = .relevant
+
         // keyword relevance examples
-//        ex.keyword_ratings["bezier"] = .relevant
-//        ex.keyword_ratings["bezier-path"] = .relevant
-//        ex.keyword_ratings["bezier-animation"] = .relevant
-//        ex.keyword_ratings["bezier-curve"] = .relevant
-//        ex.keyword_ratings["uibezierpath"] = .relevant
-        
+        ex.keywords["bezier"] = .relevant
+        ex.keywords["bezier-path"] = .relevant
+        ex.keywords["bezier-animation"] = .relevant
+        ex.keywords["bezier-curve"] = .relevant
+        ex.keywords["uibezierpath"] = .relevant
+
         return ex
     }
 }

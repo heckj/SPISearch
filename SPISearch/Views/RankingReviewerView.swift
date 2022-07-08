@@ -46,13 +46,13 @@ struct RankingReviewerView: View {
             }
         } else {
             VStack {
-                //                Text("Hello \(localReviewer)")
+                // Text("Hello \(localReviewer)")
                 // Used for debugging the preview
-                //                Button {
-                //                    localReviewer = ""
-                //                } label: {
-                //                    Text("CLEAR")
-                //                }
+                // Button {
+                //     localReviewer = ""
+                // } label: {
+                //    Text("CLEAR REVIEWER")
+                // }
                 if let relevanceSet = relevanceSetBinding() {
                     RankingSearchResultsView(
                         ranking: relevanceSet,

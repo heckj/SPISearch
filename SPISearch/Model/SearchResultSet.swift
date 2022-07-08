@@ -75,6 +75,16 @@ struct RecordedSearchResult: Identifiable, Hashable, Codable {
         URLComponents(string: url.absoluteString)?.queryItems?.first(where: { $0.name == "query" })?.value ?? ""
     }
 
+    /// The matched keywords found in the recorded search result
+    var keywords: [String] {
+        resultSet.matched_keywords
+    }
+
+    /// The matched package identifiers found in the recorded search result
+    var packageIds: [String] {
+        resultSet.results.map(\.id)
+    }
+
     init(recordedDate: Date, url: URL, resultSet: SearchResultSet) {
         self.recordedDate = recordedDate
         self.url = url

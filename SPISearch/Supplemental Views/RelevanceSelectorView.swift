@@ -12,7 +12,7 @@ struct RelevanceSelectorView: View {
     var body: some View {
         VStack {
             HStack {
-                Picker("Relevance", selection: $relevance) {
+                Picker("rank", selection: $relevance) {
                     Image(systemName: "hand.thumbsdown").tag(Relevance.no)
                     Image(systemName: "questionmark").tag(Relevance.partial)
                     Image(systemName: "hand.thumbsup").tag(Relevance.relevant)
@@ -21,7 +21,13 @@ struct RelevanceSelectorView: View {
             }
         }
         .padding()
-        .frame(maxWidth: 150)
+        #if os(macOS)
+            // macOS shows the title of the picker, while iOS
+            // doesn't, which is kind of weird.
+            .frame(maxWidth: 170)
+        #else
+            .frame(maxWidth: 150)
+        #endif
     }
 
     init(_ relevance: Binding<Relevance>) {

@@ -32,9 +32,10 @@ enum Relevance: Int, CaseIterable, Identifiable, Codable {
     }
 }
 
+/// A type that encapsulates the relevancy rankings for package search results.
 struct PackageIdentifierRelevance: Identifiable, Hashable, Codable {
     var id: UUID = .init()
-    private var ratings: [String: Relevance] = [:]
+    internal var ratings: [String: Relevance] = [:]
 
     /// Provides read-only relevance for a package search result.
     func package_relevance(_ packageIdentifier: String) -> Relevance {
@@ -63,9 +64,10 @@ struct PackageIdentifierRelevance: Identifiable, Hashable, Codable {
     }
 }
 
+/// A type that encapsulates the relevancy rankings for matched keywords.
 struct KeywordRelevance: Identifiable, Hashable, Codable {
     var id: UUID = .init()
-    private var ratings: [String: Relevance] = [:]
+    internal var ratings: [String: Relevance] = [:]
     
     /// Returns the number of entries in the keyword relevance dictionary.
     var count: Int {

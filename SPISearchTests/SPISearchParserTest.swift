@@ -6,9 +6,10 @@
 //
 
 import XCTest
+@testable import SPISearch
 
 final class SPISearchParserTest: XCTestCase {
-
+    
     var htmlSample = ""
     
     override func setUpWithError() throws {
@@ -17,12 +18,23 @@ final class SPISearchParserTest: XCTestCase {
             htmlSample = try String(contentsOf: resourceURL, encoding: .utf8)
         }
     }
-
+    
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
+    
+    func testResourceLoading() throws {
         XCTAssertFalse(htmlSample.isEmpty)
     }
+
+    func testSearchParser() async throws {
+        let searchResultSet = try await SPISearchParser.parse(htmlSample)
+        XCTAssertNotNil(searchResultSet)
+        XCTAssertEqual(searchResultSet.matched_keywords.count, 5)
+        XCTAssertEqual(searchResultSet.matched_keywords.sorted(),
+                       ["bezier","bezier-animation", "bezier-curve", "bezier-path", "uibezierpath"])
+        XCTAssertEqual(searchResultSet.results.count, 6)
+        print(searchResultSet)
+    }
+
 }

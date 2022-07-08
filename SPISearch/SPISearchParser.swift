@@ -111,7 +111,7 @@ enum SPISearchParser {
 
             let keyword_set = try element.select("ul.keywords.matching li")
             if keyword_set.count > 1 {
-                for keyword_element in keyword_set {
+                for keyword_element in keyword_set.dropFirst() {
                     let keyword = try keyword_element.text()
                     // print("Keyword found: \(keyword)")
                     package_result.keywords.append(keyword)
@@ -131,9 +131,22 @@ enum SPISearchParser {
         }
 
         // Parsing the found keywords for the search:
-        let matching_keywords = try doc.select("section.keyword_results ul.keywords li")
+        let matching_keywords = try doc.select("section.keyword_results ul.keywords li a")
         // print("Found \(matching_keywords.count) matching keywords")
         for keyword_element in matching_keywords {
+             let count = try keyword_element.select(".count_tag")
+            // If we want to capture the keyword count presented, we have it here...
+            // print("count element -> \(try count.text())")
+            try count.remove()
+            // DEBUGGING
+            // let children = keyword_element.children()
+            // print("\(children.count) children: ")
+            // for kid in children {
+            //     print("kidnode: \(kid) has \(kid.children().count) grandkids")
+            //     for grand in kid.children() {
+            //         print("grandkidnode: \(grand) has \(grand.children().count) great-grandkids")
+            //     }
+            // }
             let keyword = try keyword_element.text()
             // print("found: \(keyword)")
             results.matched_keywords.append(keyword)

@@ -14,7 +14,8 @@ struct RelevanceSetSummaryView: View {
             Image(systemName: "chart.bar.doc.horizontal")
                 .font(.largeTitle)
             Text(record.reviewer)
-            Text("\(record._ratings.count) entries")
+            Text("\(record.packages.count) package entries")
+            Text("\(record.keywords.count) keyword entries")
         }
     }
 

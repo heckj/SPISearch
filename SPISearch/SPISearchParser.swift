@@ -111,7 +111,7 @@ enum SPISearchParser {
 
             let keyword_set = try element.select("ul.keywords.matching li")
             if keyword_set.count > 1 {
-                for keyword_element in keyword_set.dropFirst() {
+                for keyword_element in keyword_set {
                     let keyword = try keyword_element.text()
                     // print("Keyword found: \(keyword)")
                     package_result.keywords.append(keyword)

@@ -24,13 +24,18 @@ struct SearchMetrics {
     let meanReciprocalRank: Double
 
     /// Creates a new set of search metrics from the search result and ranking that you provide.
+    ///
+    /// The initializer returns `nil` is the rankings are incomplete for the provided search results.
     /// - Parameters:
     ///   - searchResult: The search results to process.
     ///   - ranking: The rankings used to evaluate the search results.
-    init(searchResult: RecordedSearchResult, ranking: RelevanceRecord) {
-        precision = SearchMetrics.calculatePrecision(searchResult: searchResult, ranking: ranking)
-        recall = SearchMetrics.calculateRecall(searchResult: searchResult, ranking: ranking)
-        meanReciprocalRank = SearchMetrics.calculateMeanReciprocalRank(searchResult: searchResult, ranking: ranking)
+    init?(searchResult: RecordedSearchResult, ranking: ComputedRelevancyValues) {
+        if ranking.isComplete(keywords: searchResult.keywords, packageIds: searchResult.packageIds) {
+            precision = SearchMetrics.calculatePrecision(searchResult: searchResult, ranking: ranking)
+            recall = SearchMetrics.calculateRecall(searchResult: searchResult, ranking: ranking)
+            meanReciprocalRank = SearchMetrics.calculateMeanReciprocalRank(searchResult: searchResult, ranking: ranking)
+        }
+        return nil
     }
 
     /// Calculates the precision for a set of search results.
@@ -40,9 +45,9 @@ struct SearchMetrics {
     /// - Returns: A value between `0` and `1` that represents the precision of the search results.
     ///
     /// The precision of a set of search results is defined as ratio of the number of relevant documents compared to the total number of results retrieved.
-    static func calculatePrecision(searchResult: RecordedSearchResult, ranking: RelevanceRecord) -> Double {
+    static func calculatePrecision(searchResult: RecordedSearchResult, ranking: ComputedRelevancyValues) -> Double {
         let countOfRelevantResults: Double = searchResult.resultSet.results.reduce(into: 0) { value, result in
-            value = value + ranking.packages[result.id].relevanceValue()
+            value = value + (ranking.packages[result.id] ?? 0.0)
         }
         return countOfRelevantResults / Double(searchResult.resultSet.results.count)
     }
@@ -54,9 +59,9 @@ struct SearchMetrics {
     /// - Returns: A value between `0` and `1` that represents the recall of the search results.
     ///
     /// The recall of a set of search results is defined as ratio of the number of relevant documents compared to the total number of relevant documents available.
-    static func calculateRecall(searchResult: RecordedSearchResult, ranking: RelevanceRecord) -> Double {
+    static func calculateRecall(searchResult: RecordedSearchResult, ranking: ComputedRelevancyValues) -> Double {
         let countOfRelevantResults: Double = searchResult.resultSet.results.reduce(into: 0) { value, result in
-            value = value + ranking.packages[result.id].relevanceValue()
+            value = value + (ranking.packages[result.id] ?? 0.0)
         }
         // Since we don't actively know how many relevant results existed that _weren't_ returned from a search,
         // we'll base this count on the total number of entries in the relevant ranking dictionary.
@@ -76,9 +81,9 @@ struct SearchMetrics {
     ///
     /// The [mean reciprocal rank](https://en.wikipedia.org/wiki/Mean_reciprocal_rank) is a summed relevance rating for the search results,
     /// weighting earlier relevant results higher than later relevant results.
-    static func calculateMeanReciprocalRank(searchResult: RecordedSearchResult, ranking: RelevanceRecord) -> Double {
+    static func calculateMeanReciprocalRank(searchResult: RecordedSearchResult, ranking: ComputedRelevancyValues) -> Double {
         let relevanceValues: [Double] = searchResult.resultSet.results.map { result in
-            ranking.packages[result.id].relevanceValue()
+            ranking.packages[result.id] ?? 0.0
         }
         if let firstRelevantResultPosition = relevanceValues.firstIndex(of: 1.0) {
             return 1.0 / Double(firstRelevantResultPosition + 1)
@@ -105,9 +110,9 @@ struct SearchMetrics {
     /// The [NDGC](https://en.wikipedia.org/wiki/Discounted_cumulative_gain) compares a discounted cumulative gain
     /// against a potentially ideal cumulative gain for a set of results to highlight improvements in ordering that wouldn't otherwise be visible in
     /// search metrics.
-    static func calculateNDCG(searchResult: RecordedSearchResult, ranking: RelevanceRecord) -> Double {
+    static func calculateNDCG(searchResult: RecordedSearchResult, ranking: ComputedRelevancyValues) -> Double {
         let relevanceValues: [Double] = searchResult.resultSet.results.map { result in
-            ranking.packages[result.id].relevanceValue()
+            ranking.packages[result.id] ?? 0.0
         }
         let dcg = relevanceValues.enumerated()
             .map { indexPosition, value in

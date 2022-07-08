@@ -39,7 +39,7 @@ final class MedianRelevancyTests: XCTestCase {
         rank.relevanceSets.append(record2)
     }
 
-    func testExample() throws {
+    func testMedianRelevancyValues() throws {
         let computed = rank.medianRelevancyRanking
         XCTAssertNotNil(computed)
 

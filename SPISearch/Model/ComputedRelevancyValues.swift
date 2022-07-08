@@ -10,8 +10,8 @@ struct ComputedRelevancyValues {
     var packages: [String: Double] = [:]
     var keywords: [String: Double] = [:]
 
-    func isComplete(keywords: [String], packages: [String]) -> Bool {
+    func isComplete(keywords: [String], packageIds: [String]) -> Bool {
         self.keywords.keys.sorted() == keywords.sorted() &&
-            self.packages.keys.sorted() == packages.sorted()
+            packages.keys.sorted() == packageIds.sorted()
     }
 }

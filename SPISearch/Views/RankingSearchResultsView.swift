@@ -12,7 +12,7 @@ struct RankingSearchResultsView: View {
     let recordedSearch: RecordedSearchResult
 
     func highlightColor(_ id: String) -> Color {
-        switch ranking[id] {
+        switch ranking.package_relevance(id) {
         case .unknown:
             return .yellow.opacity(0.5)
         case .no:

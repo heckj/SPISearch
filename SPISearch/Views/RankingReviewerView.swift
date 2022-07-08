@@ -33,27 +33,37 @@ struct RankingReviewerView: View {
                     .disableAutocorrection(true)
                     .textFieldStyle(.roundedBorder)
                     Button {
-                        ranking.searchRanking.addRelevanceSet(for: reviewerId)
                         localReviewer = reviewerId
+                        ranking.searchRanking.addRelevanceSet(for: localReviewer)
                     } label: {
                         Text("Submit")
                     }
                 }.padding()
+            }.onAppear {
+                if !localReviewer.isEmpty {
+                    ranking.searchRanking.addRelevanceSet(for: reviewerId)
+                }
             }
         } else {
             VStack {
-//                Text("Hello \(localReviewer)")
+                //                Text("Hello \(localReviewer)")
                 // Used for debugging the preview
-//                Button {
-//                    localReviewer = ""
-//                } label: {
-//                    Text("CLEAR")
-//                }
+                //                Button {
+                //                    localReviewer = ""
+                //                } label: {
+                //                    Text("CLEAR")
+                //                }
                 if let relevanceSet = relevanceSetBinding() {
                     RankingSearchResultsView(
                         ranking: relevanceSet,
                         recordedSearch: ranking.searchRanking.combinedRandomizedSearchResult()
                     )
+                } else {
+                    Text("Error: Unable to get your relevance set for editing.")
+                }
+            }.onAppear {
+                if !localReviewer.isEmpty {
+                    ranking.searchRanking.addRelevanceSet(for: localReviewer)
                 }
             }
         }

@@ -10,11 +10,14 @@ import SwiftUI
 struct SearchResultSetSummaryView: View {
     let searchResultSet: RecordedSearchResult
     var body: some View {
-        VStack {
+        HStack(alignment: .center) {
             Image(systemName: "doc.text")
                 .font(.largeTitle)
-            Text("\(searchResultSet.resultSet.results.count) search results")
-            Text("\(searchResultSet.resultSet.matched_keywords.count) keyword results")
+            VStack(alignment: .leading) {
+                Text("\(searchResultSet.recordedDate.formatted(date: .abbreviated, time: .omitted))")
+//                Text("\(searchResultSet.resultSet.results.count) search results")
+//                Text("\(searchResultSet.resultSet.matched_keywords.count) keyword results")
+            }
         }
     }
 

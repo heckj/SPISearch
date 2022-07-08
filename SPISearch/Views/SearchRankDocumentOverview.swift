@@ -9,23 +9,10 @@ import SwiftUI
 
 struct SearchRankDocumentOverview: View {
     @Binding var document: SearchRankDocument
-    @State var selectedSearchResultSet: UUID? = nil
     @State var selectedRanking: UUID? = nil
+    @State var selectedSearchId: UUID? = nil
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Stored Searches")
-                .font(.title)
-            HStack(alignment: .top) {
-                ForEach(document.searchRanking.storedSearches) { result in
-                    SearchResultSetSummaryView(result)
-                        .padding()
-                        .background(selectedSearchResultSet == result.id ? .blue : .clear)
-                        .onTapGesture {
-                            selectedSearchResultSet = result.id
-                        }
-                }
-                Spacer()
-            }
             Text("Relevance Rankings")
                 .font(.title)
             if document.searchRanking.relevanceSets.isEmpty {
@@ -38,23 +25,38 @@ struct SearchRankDocumentOverview: View {
                                 .onTapGesture {
                                     selectedRanking = ranking.id
                                 }
-                            Button {
-                                print("deleting \(ranking.id)")
-                            } label: {
-                                Image(systemName: "minus.circle.fill").foregroundColor(.red)
-                                    .font(.title)
-                            }
+//                            Button {
+//                                print("deleting \(ranking.id)")
+//                            } label: {
+//                                Image(systemName: "minus.circle.fill").foregroundColor(.red)
+//                                    .font(.title)
+//                            }
                         }
                         .padding()
                         .background(selectedRanking == ranking.id ? .blue : .clear)
                     }
                 }
             }
+            Text("Stored Searches for \(document.searchRanking.storedSearches.first?.searchTerms ?? "")")
+                .font(.title)
+            List(document.searchRanking.storedSearches, selection: $selectedSearchId) {
+                result in
+                SearchResultSetSummaryView(result)
+            }
+            #if os(macOS)
+            .listStyle(.bordered)
+            #else
+            .listStyle(.plain)
+            .frame(maxHeight: 150)
+            #endif
+
             Spacer()
+            if let selectedSearch = document.searchRanking.storedSearches.first(where: { $0.id == selectedSearchId }) {
+                RecordedSearchResultView(selectedSearch)
+            }
         }
         .padding()
         .onAppear {
-            selectedSearchResultSet = document.searchRanking.storedSearches.first?.id
             selectedRanking = document.searchRanking.relevanceSets.first?.id
         }
     }

@@ -123,6 +123,17 @@ struct RelevanceRecord: Identifiable, Hashable, Codable {
             self.packages.ratings.keys.sorted() == packages.sorted()
     }
 
+    func computedValues(threshold: Bool = false) -> ComputedRelevancyValues {
+        var valueSet = ComputedRelevancyValues()
+        for (pkgId, relevancy) in packages.ratings.filter({ $1 != .unknown }) {
+            valueSet.packages[pkgId] = relevancy.relevanceValue(binary: threshold)
+        }
+        for (keyword, relevancy) in keywords.ratings.filter({ $1 != .unknown }) {
+            valueSet.keywords[keyword] = relevancy.relevanceValue(binary: threshold)
+        }
+        return valueSet
+    }
+
     static var example: RelevanceRecord {
         var ex = RelevanceRecord("exampler")
         ex.packages["pocketsvg/PocketSVG"] = .relevant

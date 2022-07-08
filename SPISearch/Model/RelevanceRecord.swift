@@ -118,6 +118,11 @@ struct RelevanceRecord: Identifiable, Hashable, Codable {
         keywords = KeywordRelevance()
     }
 
+    func isComplete(keywords: [String], packages: [String]) -> Bool {
+        self.keywords.ratings.keys.sorted() == keywords.sorted() &&
+            self.packages.ratings.keys.sorted() == packages.sorted()
+    }
+
     static var example: RelevanceRecord {
         var ex = RelevanceRecord("exampler")
         ex.packages["pocketsvg/PocketSVG"] = .relevant

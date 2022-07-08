@@ -25,6 +25,9 @@ struct SearchRank: Identifiable, Codable {
     var storedSearches: [RecordedSearchResult] = []
     var relevanceSets: [RelevanceRecord] = []
 
+    /// Load all of the keywords and package results from all of the stored searches, combining them into a sorted order for each
+    /// in order to rank them.
+    /// - Returns: A merged and ordered recorded search result with the synthesis of all the saved searches.
     func combinedRandomizedSearchResult() -> RecordedSearchResult {
         // pull all of the individual package results for the stores searches into a set - effectively
         // deduplicating them (and somewhat randomizing them)
@@ -39,8 +42,8 @@ struct SearchRank: Identifiable, Codable {
             recordedDate: firstSearch?.recordedDate ?? Date.now,
             url: firstSearch?.url ?? SPISearchParser.hostedURL!,
             resultSet: SearchResultSet(id: UUID(),
-                                       results: Array(setOfPackageResults).sorted(),
-                                       matched_keywords: Array(setOfMatchedKeywords).sorted())
+                                       results: setOfPackageResults.sorted(),
+                                       matched_keywords: setOfMatchedKeywords.sorted())
         )
     }
 
@@ -50,9 +53,15 @@ struct SearchRank: Identifiable, Codable {
         }
     }
 
+    /// A type that holds the average relevancy values computed from the stored rankings in the document.
     struct AverageComputedRelevancy {
         var packages: [String: Double] = [:]
         var keywords: [String: Double] = [:]
+
+        func isComplete(keywords: [String], packages: [String]) -> Bool {
+            self.keywords.keys.sorted() == keywords.sorted() &&
+                self.packages.keys.sorted() == packages.sorted()
+        }
     }
 
     var medianRelevancyRanking: AverageComputedRelevancy? {
@@ -127,11 +136,18 @@ struct SearchRank: Identifiable, Codable {
         return medianRecord
     }
 
-    /// Returns a list of all the search result identifiers from all stored searches.
+    /// Returns a list of all the package identifiers from all stored searches.
     var identifiers: [String] {
-        storedSearches.flatMap { storedSearch in
+        Set<String>(storedSearches.flatMap { storedSearch in
             storedSearch.resultSet.results.map(\.id)
-        }
+        }).sorted()
+    }
+
+    /// Returns a list of all the keywords from all stored searches.
+    var keywords: [String] {
+        Set<String>(storedSearches.flatMap { storedSearch in
+            storedSearch.resultSet.matched_keywords
+        }).sorted()
     }
 
     func searchMetrics(searchResult _: RecordedSearchResult, ranking _: RelevanceRecord) {}

@@ -43,6 +43,9 @@ The app uses a `Codable` data model, so the end results stored from the document
 
 ## Contributing
 
-Pull requests are welcome. 
+Pull requests and contributions are welcome. Please be considerate.
 I'm tracking my development plans (and progress) for this app with [GitHub Issues](https://github.com/heckj/SPISearch/issues), and progress with on [an SPISearch project board](https://github.com/users/heckj/projects/1).
-All submissions to the project are to be accepted under the MIT license.
+All submissions to the project are accepted under the MIT license. 
+If you don't agree with this licensing of your submission, please don't make a pull request.
+
+The current code has some internal documentation, viewed within Xcode, by invoking `Product` `>` `Build Documentation`.

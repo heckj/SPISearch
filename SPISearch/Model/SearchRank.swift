@@ -50,6 +50,75 @@ struct SearchRank: Identifiable, Codable {
         }
     }
 
+    struct AverageComputedRelevancy {
+        var packages: [String: Double] = [:]
+        var keywords: [String: Double] = [:]
+    }
+
+    var medianRelevancyRanking: AverageComputedRelevancy? {
+        if relevanceSets.isEmpty {
+            return nil
+        }
+        var medianRecord = AverageComputedRelevancy()
+        
+        // retrieve a list of matched keywords from all the relevance sets
+        // and toss them into a Set to de-duplicate them.
+        let all_keywords = Set<String>(relevanceSets.flatMap({ record in
+            record.keywords.ratings.keys
+        }))
+        
+        // Iterate through the set of all keywords and compute a median relevancy value
+        for keyword in all_keywords {
+            // this grabs and returns a list of relevancy enumerations where
+            // the value isn't `.unknown`
+            let listOfRelevance = relevanceSets.compactMap({ record in
+                let foundRelevance = record.keywords[keyword]
+                if foundRelevance != .unknown { return foundRelevance }
+                return nil
+            })
+            // We then convert those enumerated instances into valuation
+            // numbers, sum them up, and divide by the number of relevancy
+            // values found (again, not counting the "unknown" ones.
+            let medianValue = listOfRelevance
+                .map({ $0.relevanceValue() })
+                .reduce(into: 0, { partialResult, relValue in
+                    partialResult += relValue
+                })/Double(listOfRelevance.count)
+            // Apply back into the return set.
+            medianRecord.keywords[keyword] = medianValue
+        }
+        
+        // retrieve a list of matched package identifiers from all the relevance sets
+        // and toss them into a Set to de-duplicate them.
+        let all_package_identifiers = Set<String>(relevanceSets.flatMap({ record in
+            record.packages.ratings.keys
+        }))
+        
+        // Iterate through the set of all keywords and compute a median relevancy value
+        for pkgId in all_package_identifiers {
+            // this grabs and returns a list of relevancy enumerations where
+            // the value isn't `.unknown`
+            let listOfRelevance = relevanceSets.compactMap({ record in
+                let foundRelevance = record.packages[pkgId]
+                if foundRelevance != .unknown { return foundRelevance }
+                return nil
+            })
+            // We then convert those enumerated instances into valuation
+            // numbers, sum them up, and divide by the number of relevancy
+            // values found (again, not counting the "unknown" ones.
+            let medianValue = listOfRelevance
+                .map({ $0.relevanceValue() })
+                .reduce(into: 0, { partialResult, relValue in
+                    partialResult += relValue
+                })/Double(listOfRelevance.count)
+            // Apply back into the return set.
+            medianRecord.packages[pkgId] = medianValue
+        }
+
+        // IMPL
+        return medianRecord
+    }
+    
     /// Returns a list of all the search result identifiers from all stored searches.
     var identifiers: [String] {
         storedSearches.flatMap { storedSearch in

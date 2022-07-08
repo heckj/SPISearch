@@ -2,6 +2,11 @@
 
 An app (macOS & iOS) to explore the search results from Swift Package Index.
 
+Testflight Links:
+
+- [macOS SPIIndex](https://testflight.apple.com/join/DaVCrzZp)
+- iOS SPIIndex: _pending testflight review_
+
 ## Search Ranking
 
 I ran into [an issue with the search mechanisms](https://github.com/SwiftPackageIndex/SwiftPackageIndex-Server/issues/1859) in Swift Package Index.
@@ -35,3 +40,9 @@ The primary goal of this utility app is to have a single set of query terms, and
 ## Document Format
 
 The app uses a `Codable` data model, so the end results stored from the document as straight JSON that can be opened and read by any text editor, or processed conveniently using tools such as [jq](https://stedolan.github.io/jq/).
+
+## Contributing
+
+Pull requests are welcome. 
+I'm tracking my development plans (and progress) for this app with [GitHub Issues](https://github.com/heckj/SPISearch/issues), and progress with on [an SPISearch project board](https://github.com/users/heckj/projects/1).
+All submissions to the project are to be accepted under the MIT license.

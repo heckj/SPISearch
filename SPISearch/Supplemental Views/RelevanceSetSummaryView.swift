@@ -9,15 +9,41 @@ import SwiftUI
 
 struct RelevanceSetSummaryView: View {
     let record: RelevanceRecord
-    var body: some View {
-        VStack {
-            Image(systemName: "chart.bar.doc.horizontal")
-                .font(.largeTitle)
-            Text(record.reviewer)
-            Text("\(record.packages.count) package entries")
-            Text("\(record.keywords.count) keyword entries")
+
+    #if os(iOS)
+        @Environment(\.horizontalSizeClass) var horizontalSizeClass
+        var body: some View {
+            if horizontalSizeClass == .compact {
+                VStack(alignment: .center) {
+                    Image(systemName: "chart.bar.doc.horizontal")
+                        .font(.largeTitle)
+                    VStack {
+                        Text("\(record.reviewer)")
+                    }.font(.callout)
+                }
+            } else {
+                HStack(alignment: .center) {
+                    Image(systemName: "chart.bar.doc.horizontal")
+                        .font(.largeTitle)
+                    VStack(alignment: .leading) {
+                        Text("reviewer: \(record.reviewer)")
+                        Text("\(record.packages.count) package and \(record.keywords.count) keyword entries")
+                    }
+                }
+            }
         }
-    }
+    #else
+        var body: some View {
+            HStack(alignment: .center) {
+                Image(systemName: "chart.bar.doc.horizontal")
+                    .font(.largeTitle)
+                VStack(alignment: .leading) {
+                    Text("reviewer: \(record.reviewer)")
+                    Text("\(record.packages.count) package and \(record.keywords.count) keyword entries")
+                }
+            }
+        }
+    #endif
 
     init(_ record: RelevanceRecord) {
         self.record = record

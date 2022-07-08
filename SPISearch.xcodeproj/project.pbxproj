@@ -170,7 +170,6 @@
 				1A78500428733F0500AFB33F /* SearchRankEditorView.swift */,
 				1A1CEABD287760BE00BFE37A /* SearchRankTabView.swift */,
 				1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */,
-				1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */,
 				1A1CEABF287763F600BFE37A /* RankingReviewerView.swift */,
 				1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */,
 				1AE2268228725560008C4ED1 /* SearchingView.swift */,
@@ -184,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				1AEADD512877916900023487 /* SettingsFormView.swift */,
+				1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */,
 				1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */,
 				1A8144AD287218F900F58B48 /* RelevanceSelectorView.swift */,
 				1A8144A92872056300F58B48 /* CapsuleText.swift */,

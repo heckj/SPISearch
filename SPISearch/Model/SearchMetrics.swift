@@ -30,12 +30,12 @@ struct SearchMetrics {
     ///   - searchResult: The search results to process.
     ///   - ranking: The rankings used to evaluate the search results.
     init?(searchResult: RecordedSearchResult, ranking: ComputedRelevancyValues) {
-        if ranking.isComplete(keywords: searchResult.keywords, packageIds: searchResult.packageIds) {
-            precision = SearchMetrics.calculatePrecision(searchResult: searchResult, ranking: ranking)
-            recall = SearchMetrics.calculateRecall(searchResult: searchResult, ranking: ranking)
-            meanReciprocalRank = SearchMetrics.calculateMeanReciprocalRank(searchResult: searchResult, ranking: ranking)
+        if !ranking.isComplete(keywords: searchResult.keywords, packageIds: searchResult.packageIds) {
+            return nil
         }
-        return nil
+        precision = SearchMetrics.calculatePrecision(searchResult: searchResult, ranking: ranking)
+        recall = SearchMetrics.calculateRecall(searchResult: searchResult, ranking: ranking)
+        meanReciprocalRank = SearchMetrics.calculateMeanReciprocalRank(searchResult: searchResult, ranking: ranking)
     }
 
     /// Calculates the precision for a set of search results.

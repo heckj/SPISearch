@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A032CFE287A24F9007DA587 /* SearchMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A032CFD287A24F9007DA587 /* SearchMetricsView.swift */; };
 		1A1650442870F98F00AC4DB2 /* SPISearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1650432870F98F00AC4DB2 /* SPISearchApp.swift */; };
 		1A1650482870F99000AC4DB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A1650472870F99000AC4DB2 /* Assets.xcassets */; };
 		1A16504C2870F99000AC4DB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */; };
@@ -16,7 +17,7 @@
 		1A1CEAC0287763F600BFE37A /* RankingReviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CEABF287763F600BFE37A /* RankingReviewerView.swift */; };
 		1A1FADF028737BFF0037D674 /* RankingSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */; };
 		1A2DF7F728789E580070841E /* bezier_query_8jul22.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */; };
-		1A45D916287634650077EC9E /* SwiftMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D915287634650077EC9E /* SwiftMetricsTests.swift */; };
+		1A45D916287634650077EC9E /* SearchMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D915287634650077EC9E /* SearchMetricsTests.swift */; };
 		1A562F6E2878C681006B29A8 /* ComputedRelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */; };
 		1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */; };
 		1A6A29C828762B6D0096F600 /* SearchMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A29C728762B6C0096F600 /* SearchMetrics.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A032CFD287A24F9007DA587 /* SearchMetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetricsView.swift; sourceTree = "<group>"; };
 		1A1650402870F98F00AC4DB2 /* SPISearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPISearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A1650432870F98F00AC4DB2 /* SPISearchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPISearchApp.swift; sourceTree = "<group>"; };
 		1A1650472870F99000AC4DB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,7 +63,7 @@
 		1A1CEABF287763F600BFE37A /* RankingReviewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingReviewerView.swift; sourceTree = "<group>"; };
 		1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSearchResultsView.swift; sourceTree = "<group>"; };
 		1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bezier_query_8jul22.txt; sourceTree = "<group>"; };
-		1A45D915287634650077EC9E /* SwiftMetricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftMetricsTests.swift; sourceTree = "<group>"; };
+		1A45D915287634650077EC9E /* SearchMetricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetricsTests.swift; sourceTree = "<group>"; };
 		1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputedRelevancyValues.swift; sourceTree = "<group>"; };
 		1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceSetSummaryView.swift; sourceTree = "<group>"; };
 		1A6A29C728762B6C0096F600 /* SearchMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetrics.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */,
 				1A8144AD287218F900F58B48 /* RelevanceSelectorView.swift */,
 				1A8144A92872056300F58B48 /* CapsuleText.swift */,
+				1A032CFD287A24F9007DA587 /* SearchMetricsView.swift */,
 			);
 			path = "Supplemental Views";
 			sourceTree = "<group>";
@@ -197,7 +200,7 @@
 				1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */,
 				1AC5537F28736A590050F0D6 /* SPISearchTests.swift */,
 				1AD3E3422878BA120049E655 /* MedianRelevancyTests.swift */,
-				1A45D915287634650077EC9E /* SwiftMetricsTests.swift */,
+				1A45D915287634650077EC9E /* SearchMetricsTests.swift */,
 				1AA317EB28789BBC009CD13F /* SPISearchParserTest.swift */,
 			);
 			path = SPISearchTests;
@@ -313,6 +316,7 @@
 				1A789D7728721EE700E8108A /* PackageSearchResultView.swift in Sources */,
 				1A1650442870F98F00AC4DB2 /* SPISearchApp.swift in Sources */,
 				1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */,
+				1A032CFE287A24F9007DA587 /* SearchMetricsView.swift in Sources */,
 				1A78500528733F0500AFB33F /* SearchRankEditorView.swift in Sources */,
 				1A1FADF028737BFF0037D674 /* RankingSearchResultsView.swift in Sources */,
 				1A1CEABE287760BE00BFE37A /* SearchRankTabView.swift in Sources */,
@@ -340,7 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AC5538028736A590050F0D6 /* SPISearchTests.swift in Sources */,
-				1A45D916287634650077EC9E /* SwiftMetricsTests.swift in Sources */,
+				1A45D916287634650077EC9E /* SearchMetricsTests.swift in Sources */,
 				1AA317EC28789BBC009CD13F /* SPISearchParserTest.swift in Sources */,
 				1AD3E3432878BA120049E655 /* MedianRelevancyTests.swift in Sources */,
 			);

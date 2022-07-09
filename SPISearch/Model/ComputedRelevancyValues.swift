@@ -11,7 +11,12 @@ struct ComputedRelevancyValues {
     var keywords: [String: Double] = [:]
 
     func isComplete(keywords: [String], packageIds: [String]) -> Bool {
-        self.keywords.keys.sorted() == keywords.sorted() &&
+        print("keywords: \(self.keywords.keys.sorted()) vs \(keywords.sorted())")
+
+        print("pkgIds: \(packages.keys.sorted()) vs \(packageIds.sorted())")
+        print("keywords equal? \(self.keywords.keys.sorted() == keywords.sorted())")
+        print("packages equal? \(packages.keys.sorted() == packageIds.sorted())")
+        return self.keywords.keys.sorted() == keywords.sorted() &&
             packages.keys.sorted() == packageIds.sorted()
     }
 }

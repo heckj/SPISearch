@@ -4,8 +4,7 @@ An app (macOS & iOS) to explore the search results from Swift Package Index.
 
 Testflight Links:
 
-- [macOS SPIIndex](https://testflight.apple.com/join/DaVCrzZp)
-- iOS SPIIndex: _pending testflight review_
+- [SPIIndex](https://testflight.apple.com/join/DaVCrzZp) (iOS and macOS apps)
 
 ## Search Ranking
 

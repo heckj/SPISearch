@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RecordedSearchResultView: View {
     let recordedSearch: RecordedSearchResult
+    let relevancyValues: ComputedRelevancyValues?
     var body: some View {
         if !recordedSearch.resultSet.errorMessage.isEmpty {
             // Display any error messages in red
@@ -20,6 +21,16 @@ struct RecordedSearchResultView: View {
                 Text("**\(recordedSearch.resultSet.results.count)** results recorded  \(recordedSearch.recordedDate.formatted()) from `\(recordedSearch.host)`")
                     .textSelection(.enabled)
                     .padding(.bottom)
+
+                if let relevancyValues = relevancyValues, let metrics = SearchMetrics(
+                    searchResult: recordedSearch,
+                    ranking: relevancyValues
+                ) {
+//                    SearchMetricsView(metrics)
+                    SearchMetricsView(metrics, sparkline: true)
+                } else {
+                    Text("_**Metrics Unavailable**_")
+                }
                 HStack {
                     ForEach(recordedSearch.resultSet.matched_keywords, id: \.self) { word in
                         CapsuleText(word)
@@ -37,8 +48,9 @@ struct RecordedSearchResultView: View {
         }
     }
 
-    init(_ recordedSearch: RecordedSearchResult) {
+    init(_ recordedSearch: RecordedSearchResult, relevancyValues: ComputedRelevancyValues? = nil) {
         self.recordedSearch = recordedSearch
+        self.relevancyValues = relevancyValues
     }
 }
 

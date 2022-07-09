@@ -9,92 +9,77 @@ import SwiftUI
 
 struct SearchRankDocumentOverview: View {
     @Binding var document: SearchRankDocument
-    @State var selectedRanking: UUID? = nil
-    @State var selectedSearchId: UUID? = nil
     var body: some View {
-#if os(macOS)
-        NavigationView {
-            VStack(alignment: .leading) { // primary nav view
-                Text("Relevance Rankings")
-                    .font(.title)
-                if document.searchRanking.relevanceSets.isEmpty {
-                    Text("No relevance rankings stored.")
-                } else {
-                    HStack(alignment: .top) {
-                        ForEach(document.searchRanking.relevanceSets) { ranking in
-                            VStack {
-                                RelevanceSetSummaryView(ranking)
-                                    .onTapGesture {
-                                        selectedRanking = ranking.id
-                                    }
-                            }
-                            .padding()
-                            .background(selectedRanking == ranking.id ? .blue : .clear)
-                        }
-                    }
-                }
-                Text("Stored Searches for \(document.searchRanking.storedSearches.first?.searchTerms ?? "")")
-                    .font(.title)
-                List(document.searchRanking.storedSearches, selection: $selectedSearchId) {
-                    result in
-                    NavigationLink("Search on \(result.recordedDate.formatted(date: .abbreviated, time: .omitted)) (\(result.host))") {
-                        RecordedSearchResultView(result, relevancyValues: document.searchRanking.medianRelevancyRanking)
-                    }
-                }
-                .listStyle(.bordered)
-            }
-            Spacer()
-        }
-        .padding()
-        .onAppear {
-            selectedRanking = document.searchRanking.relevanceSets.first?.id
-        }
-#else  // ^^ macOS layout, \/\/ iOS layout
-        VStack(alignment: .leading) { // primary nav view
-            Text("Relevance Rankings")
-                .font(.title)
-            if document.searchRanking.relevanceSets.isEmpty {
-                Text("No relevance rankings stored.")
-            } else {
-                HStack(alignment: .top) {
-                    ForEach(document.searchRanking.relevanceSets) { ranking in
-                        VStack {
-                            RelevanceSetSummaryView(ranking)
-                                .onTapGesture {
-                                    selectedRanking = ranking.id
+        #if os(macOS)
+            NavigationView {
+                VStack(alignment: .leading) { // primary nav view
+                    Text("Relevance Rankings")
+                        .font(.title)
+                    if document.searchRanking.relevanceSets.isEmpty {
+                        Text("No relevance rankings stored.")
+                    } else {
+                        HStack(alignment: .top) {
+                            ForEach(document.searchRanking.relevanceSets) { ranking in
+                                VStack {
+                                    RelevanceSetSummaryView(ranking)
                                 }
+                            }
                         }
-                        .padding()
-                        .background(selectedRanking == ranking.id ? .blue : .clear)
                     }
+                    Text("Stored Searches for \(document.searchRanking.storedSearches.first?.searchTerms ?? "")")
+                        .font(.title)
+                    List(document.searchRanking.storedSearches, selection: $selectedSearchId) {
+                        result in
+                        NavigationLink("Search on \(result.recordedDate.formatted(date: .abbreviated, time: .omitted)) (\(result.host))") {
+                            RecordedSearchResultView(result, relevancyValues: document.searchRanking.medianRelevancyRanking)
+                        }
+                    }
+                    .listStyle(.bordered)
                 }
+                Spacer()
             }
-            Text("Stored Searches for \(document.searchRanking.storedSearches.first?.searchTerms ?? "")")
-                .font(.title)
-            List(document.searchRanking.storedSearches, selection: $selectedSearchId) {
-                result in
-                NavigationLink("Search on \(result.recordedDate.formatted(date: .abbreviated, time: .omitted)) (\(result.host))") {
-                    RecordedSearchResultView(result, relevancyValues: document.searchRanking.medianRelevancyRanking)
+            .padding()
+            .onAppear {
+                selectedRanking = document.searchRanking.relevanceSets.first?.id
+            }
+        #else // ^^ macOS layout, \/\/ iOS layout
+            List {
+                Section {
+                    Text("Searches for  \(document.searchRanking.storedSearches.first?.searchTerms ?? "")")
+                        .font(.title)
+                }
+                Section {
+                    ForEach(document.searchRanking.relevanceSets) { ranking in
+                        HStack {
+                            RelevanceSetSummaryView(ranking)
+                            NavigationLink("") {
+                                Text("editing ranking view")
+                            }
+                        }
+                    }
+                    // TODO: remove this and replace the
+                    // ranking editor view with nav links above...
+                    NavigationLink("Rank Stuff", destination: RankingReviewerView($document))
+                } header: {
+                    Text("Relevance Rankings")
+                        .font(.title)
+                }
+                Section {
+                    ForEach(document.searchRanking.storedSearches) { storedSearch in
+                        // edits: <#T##SwiftUI.EditOperations<C>#>,
+                        NavigationLink("Search on \(storedSearch.recordedDate.formatted(date: .abbreviated, time: .omitted)) (\(storedSearch.host))") {
+                            RecordedSearchResultView(storedSearch, relevancyValues: document.searchRanking.medianRelevancyRanking)
+                        }
+                    }
+                } header: {
+                    Text("Stored Searches")
+                        .font(.title)
                 }
             }
             .listStyle(.plain)
-            .frame(maxHeight: 150)
-            
-            Spacer()
-        }
-        .padding()
-        .onAppear {
-            selectedRanking = document.searchRanking.relevanceSets.first?.id
-        }
-#endif // ^^ iOS layout
+        #endif // ^^ iOS layout
     }
-// In a tab view under iOS, and under the existing DocumentBrowser nav setup, this shows up as an additional tab - not exactly what we're after...
-//        if let selectedSearch = document.searchRanking.storedSearches.first(where: { $0.id == selectedSearchId }) {
-//            RecordedSearchResultView(selectedSearch)
-//        } else {
-//            Text("Select a stored search to review")
-//        }
-    
+
     init(_ document: Binding<SearchRankDocument>) {
         _document = document
     }
@@ -102,6 +87,8 @@ struct SearchRankDocumentOverview: View {
 
 struct SearchRankDocumentOverview_Previews: PreviewProvider {
     static var previews: some View {
-        SearchRankDocumentOverview(.constant(SearchRank.extendedExample))
+        NavigationView {
+            SearchRankDocumentOverview(.constant(SearchRank.extendedExample))
+        }
     }
 }

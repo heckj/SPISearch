@@ -20,7 +20,7 @@ struct SearchingView: View {
             searchDoc = SearchRankDocument(searchResults)
         }
     }
-    
+
     var body: some View {
         VStack {
             HStack {

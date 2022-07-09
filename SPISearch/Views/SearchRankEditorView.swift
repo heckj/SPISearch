@@ -17,7 +17,13 @@ struct SearchRankEditorView: View {
     var body: some View {
         VStack {
             if ranking.searchRanking.storedSearches.first != nil {
-                SearchRankTabView($ranking)
+                #if os(macOS)
+                    NavigationView {
+                        SearchRankDocumentOverview($ranking)
+                    }
+                #else
+                    SearchRankDocumentOverview($ranking)
+                #endif
             } else {
                 SearchingView(searchDoc: $ranking, searchHostURL: SPISearchParser.hostedURL)
             }

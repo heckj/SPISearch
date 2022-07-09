@@ -14,19 +14,23 @@ struct SearchingView: View {
     @State var searchTerms: String = "bezier"
     @State var searchResults: RecordedSearchResult? = nil
 
+    func commenceSearch(_ terms: String) {
+        Task {
+            let searchResults = await SPISearchParser.recordSearch(terms: terms)
+            searchDoc = SearchRankDocument(searchResults)
+        }
+    }
+    
     var body: some View {
         VStack {
             HStack {
                 TextField("Search", text: $searchTerms)
                     .onSubmit {
-                        Task {
-                            let searchResults = await SPISearchParser.recordSearch(terms: searchTerms)
-                            searchDoc = SearchRankDocument(searchResults)
-                        }
+                        commenceSearch(searchTerms)
                     }
                     .textFieldStyle(.roundedBorder)
                 Button {
-                    print("hi")
+                    commenceSearch(searchTerms)
                 } label: {
                     Image(systemName: "magnifyingglass.circle.fill")
                 }

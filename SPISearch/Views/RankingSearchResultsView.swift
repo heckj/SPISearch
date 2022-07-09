@@ -25,33 +25,39 @@ struct RankingSearchResultsView: View {
     }
 
     var body: some View {
-        VStack {
-            Text("Relevancy for search terms: **\(recordedSearch.searchTerms)**")
-            Text("Ranking has \(ranking.packages.count) of \(recordedSearch.resultSet.results.count) search entries.")
-            List(recordedSearch.resultSet.results) { result in
-                HStack {
-                    PackageSearchResultView(result)
-                    Spacer()
-                    RelevanceSelectorView($ranking.packages[result.id])
-                        .background(highlightColor(ranking.packages[result.id]))
+        List {
+            Section {
+                ForEach(recordedSearch.resultSet.results) { result in
+                    HStack {
+                        PackageSearchResultView(result)
+                        Spacer()
+                        RelevanceSelectorView($ranking.packages[result.id])
+                            .background(highlightColor(ranking.packages[result.id]))
+                    }
+                    #if os(macOS)
+                        Divider()
+                        // replace with `.listRowSeparator(.visible)` for macOS 13+
+                    #endif
                 }
-                #if os(macOS)
-                    Divider()
-                    // replace with `.listRowSeparator(.visible)` for macOS 13+
-                #endif
+            } header: {
+                Text("Relevancy for search terms: **\(recordedSearch.searchTerms)**")
+                Text("Ranking has \(ranking.packages.count) of \(recordedSearch.resultSet.results.count) search entries.")
             }
-            Text("Ranking has \(ranking.keywords.count) of \(recordedSearch.resultSet.matched_keywords.count) keyword entries.")
-            List(recordedSearch.resultSet.matched_keywords, id: \.self) { keyword in
-                HStack {
-                    CapsuleText(keyword)
-                    Spacer()
-                    RelevanceSelectorView($ranking.keywords[keyword])
-                        .background(highlightColor(ranking.keywords[keyword]))
+            Section {
+                ForEach(recordedSearch.resultSet.matched_keywords, id: \.self) { keyword in
+                    HStack {
+                        CapsuleText(keyword)
+                        Spacer()
+                        RelevanceSelectorView($ranking.keywords[keyword])
+                            .background(highlightColor(ranking.keywords[keyword]))
+                    }
+                    #if os(macOS)
+                        Divider()
+                        // replace with `.listRowSeparator(.visible)` for macOS 13+
+                    #endif
                 }
-                #if os(macOS)
-                    Divider()
-                    // replace with `.listRowSeparator(.visible)` for macOS 13+
-                #endif
+            } header: {
+                Text("Ranking has \(ranking.keywords.count) of \(recordedSearch.resultSet.matched_keywords.count) keyword entries.")
             }
         }
     }

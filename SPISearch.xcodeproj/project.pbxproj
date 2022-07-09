@@ -13,7 +13,6 @@
 		1A16504C2870F99000AC4DB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */; };
 		1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1650532870F9B700AC4DB2 /* SwiftSoup */; };
 		1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CBC9428734A7A0033EE43 /* Documentation.docc */; };
-		1A1CEABE287760BE00BFE37A /* SearchRankTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CEABD287760BE00BFE37A /* SearchRankTabView.swift */; };
 		1A1CEAC0287763F600BFE37A /* RankingReviewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CEABF287763F600BFE37A /* RankingReviewerView.swift */; };
 		1A1FADF028737BFF0037D674 /* RankingSearchResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */; };
 		1A2DF7F728789E580070841E /* bezier_query_8jul22.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */; };
@@ -59,7 +58,6 @@
 		1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1A1650552871014E00AC4DB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1A1CBC9428734A7A0033EE43 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
-		1A1CEABD287760BE00BFE37A /* SearchRankTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankTabView.swift; sourceTree = "<group>"; };
 		1A1CEABF287763F600BFE37A /* RankingReviewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingReviewerView.swift; sourceTree = "<group>"; };
 		1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSearchResultsView.swift; sourceTree = "<group>"; };
 		1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bezier_query_8jul22.txt; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				1A78500428733F0500AFB33F /* SearchRankEditorView.swift */,
-				1A1CEABD287760BE00BFE37A /* SearchRankTabView.swift */,
 				1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */,
 				1A1CEABF287763F600BFE37A /* RankingReviewerView.swift */,
 				1A1FADEF28737BFF0037D674 /* RankingSearchResultsView.swift */,
@@ -319,7 +316,6 @@
 				1A032CFE287A24F9007DA587 /* SearchMetricsView.swift in Sources */,
 				1A78500528733F0500AFB33F /* SearchRankEditorView.swift in Sources */,
 				1A1FADF028737BFF0037D674 /* RankingSearchResultsView.swift in Sources */,
-				1A1CEABE287760BE00BFE37A /* SearchRankTabView.swift in Sources */,
 				1A1CEAC0287763F600BFE37A /* RankingReviewerView.swift in Sources */,
 				1A8144AC28720E7000F58B48 /* RecordedSearchResultView.swift in Sources */,
 				1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */,

@@ -158,10 +158,10 @@
 			children = (
 				1A78500228733B5500AFB33F /* SearchRank.swift */,
 				1A7FD6AA2873797E008C76AB /* RelevanceRecord.swift */,
+				1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */,
 				1AC55375287362BE0050F0D6 /* SearchResultSet.swift */,
 				1A7850002873380B00AFB33F /* SearchRankDocument.swift */,
 				1A6A29C728762B6C0096F600 /* SearchMetrics.swift */,
-				1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

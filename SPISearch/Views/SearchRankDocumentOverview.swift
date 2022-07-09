@@ -43,7 +43,7 @@ struct SearchRankDocumentOverview: View {
                 List(document.searchRanking.storedSearches, selection: $selectedSearchId) {
                     result in
                     NavigationLink("Search on \(result.recordedDate.formatted(date: .abbreviated, time: .omitted)) (\(result.host))") {
-                        RecordedSearchResultView(result)
+                        RecordedSearchResultView(result, relevancyValues: document.searchRanking.medianRelevancyRanking)
                     }
                 }
                 #if os(macOS)

@@ -8,7 +8,17 @@
 import SwiftUI
 
 struct SearchRankDocumentOverview: View {
+    @AppStorage(SPISearchApp.reviewerKey) var localReviewer: String = ""
+    @State var reviewerId: String = ""
     @Binding var document: SearchRankDocument
+
+    func bindingForRelevanceSet(_ rec: RelevanceRecord) -> Binding<RelevanceRecord>? {
+        if let index = document.searchRanking.relevanceSets.firstIndex(where: { $0.id == rec.id }) {
+            return Binding(projectedValue: $document.searchRanking.relevanceSets[index])
+        }
+        return nil
+    }
+
     var body: some View {
         List {
             Section {
@@ -19,14 +29,16 @@ struct SearchRankDocumentOverview: View {
                 ForEach(document.searchRanking.relevanceSets) { ranking in
                     HStack {
                         RelevanceSetSummaryView(ranking)
-                        NavigationLink("") {
-                            Text("editing ranking view")
+                        if let relevanceBinding = bindingForRelevanceSet(ranking) {
+                            NavigationLink("") {
+                                RankResultsView(
+                                    searchRankDoc: $document, relevanceRecordBinding: relevanceBinding,
+                                    recordedSearch: document.searchRanking.combinedRandomizedSearchResult()
+                                )
+                            }
                         }
                     }
                 }
-                // TODO: remove this and replace the
-                // ranking editor view with nav links above...
-                NavigationLink("Rank Stuff", destination: RankingReviewerView($document))
             } header: {
                 Text("Relevance Rankings")
                     .font(.title)

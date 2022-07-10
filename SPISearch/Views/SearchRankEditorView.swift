@@ -13,20 +13,20 @@ import SwiftUI
 /// is responsible for displaying the view to populate and initially create
 /// a searchrank document.
 struct SearchRankEditorView: View {
-    @Binding var ranking: SearchRankDocument
+    @Binding var document: SearchRankDocument
     var body: some View {
         VStack {
-            if ranking.searchRanking.storedSearches.first != nil {
+            if document.searchRanking.storedSearches.first != nil {
                 #if os(macOS)
                     NavigationView {
-                        SearchRankDocumentOverview($ranking)
+                        SearchRankDocumentOverview($document)
                         Text("Select ranking or search to view.")
                     }
                 #else
-                    SearchRankDocumentOverview($ranking)
+                    SearchRankDocumentOverview($document)
                 #endif
             } else {
-                SearchingView(searchDoc: $ranking, searchHostURL: SPISearchParser.hostedURL)
+                SearchingView(searchDoc: $document, searchHostURL: SPISearchParser.hostedURL)
             }
         }
         // Applied to the top level view in a macOS App, this controls both the initial size
@@ -52,7 +52,7 @@ struct SearchRankEditorView_Previews: PreviewProvider {
     }
 
     static var previews: some View {
-        SearchRankEditorView(ranking: .constant(SearchRankDocument()))
-        SearchRankEditorView(ranking: .constant(extendedExample()))
+        SearchRankEditorView(document: .constant(SearchRankDocument()))
+        SearchRankEditorView(document: .constant(extendedExample()))
     }
 }

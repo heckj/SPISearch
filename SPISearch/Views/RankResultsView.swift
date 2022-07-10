@@ -68,6 +68,9 @@ struct RankResultsView: View {
                 }
             }
         } else {
+            // Display the search results in order to rank
+            // (or just display, if viewOnly = `true`)
+            // their relevance.
             List {
                 Section {
                     Text("Relevancy for search terms: **\(recordedSearch.searchTerms)**, ranking reviewer: \(localReviewer)")
@@ -91,7 +94,11 @@ struct RankResultsView: View {
                         #endif
                     }
                 } header: {
-                    Text("Ranking has \(relevanceRecord.packages.count) of \(recordedSearch.resultSet.results.count) search entries.")
+                    HStack {
+                        Text("Ranking has \(relevanceRecord.packages.count) of \(recordedSearch.resultSet.results.count) search entries.")
+                        ProgressView(value: Double(relevanceRecord.packages.count)/Double(recordedSearch.resultSet.results.count))
+                            .progressViewStyle(.circular)
+                    }
                 }
                 Section {
                     ForEach(recordedSearch.resultSet.matched_keywords, id: \.self) { keyword in
@@ -112,7 +119,11 @@ struct RankResultsView: View {
                         #endif
                     }
                 } header: {
-                    Text("Ranking has \(relevanceRecord.keywords.count) of \(recordedSearch.resultSet.matched_keywords.count) keyword entries.")
+                    HStack {
+                        Text("Ranking has \(relevanceRecord.keywords.count) of \(recordedSearch.resultSet.matched_keywords.count) keyword entries.")
+                        ProgressView(value: Double(relevanceRecord.keywords.count)/Double(recordedSearch.resultSet.matched_keywords.count))
+                            .progressViewStyle(.circular)
+                    }
                 }
             }
         }

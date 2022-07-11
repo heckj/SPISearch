@@ -51,3 +51,7 @@ jobs:
       - name: macOS build and test
         run: xcodebuild clean test -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx12.3 -showBuildTimingSummary
 # Local: xcodebuild clean test -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=16.0,name=iPhone 8' -sdk iphonesimulator16.0
+
+#export DEVELOPER_DIR=/Applications/Xcode.app
+#xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=15.5,name=iPhone 8' -sdk iphonesimulator15.5
+#xcodebuild clean build -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx12.3 

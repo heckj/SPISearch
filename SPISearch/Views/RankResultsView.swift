@@ -96,7 +96,7 @@ struct RankResultsView: View {
                 } header: {
                     HStack {
                         Text("Ranking has \(relevanceRecord.packages.count) of \(recordedSearch.resultSet.results.count) search entries.")
-                        ProgressView(value: Double(relevanceRecord.packages.count)/Double(recordedSearch.resultSet.results.count))
+                        ProgressView(value: Double(relevanceRecord.packages.count) / Double(recordedSearch.resultSet.results.count))
                             .progressViewStyle(.circular)
                     }
                 }
@@ -121,7 +121,7 @@ struct RankResultsView: View {
                 } header: {
                     HStack {
                         Text("Ranking has \(relevanceRecord.keywords.count) of \(recordedSearch.resultSet.matched_keywords.count) keyword entries.")
-                        ProgressView(value: Double(relevanceRecord.keywords.count)/Double(recordedSearch.resultSet.matched_keywords.count))
+                        ProgressView(value: Double(relevanceRecord.keywords.count) / Double(recordedSearch.resultSet.matched_keywords.count))
                             .progressViewStyle(.circular)
                     }
                 }

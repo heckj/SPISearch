@@ -16,6 +16,16 @@
 		1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CBC9428734A7A0033EE43 /* Documentation.docc */; };
 		1A1FADF028737BFF0037D674 /* RankResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1FADEF28737BFF0037D674 /* RankResultsView.swift */; };
 		1A2DF7F728789E580070841E /* bezier_query_8jul22.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */; };
+		1A372C94287C61A30020CFAC /* RepeatCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A372C93287C61A30020CFAC /* RepeatCommand.swift */; };
+		1A372C9A287C62070020CFAC /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 1A372C99287C62070020CFAC /* ArgumentParser */; };
+		1A372C9B287C63C50020CFAC /* SearchResultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC55375287362BE0050F0D6 /* SearchResultSet.swift */; };
+		1A372C9C287C63C50020CFAC /* SearchRankDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7850002873380B00AFB33F /* SearchRankDocument.swift */; };
+		1A372C9D287C63C50020CFAC /* RelevanceRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7FD6AA2873797E008C76AB /* RelevanceRecord.swift */; };
+		1A372C9E287C63C50020CFAC /* SearchMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A29C728762B6C0096F600 /* SearchMetrics.swift */; };
+		1A372C9F287C63C50020CFAC /* SearchRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500228733B5500AFB33F /* SearchRank.swift */; };
+		1A372CA0287C63C60020CFAC /* ComputedRelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */; };
+		1A372CA1287C63E30020CFAC /* SPISearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */; };
+		1A372CA3287C63F70020CFAC /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 1A372CA2287C63F70020CFAC /* SwiftSoup */; };
 		1A45D916287634650077EC9E /* SearchMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D915287634650077EC9E /* SearchMetricsTests.swift */; };
 		1A562F6E2878C681006B29A8 /* ComputedRelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */; };
 		1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */; };
@@ -39,7 +49,6 @@
 		1AEB000328760E3E009055BE /* SearchRankDocumentOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */; };
 		1AEB0005287611EF009055BE /* SearchResultSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */; };
 		1AEDE79C287BA55A009B1CA4 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 1AEDE79B287BA55A009B1CA4 /* ArgumentParser */; };
-		1AEDE79E287BA579009B1CA4 /* SPISearchLaunchArguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEDE79D287BA579009B1CA4 /* SPISearchLaunchArguments.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +60,18 @@
 			remoteInfo = SPISearch;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1A372C8F287C61A30020CFAC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1A032CFD287A24F9007DA587 /* SearchMetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetricsView.swift; sourceTree = "<group>"; };
@@ -64,6 +85,8 @@
 		1A1CBC9428734A7A0033EE43 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		1A1FADEF28737BFF0037D674 /* RankResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankResultsView.swift; sourceTree = "<group>"; };
 		1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bezier_query_8jul22.txt; sourceTree = "<group>"; };
+		1A372C91287C61A30020CFAC /* ReportSearch */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReportSearch; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A372C93287C61A30020CFAC /* RepeatCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatCommand.swift; sourceTree = "<group>"; };
 		1A45D915287634650077EC9E /* SearchMetricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetricsTests.swift; sourceTree = "<group>"; };
 		1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputedRelevancyValues.swift; sourceTree = "<group>"; };
 		1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceSetSummaryView.swift; sourceTree = "<group>"; };
@@ -89,7 +112,6 @@
 		1AEADD512877916900023487 /* SettingsFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFormView.swift; sourceTree = "<group>"; };
 		1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankDocumentOverview.swift; sourceTree = "<group>"; };
 		1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSetSummaryView.swift; sourceTree = "<group>"; };
-		1AEDE79D287BA579009B1CA4 /* SPISearchLaunchArguments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPISearchLaunchArguments.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +121,15 @@
 			files = (
 				1AEDE79C287BA55A009B1CA4 /* ArgumentParser in Frameworks */,
 				1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A372C8E287C61A30020CFAC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A372C9A287C62070020CFAC /* ArgumentParser in Frameworks */,
+				1A372CA3287C63F70020CFAC /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,7 +150,9 @@
 				1A98A1452877A1D00021E214 /* AppPrivacyPolicy.md */,
 				1A1650422870F98F00AC4DB2 /* SPISearch */,
 				1AC5537E28736A590050F0D6 /* SPISearchTests */,
+				1A372C92287C61A30020CFAC /* ReportSearch */,
 				1A1650412870F98F00AC4DB2 /* Products */,
+				1A372C98287C62070020CFAC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +161,7 @@
 			children = (
 				1A1650402870F98F00AC4DB2 /* SPISearch.app */,
 				1AC5537D28736A590050F0D6 /* SPISearchTests.xctest */,
+				1A372C91287C61A30020CFAC /* ReportSearch */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,7 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				1A1650432870F98F00AC4DB2 /* SPISearchApp.swift */,
-				1AEDE79D287BA579009B1CA4 /* SPISearchLaunchArguments.swift */,
 				1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */,
 				1AC55377287363610050F0D6 /* Views */,
 				1AC55378287363930050F0D6 /* Supplemental Views */,
@@ -156,6 +189,21 @@
 				1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1A372C92287C61A30020CFAC /* ReportSearch */ = {
+			isa = PBXGroup;
+			children = (
+				1A372C93287C61A30020CFAC /* RepeatCommand.swift */,
+			);
+			path = ReportSearch;
+			sourceTree = "<group>";
+		};
+		1A372C98287C62070020CFAC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		1AC55374287362930050F0D6 /* Model */ = {
@@ -235,6 +283,27 @@
 			productReference = 1A1650402870F98F00AC4DB2 /* SPISearch.app */;
 			productType = "com.apple.product-type.application";
 		};
+		1A372C90287C61A30020CFAC /* ReportSearch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A372C95287C61A30020CFAC /* Build configuration list for PBXNativeTarget "ReportSearch" */;
+			buildPhases = (
+				1A372C8D287C61A30020CFAC /* Sources */,
+				1A372C8E287C61A30020CFAC /* Frameworks */,
+				1A372C8F287C61A30020CFAC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReportSearch;
+			packageProductDependencies = (
+				1A372C99287C62070020CFAC /* ArgumentParser */,
+				1A372CA2287C63F70020CFAC /* SwiftSoup */,
+			);
+			productName = ReportSearch;
+			productReference = 1A372C91287C61A30020CFAC /* ReportSearch */;
+			productType = "com.apple.product-type.tool";
+		};
 		1AC5537C28736A590050F0D6 /* SPISearchTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AC5538328736A590050F0D6 /* Build configuration list for PBXNativeTarget "SPISearchTests" */;
@@ -266,6 +335,9 @@
 					1A16503F2870F98F00AC4DB2 = {
 						CreatedOnToolsVersion = 14.0;
 					};
+					1A372C90287C61A30020CFAC = {
+						CreatedOnToolsVersion = 14.0;
+					};
 					1AC5537C28736A590050F0D6 = {
 						CreatedOnToolsVersion = 14.0;
 						TestTargetID = 1A16503F2870F98F00AC4DB2;
@@ -291,6 +363,7 @@
 			targets = (
 				1A16503F2870F98F00AC4DB2 /* SPISearch */,
 				1AC5537C28736A590050F0D6 /* SPISearchTests */,
+				1A372C90287C61A30020CFAC /* ReportSearch */,
 			);
 		};
 /* End PBXProject section */
@@ -324,7 +397,6 @@
 				1A1650442870F98F00AC4DB2 /* SPISearchApp.swift in Sources */,
 				1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */,
 				1A032CFE287A24F9007DA587 /* SearchMetricsView.swift in Sources */,
-				1AEDE79E287BA579009B1CA4 /* SPISearchLaunchArguments.swift in Sources */,
 				1A78500528733F0500AFB33F /* SearchRankEditorView.swift in Sources */,
 				1A1FADF028737BFF0037D674 /* RankResultsView.swift in Sources */,
 				1A8144AC28720E7000F58B48 /* RecordedSearchResultView.swift in Sources */,
@@ -344,6 +416,21 @@
 				1AEB000328760E3E009055BE /* SearchRankDocumentOverview.swift in Sources */,
 				1A8144AE287218F900F58B48 /* RelevanceSelectorView.swift in Sources */,
 				1A9D79DE287B3EBD0068DF3A /* RelevanceResultView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A372C8D287C61A30020CFAC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A372C9E287C63C50020CFAC /* SearchMetrics.swift in Sources */,
+				1A372C9D287C63C50020CFAC /* RelevanceRecord.swift in Sources */,
+				1A372C94287C61A30020CFAC /* RepeatCommand.swift in Sources */,
+				1A372C9C287C63C50020CFAC /* SearchRankDocument.swift in Sources */,
+				1A372C9B287C63C50020CFAC /* SearchResultSet.swift in Sources */,
+				1A372CA0287C63C60020CFAC /* ComputedRelevancyValues.swift in Sources */,
+				1A372C9F287C63C50020CFAC /* SearchRank.swift in Sources */,
+				1A372CA1287C63E30020CFAC /* SPISearchParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,6 +635,34 @@
 			};
 			name = Release;
 		};
+		1A372C96287C61A30020CFAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BDV4VC27D3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1A372C97287C61A30020CFAC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BDV4VC27D3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		1AC5538428736A590050F0D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -617,6 +732,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		1A372C95287C61A30020CFAC /* Build configuration list for PBXNativeTarget "ReportSearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A372C96287C61A30020CFAC /* Debug */,
+				1A372C97287C61A30020CFAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1AC5538328736A590050F0D6 /* Build configuration list for PBXNativeTarget "SPISearchTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -649,6 +773,16 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		1A1650532870F9B700AC4DB2 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		1A372C99287C62070020CFAC /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		1A372CA2287C63F70020CFAC /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;

@@ -69,7 +69,8 @@ struct SearchRank: Identifiable, Codable {
         for keyword in all_keywords {
             // this grabs and returns a list of relevancy enumerations where
             // the value isn't `.unknown`
-            let listOfRelevance = relevanceSets.compactMap { record in
+            
+            let listOfRelevance = relevanceSets.compactMap { record -> Relevance? in
                 let foundRelevance = record.keywords[keyword]
                 if foundRelevance != .unknown { return foundRelevance }
                 return nil
@@ -100,7 +101,7 @@ struct SearchRank: Identifiable, Codable {
         for pkgId in all_package_identifiers {
             // this grabs and returns a list of relevancy enumerations where
             // the value isn't `.unknown`
-            let listOfRelevance = relevanceSets.compactMap { record in
+            let listOfRelevance = relevanceSets.compactMap { record -> Relevance? in
                 let foundRelevance = record.packages[pkgId]
                 if foundRelevance != .unknown { return foundRelevance }
                 return nil

@@ -17,7 +17,9 @@ struct SearchingView: View {
     func commenceSearch(_ terms: String) {
         Task {
             let searchResults = await SPISearchParser.recordSearch(terms: terms)
-            searchDoc = SearchRankDocument(searchResults)
+            DispatchQueue.main.async {
+                searchDoc = SearchRankDocument(searchResults)
+            }
         }
     }
 
@@ -28,6 +30,10 @@ struct SearchingView: View {
                     .onSubmit {
                         commenceSearch(searchTerms)
                     }
+                    #if os(iOS)
+                    .textInputAutocapitalization(.never)
+                    #endif
+                    .disableAutocorrection(true)
                     .textFieldStyle(.roundedBorder)
                 Button {
                     commenceSearch(searchTerms)

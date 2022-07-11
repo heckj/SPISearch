@@ -9,9 +9,10 @@ import SwiftUI
 
 struct SearchRankDocumentOverview: View {
     @AppStorage(SPISearchApp.reviewerKey) var localReviewer: String = ""
-    @State var reviewerId: String = ""
+    @State private var reviewerId: String = ""
     @Binding var document: SearchRankDocument
-
+    @State private var showingSheet = false
+    
     func bindingForRelevanceSet(_ rec: RelevanceRecord) -> Binding<RelevanceRecord>? {
         if let index = document.searchRanking.relevanceSets.firstIndex(where: { $0.id == rec.id }) {
             return Binding(projectedValue: $document.searchRanking.relevanceSets[index])
@@ -58,6 +59,21 @@ struct SearchRankDocumentOverview: View {
         #if os(macOS)
         .listStyle(.sidebar)
         #endif
+        .toolbar {
+            Button("add ranking") {
+                if !localReviewer.isEmpty {
+                    document.searchRanking.addRelevanceSet(for: localReviewer)
+                }
+            }
+        }
+        .sheet(isPresented: $showingSheet) {
+            ConfigureReviewer(.constant(SearchRank.extendedExample))
+        }
+        .onAppear {
+            if localReviewer.isEmpty {
+                showingSheet = true
+            }
+        }
     }
 
     init(_ document: Binding<SearchRankDocument>) {

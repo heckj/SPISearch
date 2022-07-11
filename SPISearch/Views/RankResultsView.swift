@@ -14,7 +14,6 @@ struct RankResultsView: View {
     // To allow creating a local reviewer document if the
     // document doesn't already have one.
     @Binding var document: SearchRankDocument
-    @State var reviewerId: String = ""
 
     // The search result to display for the purposes of
     // ranking the matched keywords and search results.
@@ -44,29 +43,7 @@ struct RankResultsView: View {
         // App's user defaults, pre-empt this view to get
         // one set up.
         if localReviewer.isEmpty {
-            Form {
-                HStack(alignment: .firstTextBaseline) {
-                    Text("Enter your reviewer ID")
-                    TextField(text: $reviewerId) {
-                        Text("reviewer id")
-                    }
-                    #if os(iOS)
-                    .textInputAutocapitalization(.never)
-                    #endif
-                    .disableAutocorrection(true)
-                    .textFieldStyle(.roundedBorder)
-                    Button {
-                        localReviewer = reviewerId
-                        document.searchRanking.addRelevanceSet(for: localReviewer)
-                    } label: {
-                        Text("Submit")
-                    }
-                }.padding()
-            }.onAppear {
-                if !localReviewer.isEmpty {
-                    document.searchRanking.addRelevanceSet(for: reviewerId)
-                }
-            }
+            ConfigureReviewer($document)
         } else {
             // Display the search results in order to rank
             // (or just display, if viewOnly = `true`)

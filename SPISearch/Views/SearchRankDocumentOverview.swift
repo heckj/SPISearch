@@ -23,7 +23,7 @@ struct SearchRankDocumentOverview: View {
     var body: some View {
         List {
             Section {
-                Text("Searches for  \(document.searchRanking.storedSearches.first?.searchTerms ?? "")")
+                Text("Searches for **\(document.searchRanking.storedSearches.first?.searchTerms ?? "")**")
                     .font(.title)
             }
             Section {

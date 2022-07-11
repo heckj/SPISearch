@@ -46,13 +46,19 @@ jobs:
       #  run: xcodebuild clean test -scheme 'SPISearch'
 
       - name: iOS build
-        run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=15.5,name=iPhone 8' -sdk iphonesimulator15.5 -showBuildTimingSummary
+        run: xcodebuild clean build-for-testing -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=15.5,name=iPhone 8' -sdk iphonesimulator15.5 -showBuildTimingSummary
 
-      - name: macOS build and test
-        run: xcodebuild clean test -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx12.3 -showBuildTimingSummary
+      - name: iOS test
+        run: xcodebuild clean test -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=15.5,name=iPhone 8' -sdk iphonesimulator15.5 -showBuildTimingSummary
 
-      - name: macOS build and test
-        run: xcodebuild clean build -scheme 'SearchRank' -destination 'platform=macOS' -sdk macosx12.3 -showBuildTimingSummary
+      - name: macOS build for SPISearch
+        run: xcodebuild clean build-for-testing -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx12.3 -showBuildTimingSummary
+        
+      - name: macOS build for SPISearch
+        run: xcodebuild test -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx12.3 -showBuildTimingSummary
+
+      - name: macOS build for ReportSearch
+        run: xcodebuild clean build -scheme 'ReportSearch' -destination 'platform=macOS' -sdk macosx12.3 -showBuildTimingSummary
 
 # w/ Xcode 14 beta 3:
 # Local: xcodebuild clean test -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=16.0,name=iPhone 8' -sdk iphonesimulator16.0

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ConfigureReviewer: View {
-    //@Environment(\.presentationMode) var presentation
+    // @Environment(\.presentationMode) var presentation
     @Environment(\.dismiss) var dismiss
     @AppStorage(SPISearchApp.reviewerKey) var localReviewer: String = ""
     // To allow creating a local reviewer document if the
@@ -19,50 +19,50 @@ struct ConfigureReviewer: View {
     var body: some View {
         Form {
             #if os(iOS)
-            HStack(alignment: .firstTextBaseline) {
-                Text("Enter your reviewer ID")
-                TextField(text: $reviewerId) {
-                    Text("reviewer id")
-                }
-                .textInputAutocapitalization(.never)
-                .disableAutocorrection(true)
-                .textFieldStyle(.roundedBorder)
-                Button {
-                    if (localReviewer != reviewerId) {
-                        localReviewer = reviewerId
-                        document.searchRanking.addRelevanceSet(for: localReviewer)
+                HStack(alignment: .firstTextBaseline) {
+                    Text("Enter your reviewer ID")
+                    TextField(text: $reviewerId) {
+                        Text("reviewer id")
                     }
-                    dismiss()
-                } label: {
-                    Text("Submit")
-                }
-            }.padding()
+                    .textInputAutocapitalization(.never)
+                    .disableAutocorrection(true)
+                    .textFieldStyle(.roundedBorder)
+                    Button {
+                        if localReviewer != reviewerId {
+                            localReviewer = reviewerId
+                            document.searchRanking.addRelevanceSet(for: localReviewer)
+                        }
+                        dismiss()
+                    } label: {
+                        Text("Submit")
+                    }
+                }.padding()
             #else // macOS version - vertical display in sheet
-            VStack {
-                Text("Enter a reviewer ID to rank searches.")
-                TextField(text: $reviewerId) {
-                    Text("ID")
-                }
-                .disableAutocorrection(true)
-                .textFieldStyle(.roundedBorder)
-                Button {
-                    if (localReviewer != reviewerId) {
-                        localReviewer = reviewerId
-                        document.searchRanking.addRelevanceSet(for: localReviewer)
+                VStack {
+                    Text("Enter a reviewer ID to rank searches.")
+                    TextField(text: $reviewerId) {
+                        Text("ID")
                     }
-                    dismiss()
-                } label: {
-                    Text("Submit")
-                }
-            }.padding()
+                    .disableAutocorrection(true)
+                    .textFieldStyle(.roundedBorder)
+                    Button {
+                        if localReviewer != reviewerId {
+                            localReviewer = reviewerId
+                            document.searchRanking.addRelevanceSet(for: localReviewer)
+                        }
+                        dismiss()
+                    } label: {
+                        Text("Submit")
+                    }
+                }.padding()
             #endif
         }.onAppear {
             reviewerId = localReviewer
         }
     }
-    
+
     init(_ document: Binding<SearchRankDocument>) {
-        self._document = document
+        _document = document
     }
 }
 
@@ -79,9 +79,8 @@ struct HostingView: View {
 }
 
 struct ConfigureReviewer_Previews: PreviewProvider {
-
     static var previews: some View {
-        //ConfigureReviewer(.constant(SearchRank.extendedExample))
+        // ConfigureReviewer(.constant(SearchRank.extendedExample))
         HostingView()
     }
 }

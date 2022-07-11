@@ -12,7 +12,7 @@ struct SearchRankDocumentOverview: View {
     @State private var reviewerId: String = ""
     @Binding var document: SearchRankDocument
     @State private var showingSheet = false
-    
+
     func bindingForRelevanceSet(_ rec: RelevanceRecord) -> Binding<RelevanceRecord>? {
         if let index = document.searchRanking.relevanceSets.firstIndex(where: { $0.id == rec.id }) {
             return Binding(projectedValue: $document.searchRanking.relevanceSets[index])

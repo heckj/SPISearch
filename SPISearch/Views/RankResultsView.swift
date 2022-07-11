@@ -71,62 +71,82 @@ struct RankResultsView: View {
             // Display the search results in order to rank
             // (or just display, if viewOnly = `true`)
             // their relevance.
-            List {
-                Section {
-                    Text("Relevancy for search terms: **\(recordedSearch.searchTerms)**, ranking reviewer: \(localReviewer)")
-                }
-                Section {
-                    ForEach(recordedSearch.resultSet.results) { result in
-                        HStack {
-                            PackageSearchResultView(result)
-                            Spacer()
-                            if viewOnly {
-                                RelevanceResultView(relevanceRecord.packages[result.id])
-                                    .background(highlightColor(relevanceRecord.packages[result.id]))
-                            } else {
-                                RelevanceSelectorView($relevanceRecord.packages[result.id])
-                                    .background(highlightColor(relevanceRecord.packages[result.id]))
+            ScrollViewReader { proxy in
+                List {
+                    Section {
+                        Text("Relevancy for search terms: **\(recordedSearch.searchTerms)**, ranking reviewer: \(localReviewer)")
+                    }
+                    Section {
+                        ForEach(recordedSearch.resultSet.results) { result in
+                            HStack {
+                                PackageSearchResultView(result)
+                                Spacer()
+                                if viewOnly {
+                                    RelevanceResultView(relevanceRecord.packages[result.id])
+                                        .background(highlightColor(relevanceRecord.packages[result.id]))
+                                } else {
+                                    RelevanceSelectorView($relevanceRecord.packages[result.id])
+                                        .background(highlightColor(relevanceRecord.packages[result.id]))
+                                }
                             }
+                            #if os(macOS)
+                                Divider()
+                                // replace with `.listRowSeparator(.visible)` for macOS 13+
+                            #endif
                         }
-                        #if os(macOS)
-                            Divider()
-                            // replace with `.listRowSeparator(.visible)` for macOS 13+
-                        #endif
-                    }
-                } header: {
-                    HStack {
-                        Text("Ranking has \(relevanceRecord.packages.count) of \(recordedSearch.resultSet.results.count) search entries.")
-                        ProgressView(value: Double(relevanceRecord.packages.count) / Double(recordedSearch.resultSet.results.count))
-                            .progressViewStyle(.circular)
-                    }
-                }
-                Section {
-                    ForEach(recordedSearch.resultSet.matched_keywords, id: \.self) { keyword in
+                    } header: {
                         HStack {
-                            CapsuleText(keyword)
-                            Spacer()
-                            if viewOnly {
-                                RelevanceResultView(relevanceRecord.keywords[keyword])
-                                    .background(highlightColor(relevanceRecord.keywords[keyword]))
-                            } else {
-                                RelevanceSelectorView($relevanceRecord.keywords[keyword])
-                                    .background(highlightColor(relevanceRecord.keywords[keyword]))
-                            }
+                            Text("Ranking has \(relevanceRecord.packages.count) of \(recordedSearch.resultSet.results.count) search entries.")
+                            ProgressView(value: Double(relevanceRecord.packages.count) / Double(recordedSearch.resultSet.results.count))
+                                .progressViewStyle(.circular)
                         }
-                        #if os(macOS)
-                            Divider()
-                            // replace with `.listRowSeparator(.visible)` for macOS 13+
-                        #endif
                     }
-                } header: {
-                    HStack {
-                        Text("Ranking has \(relevanceRecord.keywords.count) of \(recordedSearch.resultSet.matched_keywords.count) keyword entries.")
-                        ProgressView(value: Double(relevanceRecord.keywords.count) / Double(recordedSearch.resultSet.matched_keywords.count))
-                            .progressViewStyle(.circular)
+                    Section {
+                        ForEach(recordedSearch.resultSet.matched_keywords, id: \.self) { keyword in
+                            HStack {
+                                CapsuleText(keyword)
+                                Spacer()
+                                if viewOnly {
+                                    RelevanceResultView(relevanceRecord.keywords[keyword])
+                                        .background(highlightColor(relevanceRecord.keywords[keyword]))
+                                } else {
+                                    RelevanceSelectorView($relevanceRecord.keywords[keyword])
+                                        .background(highlightColor(relevanceRecord.keywords[keyword]))
+                                }
+                            }
+                            .tag(keyword)
+                            #if os(macOS)
+                                Divider()
+                                // replace with `.listRowSeparator(.visible)` for macOS 13+
+                            #endif
+                        }
+                    } header: {
+                        HStack {
+                            Text("Ranking has \(relevanceRecord.keywords.count) of \(recordedSearch.resultSet.matched_keywords.count) keyword entries.")
+                            ProgressView(value: Double(relevanceRecord.keywords.count) / Double(recordedSearch.resultSet.matched_keywords.count))
+                                .progressViewStyle(.circular)
+                        }
+                    }
+                } // List
+                .onChange(of: relevanceRecord) { _ in
+                    if let firstUnrankedSearch = recordedSearch.resultSet.results.first(where: { searchResult in
+                        if relevanceRecord.packages[searchResult.id] == .unknown {
+                            return true
+                        }
+                        return false
+                    }) {
+                        proxy.scrollTo(firstUnrankedSearch.id, anchor: .center)
+                    } else if let firstUnrankedKeyword = recordedSearch.keywords.first(where: { keyword in
+                        if relevanceRecord.keywords[keyword] == .unknown {
+                            return true
+                        }
+                        return false
+                    }) {
+                        proxy.scrollTo(firstUnrankedKeyword, anchor: .center)
                     }
                 }
-            }
-        }
+            } // ScrollViewReader
+        } // if-else localReviewer.isEmpty
     }
 
     init(searchRankDoc: Binding<SearchRankDocument>, relevanceRecordBinding: Binding<RelevanceRecord>, recordedSearch: RecordedSearchResult) {

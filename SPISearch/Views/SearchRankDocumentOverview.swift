@@ -13,11 +13,15 @@ struct SearchRankDocumentOverview: View {
     @Binding var document: SearchRankDocument
     @State private var showingSheet = false
 
-    func bindingForRelevanceSet(_ rec: RelevanceRecord) -> Binding<RelevanceRecord>? {
-        if let index = document.searchRanking.relevanceSets.firstIndex(where: { $0.id == rec.id }) {
-            return Binding(projectedValue: $document.searchRanking.relevanceSets[index])
+    private func captureSearch(localhost: Bool = false) {
+        if let terms = document.searchRanking.storedSearches.first?.searchTerms {
+            Task {
+                let searchResults = await SPISearchParser.recordSearch(terms: terms, localhost: localhost)
+                DispatchQueue.main.async {
+                    document.searchRanking.storedSearches.append(searchResults)
+                }
+            }
         }
-        return nil
     }
 
     var body: some View {
@@ -27,45 +31,64 @@ struct SearchRankDocumentOverview: View {
                     .font(.title)
             }
             Section {
-                ForEach(document.searchRanking.relevanceSets) { ranking in
+                ForEach($document.searchRanking.relevanceSets) { ranking in
                     HStack {
-                        RelevanceSetSummaryView(ranking)
-                        if let relevanceBinding = bindingForRelevanceSet(ranking) {
-                            NavigationLink("") {
-                                RankResultsView(
-                                    searchRankDoc: $document, relevanceRecordBinding: relevanceBinding,
-                                    recordedSearch: document.searchRanking.combinedRandomizedSearchResult()
-                                )
-                            }
+                        RelevanceSetSummaryView(ranking.wrappedValue)
+                        NavigationLink("") {
+                            RankResultsView(
+                                searchRankDoc: $document, relevanceRecordBinding: ranking,
+                                recordedSearch: document.searchRanking.combinedRandomizedSearchResult()
+                            )
                         }
                     }
                 }
             } header: {
-                Text("Relevance Rankings")
-                    .font(.title)
+                HStack {
+                    Text("Rankings")
+                        .font(.title)
+                    Spacer()
+                    Button {
+                        if !localReviewer.isEmpty {
+                            document.searchRanking.addRelevanceSet(for: localReviewer)
+                        }
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .font(.title)
+                    }
+                }
             }
             Section {
                 ForEach(document.searchRanking.storedSearches) { storedSearch in
-                    // edits: <#T##SwiftUI.EditOperations<C>#>,
                     NavigationLink("Search on \(storedSearch.recordedDate.formatted(date: .abbreviated, time: .omitted)) (\(storedSearch.host))") {
                         RecordedSearchResultView(storedSearch, relevancyValues: document.searchRanking.medianRelevancyRanking)
                     }
                 }
             } header: {
-                Text("Stored Searches")
-                    .font(.title)
+                HStack {
+                    Text("Stored Searches")
+                        .font(.title)
+                    Spacer()
+                    Menu {
+                        Button("swiftpackageindex.com") {
+                            print("server")
+                            captureSearch()
+                        }
+                        #if os(macOS)
+                            Button("localhost") {
+                                print("server")
+                                captureSearch(localhost: true)
+                            }
+                        #endif
+                    } label: {
+                        Image(systemName: "plus.circle")
+                            .font(.title)
+                    }
+                }
             }
         }
         #if os(macOS)
         .listStyle(.sidebar)
         #endif
-        .toolbar {
-            Button("add ranking") {
-                if !localReviewer.isEmpty {
-                    document.searchRanking.addRelevanceSet(for: localReviewer)
-                }
-            }
-        }
         .sheet(isPresented: $showingSheet) {
             ConfigureReviewer(.constant(SearchRank.extendedExample))
         }

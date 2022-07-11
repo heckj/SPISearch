@@ -28,8 +28,13 @@ enum SPISearchParser {
         return urlComponents?.url
     }
 
-    static func recordSearch(terms: String) async -> RecordedSearchResult {
-        let searchURL = assembleQueryURI(terms)!
+    static func recordSearch(terms: String, localhost: Bool = false) async -> RecordedSearchResult {
+        let searchURL: URL
+        if localhost {
+            searchURL = assembleQueryURI(terms, from: localHost)!
+        } else {
+            searchURL = assembleQueryURI(terms)!
+        }
         let resultSet = await search(searchURL)
         return RecordedSearchResult(recordedDate: Date.now, url: searchURL, resultSet: resultSet)
     }

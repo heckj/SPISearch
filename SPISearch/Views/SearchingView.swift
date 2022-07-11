@@ -66,7 +66,7 @@ struct SearchingView: View {
     }
 }
 
-private struct SearchingView_Previews: PreviewProvider {
+struct SearchingView_Previews: PreviewProvider {
     static var previews: some View {
         SearchingView(searchDoc: .constant(SearchRankDocument()), searchHostURL: SPISearchParser.hostedURL)
     }

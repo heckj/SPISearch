@@ -41,7 +41,7 @@ struct SearchMetricsView: View {
     }
 }
 
-private struct SearchMetricsView_Previews: PreviewProvider {
+struct SearchMetricsView_Previews: PreviewProvider {
     static var previews: some View {
         if let metrics = SearchMetrics(
             searchResult: RecordedSearchResult.example,

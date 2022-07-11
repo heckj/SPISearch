@@ -37,7 +37,7 @@ struct SearchRankEditorView: View {
     }
 }
 
-private struct SearchRankEditorView_Previews: PreviewProvider {
+struct SearchRankEditorView_Previews: PreviewProvider {
     static func extendedExample() -> SearchRankDocument {
         var doc = SearchRankDocument(.example)
         var secondSearch = RecordedSearchResult.example

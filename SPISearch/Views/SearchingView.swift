@@ -30,9 +30,9 @@ struct SearchingView: View {
                     .onSubmit {
                         commenceSearch(searchTerms)
                     }
-                    #if os(iOS)
+                #if os(iOS)
                     .textInputAutocapitalization(.never)
-                    #endif
+                #endif
                     .disableAutocorrection(true)
                     .textFieldStyle(.roundedBorder)
                 Button {

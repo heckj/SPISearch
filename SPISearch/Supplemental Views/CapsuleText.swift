@@ -48,7 +48,7 @@ struct CapsuleText: View {
     }
 }
 
-struct CapsuleText_Previews: PreviewProvider {
+private struct CapsuleText_Previews: PreviewProvider {
     static var previews: some View {
         CapsuleText("something")
     }

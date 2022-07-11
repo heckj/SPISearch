@@ -66,7 +66,7 @@ struct ConfigureReviewer: View {
     }
 }
 
-struct HostingView: View {
+private struct HostingView: View {
     @State private var showingSheet = false
     var body: some View {
         Button("Show Sheet") {
@@ -78,7 +78,7 @@ struct HostingView: View {
     }
 }
 
-struct ConfigureReviewer_Previews: PreviewProvider {
+private struct ConfigureReviewer_Previews: PreviewProvider {
     static var previews: some View {
         // ConfigureReviewer(.constant(SearchRank.extendedExample))
         HostingView()

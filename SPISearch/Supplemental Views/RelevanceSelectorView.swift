@@ -35,7 +35,7 @@ struct RelevanceSelectorView: View {
     }
 }
 
-struct RelevanceReview_Previews: PreviewProvider {
+private struct RelevanceReview_Previews: PreviewProvider {
     static var previews: some View {
         RelevanceSelectorView(.constant(.partial))
     }

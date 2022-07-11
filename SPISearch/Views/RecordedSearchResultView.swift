@@ -54,7 +54,7 @@ struct RecordedSearchResultView: View {
     }
 }
 
-struct SearchResultsView_Previews: PreviewProvider {
+private struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
         RecordedSearchResultView(
             RecordedSearchResult(recordedDate: Date.now, url: SPISearchParser.hostedURL!, resultSet: SearchResultSet.example)

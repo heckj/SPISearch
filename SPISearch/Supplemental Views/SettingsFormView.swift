@@ -27,7 +27,7 @@ struct SettingsFormView: View {
     }
 }
 
-struct SettingsFormView_Previews: PreviewProvider {
+private struct SettingsFormView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsFormView()
     }

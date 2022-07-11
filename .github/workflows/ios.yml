@@ -54,6 +54,9 @@ jobs:
       - name: macOS build for SPISearch
         run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx12.3 -showBuildTimingSummary
         
+      - name: macOS build for testing SPISearch
+        run: xcodebuild build-for-testing -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx12.3 -showBuildTimingSummary
+
       #- name: macOS test for SPISearch
       #  run: xcodebuild test -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx12.3 -showBuildTimingSummary
 

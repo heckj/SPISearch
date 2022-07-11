@@ -78,7 +78,7 @@ private struct HostingView: View {
     }
 }
 
-private struct ConfigureReviewer_Previews: PreviewProvider {
+struct ConfigureReviewer_Previews: PreviewProvider {
     static var previews: some View {
         // ConfigureReviewer(.constant(SearchRank.extendedExample))
         HostingView()

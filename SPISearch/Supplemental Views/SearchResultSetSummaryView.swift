@@ -26,7 +26,7 @@ struct SearchResultSetSummaryView: View {
     }
 }
 
-private struct SearchResultSetSummaryView_Previews: PreviewProvider {
+struct SearchResultSetSummaryView_Previews: PreviewProvider {
     static var previews: some View {
         SearchResultSetSummaryView(RecordedSearchResult.example)
     }

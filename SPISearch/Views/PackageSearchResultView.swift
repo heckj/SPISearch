@@ -83,7 +83,7 @@ struct PackageSearchResultView: View {
     }
 }
 
-private struct SearchResultView_Previews: PreviewProvider {
+struct SearchResultView_Previews: PreviewProvider {
     static var previews: some View {
         PackageSearchResultView(SearchResultSet.example.results[1])
     }

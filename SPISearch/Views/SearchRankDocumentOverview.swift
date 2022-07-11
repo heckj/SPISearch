@@ -81,7 +81,7 @@ struct SearchRankDocumentOverview: View {
     }
 }
 
-private struct SearchRankDocumentOverview_Previews: PreviewProvider {
+struct SearchRankDocumentOverview_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             SearchRankDocumentOverview(.constant(SearchRank.extendedExample))

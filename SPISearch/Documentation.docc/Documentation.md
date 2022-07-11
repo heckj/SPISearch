@@ -18,9 +18,12 @@ A utility application to capture, review, compare, and rank search results from 
 - ``SPISearch/SearchRank``
 - ``SPISearch/SearchResultSet``
 - ``SPISearch/RelevanceRecord``
+- ``SPISearch/KeywordRelevance``
+- ``SPISearch/PackageIdentifierRelevance``
 - ``SPISearch/Relevance``
 - ``SPISearch/RecordedSearchResult``
 - ``SPISearch/PackageSearchResult``
+- ``SPISearch/ComputedRelevancyValues``
 - ``SPISearch/SearchMetrics``
 
 ### Collector and Parser
@@ -30,14 +33,19 @@ A utility application to capture, review, compare, and rank search results from 
 ### App Views
 
 - ``SPISearch/SearchRankEditorView``
-- ``SPISearch/SearchingView``
 - ``SPISearch/SearchRankDocumentOverview``
-- ``SPISearch/RankingSearchResultsView``
+- ``SPISearch/RankResultsView``
+- ``SPISearch/ConfigureReviewer``
+- ``SPISearch/SearchingView``
 - ``SPISearch/RecordedSearchResultView``
-- ``SPISearch/SearchResultSetSummaryView``
 - ``SPISearch/PackageSearchResultView``
-- ``SPISearch/RelevanceRecord``
 
 ### Supplementary Views
 
+- ``SPISearch/SettingsFormView``
+- ``SPISearch/SearchResultSetSummaryView``
+- ``SPISearch/RelevanceSetSummaryView``
+- ``SPISearch/RelevanceSelectorView``
+- ``SPISearch/RelevanceResultView``
 - ``SPISearch/CapsuleText``
+- ``SPISearch/SearchMetricsView``

@@ -133,7 +133,7 @@ struct RankResultsView: View {
     }
 }
 
-struct RankingSearchResultsView_Previews: PreviewProvider {
+private struct RankingSearchResultsView_Previews: PreviewProvider {
     struct TempView: View {
         @State var relevanceRecord: RelevanceRecord = .init("testing")
         var body: some View {

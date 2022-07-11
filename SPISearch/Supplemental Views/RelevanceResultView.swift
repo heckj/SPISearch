@@ -51,7 +51,7 @@ struct RelevanceResultView: View {
     }
 }
 
-struct RelevanceResultView_Previews: PreviewProvider {
+private struct RelevanceResultView_Previews: PreviewProvider {
     static var previews: some View {
         RelevanceResultView(.partial)
         RelevanceResultView(.partial, withLabel: true)

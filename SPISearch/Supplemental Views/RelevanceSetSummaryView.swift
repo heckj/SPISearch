@@ -50,7 +50,7 @@ struct RelevanceSetSummaryView: View {
     }
 }
 
-struct RelevanceSetSummaryView_Previews: PreviewProvider {
+private struct RelevanceSetSummaryView_Previews: PreviewProvider {
     static var previews: some View {
         RelevanceSetSummaryView(RelevanceRecord.example)
     }

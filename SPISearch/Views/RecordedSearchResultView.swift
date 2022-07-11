@@ -26,17 +26,20 @@ struct RecordedSearchResultView: View {
                     searchResult: recordedSearch,
                     ranking: relevancyValues
                 ) {
-//                    SearchMetricsView(metrics)
                     SearchMetricsView(metrics, sparkline: true)
                 } else {
                     Text("_**Metrics Unavailable**_")
                 }
-                HStack {
-                    ForEach(recordedSearch.resultSet.matched_keywords, id: \.self) { word in
-                        CapsuleText(word)
-                            .textSelection(.enabled)
+                ScrollView(.horizontal, showsIndicators: true) {
+                    LazyHGrid(rows: [GridItem(.flexible())]) {
+                        ForEach(recordedSearch.resultSet.matched_keywords, id: \.self) { word in
+                            CapsuleText(word)
+                                .textSelection(.enabled)
+                                .fixedSize()
+                        }
                     }
                 }
+                .frame(maxHeight: 50)
                 List(recordedSearch.resultSet.results) { result in
                     PackageSearchResultView(result)
                     #if os(macOS)

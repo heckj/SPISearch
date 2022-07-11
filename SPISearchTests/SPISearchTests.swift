@@ -32,4 +32,18 @@ final class SPISearchTests: XCTestCase {
 
         XCTAssertEqual(SearchRank().identifiers.count, 0)
     }
+
+    func testTermsFromRecordedSearchResult() throws {
+        let terms = RecordedSearchResult.example.searchTerms
+        // print(RecordedSearchResult.example.url.absoluteString)
+        XCTAssertEqual(terms, "bezier")
+    }
+
+    func testingIndirectSearchTermRetrieval() throws {
+        let model = SearchRank.extendedExample
+        let terms = model.searchRanking.storedSearches.first?.searchTerms ?? ""
+        XCTAssertNotNil(terms)
+        XCTAssertEqual(terms, "bezier")
+        // print("--\(terms)--")
+    }
 }

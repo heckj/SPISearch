@@ -41,8 +41,11 @@ jobs:
         run: xcodebuild -showsdks
       # iOS 15.2, macOS 12.1 on macOS-latest (11)
 
-      - name: iOS build and test
-        run: xcodebuild clean test -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=15.5,name=iPhone 8' -showBuildTimingSummary
+      #- name: iOS xcodebuild basic invoke
+      #  run: xcodebuild clean test -scheme 'SPISearch'
 
-      - name: macOS build and test
-        run: xcodebuild clean test -scheme 'SPISearch' -destination 'platform=macOS' -showBuildTimingSummary
+      - name: iOS build and test
+        run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=15.5,name=iPhone 8' -sdk iphonesimulator15.5 -showBuildTimingSummary
+
+      #- name: macOS build and test
+      #  run: xcodebuild clean test -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx12.3 -showBuildTimingSummary

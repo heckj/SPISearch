@@ -49,10 +49,13 @@ enum SPISearchParser {
         // make a copy of the incoming result set, upon which we'll add...
         var result = addingTo
 
-        // create a custom URLSessionConfiguration and set an explicit timeout:
-        // https://developer.apple.com/documentation/foundation/nsurlsessionconfiguration/1408153-timeoutintervalforresource
+        let sessionConfig = URLSessionConfiguration.ephemeral
+        sessionConfig.timeoutIntervalForRequest = 30 // seconds - any given request
+        sessionConfig.timeoutIntervalForResource = 60 // seconds - the whole kit and kaboodle resource
+        let session = URLSession(configuration: sessionConfig)
+
         do {
-            let (data, response) = try await URLSession.shared.data(from: url)
+            let (data, response) = try await session.data(from: url)
             // more code to come
             if let httpresponse = response as? HTTPURLResponse {
                 if httpresponse.statusCode != 200 {

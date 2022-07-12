@@ -49,6 +49,8 @@ enum SPISearchParser {
         // make a copy of the incoming result set, upon which we'll add...
         var result = addingTo
 
+        // create a custom URLSessionConfiguration and set an explicit timeout:
+        // https://developer.apple.com/documentation/foundation/nsurlsessionconfiguration/1408153-timeoutintervalforresource
         do {
             let (data, response) = try await URLSession.shared.data(from: url)
             // more code to come

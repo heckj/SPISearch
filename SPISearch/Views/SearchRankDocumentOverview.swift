@@ -75,7 +75,7 @@ struct SearchRankDocumentOverview: View {
                         }
                         #if os(macOS)
                             Button("localhost") {
-                                print("server")
+                                print("localhost")
                                 captureSearch(localhost: true)
                             }
                         #endif

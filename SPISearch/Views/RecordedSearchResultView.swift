@@ -9,7 +9,10 @@ import SwiftUI
 
 struct RecordedSearchResultView: View {
     let recordedSearch: RecordedSearchResult
-    let relevancyValues: ComputedRelevancyValues?
+    let relevanceRecords: [RelevanceRecord]
+    let averageRelevancyValues: ComputedRelevancyValues?
+    @State private var selectedRelevanceRecord: String = ""
+
     var body: some View {
         if !recordedSearch.resultSet.errorMessage.isEmpty {
             // Display any error messages in red
@@ -20,16 +23,32 @@ struct RecordedSearchResultView: View {
             VStack {
                 Text("**\(recordedSearch.resultSet.results.count)** results recorded  \(recordedSearch.recordedDate.formatted()) from `\(recordedSearch.host)`")
                     .textSelection(.enabled)
-                    .padding(.bottom)
 
-                if let relevancyValues = relevancyValues, let metrics = SearchMetrics(
-                    searchResult: recordedSearch,
-                    ranking: relevancyValues
-                ) {
+                HStack {
+                    Text("Ranking set")
+                    Picker("", selection: $selectedRelevanceRecord) {
+                        Text("average (if available)").tag("")
+                        ForEach(relevanceRecords) { record in
+                            Text(record.reviewer).tag(record.reviewer)
+                        }
+                    }
+                }
+
+                if let relevancyValues = averageRelevancyValues,
+                   let metrics = SearchMetrics(
+                       searchResult: recordedSearch,
+                       ranking: relevancyValues
+                   )
+                {
                     SearchMetricsView(metrics, sparkline: true)
+                } else if let record = relevanceRecords.first(
+                    where: { $0.reviewer == selectedRelevanceRecord })
+                {
+                    Text("Selected metrics values: \(String(describing: record))")
                 } else {
                     Text("_**Metrics Unavailable**_")
                 }
+
                 ScrollView(.horizontal, showsIndicators: true) {
                     LazyHGrid(rows: [GridItem(.flexible())]) {
                         ForEach(recordedSearch.resultSet.matched_keywords, id: \.self) { word in
@@ -51,16 +70,35 @@ struct RecordedSearchResultView: View {
         }
     }
 
-    init(_ recordedSearch: RecordedSearchResult, relevancyValues: ComputedRelevancyValues? = nil) {
+    init(_ recordedSearch: RecordedSearchResult,
+         relevanceRecords: [RelevanceRecord] = [],
+         relevancyValues: ComputedRelevancyValues? = nil)
+    {
         self.recordedSearch = recordedSearch
-        self.relevancyValues = relevancyValues
+        self.relevanceRecords = relevanceRecords
+        averageRelevancyValues = relevancyValues
     }
 }
 
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
         RecordedSearchResultView(
-            RecordedSearchResult(recordedDate: Date.now, url: URL(string: SPISearchParser.serverHost)!, resultSet: SearchResultSet.example)
+            RecordedSearchResult(
+                recordedDate: Date.now,
+                url: URL(string: SPISearchParser.serverHost)!,
+                resultSet: SearchResultSet.example
+            ),
+            relevanceRecords: [],
+            relevancyValues: nil
+        )
+        RecordedSearchResultView(
+            RecordedSearchResult(
+                recordedDate: Date.now,
+                url: URL(string: SPISearchParser.serverHost)!,
+                resultSet: SearchResultSet.example
+            ),
+            relevanceRecords: [RelevanceRecord.example],
+            relevancyValues: RelevanceRecord.example.computedValues()
         )
     }
 }

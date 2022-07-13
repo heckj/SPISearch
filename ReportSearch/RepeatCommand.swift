@@ -37,6 +37,7 @@ struct ReportSearchRank: ParsableCommand {
                                 print("   -            Precision: \(metrics.precision.formatted(.number.precision(.integerAndFractionLength(integer: 1, fraction: 3))))")
                                 print("   -               Recall: \(metrics.recall.formatted(.number.precision(.integerAndFractionLength(integer: 1, fraction: 3))))")
                                 print("   - Mean Reciprocal Rank: \(metrics.meanReciprocalRank.formatted(.number.precision(.integerAndFractionLength(integer: 1, fraction: 3))))")
+                                print("   - NDCG: \(metrics.ndcg.formatted(.number.precision(.integerAndFractionLength(integer: 1, fraction: 3))))")
                             } else {
                                 print(" - \(searchStringRep)\n  ranking is incomplete, metrics are unavailable.")
                             }

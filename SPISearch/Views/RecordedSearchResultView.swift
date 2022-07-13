@@ -59,11 +59,26 @@ struct RecordedSearchResultView: View {
                     }
                 }
                 .frame(maxHeight: 50)
-                List(recordedSearch.resultSet.results) { result in
-                    PackageSearchResultView(result)
-                    #if os(macOS)
-                        Divider()
-                    #endif
+                if let relevanceRecord = relevanceRecords.first(
+                    where: { $0.reviewer == selectedRelevanceRecord })
+                {
+                    List(recordedSearch.resultSet.results) { result in
+                        HStack {
+                            PackageSearchResultView(result)
+                            Spacer()
+                            RelevanceResultView(relevanceRecord.packages[result.id])
+                        }
+                        #if os(macOS)
+                            Divider()
+                        #endif
+                    }
+                } else {
+                    List(recordedSearch.resultSet.results) { result in
+                        PackageSearchResultView(result)
+                        #if os(macOS)
+                            Divider()
+                        #endif
+                    }
                 }
             }
             .padding()

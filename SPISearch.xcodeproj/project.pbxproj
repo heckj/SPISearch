@@ -15,7 +15,7 @@
 		1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CBC9428734A7A0033EE43 /* Documentation.docc */; };
 		1A1FADF028737BFF0037D674 /* RankResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1FADEF28737BFF0037D674 /* RankResultsView.swift */; };
 		1A2DF7F728789E580070841E /* bezier_query_8jul22.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */; };
-		1A372C94287C61A30020CFAC /* RepeatCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A372C93287C61A30020CFAC /* RepeatCommand.swift */; };
+		1A372C94287C61A30020CFAC /* ReportSearchRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A372C93287C61A30020CFAC /* ReportSearchRank.swift */; };
 		1A372C9A287C62070020CFAC /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 1A372C99287C62070020CFAC /* ArgumentParser */; };
 		1A372C9B287C63C50020CFAC /* SearchResultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC55375287362BE0050F0D6 /* SearchResultSet.swift */; };
 		1A372C9C287C63C50020CFAC /* SearchRankDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7850002873380B00AFB33F /* SearchRankDocument.swift */; };
@@ -85,7 +85,7 @@
 		1A1FADEF28737BFF0037D674 /* RankResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankResultsView.swift; sourceTree = "<group>"; };
 		1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bezier_query_8jul22.txt; sourceTree = "<group>"; };
 		1A372C91287C61A30020CFAC /* ReportSearch */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReportSearch; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A372C93287C61A30020CFAC /* RepeatCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepeatCommand.swift; sourceTree = "<group>"; };
+		1A372C93287C61A30020CFAC /* ReportSearchRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSearchRank.swift; sourceTree = "<group>"; };
 		1A45D915287634650077EC9E /* SearchMetricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetricsTests.swift; sourceTree = "<group>"; };
 		1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputedRelevancyValues.swift; sourceTree = "<group>"; };
 		1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceSetSummaryView.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		1A372C92287C61A30020CFAC /* ReportSearch */ = {
 			isa = PBXGroup;
 			children = (
-				1A372C93287C61A30020CFAC /* RepeatCommand.swift */,
+				1A372C93287C61A30020CFAC /* ReportSearchRank.swift */,
 			);
 			path = ReportSearch;
 			sourceTree = "<group>";
@@ -425,7 +425,7 @@
 			files = (
 				1A372C9E287C63C50020CFAC /* SearchMetrics.swift in Sources */,
 				1A372C9D287C63C50020CFAC /* RelevanceRecord.swift in Sources */,
-				1A372C94287C61A30020CFAC /* RepeatCommand.swift in Sources */,
+				1A372C94287C61A30020CFAC /* ReportSearchRank.swift in Sources */,
 				1A372C9C287C63C50020CFAC /* SearchRankDocument.swift in Sources */,
 				1A372C9B287C63C50020CFAC /* SearchResultSet.swift in Sources */,
 				1A372CA0287C63C60020CFAC /* ComputedRelevancyValues.swift in Sources */,

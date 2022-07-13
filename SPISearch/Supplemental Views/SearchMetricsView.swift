@@ -22,7 +22,7 @@ struct SearchMetricsView: View {
             }.padding(.horizontal)
         } else {
             VStack {
-                if #available(iOS 16.0, macOS 13.0, *) {
+                #if canImport(Charts)
                     Chart {
                         BarMark(x: .value("metric", "precision"),
                                 y: .value("precision", metrics.precision))
@@ -33,8 +33,7 @@ struct SearchMetricsView: View {
                         BarMark(x: .value("metric", "NDCG"),
                                 y: .value("NDCG", metrics.ndcg))
                     }.frame(maxHeight: 50)
-
-                } else {
+                #else
                     LazyVGrid(
                         columns: [
                             GridItem(.adaptive(minimum: 90)),
@@ -51,8 +50,7 @@ struct SearchMetricsView: View {
                         Text("NDCG:")
                         Text(metrics.ndcg.formatted(.percent))
                     }
-                    // Fallback on earlier versions
-                }
+                #endif
             }
         }
     }

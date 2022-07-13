@@ -17,7 +17,7 @@ struct SearchMetricsView: View {
         if sparkline {
             HStack {
                 Spacer()
-                Text("P: \(metrics.precision.formatted(.percent)) R: \(metrics.recall.formatted(.percent)) MRR: \(metrics.meanReciprocalRank.formatted(.percent))")
+                Text("P: \(metrics.precision.formatted(.percent)) R: \(metrics.recall.formatted(.percent)) MRR: \(metrics.meanReciprocalRank.formatted(.percent)) NDCG: \(metrics.ndcg.formatted(.percent))")
                 Spacer()
             }.padding(.horizontal)
         } else {
@@ -30,6 +30,8 @@ struct SearchMetricsView: View {
                                 y: .value("recall", metrics.recall))
                         BarMark(x: .value("metric", "mean rank"),
                                 y: .value("mean rank", metrics.meanReciprocalRank))
+                        BarMark(x: .value("metric", "NDCG"),
+                                y: .value("NDCG", metrics.ndcg))
                     }.frame(maxHeight: 50)
 
                 } else {
@@ -46,6 +48,8 @@ struct SearchMetricsView: View {
                         Text(metrics.recall.formatted(.percent))
                         Text("MRR:")
                         Text(metrics.meanReciprocalRank.formatted(.percent))
+                        Text("NDCG:")
+                        Text(metrics.ndcg.formatted(.percent))
                     }
                     // Fallback on earlier versions
                 }

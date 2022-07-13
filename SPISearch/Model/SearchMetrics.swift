@@ -23,6 +23,13 @@ struct SearchMetrics {
     /// The mean reciprocal rank is a summed relevance rating for the search results, weighting earlier relevant results higher than later relevant results.
     let meanReciprocalRank: Double
 
+    /// The normalized discounted cumulative gain (NDGC) of the search results.
+    ///
+    /// The [NDGC](https://en.wikipedia.org/wiki/Discounted_cumulative_gain) compares a discounted cumulative gain
+    /// against a potentially ideal cumulative gain for a set of results to highlight improvements in ordering that wouldn't otherwise be visible in
+    /// search metrics.
+    let ndcg: Double
+
     /// Creates a new set of search metrics from the search result and ranking that you provide.
     ///
     /// The initializer returns `nil` is the rankings are incomplete for the provided search results.
@@ -36,6 +43,7 @@ struct SearchMetrics {
         precision = SearchMetrics.calculatePrecision(searchResult: searchResult, ranking: ranking)
         recall = SearchMetrics.calculateRecall(searchResult: searchResult, ranking: ranking)
         meanReciprocalRank = SearchMetrics.calculateMeanReciprocalRank(searchResult: searchResult, ranking: ranking)
+        ndcg = SearchMetrics.calculateNDCG(searchResult: searchResult, ranking: ranking)
     }
 
     /// Calculates the precision for a set of search results.

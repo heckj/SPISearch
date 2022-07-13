@@ -41,6 +41,14 @@ struct SearchRankDocumentOverview: View {
                             )
                         }
                     }
+                    .contextMenu {
+                        Button {
+                            document.searchRanking.relevanceSets.removeAll { $0.id == ranking.id
+                            }
+                        } label: {
+                            Image(systemName: "minus.circle.fill")
+                        }
+                    }
                 }
             } header: {
                 VStack(alignment: .leading) {
@@ -62,6 +70,16 @@ struct SearchRankDocumentOverview: View {
                 ForEach(document.searchRanking.storedSearches) { storedSearch in
                     NavigationLink("Search on \(storedSearch.recordedDate.formatted(date: .abbreviated, time: .omitted)) (\(storedSearch.host))") {
                         RecordedSearchResultView(storedSearch, relevancyValues: document.searchRanking.medianRelevancyRanking)
+                    }
+                    .contextMenu {
+                        Button {
+                            document.searchRanking.storedSearches.removeAll {
+                                $0.id == storedSearch.id
+                            }
+                        } label: {
+                            Image(systemName: "minus.circle.fill")
+                                .foregroundColor(.red)
+                        }
                     }
                 }
             } header: {

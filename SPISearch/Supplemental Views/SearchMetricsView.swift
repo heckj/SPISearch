@@ -23,16 +23,18 @@ struct SearchMetricsView: View {
         } else {
             VStack {
                 #if canImport(Charts)
-                    Chart {
-                        BarMark(x: .value("metric", "precision"),
-                                y: .value("precision", metrics.precision))
-                        BarMark(x: .value("metric", "recall"),
-                                y: .value("recall", metrics.recall))
-                        BarMark(x: .value("metric", "mean rank"),
-                                y: .value("mean rank", metrics.meanReciprocalRank))
-                        BarMark(x: .value("metric", "NDCG"),
-                                y: .value("NDCG", metrics.ndcg))
-                    }.frame(maxHeight: 50)
+                    if #available(iOS 16.0, macOS 13.0, *) {
+                        Chart {
+                            BarMark(x: .value("metric", "precision"),
+                                    y: .value("precision", metrics.precision))
+                            BarMark(x: .value("metric", "recall"),
+                                    y: .value("recall", metrics.recall))
+                            BarMark(x: .value("metric", "mean rank"),
+                                    y: .value("mean rank", metrics.meanReciprocalRank))
+                            BarMark(x: .value("metric", "NDCG"),
+                                    y: .value("NDCG", metrics.ndcg))
+                        }.frame(maxHeight: 50)
+                    }
                 #else
                     LazyVGrid(
                         columns: [

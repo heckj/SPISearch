@@ -94,7 +94,7 @@ struct RecordedSearchResult: Identifiable, Hashable, Codable {
     /// An example recorded search result for designing views.
     static var example: RecordedSearchResult = .init(
         recordedDate: Date.now,
-        url: SPISearchParser.hostedURL!,
+        url: URL(string: SPISearchParser.serverHost)!,
         resultSet: SearchResultSet.example
     )
 }

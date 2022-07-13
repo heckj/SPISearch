@@ -13,28 +13,25 @@ import SwiftSoup
 /// The results are parsed into a ``SPISearch/SearchResultSet``.
 enum SPISearchParser {
     static var serverHost = "https://swiftpackageindex.com/search?query=bezier"
-    static var localHost = "http://localhost:8080/search?query=bezier"
-    static var hostedURL: URL? {
-        URL(string: serverHost)
-    }
+    static var localHost = "http://127.0.0.1:8080/search?query=bezier"
 
-    static var localURL: URL? {
-        URL(string: localHost)
-    }
-
-    static func assembleQueryURI(_ terms: String, from _: String = serverHost) -> URL? {
-        var urlComponents = URLComponents(string: serverHost)
+    static func assembleQueryURI(_ terms: String, from baseURL: String) -> URL? {
+        var urlComponents = URLComponents(string: baseURL)
         urlComponents?.queryItems = [URLQueryItem(name: "query", value: terms)]
         return urlComponents?.url
     }
 
     static func recordSearch(terms: String, localhost: Bool = false) async -> RecordedSearchResult {
         let searchURL: URL
+
         if localhost {
+            print("prepping to search \(terms) from \(localHost)")
             searchURL = assembleQueryURI(terms, from: localHost)!
         } else {
-            searchURL = assembleQueryURI(terms)!
+            print("prepping to search \(terms) from \(serverHost)")
+            searchURL = assembleQueryURI(terms, from: serverHost)!
         }
+        print("Making query to: \(searchURL.absoluteString)")
         let resultSet = await search(searchURL)
         return RecordedSearchResult(recordedDate: Date.now, url: searchURL, resultSet: resultSet)
     }

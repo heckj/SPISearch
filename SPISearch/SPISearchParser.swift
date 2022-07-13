@@ -134,7 +134,9 @@ enum SPISearchParser {
             // print("Package name: \(package_result.name)")
             package_result.summary = try element.select("a p").text()
 
-            results.results.append(package_result)
+            if !results.results.contains(where: { $0.id == package_result.id }) {
+                results.results.append(package_result)
+            }
         }
 
         // Parsing the found keywords for the search:

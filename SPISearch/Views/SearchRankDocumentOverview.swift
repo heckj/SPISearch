@@ -69,7 +69,9 @@ struct SearchRankDocumentOverview: View {
             Section {
                 ForEach(document.searchRanking.storedSearches) { storedSearch in
                     NavigationLink("Search on \(storedSearch.recordedDate.formatted(date: .abbreviated, time: .omitted)) (\(storedSearch.host))") {
-                        RecordedSearchResultView(storedSearch, relevancyValues: document.searchRanking.medianRelevancyRanking)
+                        RecordedSearchResultView(storedSearch,
+                                                 relevanceRecords: document.searchRanking.relevanceSets,
+                                                 relevancyValues: document.searchRanking.medianRelevancyRanking)
                     }
                     .contextMenu {
                         Button {

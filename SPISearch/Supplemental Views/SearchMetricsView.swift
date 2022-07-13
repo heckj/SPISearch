@@ -5,6 +5,9 @@
 //  Created by Joseph Heck on 7/9/22.
 //
 
+#if canImport(Charts)
+    import Charts
+#endif
 import SwiftUI
 
 struct SearchMetricsView: View {
@@ -18,19 +21,34 @@ struct SearchMetricsView: View {
                 Spacer()
             }.padding(.horizontal)
         } else {
-            LazyVGrid(
-                columns: [
-                    GridItem(.adaptive(minimum: 90)),
-                    GridItem(.adaptive(minimum: 90)),
-                ],
-                alignment: .center
-            ) {
-                Text("precision:")
-                Text(metrics.precision.formatted(.percent))
-                Text("recall:")
-                Text(metrics.recall.formatted(.percent))
-                Text("MRR:")
-                Text(metrics.meanReciprocalRank.formatted(.percent))
+            VStack {
+                if #available(iOS 16.0, macOS 13.0, *) {
+                    Chart {
+                        BarMark(x: .value("metric", "precision"),
+                                y: .value("precision", metrics.precision))
+                        BarMark(x: .value("metric", "recall"),
+                                y: .value("recall", metrics.recall))
+                        BarMark(x: .value("metric", "mean rank"),
+                                y: .value("mean rank", metrics.meanReciprocalRank))
+                    }.frame(maxHeight: 50)
+
+                } else {
+                    LazyVGrid(
+                        columns: [
+                            GridItem(.adaptive(minimum: 90)),
+                            GridItem(.adaptive(minimum: 90)),
+                        ],
+                        alignment: .center
+                    ) {
+                        Text("precision:")
+                        Text(metrics.precision.formatted(.percent))
+                        Text("recall:")
+                        Text(metrics.recall.formatted(.percent))
+                        Text("MRR:")
+                        Text(metrics.meanReciprocalRank.formatted(.percent))
+                    }
+                    // Fallback on earlier versions
+                }
             }
         }
     }

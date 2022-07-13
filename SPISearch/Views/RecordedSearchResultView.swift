@@ -40,7 +40,7 @@ struct RecordedSearchResultView: View {
                        ranking: relevancyValues
                    )
                 {
-                    SearchMetricsView(metrics, sparkline: true)
+                    SearchMetricsView(metrics)
                 } else if let record = relevanceRecords.first(
                     where: { $0.reviewer == selectedRelevanceRecord })
                 {

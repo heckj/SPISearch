@@ -43,18 +43,19 @@ struct SearchRankDocumentOverview: View {
                     }
                 }
             } header: {
-                HStack {
+                VStack(alignment: .leading) {
                     Text("Rankings")
                         .font(.title)
-                    Spacer()
                     Button {
                         if !localReviewer.isEmpty {
                             document.searchRanking.addRelevanceSet(for: localReviewer)
                         }
                     } label: {
                         Image(systemName: "plus.circle")
-                            .font(.title)
                     }
+                    #if os(iOS)
+                    .buttonStyle(.borderless)
+                    #endif
                 }
             }
             Section {
@@ -64,24 +65,31 @@ struct SearchRankDocumentOverview: View {
                     }
                 }
             } header: {
-                HStack {
+                VStack(alignment: .leading) {
                     Text("Stored Searches")
                         .font(.title)
-                    Spacer()
-                    Menu {
-                        Button("swiftpackageindex.com") {
-                            print("server")
+                    HStack {
+                        Button {
                             captureSearch()
+                        } label: {
+                            HStack {
+                                Image(systemName: "plus.circle")
+                                Image(systemName: "cloud")
+                            }
                         }
+                        #if os(iOS)
+                        .buttonStyle(.borderless)
+                        #endif
                         #if os(macOS)
-                            Button("localhost") {
-                                print("localhost")
+                            Button {
                                 captureSearch(localhost: true)
+                            } label: {
+                                HStack {
+                                    Image(systemName: "plus.circle")
+                                    Image(systemName: "laptopcomputer")
+                                }
                             }
                         #endif
-                    } label: {
-                        Image(systemName: "plus.circle")
-                            .font(.title)
                     }
                 }
             }

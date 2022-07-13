@@ -14,12 +14,11 @@ struct RelevanceSetSummaryView: View {
         @Environment(\.horizontalSizeClass) var horizontalSizeClass
         var body: some View {
             if horizontalSizeClass == .compact {
-                VStack(alignment: .center) {
+                HStack {
                     Image(systemName: "chart.bar.doc.horizontal")
                         .font(.largeTitle)
-                    VStack {
-                        Text("\(record.reviewer)")
-                    }.font(.callout)
+                    Text("\(record.reviewer)")
+                        .font(.callout)
                 }
             } else {
                 HStack(alignment: .center) {

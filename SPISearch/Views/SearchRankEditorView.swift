@@ -20,7 +20,7 @@ struct SearchRankEditorView: View {
                 #if os(macOS)
                     NavigationView {
                         SearchRankDocumentOverview($document)
-                        Text("Select ranking or search to view.")
+                        Text("Select ranking or search in the sidebar to view.")
                     }
                 #else
                     SearchRankDocumentOverview($document)

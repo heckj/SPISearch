@@ -35,13 +35,10 @@ struct RelevanceResultView: View {
                 }
             }
         }
-        .padding()
         #if os(macOS)
-            // macOS shows the title of the picker, while iOS
-            // doesn't, which is kind of weird.
-            .frame(maxWidth: 170)
-        #else
-            .frame(maxWidth: 150)
+        // macOS shows the title of the picker, while iOS
+        // doesn't, which is kind of weird.
+        .frame(maxWidth: 170)
         #endif
     }
 

@@ -74,8 +74,12 @@ struct RankResultsView: View {
                     } header: {
                         HStack {
                             Text("Ranking has \(relevanceRecord.packages.count) of \(recordedSearch.resultSet.results.count) search entries.")
-                            ProgressView(value: Double(relevanceRecord.packages.count) / Double(recordedSearch.resultSet.results.count))
-                                .progressViewStyle(.circular)
+                            if #available(iOS 16, macOS 12.4, *) {
+                                // progressview on iOS 15 and lower is an indeterminate progress indicator
+                                // and looks like crap, so constraining this to iOS 16+, and macOS 12+
+                                ProgressView(value: Double(relevanceRecord.packages.count) / Double(recordedSearch.resultSet.results.count))
+                                    .progressViewStyle(.circular)
+                            }
                         }
                     }
                     Section {

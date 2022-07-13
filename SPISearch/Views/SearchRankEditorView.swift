@@ -26,7 +26,7 @@ struct SearchRankEditorView: View {
                     SearchRankDocumentOverview($document)
                 #endif
             } else {
-                SearchingView(searchDoc: $document, searchHostURL: SPISearchParser.hostedURL)
+                SearchingView(searchDoc: $document, searchHostURL: URL(string: SPISearchParser.serverHost)!)
             }
         }
         // Applied to the top level view in a macOS App, this controls both the initial size

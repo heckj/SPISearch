@@ -60,7 +60,7 @@ struct RecordedSearchResultView: View {
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
         RecordedSearchResultView(
-            RecordedSearchResult(recordedDate: Date.now, url: SPISearchParser.hostedURL!, resultSet: SearchResultSet.example)
+            RecordedSearchResult(recordedDate: Date.now, url: URL(string: SPISearchParser.serverHost)!, resultSet: SearchResultSet.example)
         )
     }
 }

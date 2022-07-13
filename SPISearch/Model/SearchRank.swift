@@ -40,7 +40,7 @@ struct SearchRank: Identifiable, Codable {
         // and shuffled results for the ordering of matched keywords and package results.
         return RecordedSearchResult(
             recordedDate: firstSearch?.recordedDate ?? Date.now,
-            url: firstSearch?.url ?? SPISearchParser.hostedURL!,
+            url: firstSearch?.url ?? URL(string: SPISearchParser.serverHost)!,
             resultSet: SearchResultSet(id: UUID(),
                                        results: setOfPackageResults.sorted(),
                                        matched_keywords: setOfMatchedKeywords.sorted())

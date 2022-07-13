@@ -34,25 +34,41 @@ struct SearchMetricsView: View {
                             BarMark(x: .value("metric", "NDCG"),
                                     y: .value("NDCG", metrics.ndcg))
                         }.frame(maxHeight: 50)
-                    }
-                #else
-                    LazyVGrid(
-                        columns: [
-                            GridItem(.adaptive(minimum: 90)),
-                            GridItem(.adaptive(minimum: 90)),
-                        ],
-                        alignment: .center
-                    ) {
-                        Text("precision:")
-                        Text(metrics.precision.formatted(.percent))
-                        Text("recall:")
-                        Text(metrics.recall.formatted(.percent))
-                        Text("MRR:")
-                        Text(metrics.meanReciprocalRank.formatted(.percent))
-                        Text("NDCG:")
-                        Text(metrics.ndcg.formatted(.percent))
+                    } else {
+                        LazyVGrid(
+                            columns: [
+                                GridItem(.adaptive(minimum: 90)),
+                                GridItem(.adaptive(minimum: 90)),
+                            ],
+                            alignment: .center
+                        ) {
+                            Text("precision:")
+                            Text(metrics.precision.formatted(.percent))
+                            Text("recall:")
+                            Text(metrics.recall.formatted(.percent))
+                            Text("MRR:")
+                            Text(metrics.meanReciprocalRank.formatted(.percent))
+                            Text("NDCG:")
+                            Text(metrics.ndcg.formatted(.percent))
+                        }
                     }
                 #endif
+                LazyVGrid(
+                    columns: [
+                        GridItem(.adaptive(minimum: 90)),
+                        GridItem(.adaptive(minimum: 90)),
+                    ],
+                    alignment: .center
+                ) {
+                    Text("precision:")
+                    Text(metrics.precision.formatted(.percent))
+                    Text("recall:")
+                    Text(metrics.recall.formatted(.percent))
+                    Text("MRR:")
+                    Text(metrics.meanReciprocalRank.formatted(.percent))
+                    Text("NDCG:")
+                    Text(metrics.ndcg.formatted(.percent))
+                }
             }
         }
     }

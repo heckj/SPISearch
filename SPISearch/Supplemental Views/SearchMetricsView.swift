@@ -52,7 +52,7 @@ struct SearchMetricsView: View {
                             Text(metrics.ndcg.formatted(.percent))
                         }
                     }
-                #endif
+                #else
                 LazyVGrid(
                     columns: [
                         GridItem(.adaptive(minimum: 90)),
@@ -69,6 +69,7 @@ struct SearchMetricsView: View {
                     Text("NDCG:")
                     Text(metrics.ndcg.formatted(.percent))
                 }
+                #endif
             }
         }
     }

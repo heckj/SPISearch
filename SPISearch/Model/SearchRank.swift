@@ -38,7 +38,7 @@ struct SearchRank: Identifiable, Codable {
         let setOfMatchedKeywords: Set<String> = Set(storedSearches.flatMap(\.resultSet.matched_keywords))
         // use the first search - which *should* exist in most cases, with fallbacks to an empty default
         let firstSearch = storedSearches.first
-        
+
         // This craziness is because search results won't be functionally equivalent between searches.
         // The initial example I spotted was different keywords, but the end result might happen for other
         // elements of the search in the future. So we want to group and differentiate *in this case* by

@@ -53,22 +53,22 @@ struct SearchMetricsView: View {
                         }
                     }
                 #else
-                LazyVGrid(
-                    columns: [
-                        GridItem(.adaptive(minimum: 90)),
-                        GridItem(.adaptive(minimum: 90)),
-                    ],
-                    alignment: .center
-                ) {
-                    Text("precision:")
-                    Text(metrics.precision.formatted(.percent))
-                    Text("recall:")
-                    Text(metrics.recall.formatted(.percent))
-                    Text("MRR:")
-                    Text(metrics.meanReciprocalRank.formatted(.percent))
-                    Text("NDCG:")
-                    Text(metrics.ndcg.formatted(.percent))
-                }
+                    LazyVGrid(
+                        columns: [
+                            GridItem(.adaptive(minimum: 90)),
+                            GridItem(.adaptive(minimum: 90)),
+                        ],
+                        alignment: .center
+                    ) {
+                        Text("precision:")
+                        Text(metrics.precision.formatted(.percent))
+                        Text("recall:")
+                        Text(metrics.recall.formatted(.percent))
+                        Text("MRR:")
+                        Text(metrics.meanReciprocalRank.formatted(.percent))
+                        Text("NDCG:")
+                        Text(metrics.ndcg.formatted(.percent))
+                    }
                 #endif
             }
         }

@@ -74,7 +74,7 @@ struct RankResultsView: View {
                     } header: {
                         HStack {
                             Text("Ranking has \(relevanceRecord.packages.count) of \(recordedSearch.resultSet.results.count) search entries.")
-                            if (!recordedSearch.resultSet.results.isEmpty) {
+                            if !recordedSearch.resultSet.results.isEmpty {
                                 if #available(iOS 16, macOS 12.4, *) {
                                     // progressview on iOS 15 and lower is an indeterminate progress indicator
                                     // and looks like crap, so constraining this to iOS 16+, and macOS 12+
@@ -106,7 +106,7 @@ struct RankResultsView: View {
                     } header: {
                         HStack {
                             Text("Ranking has \(relevanceRecord.keywords.count) of \(recordedSearch.resultSet.matched_keywords.count) keyword entries.")
-                            if (!recordedSearch.resultSet.matched_keywords.isEmpty) {
+                            if !recordedSearch.resultSet.matched_keywords.isEmpty {
                                 if #available(iOS 16, macOS 12.4, *) {
                                     // progressview on iOS 15 and lower is an indeterminate progress indicator
                                     // and looks like crap, so constraining this to iOS 16+, and macOS 12+

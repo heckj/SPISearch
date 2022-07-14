@@ -37,7 +37,8 @@ struct SearchMetrics {
     ///   - searchResult: The search results to process.
     ///   - ranking: The rankings used to evaluate the search results.
     init?(searchResult: RecordedSearchResult, ranking: ComputedRelevancyValues) {
-        if !ranking.isComplete(keywords: searchResult.keywords, packageIds: searchResult.packageIds) {
+        if !ranking.isComplete(keywords: searchResult.keywords, packageIDs: searchResult.packageIds) {
+            // print("Search metrics reporting incomplete, unable to create SearchMetrics")
             return nil
         }
         precision = SearchMetrics.calculatePrecision(searchResult: searchResult, ranking: ranking)

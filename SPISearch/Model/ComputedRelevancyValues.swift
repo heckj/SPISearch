@@ -10,12 +10,15 @@ struct ComputedRelevancyValues {
     var packages: [String: Double] = [:]
     var keywords: [String: Double] = [:]
 
-    func isComplete(keywords: [String], packageIds: [String]) -> Bool {
-//        print("keywords: \(self.keywords.keys.sorted()) vs \(keywords.sorted())")
-//        print("pkgIds: \(packages.keys.sorted()) vs \(packageIds.sorted())")
-//        print("keywords equal? \(self.keywords.keys.sorted() == keywords.sorted())")
-//        print("packages equal? \(packages.keys.sorted() == packageIds.sorted())")
-        self.keywords.keys.sorted() == keywords.sorted() &&
-            packages.keys.sorted() == packageIds.sorted()
+    func isComplete(keywords: [String], packageIDs: [String]) -> Bool {
+        // we don't care if they're equal, only that the keywords and packages
+        // are contained within the set that we have recorded.
+        let allKeywordsAccounted = keywords.allSatisfy { keyword_to_check in
+            self.keywords.keys.contains(keyword_to_check)
+        }
+        let allPackagesAccounted = packageIDs.allSatisfy { pkgID_to_check in
+            self.packages.keys.contains(pkgID_to_check)
+        }
+        return allKeywordsAccounted && allPackagesAccounted
     }
 }

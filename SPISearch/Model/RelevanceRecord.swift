@@ -118,9 +118,16 @@ struct RelevanceRecord: Identifiable, Hashable, Codable {
         keywords = KeywordRelevance()
     }
 
-    func isComplete(keywords: [String], packages: [String]) -> Bool {
-        self.keywords.ratings.keys.sorted() == keywords.sorted() &&
-            self.packages.ratings.keys.sorted() == packages.sorted()
+    func isComplete(keywords: [String], packageIDs: [String]) -> Bool {
+        // we don't care if they're equal, only that the keywords and packages
+        // are contained within the set that we have recorded.
+        let allKeywordsAccounted = keywords.allSatisfy { keyword_to_check in
+            self.keywords.ratings.keys.contains(keyword_to_check)
+        }
+        let allPackagesAccounted = packageIDs.allSatisfy { pkgID_to_check in
+            self.packages.ratings.keys.contains(pkgID_to_check)
+        }
+        return allKeywordsAccounted && allPackagesAccounted
     }
 
     func computedValues(threshold: Bool = false) -> ComputedRelevancyValues {

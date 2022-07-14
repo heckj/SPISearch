@@ -32,17 +32,32 @@ struct SearchRank: Identifiable, Codable {
         // pull all of the individual package results for the stores searches into a set - effectively
         // deduplicating them (and somewhat randomizing them)
         let setOfPackageResults: Set<PackageSearchResult> = Set(storedSearches.flatMap(\.resultSet.results))
+        // capture packages by ID because keywords (or other details) may be different between results
+        let setOfPackageResultIDs: Set<String> = Set(setOfPackageResults.map(\.id))
         // pull all of the matched keywords for the stores searches into a set
         let setOfMatchedKeywords: Set<String> = Set(storedSearches.flatMap(\.resultSet.matched_keywords))
         // use the first search - which *should* exist in most cases, with fallbacks to an empty default
         let firstSearch = storedSearches.first
+        
+        // This craziness is because search results won't be functionally equivalent between searches.
+        // The initial example I spotted was different keywords, but the end result might happen for other
+        // elements of the search in the future. So we want to group and differentiate *in this case* by
+        // the package Identifier. We iterate through the de-duplicated list of package identifiers
+        // and re-assemble a list of Packages to construct our "fake" set for ranking purposes by choosing
+        // the first package that matches the identifier from the set we pulled from all the stored searches.
+        var pickMergePackages: [PackageSearchResult] = []
+        for pkgId in setOfPackageResultIDs {
+            if let firstFoundPkgThatMatches = setOfPackageResults.first(where: { $0.id == pkgId }) {
+                pickMergePackages.append(firstFoundPkgThatMatches)
+            }
+        }
         // Assemble a synthetic result - keeping the URL from the first search for terms - with a new UUID
         // and shuffled results for the ordering of matched keywords and package results.
         return RecordedSearchResult(
             recordedDate: firstSearch?.recordedDate ?? Date.now,
             url: firstSearch?.url ?? URL(string: SPISearchParser.serverHost)!,
             resultSet: SearchResultSet(id: UUID(),
-                                       results: setOfPackageResults.sorted(),
+                                       results: pickMergePackages.sorted(),
                                        matched_keywords: setOfMatchedKeywords.sorted())
         )
     }

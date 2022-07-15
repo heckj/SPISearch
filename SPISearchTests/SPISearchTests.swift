@@ -9,19 +9,19 @@
 import XCTest
 final class SPISearchTests: XCTestCase {
     func testSearchURLAssemblyEmpty() throws {
-        let result = SPISearchParser.assembleQueryURI("")
+        let result = SPISearchParser.assembleQueryURI("", from: SPISearchParser.serverHost)
         XCTAssertNotNil(result)
         XCTAssertEqual(result?.query, "query=")
     }
 
     func testSearchURLAssemblyOneTerm() throws {
-        let result = SPISearchParser.assembleQueryURI("ping")
+        let result = SPISearchParser.assembleQueryURI("ping", from: SPISearchParser.serverHost)
         XCTAssertNotNil(result)
         XCTAssertEqual(result?.query, "query=ping")
     }
 
     func testSearchURLAssemblyMultiTerm() throws {
-        let result = SPISearchParser.assembleQueryURI("ui bezier")
+        let result = SPISearchParser.assembleQueryURI("ui bezier", from: SPISearchParser.serverHost)
         XCTAssertNotNil(result)
         XCTAssertEqual(result?.query, "query=ui%20bezier")
     }

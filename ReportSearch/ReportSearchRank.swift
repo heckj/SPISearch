@@ -14,6 +14,7 @@ struct ReportSearchRank: ParsableCommand {
     var requestedFiles: [String]
 
     mutating func run() throws {
+        let myDoubleFormat: FloatingPointFormatStyle<Double> = .number.precision(.integerAndFractionLength(integer: 1, fraction: 3))
         let info = ProcessInfo.processInfo
         // print("env [PWD] : \(String(describing: info.environment["PWD"]))")
         // print("arguments to app \(info.arguments)")
@@ -34,10 +35,10 @@ struct ReportSearchRank: ParsableCommand {
                                                            ranking: medianRanking)
                             {
                                 print(" - \(searchStringRep)")
-                                print("   -            Precision: \(metrics.precision.formatted(.number.precision(.integerAndFractionLength(integer: 1, fraction: 3))))")
-                                print("   -               Recall: \(metrics.recall.formatted(.number.precision(.integerAndFractionLength(integer: 1, fraction: 3))))")
-                                print("   - Mean Reciprocal Rank: \(metrics.meanReciprocalRank.formatted(.number.precision(.integerAndFractionLength(integer: 1, fraction: 3))))")
-                                print("   - NDCG: \(metrics.ndcg.formatted(.number.precision(.integerAndFractionLength(integer: 1, fraction: 3))))")
+                                print("   -            Precision: \(metrics.precision.formatted(myDoubleFormat))")
+                                print("   -               Recall: \(metrics.recall.formatted(myDoubleFormat))")
+                                print("   - Mean Reciprocal Rank: \(metrics.meanReciprocalRank.formatted(myDoubleFormat))")
+                                print("   - NDCG: \(metrics.ndcg.formatted(myDoubleFormat))")
                             } else {
                                 print(" - \(searchStringRep)\n  ranking is incomplete, metrics are unavailable.")
                             }

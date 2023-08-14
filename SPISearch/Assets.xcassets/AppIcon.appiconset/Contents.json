@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "logo_1024.png",
+      "filename" : "logo_1024_solid.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -57,7 +57,7 @@
       "size" : "512x512"
     },
     {
-      "filename" : "logo_1024 1.png",
+      "filename" : "logo_1024_solid.png",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "512x512"

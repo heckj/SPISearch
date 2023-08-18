@@ -13,7 +13,7 @@ final class SPISearchParserTest: XCTestCase {
 
     override func setUpWithError() throws {
         let testBundle = Bundle(for: type(of: self))
-        if let resourceURL = testBundle.url(forResource: "bezier_query_8jul22", withExtension: "txt") {
+        if let resourceURL = testBundle.url(forResource: "bezier_query_18aug2023", withExtension: "txt") {
             htmlSample = try String(contentsOf: resourceURL, encoding: .utf8)
         }
     }
@@ -34,6 +34,8 @@ final class SPISearchParserTest: XCTestCase {
         XCTAssertEqual(searchResultSet.matched_keywords.sorted(),
                        ["bezier", "bezier-animation", "bezier-curve", "bezier-path", "uibezierpath"])
         XCTAssertEqual(searchResultSet.results.count, 6)
-        XCTAssertEqual(searchResultSet.results[0].id, "pocketsvg/PocketSVG")
+        if (searchResultSet.results.count > 1) {
+            XCTAssertEqual(searchResultSet.results[0].id, "pocketsvg/PocketSVG")
+        }
     }
 }

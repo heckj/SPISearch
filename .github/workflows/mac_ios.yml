@@ -17,7 +17,7 @@ jobs:
     #  matrix:
     #    run-config:
     #      - { scheme: 'SPISearch', destination: 'platform=macOS' }
-    #      - { scheme: 'SPISearch', destination: 'platform=iOS Simulator,OS=15.2,name=iPhone 8' }
+    #      - { scheme: 'SPISearch', destination: 'platform=iOS Simulator,OS=15.5,name=iPhone 8' }
 
     steps:
       - name: Checkout
@@ -25,17 +25,17 @@ jobs:
 
       - name: Select Xcode 13.4.1
         run: sudo xcode-select -s /Applications/Xcode_13.4.1.app
-      
+
       #env:
       #  DEVELOPER_DIR: /Applications/Xcode_13.4.1.app/Contents/Developer
-      #- name: Show what's in Applications
-      #  run: ls -al /Applications
+      - name: Show what's in Applications
+        run: ls -al /Applications
 
       - name: Show Build Version
         run: xcodebuild -version
 
-      #- name: Show Build Settings
-      #  run: xcodebuild -showBuildSettings
+      - name: Show Build Settings
+        run: xcodebuild -showBuildSettings
 
       - name: Show Build SDK
         run: xcodebuild -showsdks
@@ -53,7 +53,7 @@ jobs:
 
       - name: macOS build for SPISearch
         run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx12.3 -showBuildTimingSummary
-        
+
       - name: macOS build for testing SPISearch
         run: xcodebuild build-for-testing -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx12.3 -showBuildTimingSummary
 
@@ -68,4 +68,4 @@ jobs:
 
 #export DEVELOPER_DIR=/Applications/Xcode.app
 #xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=15.5,name=iPhone 8' -sdk iphonesimulator15.5
-#xcodebuild clean build -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx12.3 
+#xcodebuild clean build -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx13.3

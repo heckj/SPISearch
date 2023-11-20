@@ -1,5 +1,5 @@
 //
-//  SearchResult.swift
+//  PackageSearchResultView.swift
 //  SPISearch
 //
 //  Created by Joseph Heck on 7/3/22.

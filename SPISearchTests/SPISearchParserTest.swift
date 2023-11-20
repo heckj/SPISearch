@@ -34,7 +34,7 @@ final class SPISearchParserTest: XCTestCase {
         XCTAssertEqual(searchResultSet.matched_keywords.sorted(),
                        ["bezier", "bezier-animation", "bezier-curve", "bezier-path", "uibezierpath"])
         XCTAssertEqual(searchResultSet.results.count, 6)
-        if (searchResultSet.results.count > 1) {
+        if searchResultSet.results.count > 1 {
             XCTAssertEqual(searchResultSet.results[0].id, "pocketsvg/PocketSVG")
         }
     }

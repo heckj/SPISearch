@@ -1,5 +1,5 @@
 //
-//  main.swift
+//  ReportSearchRank.swift
 //  ReportSearch
 //
 //  Created by Joseph Heck on 7/11/22.
@@ -24,7 +24,7 @@ struct ReportSearchRank: ParsableCommand {
                     // print("current directory: \(URL(fileURLWithPath: pwd))")
                     let fileURL = URL(fileURLWithPath: report, relativeTo: URL(fileURLWithPath: pwd))
                     // print("fileURL constructed: \(fileURL)")
-                    let searchRanking = try JSONDecoder().decode(SearchRank.self, from: try Data(contentsOf: fileURL))
+                    let searchRanking = try JSONDecoder().decode(SearchRank.self, from: Data(contentsOf: fileURL))
 
                     if let medianRanking = searchRanking.medianRelevancyRanking {
                         for storedSearch in searchRanking.storedSearches {

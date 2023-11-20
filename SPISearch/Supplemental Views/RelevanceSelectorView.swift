@@ -1,5 +1,5 @@
 //
-//  RelevanceReview.swift
+//  RelevanceSelectorView.swift
 //  SPISearch
 //
 //  Created by Joseph Heck on 7/3/22.

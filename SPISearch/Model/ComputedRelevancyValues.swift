@@ -17,7 +17,7 @@ struct ComputedRelevancyValues {
             self.keywords.keys.contains(keyword_to_check)
         }
         let allPackagesAccounted = packageIDs.allSatisfy { pkgID_to_check in
-            self.packages.keys.contains(pkgID_to_check)
+            packages.keys.contains(pkgID_to_check)
         }
         return allKeywordsAccounted && allPackagesAccounted
     }

@@ -1,5 +1,5 @@
 //
-//  SearchResultsView.swift
+//  RecordedSearchResultView.swift
 //  SPISearch
 //
 //  Created by Joseph Heck on 7/3/22.

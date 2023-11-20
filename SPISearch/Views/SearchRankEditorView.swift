@@ -1,5 +1,5 @@
 //
-//  SearchRankView.swift
+//  SearchRankEditorView.swift
 //  SPISearch
 //
 //  Created by Joseph Heck on 7/4/22.

@@ -1,5 +1,5 @@
 //
-//  SearchRanking.swift
+//  SearchRank.swift
 //  SPISearch
 //
 //  Created by Joseph Heck on 7/4/22.
@@ -159,7 +159,7 @@ struct SearchRank: Identifiable, Codable {
 
     init(id: UUID = UUID(), _ result: RecordedSearchResult? = nil) {
         self.id = id
-        if let result = result {
+        if let result {
             storedSearches.append(result)
         }
     }

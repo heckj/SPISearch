@@ -1,5 +1,5 @@
 //
-//  RankingSearchResultsView.swift
+//  RankResultsView.swift
 //  SPISearch
 //
 //  Created by Joseph Heck on 7/4/22.

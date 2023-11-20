@@ -43,7 +43,7 @@ struct SearchingView: View {
             }
             .padding()
 
-            if let searchResults = searchResults {
+            if let searchResults {
                 Button(action: { print("doing something about saving this...") }, label: {
                     Text("Export")
                 })

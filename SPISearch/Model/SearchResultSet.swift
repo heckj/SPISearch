@@ -36,14 +36,14 @@ struct Package: Codable, Identifiable, Hashable, Comparable {
 
     // Identifiable conformance
     var id: String {
-        self.url
+        url
     }
-    
+
     // Comparable conformance (for stable sort results)
     static func < (lhs: Package, rhs: Package) -> Bool {
         lhs.id < rhs.id
     }
-    
+
     enum CodingKeys: String, CodingKey {
         case name
         case description
@@ -59,14 +59,14 @@ struct Package: Codable, Identifiable, Hashable, Comparable {
     init(from package: SwiftPackageIndexAPI.Package, note: String? = nil) {
         let hasPlatformCompatibility = (package.platformCompatibility ?? []).count > 0
 
-        self.name = package.title
-        self.description = package.summary ?? ""
-        self.owner = package.repositoryOwnerName ?? package.repositoryOwner
-        self.swiftCompatibility = (package.swiftVersionCompatibility ?? []).sorted().first.map { "\($0.major).\($0.minor)+" }
-        self.platformCompatibility = if hasPlatformCompatibility { package.groupedPlatformCompatibility.map(\.rawValue) } else { nil }
-        self.platformCompatibilityTooltip = if hasPlatformCompatibility { package.platformCompatibilityTooltip } else { nil }
-        self.license = package.license.shortName
-        self.url = "https://swiftpackageindex.com/\(package.repositoryOwner)/\(package.repositoryName)"
+        name = package.title
+        description = package.summary ?? ""
+        owner = package.repositoryOwnerName ?? package.repositoryOwner
+        swiftCompatibility = (package.swiftVersionCompatibility ?? []).sorted().first.map { "\($0.major).\($0.minor)+" }
+        platformCompatibility = if hasPlatformCompatibility { package.groupedPlatformCompatibility.map(\.rawValue) } else { nil }
+        platformCompatibilityTooltip = if hasPlatformCompatibility { package.platformCompatibilityTooltip } else { nil }
+        license = package.license.shortName
+        url = "https://swiftpackageindex.com/\(package.repositoryOwner)/\(package.repositoryName)"
         self.note = note
     }
 }
@@ -133,15 +133,15 @@ struct RecordedSearchResult: Identifiable, Hashable, Codable {
     init(recordedDate: Date, url: URL, resultSet: SearchResultSet) {
         self.recordedDate = recordedDate
         self.url = url.absoluteString
-        self.searchTerms = URLComponents(string: url.absoluteString)?.queryItems?.first(where: { $0.name == "query" })?.value ?? ""
-        self.host = URLComponents(string: url.absoluteString)?.host ?? ""
+        searchTerms = URLComponents(string: url.absoluteString)?.queryItems?.first(where: { $0.name == "query" })?.value ?? ""
+        host = URLComponents(string: url.absoluteString)?.host ?? ""
         self.resultSet = resultSet
     }
 
     init(recordedDate: Date, searchterms: String, host: String, url: String, resultSet: SearchResultSet) {
         self.recordedDate = recordedDate
         self.url = url
-        self.searchTerms = searchterms
+        searchTerms = searchterms
         self.host = host
         self.resultSet = resultSet
     }

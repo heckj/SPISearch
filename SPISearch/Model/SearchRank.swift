@@ -53,13 +53,24 @@ struct SearchRank: Identifiable, Codable {
         }
         // Assemble a synthetic result - keeping the URL from the first search for terms - with a new UUID
         // and shuffled results for the ordering of matched keywords and package results.
-        return RecordedSearchResult(
-            recordedDate: firstSearch?.recordedDate ?? Date.now,
-            url: firstSearch?.url ?? URL(string: SPISearchParser.serverHost)!,
-            resultSet: SearchResultSet(id: UUID(),
-                                       results: pickMergePackages.sorted(),
-                                       matched_keywords: setOfMatchedKeywords.sorted())
-        )
+        if let firstSearch {
+            return RecordedSearchResult(
+                recordedDate: firstSearch.recordedDate,
+                url: URL(string: firstSearch.url)!,
+                resultSet: SearchResultSet(id: UUID(),
+                                           results: pickMergePackages.sorted(),
+                                           matched_keywords: setOfMatchedKeywords.sorted())
+            )
+        } else {
+            return RecordedSearchResult(
+                recordedDate: Date.now,
+                url: URL(string: SPISearchParser.serverHost)!,
+                resultSet: SearchResultSet(id: UUID(),
+                                           results: pickMergePackages.sorted(),
+                                           matched_keywords: setOfMatchedKeywords.sorted())
+            )
+
+        }
     }
 
     mutating func addRelevanceSet(for reviewer: String) {

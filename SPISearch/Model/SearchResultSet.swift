@@ -5,6 +5,7 @@
 //  Created by Joseph Heck on 7/4/22.
 //
 import Foundation
+import PackageListTool // for SwiftPackageIndexAPI
 
 /// An individual search result that represents a package found from Swift Package Index.
 struct PackageSearchResult: Identifiable, Hashable, Codable, Comparable {
@@ -20,6 +21,54 @@ struct PackageSearchResult: Identifiable, Hashable, Codable, Comparable {
     var summary: String = ""
     /// The list of keywords that were provided with the search result.
     var keywords: [String] = []
+}
+
+struct Package: Codable, Identifiable, Hashable, Comparable {
+    var name: String
+    var description: String
+    var owner: String
+    var swiftCompatibility: String?
+    var platformCompatibility: [String]?
+    var platformCompatibilityTooltip: String?
+    var license: String
+    var url: String
+    var note: String? = nil
+
+    // Identifiable conformance
+    var id: String {
+        self.url
+    }
+    
+    // Comparable conformance (for stable sort results)
+    static func < (lhs: Package, rhs: Package) -> Bool {
+        lhs.id < rhs.id
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case name
+        case description
+        case owner
+        case swiftCompatibility = "swift_compatibility"
+        case platformCompatibility = "platform_compatibility"
+        case platformCompatibilityTooltip = "platform_compatibility_tooltip"
+        case license
+        case url
+        case note
+    }
+
+    init(from package: SwiftPackageIndexAPI.Package, note: String? = nil) {
+        let hasPlatformCompatibility = (package.platformCompatibility ?? []).count > 0
+
+        self.name = package.title
+        self.description = package.summary ?? ""
+        self.owner = package.repositoryOwnerName ?? package.repositoryOwner
+        self.swiftCompatibility = (package.swiftVersionCompatibility ?? []).sorted().first.map { "\($0.major).\($0.minor)+" }
+        self.platformCompatibility = if hasPlatformCompatibility { package.groupedPlatformCompatibility.map(\.rawValue) } else { nil }
+        self.platformCompatibilityTooltip = if hasPlatformCompatibility { package.platformCompatibilityTooltip } else { nil }
+        self.license = package.license.shortName
+        self.url = "https://swiftpackageindex.com/\(package.repositoryOwner)/\(package.repositoryName)"
+        self.note = note
+    }
 }
 
 /// A collection of search results and the keywords matched for a search.
@@ -61,19 +110,15 @@ struct RecordedSearchResult: Identifiable, Hashable, Codable {
     /// The URL providing the search results.
     ///
     /// In practice, this should be either the hosted version or `localhost` to compare a development version.
-    var url: URL
+    var url: String
     /// The set of stored search results.
     var resultSet: SearchResultSet
 
     /// The hostname from the recorded ``url``.
-    var host: String {
-        URLComponents(string: url.absoluteString)?.host ?? ""
-    }
+    var host: String
 
     /// The search term or terms from the recorded ``url``.
-    var searchTerms: String {
-        URLComponents(string: url.absoluteString)?.queryItems?.first(where: { $0.name == "query" })?.value ?? ""
-    }
+    var searchTerms: String
 
     /// The matched keywords found in the recorded search result
     var keywords: [String] {
@@ -87,7 +132,17 @@ struct RecordedSearchResult: Identifiable, Hashable, Codable {
 
     init(recordedDate: Date, url: URL, resultSet: SearchResultSet) {
         self.recordedDate = recordedDate
+        self.url = url.absoluteString
+        self.searchTerms = URLComponents(string: url.absoluteString)?.queryItems?.first(where: { $0.name == "query" })?.value ?? ""
+        self.host = URLComponents(string: url.absoluteString)?.host ?? ""
+        self.resultSet = resultSet
+    }
+
+    init(recordedDate: Date, searchterms: String, host: String, url: String, resultSet: SearchResultSet) {
+        self.recordedDate = recordedDate
         self.url = url
+        self.searchTerms = searchterms
+        self.host = host
         self.resultSet = resultSet
     }
 

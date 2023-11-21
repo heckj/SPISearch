@@ -32,9 +32,22 @@ enum APISearchParser {
                 let package = try await apiEndpoint.fetchPackage(packageId: packageId)
                 resultSet.append(PackageSearchResult(id: package.url, name: package.title, summary: package.summary ?? "", keywords: []))
             }
-            return RecordedSearchResult(recordedDate: Date.now, url: <#T##URL#>, resultSet: SearchResultSet(results: resultSet, matched_keywords: [], errorMessage: ""))
+            return RecordedSearchResult(recordedDate: Date.now, 
+                                        searchterms: terms,
+                                        host: from.rawValue,
+                                        url: from.rawValue,
+                                        resultSet: SearchResultSet(
+                                            id: UUID(), results: resultSet,
+                                            matched_keywords: [],
+                                            errorMessage: ""))
+                                            
         } catch {
-            return RecordedSearchResult(recordedDate: Date.now, url: <#T##URL#>, resultSet: SearchResultSet())
+            return RecordedSearchResult(recordedDate: Date.now, searchterms: terms, host: from.rawValue, url: from.rawValue, resultSet:
+                SearchResultSet(
+                    id: UUID(), results: [],
+                    matched_keywords: [],
+                    errorMessage: "\(error)")
+            )
         }
     }
 }

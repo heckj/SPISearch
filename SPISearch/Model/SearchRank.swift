@@ -69,7 +69,6 @@ struct SearchRank: Identifiable, Codable {
                                            results: pickMergePackages.sorted(),
                                            matched_keywords: setOfMatchedKeywords.sorted())
             )
-
         }
     }
 

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1A032CFE287A24F9007DA587 /* SearchMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A032CFD287A24F9007DA587 /* SearchMetricsView.swift */; };
 		1A13C4C92B0BE3B1007D20AD /* SPISearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13C4C82B0BE3B1007D20AD /* SPISearchAPI.swift */; };
-		1A13C4CC2B0BE53E007D20AD /* package-list-tool in Frameworks */ = {isa = PBXBuildFile; productRef = 1A13C4CB2B0BE53E007D20AD /* package-list-tool */; };
 		1A1650442870F98F00AC4DB2 /* SPISearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1650432870F98F00AC4DB2 /* SPISearchApp.swift */; };
 		1A1650482870F99000AC4DB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A1650472870F99000AC4DB2 /* Assets.xcassets */; };
 		1A16504C2870F99000AC4DB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */; };
@@ -30,6 +29,7 @@
 		1A45D916287634650077EC9E /* SearchMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D915287634650077EC9E /* SearchMetricsTests.swift */; };
 		1A562F6E2878C681006B29A8 /* ComputedRelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */; };
 		1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */; };
+		1A6423F22B0D7D35008AA7AF /* package-list-tool in Frameworks */ = {isa = PBXBuildFile; productRef = 1A6423F12B0D7D35008AA7AF /* package-list-tool */; };
 		1A6A29C828762B6D0096F600 /* SearchMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A29C728762B6C0096F600 /* SearchMetrics.swift */; };
 		1A7850012873380B00AFB33F /* SearchRankDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7850002873380B00AFB33F /* SearchRankDocument.swift */; };
 		1A78500328733B5500AFB33F /* SearchRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500228733B5500AFB33F /* SearchRank.swift */; };
@@ -47,7 +47,6 @@
 		1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */; };
 		1ACF8740287C9D9B00D72B9C /* ConfigureReviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACF873F287C9D9B00D72B9C /* ConfigureReviewer.swift */; };
 		1AD3E3432878BA120049E655 /* MedianRelevancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3E3422878BA120049E655 /* MedianRelevancyTests.swift */; };
-		1ADE39332B0D7693005E1CB5 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1ADE39322B0D7693005E1CB5 /* KeychainAccess */; };
 		1AE2268328725560008C4ED1 /* SearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2268228725560008C4ED1 /* SearchingView.swift */; };
 		1AEADD522877916900023487 /* SettingsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEADD512877916900023487 /* SettingsFormView.swift */; };
 		1AEB000328760E3E009055BE /* SearchRankDocumentOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */; };
@@ -125,8 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1ADE39332B0D7693005E1CB5 /* KeychainAccess in Frameworks */,
-				1A13C4CC2B0BE53E007D20AD /* package-list-tool in Frameworks */,
+				1A6423F22B0D7D35008AA7AF /* package-list-tool in Frameworks */,
 				1AEDE79C287BA55A009B1CA4 /* ArgumentParser in Frameworks */,
 				1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */,
 			);
@@ -288,8 +286,7 @@
 			packageProductDependencies = (
 				1A1650532870F9B700AC4DB2 /* SwiftSoup */,
 				1AEDE79B287BA55A009B1CA4 /* ArgumentParser */,
-				1A13C4CB2B0BE53E007D20AD /* package-list-tool */,
-				1ADE39322B0D7693005E1CB5 /* KeychainAccess */,
+				1A6423F12B0D7D35008AA7AF /* package-list-tool */,
 			);
 			productName = SPISearch;
 			productReference = 1A1650402870F98F00AC4DB2 /* SPISearch.app */;
@@ -342,7 +339,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					1A16503F2870F98F00AC4DB2 = {
 						CreatedOnToolsVersion = 14.0;
@@ -369,7 +366,6 @@
 				1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
 				1A13C4CA2B0BE53E007D20AD /* XCLocalSwiftPackageReference "../PackageListTool" */,
-				1ADE39312B0D7693005E1CB5 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 1A1650412870F98F00AC4DB2 /* Products */;
 			projectDirPath = "";
@@ -476,6 +472,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -538,6 +535,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -808,14 +806,6 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		1ADE39312B0D7693005E1CB5 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 		1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
@@ -827,10 +817,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1A13C4CB2B0BE53E007D20AD /* package-list-tool */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = "package-list-tool";
-		};
 		1A1650532870F9B700AC4DB2 /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
@@ -846,10 +832,10 @@
 			package = 1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
 		};
-		1ADE39322B0D7693005E1CB5 /* KeychainAccess */ = {
+		1A6423F12B0D7D35008AA7AF /* package-list-tool */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1ADE39312B0D7693005E1CB5 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
+			package = 1A13C4CA2B0BE53E007D20AD /* XCLocalSwiftPackageReference "../PackageListTool" */;
+			productName = "package-list-tool";
 		};
 		1AEDE79B287BA55A009B1CA4 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;

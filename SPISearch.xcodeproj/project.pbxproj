@@ -48,6 +48,7 @@
 		1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */; };
 		1ACF8740287C9D9B00D72B9C /* ConfigureReviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACF873F287C9D9B00D72B9C /* ConfigureReviewer.swift */; };
 		1AD3E3432878BA120049E655 /* MedianRelevancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3E3422878BA120049E655 /* MedianRelevancyTests.swift */; };
+		1AD6D6C02B0EDFBE00A4A61A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */; };
 		1AE2268328725560008C4ED1 /* SearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2268228725560008C4ED1 /* SearchingView.swift */; };
 		1AEADD522877916900023487 /* SettingsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEADD512877916900023487 /* SettingsFormView.swift */; };
 		1AEB000328760E3E009055BE /* SearchRankDocumentOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */; };
@@ -125,6 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AD6D6C02B0EDFBE00A4A61A /* KeychainAccess in Frameworks */,
 				1A51B1912B0EDD4A0022E48E /* PackageListTool in Frameworks */,
 				1AEDE79C287BA55A009B1CA4 /* ArgumentParser in Frameworks */,
 				1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */,
@@ -289,6 +291,7 @@
 				1A1650532870F9B700AC4DB2 /* SwiftSoup */,
 				1AEDE79B287BA55A009B1CA4 /* ArgumentParser */,
 				1A51B1902B0EDD4A0022E48E /* PackageListTool */,
+				1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */,
 			);
 			productName = SPISearch;
 			productReference = 1A1650402870F98F00AC4DB2 /* SPISearch.app */;
@@ -369,6 +372,7 @@
 				1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
 				1A13C4CA2B0BE53E007D20AD /* XCLocalSwiftPackageReference "../PackageListTool" */,
+				1AD6D6BE2B0EDFBE00A4A61A /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = 1A1650412870F98F00AC4DB2 /* Products */;
 			projectDirPath = "";
@@ -809,6 +813,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		1AD6D6BE2B0EDFBE00A4A61A /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
@@ -844,6 +856,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1A13C4CA2B0BE53E007D20AD /* XCLocalSwiftPackageReference "../PackageListTool" */;
 			productName = PackageListTool;
+		};
+		1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1AD6D6BE2B0EDFBE00A4A61A /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 		1AEDE79B287BA55A009B1CA4 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;

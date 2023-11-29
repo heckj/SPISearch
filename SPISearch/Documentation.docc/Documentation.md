@@ -12,6 +12,7 @@ A utility application to capture, review, compare, and rank search results from 
 
 - ``SPISearch/SPISearchApp``
 - ``SPISearch/SearchRankDocument``
+- <doc:MeasuringSearchRelevance>
 
 ### Data Model
 

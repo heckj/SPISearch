@@ -13,7 +13,7 @@ struct RelevanceSelectorView: View {
         VStack {
             HStack {
                 Picker("rank", selection: $relevance) {
-                    Image(systemName: "hand.thumbsdown").tag(Relevance.no)
+                    Image(systemName: "hand.thumbsdown").tag(Relevance.not)
                     Image(systemName: "minus.diamond").tag(Relevance.partial)
                     Image(systemName: "hand.thumbsup").tag(Relevance.relevant)
                 }

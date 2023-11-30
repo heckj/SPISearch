@@ -14,25 +14,25 @@ final class MedianRelevancyTests: XCTestCase {
         var record1 = RelevanceRecord("testcode")
         record1.keywords["first"] = .relevant
         record1.keywords["second"] = .partial
-        record1.keywords["third"] = .no
+        record1.keywords["third"] = .not
         record1.keywords["fourth"] = .unknown
 
         record1.packages["packageA"] = .unknown
         record1.packages["packageB"] = .relevant
         record1.packages["packageC"] = .partial
-        record1.packages["packageD"] = .no
+        record1.packages["packageD"] = .not
         record1.packages["packageE"] = .unknown
 
         var record2 = RelevanceRecord("testcode")
         record2.keywords["first"] = .unknown
         record2.keywords["second"] = .relevant
         record2.keywords["third"] = .partial
-        record2.keywords["fourth"] = .no
+        record2.keywords["fourth"] = .not
 
         record1.packages["packageA"] = .unknown
         record1.packages["packageB"] = .relevant
         record1.packages["packageC"] = .partial
-        record1.packages["packageD"] = .no
+        record1.packages["packageD"] = .not
         record1.packages["packageE"] = .relevant
 
         rank.relevanceSets.append(record1)

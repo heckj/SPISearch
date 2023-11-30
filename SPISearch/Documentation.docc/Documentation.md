@@ -8,11 +8,16 @@ A utility application to capture, review, compare, and rank search results from 
 
 ## Topics
 
+### About the SPISearch App
+
+- <doc:AppUseCases>
+- <doc:MeasuringSearchRelevance>
+
 ### App and Document Model
 
+- <doc:AppDataStructures>
 - ``SPISearch/SPISearchApp``
 - ``SPISearch/SearchRankDocument``
-- <doc:MeasuringSearchRelevance>
 
 ### Data Model
 

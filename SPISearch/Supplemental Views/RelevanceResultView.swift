@@ -19,7 +19,7 @@ struct RelevanceResultView: View {
                 Image(systemName: "hand.thumbsup")
             case .partial:
                 Image(systemName: "minus.diamond")
-            case .no:
+            case .not:
                 Image(systemName: "hand.thumbsdown")
             }
             if withLabel {
@@ -30,7 +30,7 @@ struct RelevanceResultView: View {
                     Text("relevant")
                 case .partial:
                     Text("partially relevant")
-                case .no:
+                case .not:
                     Text("not relevant")
                 }
             }

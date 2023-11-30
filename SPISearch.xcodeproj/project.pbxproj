@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,8 +27,6 @@
 		1A372CA1287C63E30020CFAC /* SPISearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */; };
 		1A372CA3287C63F70020CFAC /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 1A372CA2287C63F70020CFAC /* SwiftSoup */; };
 		1A45D916287634650077EC9E /* SearchMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D915287634650077EC9E /* SearchMetricsTests.swift */; };
-		1A51B1912B0EDD4A0022E48E /* PackageListTool in Frameworks */ = {isa = PBXBuildFile; productRef = 1A51B1902B0EDD4A0022E48E /* PackageListTool */; };
-		1A51B1932B0EDD870022E48E /* PackageListTool in Frameworks */ = {isa = PBXBuildFile; productRef = 1A51B1922B0EDD870022E48E /* PackageListTool */; };
 		1A562F6E2878C681006B29A8 /* ComputedRelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */; };
 		1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */; };
 		1A6A29C828762B6D0096F600 /* SearchMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A29C728762B6C0096F600 /* SearchMetrics.swift */; };
@@ -48,6 +46,7 @@
 		1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */; };
 		1ACF8740287C9D9B00D72B9C /* ConfigureReviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACF873F287C9D9B00D72B9C /* ConfigureReviewer.swift */; };
 		1AD3E3432878BA120049E655 /* MedianRelevancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3E3422878BA120049E655 /* MedianRelevancyTests.swift */; };
+		1AD47A122B195151006D8DB7 /* PackageListTool in Frameworks */ = {isa = PBXBuildFile; productRef = 1AD47A112B195151006D8DB7 /* PackageListTool */; };
 		1AD6D6C02B0EDFBE00A4A61A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */; };
 		1AE2268328725560008C4ED1 /* SearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2268228725560008C4ED1 /* SearchingView.swift */; };
 		1AEADD522877916900023487 /* SettingsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEADD512877916900023487 /* SettingsFormView.swift */; };
@@ -127,7 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AD6D6C02B0EDFBE00A4A61A /* KeychainAccess in Frameworks */,
-				1A51B1912B0EDD4A0022E48E /* PackageListTool in Frameworks */,
+				1AD47A122B195151006D8DB7 /* PackageListTool in Frameworks */,
 				1AEDE79C287BA55A009B1CA4 /* ArgumentParser in Frameworks */,
 				1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */,
 			);
@@ -138,7 +137,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A372C9A287C62070020CFAC /* ArgumentParser in Frameworks */,
-				1A51B1932B0EDD870022E48E /* PackageListTool in Frameworks */,
 				1A372CA3287C63F70020CFAC /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,8 +288,8 @@
 			packageProductDependencies = (
 				1A1650532870F9B700AC4DB2 /* SwiftSoup */,
 				1AEDE79B287BA55A009B1CA4 /* ArgumentParser */,
-				1A51B1902B0EDD4A0022E48E /* PackageListTool */,
 				1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */,
+				1AD47A112B195151006D8DB7 /* PackageListTool */,
 			);
 			productName = SPISearch;
 			productReference = 1A1650402870F98F00AC4DB2 /* SPISearch.app */;
@@ -313,7 +311,6 @@
 			packageProductDependencies = (
 				1A372C99287C62070020CFAC /* ArgumentParser */,
 				1A372CA2287C63F70020CFAC /* SwiftSoup */,
-				1A51B1922B0EDD870022E48E /* PackageListTool */,
 			);
 			productName = ReportSearch;
 			productReference = 1A372C91287C61A30020CFAC /* ReportSearch */;
@@ -371,8 +368,8 @@
 			packageReferences = (
 				1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
-				1A13C4CA2B0BE53E007D20AD /* XCLocalSwiftPackageReference "../PackageListTool" */,
 				1AD6D6BE2B0EDFBE00A4A61A /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				1AD47A102B195151006D8DB7 /* XCRemoteSwiftPackageReference "PackageListTool" */,
 			);
 			productRefGroup = 1A1650412870F98F00AC4DB2 /* Products */;
 			projectDirPath = "";
@@ -797,13 +794,6 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCLocalSwiftPackageReference section */
-		1A13C4CA2B0BE53E007D20AD /* XCLocalSwiftPackageReference "../PackageListTool" */ = {
-			isa = XCLocalSwiftPackageReference;
-			relativePath = ../PackageListTool;
-		};
-/* End XCLocalSwiftPackageReference section */
-
 /* Begin XCRemoteSwiftPackageReference section */
 		1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -811,6 +801,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
+			};
+		};
+		1AD47A102B195151006D8DB7 /* XCRemoteSwiftPackageReference "PackageListTool" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftPackageIndex/PackageListTool";
+			requirement = {
+				branch = main;
+				kind = branch;
 			};
 		};
 		1AD6D6BE2B0EDFBE00A4A61A /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
@@ -847,14 +845,9 @@
 			package = 1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
 		};
-		1A51B1902B0EDD4A0022E48E /* PackageListTool */ = {
+		1AD47A112B195151006D8DB7 /* PackageListTool */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 1A13C4CA2B0BE53E007D20AD /* XCLocalSwiftPackageReference "../PackageListTool" */;
-			productName = PackageListTool;
-		};
-		1A51B1922B0EDD870022E48E /* PackageListTool */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A13C4CA2B0BE53E007D20AD /* XCLocalSwiftPackageReference "../PackageListTool" */;
+			package = 1AD47A102B195151006D8DB7 /* XCRemoteSwiftPackageReference "PackageListTool" */;
 			productName = PackageListTool;
 		};
 		1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */ = {

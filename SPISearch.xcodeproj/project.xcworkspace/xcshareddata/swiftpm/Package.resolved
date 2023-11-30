@@ -28,6 +28,15 @@
       }
     },
     {
+      "identity" : "packagelisttool",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftPackageIndex/PackageListTool",
+      "state" : {
+        "branch" : "main",
+        "revision" : "567454407bbc10fe489d9f5084663a69f53252d1"
+      }
+    },
+    {
       "identity" : "prettier",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/simonbs/Prettier",

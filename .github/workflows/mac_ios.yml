@@ -23,13 +23,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Select Xcode 13.4.1
-        run: sudo xcode-select -s /Applications/Xcode_13.4.1.app
-
+      #- name: Select Xcode 13.4.1
+      #  run: sudo xcode-select -s /Applications/Xcode_13.4.1.app
       #env:
       #  DEVELOPER_DIR: /Applications/Xcode_13.4.1.app/Contents/Developer
-      - name: Show what's in Applications
-        run: ls -al /Applications
+
+      #- name: Show what's in Applications
+      #  run: ls -al /Applications
 
       - name: Show Build Version
         run: xcodebuild -version
@@ -39,6 +39,10 @@ jobs:
 
       - name: Show Build SDK
         run: xcodebuild -showsdks
+
+      - name: Show Build SDK
+        run: xcodebuild -showdestinations -scheme 'SPISearch'
+
       # iOS 15.2, macOS 12.1 on macOS-latest (11)
       # iOS 15.5, macOS 12.3 on macOS-12 w/ Xcode 13.4.1
 

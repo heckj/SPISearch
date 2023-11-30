@@ -29,7 +29,7 @@ struct RankResultsView: View {
         switch relevance {
         case .unknown:
             return .yellow.opacity(0.5)
-        case .no:
+        case .not:
             return .gray.opacity(0.1)
         case .partial:
             return .green.opacity(0.2)

@@ -9,9 +9,10 @@ import Foundation
 /// A type that indicates the perceived relevance of a search result.
 enum Relevance: Int, CaseIterable, Identifiable, Codable {
     case unknown = -1
-    case no = 0
+    case not = 0
     case partial = 1
     case relevant = 2
+
     var id: Self { self }
 
     func relevanceValue(binary: Bool = false) -> Double {
@@ -21,7 +22,7 @@ enum Relevance: Int, CaseIterable, Identifiable, Codable {
             graduatedValue = 1
         case .partial:
             graduatedValue = 0.5
-        case .no, .unknown:
+        case .not, .unknown:
             graduatedValue = 0
         }
         if binary {

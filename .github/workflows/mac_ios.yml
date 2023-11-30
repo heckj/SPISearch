@@ -50,7 +50,7 @@ jobs:
       #  run: xcodebuild clean test -scheme 'SPISearch'
 
       - name: iOS build
-        run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=16.2,name=iPhone 8' -sdk iphonesimulator15.5 -showBuildTimingSummary
+        run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=16.2,name=iPhone 8' -sdk iphonesimulator16.2 -showBuildTimingSummary
 
       #- name: iOS test
       #  run: xcodebuild clean test -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=15.5,name=iPhone 8' -sdk iphonesimulator15.5 -showBuildTimingSummary

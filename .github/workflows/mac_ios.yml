@@ -49,10 +49,10 @@ jobs:
       #- name: iOS xcodebuild basic invoke
       #  run: xcodebuild clean test -scheme 'SPISearch'
 
-        #      - name: iOS build
+      - name: iOS build
         # macOS 12: run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=16.2,name=iPhone 8' -sdk iphonesimulator16.2 -showBuildTimingSummary
         # macOS13: OS=16.4, iphonesimulator16.4 sdk
-        #        run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=16.4,name=iPhone 8' -sdk iphonesimulator16.4 -showBuildTimingSummary
+        run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=16.4,name=iPhone 8' -sdk iphonesimulator16.4 -showBuildTimingSummary
 
       #- name: iOS test
       #  run: xcodebuild clean test -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=15.5,name=iPhone 8' -sdk iphonesimulator15.5 -showBuildTimingSummary

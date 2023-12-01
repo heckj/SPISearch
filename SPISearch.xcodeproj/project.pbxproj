@@ -50,6 +50,14 @@
 		1A88E3442A9029CA005E5B2E /* bezier_query_18aug2023.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A88E3432A9029CA005E5B2E /* bezier_query_18aug2023.txt */; };
 		1A9D79DE287B3EBD0068DF3A /* RelevanceResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D79DD287B3EBD0068DF3A /* RelevanceResultView.swift */; };
 		1AA317EC28789BBC009CD13F /* SPISearchParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA317EB28789BBC009CD13F /* SPISearchParserTest.swift */; };
+		1ABC74BA2B19693900B7E6EB /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94E92B195BE8005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift */; };
+		1ABC74BB2B19693900B7E6EB /* SwiftOrgPackageLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EA2B195BE8005B92E1 /* SwiftOrgPackageLists.swift */; };
+		1ABC74BC2B19693900B7E6EB /* SwiftPackageIndexAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EB2B195BE8005B92E1 /* SwiftPackageIndexAPI.swift */; };
+		1ABC74BD2B19693900B7E6EB /* SwiftPackageIndexAPI+Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94ED2B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift */; };
+		1ABC74BE2B19693900B7E6EB /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EC2B195BE9005B92E1 /* GitHubAPI.swift */; };
+		1ABC74BF2B19693900B7E6EB /* PackageId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EE2B195BE9005B92E1 /* PackageId.swift */; };
+		1ABC74C02B19693900B7E6EB /* SourcePackageLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EF2B195BE9005B92E1 /* SourcePackageLists.swift */; };
+		1ABC74C22B19697000B7E6EB /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 1ABC74C12B19697000B7E6EB /* Collections */; };
 		1AC55376287362BE0050F0D6 /* SearchResultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC55375287362BE0050F0D6 /* SearchResultSet.swift */; };
 		1AC5538028736A590050F0D6 /* SPISearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC5537F28736A590050F0D6 /* SPISearchTests.swift */; };
 		1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */; };
@@ -153,6 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ABC74C22B19697000B7E6EB /* Collections in Frameworks */,
 				1A372C9A287C62070020CFAC /* ArgumentParser in Frameworks */,
 				1A372CA3287C63F70020CFAC /* SwiftSoup in Frameworks */,
 			);
@@ -345,6 +354,7 @@
 			packageProductDependencies = (
 				1A372C99287C62070020CFAC /* ArgumentParser */,
 				1A372CA2287C63F70020CFAC /* SwiftSoup */,
+				1ABC74C12B19697000B7E6EB /* Collections */,
 			);
 			productName = ReportSearch;
 			productReference = 1A372C91287C61A30020CFAC /* ReportSearch */;
@@ -480,14 +490,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ABC74C02B19693900B7E6EB /* SourcePackageLists.swift in Sources */,
+				1ABC74BA2B19693900B7E6EB /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */,
 				1A372C9E287C63C50020CFAC /* SearchMetrics.swift in Sources */,
 				1A372C9D287C63C50020CFAC /* RelevanceRecord.swift in Sources */,
+				1ABC74BD2B19693900B7E6EB /* SwiftPackageIndexAPI+Package.swift in Sources */,
+				1ABC74BE2B19693900B7E6EB /* GitHubAPI.swift in Sources */,
+				1ABC74BC2B19693900B7E6EB /* SwiftPackageIndexAPI.swift in Sources */,
 				1A372C94287C61A30020CFAC /* ReportSearchRank.swift in Sources */,
 				1A372C9C287C63C50020CFAC /* SearchRankDocument.swift in Sources */,
 				1A372C9B287C63C50020CFAC /* SearchResultSet.swift in Sources */,
 				1A372CA0287C63C60020CFAC /* ComputedRelevancyValues.swift in Sources */,
 				1A372C9F287C63C50020CFAC /* SearchRank.swift in Sources */,
+				1ABC74BF2B19693900B7E6EB /* PackageId.swift in Sources */,
 				1A372CA1287C63E30020CFAC /* SPISearchParser.swift in Sources */,
+				1ABC74BB2B19693900B7E6EB /* SwiftOrgPackageLists.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -895,6 +912,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		1ABC74C12B19697000B7E6EB /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
 		};
 		1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;

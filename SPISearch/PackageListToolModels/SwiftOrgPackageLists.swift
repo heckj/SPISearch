@@ -69,8 +69,21 @@ struct SwiftOrgPackageLists: Codable {
             self.description = package.summary ?? ""
             self.owner = package.repositoryOwnerName ?? package.repositoryOwner
             self.swiftCompatibility = (package.swiftVersionCompatibility ?? []).sorted().first.map { "\($0.major).\($0.minor)+" }
-            self.platformCompatibility = if hasPlatformCompatibility { package.groupedPlatformCompatibility.map(\.rawValue) } else { nil }
-            self.platformCompatibilityTooltip = if hasPlatformCompatibility { package.platformCompatibilityTooltip } else { nil }
+
+            // You can't use an if statement as an assignment in Xcode 14.3.1 - the conditional
+            // statement enablement happens in Xcode 15 and later, to my huge annoyance.
+            // Thank god for Tart to let me install an older version of Xcode to see
+            // what was actually happening, because the xcodebuild output was completely useless.
+                    
+            if hasPlatformCompatibility {
+                self.platformCompatibility = package.groupedPlatformCompatibility.map(\.rawValue)
+                self.platformCompatibilityTooltip = package.platformCompatibilityTooltip
+            } else {
+                self.platformCompatibility = nil
+                self.platformCompatibilityTooltip = nil
+            }
+            //self.platformCompatibility = if hasPlatformCompatibility { package.groupedPlatformCompatibility.map(\.rawValue) } else { nil }
+            //self.platformCompatibilityTooltip = if hasPlatformCompatibility { package.platformCompatibilityTooltip } else { nil }
             self.license = package.license.shortName
             self.url = "https://swiftpackageindex.com/\(package.repositoryOwner)/\(package.repositoryName)"
             self.note = note

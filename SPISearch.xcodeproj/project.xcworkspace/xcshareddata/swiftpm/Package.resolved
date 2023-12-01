@@ -1,48 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "cleverbird",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/btfranklin/CleverBird.git",
-      "state" : {
-        "revision" : "533b3fdb10f6ad3f05f73658528396f11fdb9c5d",
-        "version" : "3.2.1"
-      }
-    },
-    {
-      "identity" : "get",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/kean/Get",
-      "state" : {
-        "revision" : "12830cc64f31789ae6f4352d2d51d03a25fc3741",
-        "version" : "2.1.6"
-      }
-    },
-    {
       "identity" : "keychainaccess",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kishikawakatsumi/KeychainAccess",
       "state" : {
         "revision" : "84e546727d66f1adc5439debad16270d0fdd04e7",
         "version" : "4.2.2"
-      }
-    },
-    {
-      "identity" : "packagelisttool",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/SwiftPackageIndex/PackageListTool",
-      "state" : {
-        "branch" : "main",
-        "revision" : "567454407bbc10fe489d9f5084663a69f53252d1"
-      }
-    },
-    {
-      "identity" : "prettier",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/simonbs/Prettier",
-      "state" : {
-        "revision" : "266dac500bded844a56771bc1fb2abaa60f6e7b6",
-        "version" : "0.2.1"
       }
     },
     {
@@ -70,15 +34,6 @@
       "state" : {
         "revision" : "8b6cf29eead8841a1fa7822481cb3af4ddaadba6",
         "version" : "2.6.1"
-      }
-    },
-    {
-      "identity" : "yams",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/jpsim/Yams.git",
-      "state" : {
-        "revision" : "0d9ee7ea8c4ebd4a489ad7a73d5c6cad55d6fed3",
-        "version" : "5.0.6"
       }
     }
   ],

@@ -5,7 +5,7 @@
 //  Created by Joseph Heck on 7/4/22.
 //
 import Foundation
-import PackageListTool // for SwiftPackageIndexAPI
+//import PackageListTool // for SwiftPackageIndexAPI
 
 /// An individual search result that represents a package found from Swift Package Index.
 struct PackageSearchResult: Identifiable, Hashable, Codable, Comparable {

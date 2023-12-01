@@ -15,6 +15,15 @@
 		1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1650532870F9B700AC4DB2 /* SwiftSoup */; };
 		1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CBC9428734A7A0033EE43 /* Documentation.docc */; };
 		1A1FADF028737BFF0037D674 /* RankResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1FADEF28737BFF0037D674 /* RankResultsView.swift */; };
+		1A2B94F02B195BE9005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94E92B195BE8005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift */; };
+		1A2B94F12B195BE9005B92E1 /* SwiftOrgPackageLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EA2B195BE8005B92E1 /* SwiftOrgPackageLists.swift */; };
+		1A2B94F22B195BE9005B92E1 /* SwiftPackageIndexAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EB2B195BE8005B92E1 /* SwiftPackageIndexAPI.swift */; };
+		1A2B94F32B195BE9005B92E1 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EC2B195BE9005B92E1 /* GitHubAPI.swift */; };
+		1A2B94F42B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94ED2B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift */; };
+		1A2B94F52B195BE9005B92E1 /* PackageId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EE2B195BE9005B92E1 /* PackageId.swift */; };
+		1A2B94F62B195BE9005B92E1 /* SourcePackageLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EF2B195BE9005B92E1 /* SourcePackageLists.swift */; };
+		1A2B94F92B195C94005B92E1 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2B94F82B195C94005B92E1 /* Collections */; };
+		1A2B94FB2B195C94005B92E1 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2B94FA2B195C94005B92E1 /* DequeModule */; };
 		1A2DF7F728789E580070841E /* bezier_query_8jul22.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */; };
 		1A372C94287C61A30020CFAC /* ReportSearchRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A372C93287C61A30020CFAC /* ReportSearchRank.swift */; };
 		1A372C9A287C62070020CFAC /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 1A372C99287C62070020CFAC /* ArgumentParser */; };
@@ -46,7 +55,6 @@
 		1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */; };
 		1ACF8740287C9D9B00D72B9C /* ConfigureReviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACF873F287C9D9B00D72B9C /* ConfigureReviewer.swift */; };
 		1AD3E3432878BA120049E655 /* MedianRelevancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3E3422878BA120049E655 /* MedianRelevancyTests.swift */; };
-		1AD47A122B195151006D8DB7 /* PackageListTool in Frameworks */ = {isa = PBXBuildFile; productRef = 1AD47A112B195151006D8DB7 /* PackageListTool */; };
 		1AD6D6C02B0EDFBE00A4A61A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */; };
 		1AE2268328725560008C4ED1 /* SearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2268228725560008C4ED1 /* SearchingView.swift */; };
 		1AEADD522877916900023487 /* SettingsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEADD512877916900023487 /* SettingsFormView.swift */; };
@@ -88,6 +96,14 @@
 		1A1650552871014E00AC4DB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1A1CBC9428734A7A0033EE43 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		1A1FADEF28737BFF0037D674 /* RankResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankResultsView.swift; sourceTree = "<group>"; };
+		1A2B94E92B195BE8005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftPackageIndexAPI+ImportedModels.swift"; sourceTree = "<group>"; };
+		1A2B94EA2B195BE8005B92E1 /* SwiftOrgPackageLists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftOrgPackageLists.swift; sourceTree = "<group>"; };
+		1A2B94EB2B195BE8005B92E1 /* SwiftPackageIndexAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPackageIndexAPI.swift; sourceTree = "<group>"; };
+		1A2B94EC2B195BE9005B92E1 /* GitHubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
+		1A2B94ED2B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftPackageIndexAPI+Package.swift"; sourceTree = "<group>"; };
+		1A2B94EE2B195BE9005B92E1 /* PackageId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageId.swift; sourceTree = "<group>"; };
+		1A2B94EF2B195BE9005B92E1 /* SourcePackageLists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourcePackageLists.swift; sourceTree = "<group>"; };
+		1A2B94FC2B195D43005B92E1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bezier_query_8jul22.txt; sourceTree = "<group>"; };
 		1A372C91287C61A30020CFAC /* ReportSearch */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReportSearch; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A372C93287C61A30020CFAC /* ReportSearchRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSearchRank.swift; sourceTree = "<group>"; };
@@ -126,8 +142,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AD6D6C02B0EDFBE00A4A61A /* KeychainAccess in Frameworks */,
-				1AD47A122B195151006D8DB7 /* PackageListTool in Frameworks */,
 				1AEDE79C287BA55A009B1CA4 /* ArgumentParser in Frameworks */,
+				1A2B94FB2B195C94005B92E1 /* DequeModule in Frameworks */,
+				1A2B94F92B195C94005B92E1 /* Collections in Frameworks */,
 				1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -180,6 +197,7 @@
 				1A1650432870F98F00AC4DB2 /* SPISearchApp.swift */,
 				1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */,
 				1A13C4C82B0BE3B1007D20AD /* SPISearchAPI.swift */,
+				1A2B94E82B195BA8005B92E1 /* PackageListToolModels */,
 				1AC55377287363610050F0D6 /* Views */,
 				1AC55378287363930050F0D6 /* Supplemental Views */,
 				1AC55374287362930050F0D6 /* Model */,
@@ -198,6 +216,21 @@
 				1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1A2B94E82B195BA8005B92E1 /* PackageListToolModels */ = {
+			isa = PBXGroup;
+			children = (
+				1A2B94FC2B195D43005B92E1 /* README.md */,
+				1A2B94EC2B195BE9005B92E1 /* GitHubAPI.swift */,
+				1A2B94EE2B195BE9005B92E1 /* PackageId.swift */,
+				1A2B94EF2B195BE9005B92E1 /* SourcePackageLists.swift */,
+				1A2B94EA2B195BE8005B92E1 /* SwiftOrgPackageLists.swift */,
+				1A2B94EB2B195BE8005B92E1 /* SwiftPackageIndexAPI.swift */,
+				1A2B94E92B195BE8005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift */,
+				1A2B94ED2B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift */,
+			);
+			path = PackageListToolModels;
 			sourceTree = "<group>";
 		};
 		1A372C92287C61A30020CFAC /* ReportSearch */ = {
@@ -289,7 +322,8 @@
 				1A1650532870F9B700AC4DB2 /* SwiftSoup */,
 				1AEDE79B287BA55A009B1CA4 /* ArgumentParser */,
 				1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */,
-				1AD47A112B195151006D8DB7 /* PackageListTool */,
+				1A2B94F82B195C94005B92E1 /* Collections */,
+				1A2B94FA2B195C94005B92E1 /* DequeModule */,
 			);
 			productName = SPISearch;
 			productReference = 1A1650402870F98F00AC4DB2 /* SPISearch.app */;
@@ -369,7 +403,7 @@
 				1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
 				1AD6D6BE2B0EDFBE00A4A61A /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				1AD47A102B195151006D8DB7 /* XCRemoteSwiftPackageReference "PackageListTool" */,
+				1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */,
 			);
 			productRefGroup = 1A1650412870F98F00AC4DB2 /* Products */;
 			projectDirPath = "";
@@ -409,10 +443,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A789D7728721EE700E8108A /* PackageSearchResultView.swift in Sources */,
+				1A2B94F12B195BE9005B92E1 /* SwiftOrgPackageLists.swift in Sources */,
 				1A1650442870F98F00AC4DB2 /* SPISearchApp.swift in Sources */,
 				1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */,
+				1A2B94F42B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift in Sources */,
 				1A032CFE287A24F9007DA587 /* SearchMetricsView.swift in Sources */,
 				1A78500528733F0500AFB33F /* SearchRankEditorView.swift in Sources */,
+				1A2B94F52B195BE9005B92E1 /* PackageId.swift in Sources */,
+				1A2B94F22B195BE9005B92E1 /* SwiftPackageIndexAPI.swift in Sources */,
 				1A1FADF028737BFF0037D674 /* RankResultsView.swift in Sources */,
 				1A8144AC28720E7000F58B48 /* RecordedSearchResultView.swift in Sources */,
 				1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */,
@@ -425,12 +463,15 @@
 				1A7FD6AB2873797E008C76AB /* RelevanceRecord.swift in Sources */,
 				1AEB0005287611EF009055BE /* SearchResultSetSummaryView.swift in Sources */,
 				1AE2268328725560008C4ED1 /* SearchingView.swift in Sources */,
+				1A2B94F62B195BE9005B92E1 /* SourcePackageLists.swift in Sources */,
+				1A2B94F32B195BE9005B92E1 /* GitHubAPI.swift in Sources */,
 				1A13C4C92B0BE3B1007D20AD /* SPISearchAPI.swift in Sources */,
 				1AC55376287362BE0050F0D6 /* SearchResultSet.swift in Sources */,
 				1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */,
 				1AEB000328760E3E009055BE /* SearchRankDocumentOverview.swift in Sources */,
 				1ACF8740287C9D9B00D72B9C /* ConfigureReviewer.swift in Sources */,
 				1A8144AE287218F900F58B48 /* RelevanceSelectorView.swift in Sources */,
+				1A2B94F02B195BE9005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */,
 				1A9D79DE287B3EBD0068DF3A /* RelevanceResultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -803,12 +844,12 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		1AD47A102B195151006D8DB7 /* XCRemoteSwiftPackageReference "PackageListTool" */ = {
+		1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftPackageIndex/PackageListTool";
+			repositoryURL = "https://github.com/apple/swift-collections.git";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.5;
 			};
 		};
 		1AD6D6BE2B0EDFBE00A4A61A /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
@@ -835,6 +876,16 @@
 			package = 1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
 		};
+		1A2B94F82B195C94005B92E1 /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+		1A2B94FA2B195C94005B92E1 /* DequeModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = DequeModule;
+		};
 		1A372C99287C62070020CFAC /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
@@ -844,11 +895,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
-		};
-		1AD47A112B195151006D8DB7 /* PackageListTool */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1AD47A102B195151006D8DB7 /* XCRemoteSwiftPackageReference "PackageListTool" */;
-			productName = PackageListTool;
 		};
 		1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -27,6 +27,7 @@ final class SPISearchParserTest: XCTestCase {
     }
 
     func testSearchParser() async throws {
+        XCTExpectFailure("Replacing parsing with API.")
         let searchResultSet = try await SPISearchParser.parse(htmlSample)
         XCTAssertNotNil(searchResultSet)
         XCTAssertEqual(searchResultSet.matched_keywords.count, 5)

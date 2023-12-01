@@ -8,9 +8,30 @@ The lowest level of the raw data to be evaluated is a search result, made up of 
 The results need to minimally include a unique package identifier, and may include other information helpful to ranking. 
 This additional detail includes the summary of each package as provided by the index as well as related keywords.
 
+```
+SearchResult: Hashable, Comparable, Identifiable
+- date/time stamp
+- query_terms
+- keywords : [String]
+- packages : [PackageSearchResult]
+
+``SwiftPackageIndexAPI/Package``: Codable
+  --> pull out the bits we're interested in for storing
+- PackageId (owner/repository)
+- title
+- summary
+```
+
+``PackageId``
+
 The searches are grouped into a collection, which generally is imported or created, and provides the basis on which ranking happens.
 As a general pattern, it is expected that the collections do not change after ranking has started, although that should be accommodated in the app.
 Once set in place, the collection is generally treated as a read-only set of data.
+
+```
+CollectionOfSearchResults:
+- searchResults: Set(SearchResult)
+```
 
 The ranking then happens by individual providing the ranking, and is stored in the document as a parallel data structure.
 Determining if the rankings are complete is based entirely on the _whole_ set of searches in the collection.
@@ -22,3 +43,16 @@ By default relevance is marked as ``Relevance/unknown``, and set by the user to 
 - ``Relevance/not``
 - ``Relevance/partial``
 - ``Relevance/relevant``
+
+```
+CollectionOfEvaluations:
+- [Evaluations]
+
+RelevanceEvaluation: Hashable, Comparable, Identifiable
+- evaluator
+- rankings: [ReviewSet]
+
+ReviewSet:
+- query_terms
+- reviews: [package identifier:relevance]
+```

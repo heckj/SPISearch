@@ -16,20 +16,23 @@ enum Relevance: Int, CaseIterable, Identifiable, Codable {
     var id: Self { self }
 
     func relevanceValue(binary: Bool = false) -> Double {
-        let graduatedValue: Double
-        switch self {
-        case .relevant:
-            graduatedValue = 1
-        case .partial:
-            graduatedValue = 0.5
-        case .not, .unknown:
-            graduatedValue = 0
-        }
         if binary {
-            // if we want a yes/no threshold value, then collapse the 0.5 down to 0.
-            return floor(graduatedValue)
+            switch self {
+            case .relevant, .partial:
+                return 1
+            default:
+                return 0
+            }
+        } else {
+            switch self {
+            case .relevant:
+                return 1
+            case .partial:
+                return 0.5
+            default:
+                return 0
+            }
         }
-        return graduatedValue
     }
 }
 

@@ -29,6 +29,11 @@ When all rankings for the current user are complete, the "quick rank" drops  bac
 
 When viewing a search collection, you see some basic metrics about it - how many searches, the dates for each search, and the amount of coverage for the relevancy rankings.
 
+When evaluating the relevance, we want the reviewer to see as much detail about the results as the searcher did.
+For example, the following image is a capture from an example search using the terms "CRDT":
+
+![example search result](example_search_result.png)
+
 ### Showing Search Collection Summary
 
 Core Search Collection:

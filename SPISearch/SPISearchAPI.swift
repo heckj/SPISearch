@@ -8,6 +8,8 @@
 import Foundation
 //import PackageListTool // for SwiftPackageIndexAPI
 
+import SPIAPI
+
 enum SPIBaseURLs: String {
     case localhost = "http://localhost"
     case dev = "https://staging.swiftpackageindex.com"
@@ -20,6 +22,10 @@ enum SPIBaseURLs: String {
 // PROD: https://redocly.github.io/redoc/?url=https://swiftpackageindex.com/openapi/openapi.json
 
 enum APISearchParser {
+    static func getSearch(terms: String) async throws {
+        try await SPIAPI.search(terms: terms)
+    }
+    
     static func recordSearch(terms: String, from: SPIBaseURLs = .dev) async -> RecordedSearchResult {
         let apiEndpoint = SwiftPackageIndexAPI(baseURL: from.rawValue, apiToken: "")
         do {

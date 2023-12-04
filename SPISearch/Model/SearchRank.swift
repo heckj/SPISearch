@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SPISearchResult
 
 /// The SPISearch data model that encodes searches and ranked relevance reviews for those searches.
 ///
@@ -22,8 +23,8 @@ import SwiftUI
 struct SearchRank: Identifiable, Codable {
     var id = UUID()
 
-    var storedSearches: [RecordedSearchResult] = []
-    var relevanceSets: [RelevanceRecord] = []
+    var searchResultCollection: [SPISearchResult.SearchResult] = []
+    var reviewedEvaluationCollections: [RelevanceEvaluation] = []
 
     /// Load all of the keywords and package results from all of the stored searches, combining them into a sorted order for each
     /// in order to rank them.
@@ -31,13 +32,13 @@ struct SearchRank: Identifiable, Codable {
     func combinedRandomizedSearchResult() -> RecordedSearchResult {
         // pull all of the individual package results for the stores searches into a set - effectively
         // deduplicating them (and somewhat randomizing them)
-        let setOfPackageResults: Set<PackageSearchResult> = Set(storedSearches.flatMap(\.resultSet.results))
+        let setOfPackageResults: Set<SearchResult.Package> = Set(searchResultCollection.flatMap(\.packages))
         // capture packages by ID because keywords (or other details) may be different between results
         let setOfPackageResultIDs: Set<String> = Set(setOfPackageResults.map(\.id))
         // pull all of the matched keywords for the stores searches into a set
-        let setOfMatchedKeywords: Set<String> = Set(storedSearches.flatMap(\.resultSet.matched_keywords))
+        let setOfMatchedKeywords: Set<String> = Set(searchResultCollection.flatMap(\.resultSet.matched_keywords))
         // use the first search - which *should* exist in most cases, with fallbacks to an empty default
-        let firstSearch = storedSearches.first
+        let firstSearch = searchResultCollection.first
 
         // This craziness is because search results won't be functionally equivalent between searches.
         // The initial example I spotted was different keywords, but the end result might happen for other

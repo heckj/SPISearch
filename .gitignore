@@ -5,3 +5,6 @@ xcuserdata
 *.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/
 DerivedData/
 .DS_Store
+
+# project deliverables
+report-search-rank

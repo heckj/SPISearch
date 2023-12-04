@@ -17,12 +17,9 @@
 		1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CBC9428734A7A0033EE43 /* Documentation.docc */; };
 		1A1FADF028737BFF0037D674 /* RankResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1FADEF28737BFF0037D674 /* RankResultsView.swift */; };
 		1A2B94F02B195BE9005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94E92B195BE8005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift */; };
-		1A2B94F12B195BE9005B92E1 /* SwiftOrgPackageLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EA2B195BE8005B92E1 /* SwiftOrgPackageLists.swift */; };
 		1A2B94F22B195BE9005B92E1 /* SwiftPackageIndexAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EB2B195BE8005B92E1 /* SwiftPackageIndexAPI.swift */; };
-		1A2B94F32B195BE9005B92E1 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EC2B195BE9005B92E1 /* GitHubAPI.swift */; };
 		1A2B94F42B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94ED2B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift */; };
-		1A2B94F52B195BE9005B92E1 /* PackageId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EE2B195BE9005B92E1 /* PackageId.swift */; };
-		1A2B94F62B195BE9005B92E1 /* SourcePackageLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EF2B195BE9005B92E1 /* SourcePackageLists.swift */; };
+		1A2B94F52B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EE2B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift */; };
 		1A2B94F92B195C94005B92E1 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2B94F82B195C94005B92E1 /* Collections */; };
 		1A2B94FB2B195C94005B92E1 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2B94FA2B195C94005B92E1 /* DequeModule */; };
 		1A2DF7F728789E580070841E /* bezier_query_8jul22.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */; };
@@ -37,7 +34,6 @@
 		1A372CA1287C63E30020CFAC /* SPISearchParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */; };
 		1A372CA3287C63F70020CFAC /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 1A372CA2287C63F70020CFAC /* SwiftSoup */; };
 		1A45D916287634650077EC9E /* SearchMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D915287634650077EC9E /* SearchMetricsTests.swift */; };
-		1A4FA8EF2B1C071900CA31E5 /* SPIAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 1A4FA8EE2B1C071900CA31E5 /* SPIAPI */; };
 		1A562F6E2878C681006B29A8 /* ComputedRelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */; };
 		1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */; };
 		1A6A29C828762B6D0096F600 /* SearchMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A29C728762B6C0096F600 /* SearchMetrics.swift */; };
@@ -53,12 +49,9 @@
 		1A9D79DE287B3EBD0068DF3A /* RelevanceResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D79DD287B3EBD0068DF3A /* RelevanceResultView.swift */; };
 		1AA317EC28789BBC009CD13F /* SPISearchParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA317EB28789BBC009CD13F /* SPISearchParserTest.swift */; };
 		1ABC74BA2B19693900B7E6EB /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94E92B195BE8005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift */; };
-		1ABC74BB2B19693900B7E6EB /* SwiftOrgPackageLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EA2B195BE8005B92E1 /* SwiftOrgPackageLists.swift */; };
 		1ABC74BC2B19693900B7E6EB /* SwiftPackageIndexAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EB2B195BE8005B92E1 /* SwiftPackageIndexAPI.swift */; };
 		1ABC74BD2B19693900B7E6EB /* SwiftPackageIndexAPI+Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94ED2B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift */; };
-		1ABC74BE2B19693900B7E6EB /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EC2B195BE9005B92E1 /* GitHubAPI.swift */; };
-		1ABC74BF2B19693900B7E6EB /* PackageId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EE2B195BE9005B92E1 /* PackageId.swift */; };
-		1ABC74C02B19693900B7E6EB /* SourcePackageLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EF2B195BE9005B92E1 /* SourcePackageLists.swift */; };
+		1ABC74BF2B19693900B7E6EB /* SwiftPackageIndexAPI+PackageId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EE2B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift */; };
 		1ABC74C22B19697000B7E6EB /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 1ABC74C12B19697000B7E6EB /* Collections */; };
 		1AC55376287362BE0050F0D6 /* SearchResultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC55375287362BE0050F0D6 /* SearchResultSet.swift */; };
 		1AC5538028736A590050F0D6 /* SPISearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC5537F28736A590050F0D6 /* SPISearchTests.swift */; };
@@ -71,6 +64,7 @@
 		1AEB000328760E3E009055BE /* SearchRankDocumentOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */; };
 		1AEB0005287611EF009055BE /* SearchResultSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */; };
 		1AEDE79C287BA55A009B1CA4 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 1AEDE79B287BA55A009B1CA4 /* ArgumentParser */; };
+		1AFF37DE2B1D51CE009E518B /* SPISearchResult in Frameworks */ = {isa = PBXBuildFile; productRef = 1AFF37DD2B1D51CE009E518B /* SPISearchResult */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,12 +102,9 @@
 		1A1CBC9428734A7A0033EE43 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		1A1FADEF28737BFF0037D674 /* RankResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankResultsView.swift; sourceTree = "<group>"; };
 		1A2B94E92B195BE8005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftPackageIndexAPI+ImportedModels.swift"; sourceTree = "<group>"; };
-		1A2B94EA2B195BE8005B92E1 /* SwiftOrgPackageLists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftOrgPackageLists.swift; sourceTree = "<group>"; };
 		1A2B94EB2B195BE8005B92E1 /* SwiftPackageIndexAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPackageIndexAPI.swift; sourceTree = "<group>"; };
-		1A2B94EC2B195BE9005B92E1 /* GitHubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
 		1A2B94ED2B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftPackageIndexAPI+Package.swift"; sourceTree = "<group>"; };
-		1A2B94EE2B195BE9005B92E1 /* PackageId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PackageId.swift; sourceTree = "<group>"; };
-		1A2B94EF2B195BE9005B92E1 /* SourcePackageLists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourcePackageLists.swift; sourceTree = "<group>"; };
+		1A2B94EE2B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftPackageIndexAPI+PackageId.swift"; sourceTree = "<group>"; };
 		1A2B94FC2B195D43005B92E1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bezier_query_8jul22.txt; sourceTree = "<group>"; };
 		1A372C91287C61A30020CFAC /* ReportSearch */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReportSearch; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,10 +143,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A4FA8EF2B1C071900CA31E5 /* SPIAPI in Frameworks */,
 				1AD6D6C02B0EDFBE00A4A61A /* KeychainAccess in Frameworks */,
 				1AEDE79C287BA55A009B1CA4 /* ArgumentParser in Frameworks */,
 				1A2B94FB2B195C94005B92E1 /* DequeModule in Frameworks */,
+				1AFF37DE2B1D51CE009E518B /* SPISearchResult in Frameworks */,
 				1A2B94F92B195C94005B92E1 /* Collections in Frameworks */,
 				1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */,
 			);
@@ -235,13 +226,10 @@
 			isa = PBXGroup;
 			children = (
 				1A2B94FC2B195D43005B92E1 /* README.md */,
-				1A2B94EC2B195BE9005B92E1 /* GitHubAPI.swift */,
-				1A2B94EE2B195BE9005B92E1 /* PackageId.swift */,
-				1A2B94EF2B195BE9005B92E1 /* SourcePackageLists.swift */,
-				1A2B94EA2B195BE8005B92E1 /* SwiftOrgPackageLists.swift */,
 				1A2B94EB2B195BE8005B92E1 /* SwiftPackageIndexAPI.swift */,
 				1A2B94E92B195BE8005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift */,
 				1A2B94ED2B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift */,
+				1A2B94EE2B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift */,
 			);
 			path = PackageListToolModels;
 			sourceTree = "<group>";
@@ -338,7 +326,7 @@
 				1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */,
 				1A2B94F82B195C94005B92E1 /* Collections */,
 				1A2B94FA2B195C94005B92E1 /* DequeModule */,
-				1A4FA8EE2B1C071900CA31E5 /* SPIAPI */,
+				1AFF37DD2B1D51CE009E518B /* SPISearchResult */,
 			);
 			productName = SPISearch;
 			productReference = 1A1650402870F98F00AC4DB2 /* SPISearch.app */;
@@ -420,7 +408,7 @@
 				1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
 				1AD6D6BE2B0EDFBE00A4A61A /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */,
-				1A4FA8ED2B1C071900CA31E5 /* XCRemoteSwiftPackageReference "SPIAPI" */,
+				1AFF37DC2B1D51CE009E518B /* XCRemoteSwiftPackageReference "SPISearchResult" */,
 			);
 			productRefGroup = 1A1650412870F98F00AC4DB2 /* Products */;
 			projectDirPath = "";
@@ -460,13 +448,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A789D7728721EE700E8108A /* PackageSearchResultView.swift in Sources */,
-				1A2B94F12B195BE9005B92E1 /* SwiftOrgPackageLists.swift in Sources */,
 				1A1650442870F98F00AC4DB2 /* SPISearchApp.swift in Sources */,
 				1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */,
 				1A2B94F42B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift in Sources */,
 				1A032CFE287A24F9007DA587 /* SearchMetricsView.swift in Sources */,
 				1A78500528733F0500AFB33F /* SearchRankEditorView.swift in Sources */,
-				1A2B94F52B195BE9005B92E1 /* PackageId.swift in Sources */,
+				1A2B94F52B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift in Sources */,
 				1A2B94F22B195BE9005B92E1 /* SwiftPackageIndexAPI.swift in Sources */,
 				1A1FADF028737BFF0037D674 /* RankResultsView.swift in Sources */,
 				1A8144AC28720E7000F58B48 /* RecordedSearchResultView.swift in Sources */,
@@ -480,8 +467,6 @@
 				1A7FD6AB2873797E008C76AB /* RelevanceRecord.swift in Sources */,
 				1AEB0005287611EF009055BE /* SearchResultSetSummaryView.swift in Sources */,
 				1AE2268328725560008C4ED1 /* SearchingView.swift in Sources */,
-				1A2B94F62B195BE9005B92E1 /* SourcePackageLists.swift in Sources */,
-				1A2B94F32B195BE9005B92E1 /* GitHubAPI.swift in Sources */,
 				1A13C4C92B0BE3B1007D20AD /* SPISearchAPI.swift in Sources */,
 				1AC55376287362BE0050F0D6 /* SearchResultSet.swift in Sources */,
 				1AC90C4F2871FB5600254B83 /* SPISearchParser.swift in Sources */,
@@ -497,21 +482,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1ABC74C02B19693900B7E6EB /* SourcePackageLists.swift in Sources */,
 				1ABC74BA2B19693900B7E6EB /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */,
 				1A372C9E287C63C50020CFAC /* SearchMetrics.swift in Sources */,
 				1A372C9D287C63C50020CFAC /* RelevanceRecord.swift in Sources */,
 				1ABC74BD2B19693900B7E6EB /* SwiftPackageIndexAPI+Package.swift in Sources */,
-				1ABC74BE2B19693900B7E6EB /* GitHubAPI.swift in Sources */,
 				1ABC74BC2B19693900B7E6EB /* SwiftPackageIndexAPI.swift in Sources */,
 				1A372C94287C61A30020CFAC /* ReportSearchRank.swift in Sources */,
 				1A372C9C287C63C50020CFAC /* SearchRankDocument.swift in Sources */,
 				1A372C9B287C63C50020CFAC /* SearchResultSet.swift in Sources */,
 				1A372CA0287C63C60020CFAC /* ComputedRelevancyValues.swift in Sources */,
 				1A372C9F287C63C50020CFAC /* SearchRank.swift in Sources */,
-				1ABC74BF2B19693900B7E6EB /* PackageId.swift in Sources */,
+				1ABC74BF2B19693900B7E6EB /* SwiftPackageIndexAPI+PackageId.swift in Sources */,
 				1A372CA1287C63E30020CFAC /* SPISearchParser.swift in Sources */,
-				1ABC74BB2B19693900B7E6EB /* SwiftOrgPackageLists.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -881,14 +863,6 @@
 				minimumVersion = 1.0.5;
 			};
 		};
-		1A4FA8ED2B1C071900CA31E5 /* XCRemoteSwiftPackageReference "SPIAPI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/heckj/SPIAPI";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		1AD6D6BE2B0EDFBE00A4A61A /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
@@ -903,6 +877,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
+			};
+		};
+		1AFF37DC2B1D51CE009E518B /* XCRemoteSwiftPackageReference "SPISearchResult" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/heckj/SPISearchResult";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -933,11 +915,6 @@
 			package = 1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
 		};
-		1A4FA8EE2B1C071900CA31E5 /* SPIAPI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A4FA8ED2B1C071900CA31E5 /* XCRemoteSwiftPackageReference "SPIAPI" */;
-			productName = SPIAPI;
-		};
 		1ABC74C12B19697000B7E6EB /* Collections */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */;
@@ -952,6 +929,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
+		};
+		1AFF37DD2B1D51CE009E518B /* SPISearchResult */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1AFF37DC2B1D51CE009E518B /* XCRemoteSwiftPackageReference "SPISearchResult" */;
+			productName = SPISearchResult;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

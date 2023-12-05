@@ -14,26 +14,25 @@
 
 import Foundation
 
-extension SwiftPackageIndexAPI {
-    public struct PackageId: Codable, CustomStringConvertible {
+public extension SwiftPackageIndexAPI {
+    struct PackageId: Codable, CustomStringConvertible {
         public var owner: String
         public var repository: String
-        
+
         init(owner: String, repository: String) {
             self.owner = owner
             self.repository = repository
         }
-        
+
         public init?(argument: String) {
             let parts = argument.split(separator: "/").map(String.init)
             guard parts.count == 2 else { return nil }
-            self.owner = parts[0]
-            self.repository = parts[1]
+            owner = parts[0]
+            repository = parts[1]
         }
-        
+
         public var description: String {
             "\(owner)/\(repository)"
         }
     }
 }
-

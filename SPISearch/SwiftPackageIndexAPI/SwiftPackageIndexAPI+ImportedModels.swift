@@ -14,10 +14,9 @@
 
 import Foundation
 
-
 // Type pulled 1:1 from SwiftPackageIndex-Server
-extension SwiftPackageIndexAPI {
-    public struct Activity: Codable, Equatable {
+public extension SwiftPackageIndexAPI {
+    struct Activity: Codable, Equatable {
         public var openIssuesCount: Int
         public var openIssuesURL: String?
         public var openPullRequestsCount: Int
@@ -26,16 +25,16 @@ extension SwiftPackageIndexAPI {
         public var lastPullRequestClosedAt: Date?
     }
 
-    public struct Author: Codable, Equatable {
+    struct Author: Codable, Equatable {
         public var name: String
     }
 
-    public enum AuthorMetadata : Codable, Equatable {
+    enum AuthorMetadata: Codable, Equatable {
         case fromSPIManifest(String)
         case fromGitRepository(PackageAuthors)
     }
 
-    public struct History: Codable, Equatable {
+    struct History: Codable, Equatable {
         public var createdAt: Date
         public var commitCount: Int
         public var commitCountURL: String
@@ -43,7 +42,7 @@ extension SwiftPackageIndexAPI {
         public var releaseCountURL: String
     }
 
-    public enum License: String, Codable, Equatable, CaseIterable {
+    enum License: String, Codable, Equatable, CaseIterable {
         // This is not an exhaustive list, but includes most commonly used license types
         case afl_3_0 = "afl-3.0"
         case apache_2_0 = "apache-2.0"
@@ -83,96 +82,96 @@ extension SwiftPackageIndexAPI {
 
         public var fullName: String {
             switch self {
-                case .afl_3_0: return "Academic Free License v3.0"
-                case .apache_2_0: return "Apache License 2.0"
-                case .artistic_2_0: return "Artistic License 2.0"
-                case .bsd_2_clause: return "BSD 2-clause \"Simplified\" license"
-                case .bsd_3_clause: return "BSD 3-clause \"New\" or \"Revised\" license"
-                case .bsd_3_clause_clear: return "BSD 3-clause Clear license"
-                case .bsl_1_0: return "Boost Software License 1.0"
-                case .cc: return "Creative Commons License"
-                case .cc0_1_0: return "Creative Commons Zero v1.0 Universal"
-                case .cc_by_4_0: return "Creative Commons Attribution 4.0"
-                case .cc_by_sa_4_0: return "Creative Commons Attribution Share Alike 4.0"
-                case .wtfpl: return "Do What The F**k You Want To Public License"
-                case .ecl_2_0: return "Educational Community License v2.0"
-                case .epl_1_0: return "Eclipse Public License 1.0"
-                case .eupl_1_1: return "European Union Public License 1.1"
-                case .agpl_3_0: return "GNU Affero General Public License v3.0"
-                case .gpl: return "GNU General Public License family"
-                case .gpl_2_0: return "GNU General Public License v2.0"
-                case .gpl_3_0: return "GNU General Public License v3.0"
-                case .lgpl: return "GNU Lesser General Public License family"
-                case .lgpl_2_1: return "GNU Lesser General Public License v2.1"
-                case .lgpl_3_0: return "GNU Lesser General Public License v3.0"
-                case .isc: return "ISC License"
-                case .ms_pl: return "Microsoft Public License"
-                case .mit: return "MIT License"
-                case .mpl_2_0: return "Mozilla Public License 2.0"
-                case .osl_3_0: return "Open Software License 3.0"
-                case .postgresql: return "PostgreSQL License"
-                case .ncsa: return "University of Illinois/NCSA Open Source License"
-                case .unlicense: return "The Unlicense"
-                case .zlib: return "zLib License"
+            case .afl_3_0: return "Academic Free License v3.0"
+            case .apache_2_0: return "Apache License 2.0"
+            case .artistic_2_0: return "Artistic License 2.0"
+            case .bsd_2_clause: return "BSD 2-clause \"Simplified\" license"
+            case .bsd_3_clause: return "BSD 3-clause \"New\" or \"Revised\" license"
+            case .bsd_3_clause_clear: return "BSD 3-clause Clear license"
+            case .bsl_1_0: return "Boost Software License 1.0"
+            case .cc: return "Creative Commons License"
+            case .cc0_1_0: return "Creative Commons Zero v1.0 Universal"
+            case .cc_by_4_0: return "Creative Commons Attribution 4.0"
+            case .cc_by_sa_4_0: return "Creative Commons Attribution Share Alike 4.0"
+            case .wtfpl: return "Do What The F**k You Want To Public License"
+            case .ecl_2_0: return "Educational Community License v2.0"
+            case .epl_1_0: return "Eclipse Public License 1.0"
+            case .eupl_1_1: return "European Union Public License 1.1"
+            case .agpl_3_0: return "GNU Affero General Public License v3.0"
+            case .gpl: return "GNU General Public License family"
+            case .gpl_2_0: return "GNU General Public License v2.0"
+            case .gpl_3_0: return "GNU General Public License v3.0"
+            case .lgpl: return "GNU Lesser General Public License family"
+            case .lgpl_2_1: return "GNU Lesser General Public License v2.1"
+            case .lgpl_3_0: return "GNU Lesser General Public License v3.0"
+            case .isc: return "ISC License"
+            case .ms_pl: return "Microsoft Public License"
+            case .mit: return "MIT License"
+            case .mpl_2_0: return "Mozilla Public License 2.0"
+            case .osl_3_0: return "Open Software License 3.0"
+            case .postgresql: return "PostgreSQL License"
+            case .ncsa: return "University of Illinois/NCSA Open Source License"
+            case .unlicense: return "The Unlicense"
+            case .zlib: return "zLib License"
 
-                case .other: return "Unknown or Unrecognised License"
-                case .none: return "No License"
+            case .other: return "Unknown or Unrecognised License"
+            case .none: return "No License"
             }
         }
 
         public var shortName: String {
             switch self {
-                case .afl_3_0: return "AFL 3.0"
-                case .apache_2_0: return "Apache 2.0"
-                case .artistic_2_0: return "Artistic 2.0"
-                case .bsd_2_clause: return "BSD 2-Clause"
-                case .bsd_3_clause: return "BSD 3-Clause"
-                case .bsd_3_clause_clear: return "BSD 3-Clause Clear"
-                case .bsl_1_0: return "Boost 1.0"
-                case .cc: return "CC"
-                case .cc0_1_0: return "CC Zero 1.0"
-                case .cc_by_4_0: return "CC Attribution 4.0"
-                case .cc_by_sa_4_0: return "CC Attribution SA 4.0"
-                case .wtfpl: return "DWTFYWTPL"
-                case .ecl_2_0: return "ECL 2.0"
-                case .epl_1_0: return "EPL 1.0"
-                case .eupl_1_1: return "EUPL 1.1"
-                case .agpl_3_0: return "AGPL 3.0"
-                case .gpl: return "GPL"
-                case .gpl_2_0: return "GPL 2.0"
-                case .gpl_3_0: return "GPL 3.0"
-                case .lgpl: return "LGPL"
-                case .lgpl_2_1: return "LGPL 2.1"
-                case .lgpl_3_0: return "LGPL 3.0"
-                case .isc: return "ISC"
-                case .ms_pl: return "MSPL"
-                case .mit: return "MIT"
-                case .mpl_2_0: return "MPL 2.0"
-                case .osl_3_0: return "OSL 3.0"
-                case .postgresql: return "PostgreSQL"
-                case .ncsa: return "NCSA"
-                case .unlicense: return "The Unlicense"
-                case .zlib: return "zLib"
+            case .afl_3_0: return "AFL 3.0"
+            case .apache_2_0: return "Apache 2.0"
+            case .artistic_2_0: return "Artistic 2.0"
+            case .bsd_2_clause: return "BSD 2-Clause"
+            case .bsd_3_clause: return "BSD 3-Clause"
+            case .bsd_3_clause_clear: return "BSD 3-Clause Clear"
+            case .bsl_1_0: return "Boost 1.0"
+            case .cc: return "CC"
+            case .cc0_1_0: return "CC Zero 1.0"
+            case .cc_by_4_0: return "CC Attribution 4.0"
+            case .cc_by_sa_4_0: return "CC Attribution SA 4.0"
+            case .wtfpl: return "DWTFYWTPL"
+            case .ecl_2_0: return "ECL 2.0"
+            case .epl_1_0: return "EPL 1.0"
+            case .eupl_1_1: return "EUPL 1.1"
+            case .agpl_3_0: return "AGPL 3.0"
+            case .gpl: return "GPL"
+            case .gpl_2_0: return "GPL 2.0"
+            case .gpl_3_0: return "GPL 3.0"
+            case .lgpl: return "LGPL"
+            case .lgpl_2_1: return "LGPL 2.1"
+            case .lgpl_3_0: return "LGPL 3.0"
+            case .isc: return "ISC"
+            case .ms_pl: return "MSPL"
+            case .mit: return "MIT"
+            case .mpl_2_0: return "MPL 2.0"
+            case .osl_3_0: return "OSL 3.0"
+            case .postgresql: return "PostgreSQL"
+            case .ncsa: return "NCSA"
+            case .unlicense: return "The Unlicense"
+            case .zlib: return "zLib"
 
-                case .other: return "Unknown license"
-                case .none: return "No license"
+            case .other: return "Unknown license"
+            case .none: return "No license"
             }
         }
 
         var licenseKind: Kind {
             switch self {
-                case .other:
-                    return .other
-                case .none:
-                    return .none
-                case .agpl_3_0,
-                        .gpl,
-                        .gpl_2_0,
-                        .gpl_3_0,
-                        .lgpl,
-                        .lgpl_2_1,
-                        .lgpl_3_0: return .incompatibleWithAppStore
-                default: return .compatibleWithAppStore
+            case .other:
+                return .other
+            case .none:
+                return .none
+            case .agpl_3_0,
+                 .gpl,
+                 .gpl_2_0,
+                 .gpl_3_0,
+                 .lgpl,
+                 .lgpl_2_1,
+                 .lgpl_3_0: return .incompatibleWithAppStore
+            default: return .compatibleWithAppStore
             }
         }
 
@@ -184,21 +183,21 @@ extension SwiftPackageIndexAPI {
 
             public var userFacingString: String {
                 switch self {
-                    case .none: return "not defined"
-                    case .other: return "unknown"
-                    case .incompatibleWithAppStore: return "incompatible with the App Store"
-                    case .compatibleWithAppStore: return "compatible with the App Store"
+                case .none: return "not defined"
+                case .other: return "unknown"
+                case .incompatibleWithAppStore: return "incompatible with the App Store"
+                case .compatibleWithAppStore: return "compatible with the App Store"
                 }
             }
         }
     }
 
-    public struct PackageAuthors: Codable, Equatable {
+    struct PackageAuthors: Codable, Equatable {
         public var authors: [Author]
         public var numberOfContributors: Int
     }
 
-    public enum PlatformCompatibility: String, Codable, Comparable {
+    enum PlatformCompatibility: String, Codable, Comparable {
         case iOS
         case linux
         case macOS
@@ -208,7 +207,7 @@ extension SwiftPackageIndexAPI {
         public static func < (lhs: Self, rhs: Self) -> Bool { lhs.rawValue < rhs.rawValue }
     }
 
-    public struct SwiftVersion: Codable, Comparable {
+    struct SwiftVersion: Codable, Comparable {
         public var major: Int
         public var minor: Int
         public var patch: Int

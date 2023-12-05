@@ -14,8 +14,8 @@
 
 import Collections
 
-extension SwiftPackageIndexAPI {
-    public struct Package: Codable {
+public extension SwiftPackageIndexAPI {
+    struct Package: Codable {
         public var repositoryOwner: String
         public var repositoryName: String
         public var repositoryOwnerName: String?
@@ -32,23 +32,23 @@ extension SwiftPackageIndexAPI {
 
             var platforms: OrderedSet<PlatformCompatibility> {
                 switch self {
-                    // The order here is important and should match the columns in the compatibility matrix on the SPI website.
-                    case .apple: return [.iOS, .macOS, .visionOS, .watchOS, .tvOS]
-                    case .linux: return [.linux]
+                // The order here is important and should match the columns in the compatibility matrix on the SPI website.
+                case .apple: return [.iOS, .macOS, .visionOS, .watchOS, .tvOS]
+                case .linux: return [.linux]
                 }
             }
         }
     }
 }
 
-extension SwiftPackageIndexAPI.Package {
-    public var groupedPlatformCompatibility: [PlatformCompatibilityGroup] {
+public extension SwiftPackageIndexAPI.Package {
+    var groupedPlatformCompatibility: [PlatformCompatibilityGroup] {
         PlatformCompatibilityGroup.allCases.filter { group in
             Set(platformCompatibility ?? []).isDisjoint(with: group.platforms) == false
         }
     }
 
-    public var platformCompatibilityTooltip: String {
+    var platformCompatibilityTooltip: String {
         groupedPlatformCompatibility.map { group in
             let platforms = group.platforms.intersection(Set(platformCompatibility ?? []))
             if group == .apple {

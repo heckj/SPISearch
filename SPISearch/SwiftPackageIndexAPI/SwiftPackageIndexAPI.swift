@@ -12,9 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 import Foundation
-
 
 public struct SwiftPackageIndexAPI {
     var baseURL: String
@@ -24,7 +22,7 @@ public struct SwiftPackageIndexAPI {
         self.baseURL = baseURL
         self.apiToken = apiToken
     }
-    
+
     struct Error: Swift.Error {
         var message: String
     }
@@ -46,10 +44,10 @@ public struct SwiftPackageIndexAPI {
     }
 
     public func fetchPackage(packageId: PackageId) async throws -> Package {
-        try await self.fetchPackage(owner: packageId.owner, repository: packageId.repository)
+        try await fetchPackage(owner: packageId.owner, repository: packageId.repository)
     }
 
-    public func search(query: String, limit: Int) async throws -> [PackageId] {
+    public func search(query: String, limit: Int) async throws -> SearchResponse {
         var urlComponents = URLComponents(string: "\(baseURL)/api/search")
         urlComponents?.queryItems = [
             URLQueryItem(name: "query", value: query),
@@ -63,16 +61,7 @@ public struct SwiftPackageIndexAPI {
         req.setValue("Bearer \(apiToken)", forHTTPHeaderField: "Authorization")
         let (data, _) = try await URLSession.shared.data(for: req)
         let results = try Self.decoder.decode(SearchResponse.self, from: data)
-        var ids = [PackageId]()
-        for res in results.results {
-            switch res {
-                case .author, .keyword:
-                    break
-                case let .package(pkg):
-                    ids.append(.init(owner: pkg.repositoryOwner, repository: pkg.repositoryName))
-            }
-        }
-        return ids
+        return results
     }
 
     public struct SearchResponse: Decodable {
@@ -87,15 +76,40 @@ public struct SwiftPackageIndexAPI {
             struct Author: Decodable {
                 var name: String
             }
+
             struct Keyword: Decodable {
                 var keyword: String
             }
+
             struct Package: Decodable {
-                var packageURL: String
+                var packageURL: String // a partial URL, such as "/heckj/CRDT"
+                // var packageId: UUID
                 var repositoryOwner: String
                 var repositoryName: String
                 var packageName: String
+                var hasDocs: Bool
+                var summary: String
+                var keywords: [String]
+                var stars: Int
             }
+            // Package Example
+//    {
+//      "repositoryName": "CRDT",
+//      "packageName": "CRDT",
+//      "hasDocs": false,
+//      "repositoryOwner": "heckj",
+//      "summary": "Conflict-free Replicated Data Types in Swift",
+//      "packageId": "BDC2D86B-BDC4-4147-8D58-0FF296E88421",
+//      "keywords": [
+//        "crdt",
+//        "crdt-implementations",
+//        "crdts",
+//        "swift"
+//      ],
+//      "stars": 121,
+//      "lastActivityAt": "2023-06-20T21:23:04Z",
+//      "packageURL": "/heckj/CRDT"
+//    }
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SPISearchResult
 
 enum SPIBaseURLs: String {
     case localhost = "http://localhost"
@@ -18,37 +19,28 @@ enum SPIBaseURLs: String {
 //
 // PROD: https://redocly.github.io/redoc/?url=https://swiftpackageindex.com/openapi/openapi.json
 
-enum APISearchParser {
-    
-    static func recordSearch(terms: String, from: SPIBaseURLs = .dev) async -> RecordedSearchResult {
-        let apiEndpoint = SwiftPackageIndexAPI(baseURL: from.rawValue, apiToken: "")
-        do {
-            let packagesIds = try await apiEndpoint.search(query: terms, limit: 50)
-            // x is a list of PackageId - a struct that combines owner and repo to identify the package within the index.
-            var resultSet: [PackageSearchResult] = []
+func createPackage(from apiPackage: SwiftPackageIndexAPI.SearchResponse.Result.Package) -> SPISearchResult.SearchResult.Package {
+    SearchResult.Package(id: .init(owner: apiPackage.repositoryOwner, repository: apiPackage.repositoryName),
+                         matching_keywords: apiPackage.keywords,
+                         summary: apiPackage.summary,
+                         stars: apiPackage.stars)
+}
 
-            // TODO: convert to a map to transform the results
-            for packageId in packagesIds {
-                let package = try await apiEndpoint.fetchPackage(packageId: packageId)
-                resultSet.append(PackageSearchResult(id: package.url, name: package.title, summary: package.summary ?? "", keywords: []))
-            }
-            return RecordedSearchResult(recordedDate: Date.now,
-                                        searchterms: terms,
-                                        host: from.rawValue,
-                                        url: from.rawValue,
-                                        resultSet: SearchResultSet(
-                                            id: UUID(), results: resultSet,
-                                            matched_keywords: [],
-                                            errorMessage: ""
-                                        ))
-
-        } catch {
-            return RecordedSearchResult(recordedDate: Date.now, searchterms: terms, host: from.rawValue, url: from.rawValue, resultSet:
-                SearchResultSet(
-                    id: UUID(), results: [],
-                    matched_keywords: [],
-                    errorMessage: "\(error)"
-                ))
+func makeASearchResult(terms: String, from: SPIBaseURLs = .dev) async throws -> SearchResult {
+    let apiEndpoint = SwiftPackageIndexAPI(baseURL: from.rawValue, apiToken: "")
+    let api_search_results = try await apiEndpoint.search(query: terms, limit: 50)
+    var searchPackages: [SearchResult.Package] = []
+    var keywords: [String] = []
+    var authors: [String] = []
+    _ = api_search_results.results.map { res in
+        switch res {
+        case let .author(author):
+            authors.append(author.name)
+        case let .keyword(keyword):
+            keywords.append(keyword.keyword)
+        case let .package(package):
+            searchPackages.append(createPackage(from: package))
         }
     }
+    return SearchResult(timestamp: Date.now, query: terms, packages: searchPackages)
 }

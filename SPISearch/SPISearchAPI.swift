@@ -9,14 +9,14 @@ import Foundation
 import SPISearchResult
 
 /// The host to search from
-enum SPISearchHosts: String {
+enum SPISearchHosts: String, CaseIterable {
     /// Local development (localhost)
     case localhost = "local"
     /// The SPI staging environment (staging.swiftpackageindex.com)
-    case staging = "staging"
+    case staging
     /// The SPI production environment (swiftpackageindex.com)
-    case prod = "prod"
-    
+    case prod
+
     /// The base URL of the host to search from.
     var urlString: String {
         switch self {
@@ -42,8 +42,8 @@ func createPackage(from apiPackage: SwiftPackageIndexAPI.SearchResponse.Result.P
                          stars: apiPackage.stars)
 }
 
-func makeASearchResult(terms: String, from: SPISearchHosts = .staging) async throws -> SearchResult {
-    let apiEndpoint = SwiftPackageIndexAPI(baseURL: from.urlString, apiToken: "")
+func makeASearchResult(terms: String, from: SPISearchHosts = .staging, apiToken: String) async throws -> SearchResult {
+    let apiEndpoint = SwiftPackageIndexAPI(baseURL: from.urlString, apiToken: apiToken)
     let api_search_results = try await apiEndpoint.search(query: terms, limit: 50)
     var searchPackages: [SearchResult.Package] = []
     var keywords: [String] = []

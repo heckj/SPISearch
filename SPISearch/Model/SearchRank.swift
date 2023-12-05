@@ -9,6 +9,8 @@ import Foundation
 import SPISearchResult
 import SwiftUI
 
+// A model that combines collections of searches and the evaluations of those search results
+// by evaluators.
 /// The SPISearch data model that encodes searches and ranked relevance reviews for those searches.
 ///
 /// The core data model behind a SearchRank document, it stores search results from Swift Package Index.

@@ -38,6 +38,16 @@
 		1A562F6E2878C681006B29A8 /* ComputedRelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */; };
 		1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */; };
 		1A6A29C828762B6D0096F600 /* SearchMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A29C728762B6C0096F600 /* SearchMetrics.swift */; };
+		1A6E759A2B1FDA64004A1A17 /* CaptureSearches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E75992B1FDA64004A1A17 /* CaptureSearches.swift */; };
+		1A6E759F2B1FDAA2004A1A17 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 1A6E759E2B1FDAA2004A1A17 /* ArgumentParser */; };
+		1A6E75A12B1FDAB8004A1A17 /* SPISearchResult in Frameworks */ = {isa = PBXBuildFile; productRef = 1A6E75A02B1FDAB8004A1A17 /* SPISearchResult */; };
+		1A6E75A22B1FDB45004A1A17 /* SPISearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13C4C82B0BE3B1007D20AD /* SPISearchAPI.swift */; };
+		1A6E75A32B1FDB4E004A1A17 /* SwiftPackageIndexAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EB2B195BE8005B92E1 /* SwiftPackageIndexAPI.swift */; };
+		1A6E75A42B1FDB4E004A1A17 /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94E92B195BE8005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift */; };
+		1A6E75A52B1FDB4E004A1A17 /* SwiftPackageIndexAPI+Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94ED2B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift */; };
+		1A6E75A62B1FDB4E004A1A17 /* SwiftPackageIndexAPI+PackageId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EE2B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift */; };
+		1A6E75A82B1FDBBD004A1A17 /* SPIBaseURL+ExpressibleByArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E75A72B1FDBBD004A1A17 /* SPIBaseURL+ExpressibleByArgument.swift */; };
+		1A6E75AA2B1FDC8E004A1A17 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 1A6E75A92B1FDC8E004A1A17 /* Collections */; };
 		1A7850012873380B00AFB33F /* SearchRankDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7850002873380B00AFB33F /* SearchRankDocument.swift */; };
 		1A78500328733B5500AFB33F /* SearchRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500228733B5500AFB33F /* SearchRank.swift */; };
 		1A78500528733F0500AFB33F /* SearchRankEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500428733F0500AFB33F /* SearchRankEditorView.swift */; };
@@ -87,6 +97,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		1A6E75952B1FDA64004A1A17 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -115,6 +134,9 @@
 		1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputedRelevancyValues.swift; sourceTree = "<group>"; };
 		1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceSetSummaryView.swift; sourceTree = "<group>"; };
 		1A6A29C728762B6C0096F600 /* SearchMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetrics.swift; sourceTree = "<group>"; };
+		1A6E75972B1FDA64004A1A17 /* CaptureSearches */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CaptureSearches; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A6E75992B1FDA64004A1A17 /* CaptureSearches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSearches.swift; sourceTree = "<group>"; };
+		1A6E75A72B1FDBBD004A1A17 /* SPIBaseURL+ExpressibleByArgument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPIBaseURL+ExpressibleByArgument.swift"; sourceTree = "<group>"; };
 		1A7850002873380B00AFB33F /* SearchRankDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankDocument.swift; sourceTree = "<group>"; };
 		1A78500228733B5500AFB33F /* SearchRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRank.swift; sourceTree = "<group>"; };
 		1A78500428733F0500AFB33F /* SearchRankEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankEditorView.swift; sourceTree = "<group>"; };
@@ -163,6 +185,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1A6E75942B1FDA64004A1A17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A6E75AA2B1FDC8E004A1A17 /* Collections in Frameworks */,
+				1A6E75A12B1FDAB8004A1A17 /* SPISearchResult in Frameworks */,
+				1A6E759F2B1FDAA2004A1A17 /* ArgumentParser in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1AC5537A28736A590050F0D6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -181,6 +213,7 @@
 				1A1650422870F98F00AC4DB2 /* SPISearch */,
 				1AC5537E28736A590050F0D6 /* SPISearchTests */,
 				1A372C92287C61A30020CFAC /* ReportSearch */,
+				1A6E75982B1FDA64004A1A17 /* CaptureSearches */,
 				1A1650412870F98F00AC4DB2 /* Products */,
 				1A372C98287C62070020CFAC /* Frameworks */,
 			);
@@ -192,6 +225,7 @@
 				1A1650402870F98F00AC4DB2 /* SPISearch.app */,
 				1AC5537D28736A590050F0D6 /* SPISearchTests.xctest */,
 				1A372C91287C61A30020CFAC /* ReportSearch */,
+				1A6E75972B1FDA64004A1A17 /* CaptureSearches */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -248,6 +282,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1A6E75982B1FDA64004A1A17 /* CaptureSearches */ = {
+			isa = PBXGroup;
+			children = (
+				1A6E75992B1FDA64004A1A17 /* CaptureSearches.swift */,
+				1A6E75A72B1FDBBD004A1A17 /* SPIBaseURL+ExpressibleByArgument.swift */,
+			);
+			path = CaptureSearches;
 			sourceTree = "<group>";
 		};
 		1AC55374287362930050F0D6 /* Model */ = {
@@ -356,6 +399,28 @@
 			productReference = 1A372C91287C61A30020CFAC /* ReportSearch */;
 			productType = "com.apple.product-type.tool";
 		};
+		1A6E75962B1FDA64004A1A17 /* CaptureSearches */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A6E759D2B1FDA64004A1A17 /* Build configuration list for PBXNativeTarget "CaptureSearches" */;
+			buildPhases = (
+				1A6E75932B1FDA64004A1A17 /* Sources */,
+				1A6E75942B1FDA64004A1A17 /* Frameworks */,
+				1A6E75952B1FDA64004A1A17 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CaptureSearches;
+			packageProductDependencies = (
+				1A6E759E2B1FDAA2004A1A17 /* ArgumentParser */,
+				1A6E75A02B1FDAB8004A1A17 /* SPISearchResult */,
+				1A6E75A92B1FDC8E004A1A17 /* Collections */,
+			);
+			productName = CaptureSearches;
+			productReference = 1A6E75972B1FDA64004A1A17 /* CaptureSearches */;
+			productType = "com.apple.product-type.tool";
+		};
 		1AC5537C28736A590050F0D6 /* SPISearchTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1AC5538328736A590050F0D6 /* Build configuration list for PBXNativeTarget "SPISearchTests" */;
@@ -381,7 +446,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1510;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					1A16503F2870F98F00AC4DB2 = {
@@ -389,6 +454,9 @@
 					};
 					1A372C90287C61A30020CFAC = {
 						CreatedOnToolsVersion = 14.0;
+					};
+					1A6E75962B1FDA64004A1A17 = {
+						CreatedOnToolsVersion = 15.1;
 					};
 					1AC5537C28736A590050F0D6 = {
 						CreatedOnToolsVersion = 14.0;
@@ -419,6 +487,7 @@
 				1A16503F2870F98F00AC4DB2 /* SPISearch */,
 				1AC5537C28736A590050F0D6 /* SPISearchTests */,
 				1A372C90287C61A30020CFAC /* ReportSearch */,
+				1A6E75962B1FDA64004A1A17 /* CaptureSearches */,
 			);
 		};
 /* End PBXProject section */
@@ -496,6 +565,20 @@
 				1A372C9F287C63C50020CFAC /* SearchRank.swift in Sources */,
 				1ABC74BF2B19693900B7E6EB /* SwiftPackageIndexAPI+PackageId.swift in Sources */,
 				1A372CA1287C63E30020CFAC /* SPISearchParser.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1A6E75932B1FDA64004A1A17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A6E75A62B1FDB4E004A1A17 /* SwiftPackageIndexAPI+PackageId.swift in Sources */,
+				1A6E75A32B1FDB4E004A1A17 /* SwiftPackageIndexAPI.swift in Sources */,
+				1A6E75A52B1FDB4E004A1A17 /* SwiftPackageIndexAPI+Package.swift in Sources */,
+				1A6E759A2B1FDA64004A1A17 /* CaptureSearches.swift in Sources */,
+				1A6E75A82B1FDBBD004A1A17 /* SPIBaseURL+ExpressibleByArgument.swift in Sources */,
+				1A6E75A42B1FDB4E004A1A17 /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */,
+				1A6E75A22B1FDB45004A1A17 /* SPISearchAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -757,6 +840,43 @@
 			};
 			name = Release;
 		};
+		1A6E759B2B1FDA64004A1A17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BDV4VC27D3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rhonabwy.CaptureSearches;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		1A6E759C2B1FDA64004A1A17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BDV4VC27D3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.rhonabwy.CaptureSearches;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		1AC5538428736A590050F0D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -833,6 +953,15 @@
 			buildConfigurations = (
 				1A372C96287C61A30020CFAC /* Debug */,
 				1A372C97287C61A30020CFAC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A6E759D2B1FDA64004A1A17 /* Build configuration list for PBXNativeTarget "CaptureSearches" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A6E759B2B1FDA64004A1A17 /* Debug */,
+				1A6E759C2B1FDA64004A1A17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -916,6 +1045,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
+		};
+		1A6E759E2B1FDAA2004A1A17 /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		1A6E75A02B1FDAB8004A1A17 /* SPISearchResult */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1AFF37DC2B1D51CE009E518B /* XCRemoteSwiftPackageReference "SPISearchResult" */;
+			productName = SPISearchResult;
+		};
+		1A6E75A92B1FDC8E004A1A17 /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
 		};
 		1ABC74C12B19697000B7E6EB /* Collections */ = {
 			isa = XCSwiftPackageProductDependency;

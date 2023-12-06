@@ -815,6 +815,6 @@ final class ParseSearchResultFromApiTests: XCTestCase {
         let raw_data = try XCTUnwrap(raw_response.data(using: .utf8))
         let results = try decoder.decode(SwiftPackageIndexAPI.SearchResponse.self, from: raw_data)
         // dump(results)
-        XCTAssertNotEqual(results.results.count, 0)
+        XCTAssertEqual(results.results.count, 40)
     }
 }

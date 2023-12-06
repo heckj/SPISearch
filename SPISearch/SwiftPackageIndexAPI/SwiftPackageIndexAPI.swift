@@ -91,7 +91,7 @@ public struct SwiftPackageIndexAPI {
                 var repositoryName: String
                 var packageName: String
                 var hasDocs: Bool
-                var summary: String
+                var summary: String?
                 var keywords: [String]
                 var stars: Int
             }

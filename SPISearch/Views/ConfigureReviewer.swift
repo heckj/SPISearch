@@ -5,9 +5,9 @@
 ////  Created by Joseph Heck on 7/11/22.
 ////
 //
-//import SwiftUI
+// import SwiftUI
 //
-//struct ConfigureReviewer: View {
+// struct ConfigureReviewer: View {
 //    // @Environment(\.presentationMode) var presentation
 //    @Environment(\.dismiss) var dismiss
 //    @AppStorage(SPISearchApp.reviewerKey) var localReviewer: String = ""
@@ -64,9 +64,9 @@
 //    init(_ document: Binding<SearchRankDocument>) {
 //        _document = document
 //    }
-//}
+// }
 //
-//private struct HostingView: View {
+// private struct HostingView: View {
 //    @State private var showingSheet = false
 //    var body: some View {
 //        Button("Show Sheet") {
@@ -76,11 +76,11 @@
 //            ConfigureReviewer(.constant(SearchRank.extendedExample))
 //        }
 //    }
-//}
+// }
 //
-//struct ConfigureReviewer_Previews: PreviewProvider {
+// struct ConfigureReviewer_Previews: PreviewProvider {
 //    static var previews: some View {
 //        // ConfigureReviewer(.constant(SearchRank.extendedExample))
 //        HostingView()
 //    }
-//}
+// }

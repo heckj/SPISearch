@@ -5,9 +5,9 @@
 ////  Created by Joseph Heck on 7/3/22.
 ////
 //
-//import SwiftUI
+// import SwiftUI
 //
-//struct PackageSearchResultView: View {
+// struct PackageSearchResultView: View {
 //    let result: PackageSearchResult
 //
 //    #if os(iOS)
@@ -81,10 +81,10 @@
 //    init(_ result: PackageSearchResult) {
 //        self.result = result
 //    }
-//}
+// }
 //
-//struct SearchResultView_Previews: PreviewProvider {
+// struct SearchResultView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        PackageSearchResultView(SearchResultSet.example.results[1])
 //    }
-//}
+// }

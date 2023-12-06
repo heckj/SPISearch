@@ -12,7 +12,7 @@ import SwiftUI
 @main
 struct SPISearchApp: App {
     var body: some Scene {
-        DocumentGroup(newDocument: SearchRankDocument()) { file in
+        DocumentGroup(newDocument: SearchRankDocument()) { _ in
 //            SearchRankEditorView(document: file.$document)
             Text("TOP LEVEL DOCUMENT VIEW")
         }

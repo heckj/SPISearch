@@ -5,12 +5,12 @@
 ////  Created by Joseph Heck on 7/9/22.
 ////
 //
-//#if canImport(Charts)
+// #if canImport(Charts)
 //    import Charts
-//#endif
-//import SwiftUI
+// #endif
+// import SwiftUI
 //
-//struct SearchMetricsView: View {
+// struct SearchMetricsView: View {
 //    let metrics: SearchMetrics
 //    let sparkline: Bool
 //    var body: some View {
@@ -78,9 +78,9 @@
 //        self.metrics = metrics
 //        self.sparkline = sparkline
 //    }
-//}
+// }
 //
-//struct SearchMetricsView_Previews: PreviewProvider {
+// struct SearchMetricsView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        if let metrics = SearchMetrics(
 //            searchResult: RecordedSearchResult.example,
@@ -92,4 +92,4 @@
 //            Text("Invalid search metrics view")
 //        }
 //    }
-//}
+// }

@@ -5,9 +5,9 @@
 ////  Created by Joseph Heck on 7/4/22.
 ////
 //
-//import SwiftUI
+// import SwiftUI
 //
-//struct RankResultsView: View {
+// struct RankResultsView: View {
 //    @AppStorage(SPISearchApp.reviewerKey) var localReviewer: String = ""
 //    // For editing an individual relevance record
 //    @Binding var relevanceRecord: RelevanceRecord
@@ -143,9 +143,9 @@
 //        _relevanceRecord = relevanceRecordBinding
 //        self.recordedSearch = recordedSearch
 //    }
-//}
+// }
 //
-//struct RankingSearchResultsView_Previews: PreviewProvider {
+// struct RankingSearchResultsView_Previews: PreviewProvider {
 //    struct TempView: View {
 //        @State var relevanceRecord: RelevanceRecord = .init("testing")
 //        var body: some View {
@@ -156,4 +156,4 @@
 //    static var previews: some View {
 //        TempView()
 //    }
-//}
+// }

@@ -5,14 +5,14 @@
 ////  Created by Joseph Heck on 7/4/22.
 ////
 //
-//import SwiftUI
+// import SwiftUI
 //
 ///// The primary document editor view.
 /////
 ///// If the associated document is "empty" (no searches), this view
 ///// is responsible for displaying the view to populate and initially create
 ///// a searchrank document.
-//struct SearchRankEditorView: View {
+// struct SearchRankEditorView: View {
 //    @Binding var document: SearchRankDocument
 //    var body: some View {
 //        VStack {
@@ -35,9 +35,9 @@
 //        // in macOS 13+ this can be replaced with the .defaultSize(width: 1000, height: 650)
 //        // modifier on the enclosing scene to create a default size experience.
 //    }
-//}
+// }
 //
-//struct SearchRankEditorView_Previews: PreviewProvider {
+// struct SearchRankEditorView_Previews: PreviewProvider {
 //    static func extendedExample() -> SearchRankDocument {
 //        var doc = SearchRankDocument(.example)
 //        var secondSearch = RecordedSearchResult.example
@@ -55,4 +55,4 @@
 //        SearchRankEditorView(document: .constant(SearchRankDocument()))
 //        SearchRankEditorView(document: .constant(extendedExample()))
 //    }
-//}
+// }

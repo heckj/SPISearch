@@ -5,10 +5,10 @@
 ////  Created by Joseph Heck on 7/3/22.
 ////
 //
-//import SwiftUI
+// import SwiftUI
 //
 ///// The initial document view that is presented to request and capture search results into the searchrank document.
-//struct SearchingView: View {
+// struct SearchingView: View {
 //    @Binding var searchDoc: SearchRankDocument
 //    let searchHostURL: URL?
 //    @State var searchTerms: String = "bezier"
@@ -64,10 +64,10 @@
 //        searchTerms = self.searchDoc.searchRanking.storedSearches.first?.searchTerms ?? "bezier"
 //        searchResults = nil
 //    }
-//}
+// }
 //
-//struct SearchingView_Previews: PreviewProvider {
+// struct SearchingView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        SearchingView(searchDoc: .constant(SearchRankDocument()), searchHostURL: URL(string: SPISearchParser.serverHost)!)
 //    }
-//}
+// }

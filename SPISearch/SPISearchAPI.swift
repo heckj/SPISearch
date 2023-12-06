@@ -37,7 +37,7 @@ enum SPISearchHosts: String, CaseIterable {
 
 func createPackage(from apiPackage: SwiftPackageIndexAPI.SearchResponse.Result.Package) -> SPISearchResult.SearchResult.Package {
     SearchResult.Package(id: .init(owner: apiPackage.repositoryOwner, repository: apiPackage.repositoryName),
-                         matching_keywords: apiPackage.keywords,
+                         package_keywords: apiPackage.keywords,
                          summary: apiPackage.summary,
                          stars: apiPackage.stars)
 }
@@ -48,8 +48,8 @@ func makeASearchResult(terms: String, from: SPISearchHosts = .staging, apiToken:
     var searchPackages: [SearchResult.Package] = []
     var keywords: [String] = []
     var authors: [String] = []
-    _ = api_search_results.results.map { res in
-        switch res {
+    for result in api_search_results.results {
+        switch result {
         case let .author(author):
             authors.append(author.name)
         case let .keyword(keyword):
@@ -58,5 +58,5 @@ func makeASearchResult(terms: String, from: SPISearchHosts = .staging, apiToken:
             searchPackages.append(createPackage(from: package))
         }
     }
-    return SearchResult(timestamp: Date.now, query: terms, packages: searchPackages)
+    return SearchResult(timestamp: Date.now, query: terms, keywords: keywords, authors: authors, packages: searchPackages)
 }

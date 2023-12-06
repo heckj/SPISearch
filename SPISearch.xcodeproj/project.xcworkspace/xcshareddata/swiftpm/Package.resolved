@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/heckj/SPISearchResult",
       "state" : {
-        "revision" : "48e6adab146b04a09ea5a3a7ccb0c1a9bb79fefb",
-        "version" : "0.2.0"
+        "revision" : "53727f2fa76b3397958128eaa517d39763708aef",
+        "version" : "0.3.0"
       }
     },
     {

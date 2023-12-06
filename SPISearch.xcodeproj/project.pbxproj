@@ -48,6 +48,7 @@
 		1A6E75A62B1FDB4E004A1A17 /* SwiftPackageIndexAPI+PackageId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EE2B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift */; };
 		1A6E75A82B1FDBBD004A1A17 /* SPIBaseURL+ExpressibleByArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6E75A72B1FDBBD004A1A17 /* SPIBaseURL+ExpressibleByArgument.swift */; };
 		1A6E75AA2B1FDC8E004A1A17 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 1A6E75A92B1FDC8E004A1A17 /* Collections */; };
+		1A773D342B1FF7CF000C1919 /* ParseSearchResultFromApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A773D332B1FF7CF000C1919 /* ParseSearchResultFromApiTests.swift */; };
 		1A7850012873380B00AFB33F /* SearchRankDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7850002873380B00AFB33F /* SearchRankDocument.swift */; };
 		1A78500328733B5500AFB33F /* SearchRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500228733B5500AFB33F /* SearchRank.swift */; };
 		1A78500528733F0500AFB33F /* SearchRankEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500428733F0500AFB33F /* SearchRankEditorView.swift */; };
@@ -137,6 +138,7 @@
 		1A6E75972B1FDA64004A1A17 /* CaptureSearches */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CaptureSearches; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A6E75992B1FDA64004A1A17 /* CaptureSearches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSearches.swift; sourceTree = "<group>"; };
 		1A6E75A72B1FDBBD004A1A17 /* SPIBaseURL+ExpressibleByArgument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SPIBaseURL+ExpressibleByArgument.swift"; sourceTree = "<group>"; };
+		1A773D332B1FF7CF000C1919 /* ParseSearchResultFromApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseSearchResultFromApiTests.swift; sourceTree = "<group>"; };
 		1A7850002873380B00AFB33F /* SearchRankDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankDocument.swift; sourceTree = "<group>"; };
 		1A78500228733B5500AFB33F /* SearchRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRank.swift; sourceTree = "<group>"; };
 		1A78500428733F0500AFB33F /* SearchRankEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankEditorView.swift; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				1A88E3432A9029CA005E5B2E /* bezier_query_18aug2023.txt */,
 				1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */,
 				1AC5537F28736A590050F0D6 /* SPISearchTests.swift */,
+				1A773D332B1FF7CF000C1919 /* ParseSearchResultFromApiTests.swift */,
 				1AD3E3422878BA120049E655 /* MedianRelevancyTests.swift */,
 				1A45D915287634650077EC9E /* SearchMetricsTests.swift */,
 				1A134E2D2B1A6B5A009478B1 /* RelevanceTests.swift */,
@@ -589,6 +592,7 @@
 				1AC5538028736A590050F0D6 /* SPISearchTests.swift in Sources */,
 				1A45D916287634650077EC9E /* SearchMetricsTests.swift in Sources */,
 				1AA317EC28789BBC009CD13F /* SPISearchParserTest.swift in Sources */,
+				1A773D342B1FF7CF000C1919 /* ParseSearchResultFromApiTests.swift in Sources */,
 				1AD3E3432878BA120049E655 /* MedianRelevancyTests.swift in Sources */,
 				1A134E2E2B1A6B5A009478B1 /* RelevanceTests.swift in Sources */,
 			);

@@ -1,5 +1,5 @@
 //
-//  ParseSearchResultFromApiTests.swift
+//  APISearchResponseDecodingTests.swift
 //  SPISearchTests
 //
 //  Created by Joseph Heck on 12/5/23.
@@ -8,7 +8,8 @@
 @testable import SPISearch
 import XCTest
 
-final class ParseSearchResultFromApiTests: XCTestCase {
+final class APISearchResponseDecodingTests: XCTestCase {
+    // raw response captured 5 dec 2023 from staging.swiftpackageindex.com
     let raw_response = #"""
     {
         "hasMoreResults": false,
@@ -809,7 +810,7 @@ final class ParseSearchResultFromApiTests: XCTestCase {
     }
     """#
 
-    func testDecodingSearchResponse() async throws {
+    func testDecodingAPISearchResponse() async throws {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         let raw_data = try XCTUnwrap(raw_response.data(using: .utf8))

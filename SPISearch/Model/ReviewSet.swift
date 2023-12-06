@@ -19,7 +19,7 @@ struct RelevanceEvaluation: Hashable, Identifiable, Codable {
 
     /// The evaluations provided by the reviewer.
     var rankings: [ReviewSet] // set?
-    
+
     init(reviewer: Reviewer, rankings: [ReviewSet] = []) {
         id = UUID()
         self.reviewer = reviewer

@@ -71,6 +71,8 @@
 		1AD3E3432878BA120049E655 /* MedianRelevancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3E3422878BA120049E655 /* MedianRelevancyTests.swift */; };
 		1AD6D6C02B0EDFBE00A4A61A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */; };
 		1AE2268328725560008C4ED1 /* SearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2268228725560008C4ED1 /* SearchingView.swift */; };
+		1AE699EE2B2009D9008CB0F6 /* ReviewSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A39750A2B1E9182009F9FF7 /* ReviewSet.swift */; };
+		1AE699F02B2009FC008CB0F6 /* SPISearchResult in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE699EF2B2009FC008CB0F6 /* SPISearchResult */; };
 		1AEADD522877916900023487 /* SettingsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEADD512877916900023487 /* SettingsFormView.swift */; };
 		1AEB000328760E3E009055BE /* SearchRankDocumentOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */; };
 		1AEB0005287611EF009055BE /* SearchResultSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */; };
@@ -181,6 +183,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AE699F02B2009FC008CB0F6 /* SPISearchResult in Frameworks */,
 				1ABC74C22B19697000B7E6EB /* Collections in Frameworks */,
 				1A372C9A287C62070020CFAC /* ArgumentParser in Frameworks */,
 				1A372CA3287C63F70020CFAC /* SwiftSoup in Frameworks */,
@@ -397,6 +400,7 @@
 				1A372C99287C62070020CFAC /* ArgumentParser */,
 				1A372CA2287C63F70020CFAC /* SwiftSoup */,
 				1ABC74C12B19697000B7E6EB /* Collections */,
+				1AE699EF2B2009FC008CB0F6 /* SPISearchResult */,
 			);
 			productName = ReportSearch;
 			productReference = 1A372C91287C61A30020CFAC /* ReportSearch */;
@@ -557,6 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AE699EE2B2009D9008CB0F6 /* ReviewSet.swift in Sources */,
 				1ABC74BA2B19693900B7E6EB /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */,
 				1A372C9E287C63C50020CFAC /* SearchMetrics.swift in Sources */,
 				1A372C9D287C63C50020CFAC /* Relevance.swift in Sources */,
@@ -1074,6 +1079,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1AD6D6BE2B0EDFBE00A4A61A /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		1AE699EF2B2009FC008CB0F6 /* SPISearchResult */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1AFF37DC2B1D51CE009E518B /* XCRemoteSwiftPackageReference "SPISearchResult" */;
+			productName = SPISearchResult;
 		};
 		1AEDE79B287BA55A009B1CA4 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -5,9 +5,9 @@
 ////  Created by Joseph Heck on 7/6/22.
 ////
 //
-//import SwiftUI
+// import SwiftUI
 //
-//struct SearchResultSetSummaryView: View {
+// struct SearchResultSetSummaryView: View {
 //    let searchResultSet: RecordedSearchResult
 //    var body: some View {
 //        HStack(alignment: .center) {
@@ -24,10 +24,10 @@
 //    init(_ searchResultSet: RecordedSearchResult) {
 //        self.searchResultSet = searchResultSet
 //    }
-//}
+// }
 //
-//struct SearchResultSetSummaryView_Previews: PreviewProvider {
+// struct SearchResultSetSummaryView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        SearchResultSetSummaryView(RecordedSearchResult.example)
 //    }
-//}
+// }

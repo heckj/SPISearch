@@ -4,10 +4,10 @@
 ////
 ////  Created by Joseph Heck on 7/6/22.
 ////
-//import Foundation
+// import Foundation
 //
 ///// A collection of search metrics calculated for a stored search result against a relevance ranking.
-//struct SearchMetrics {
+// struct SearchMetrics {
 //    /// The precision of the search results.
 //    ///
 //    /// The precision of a set of search results is defined as ratio of the number of relevant documents compared to the total number of results retrieved.
@@ -143,4 +143,4 @@
 //            }
 //        return dcg / idealDCG
 //    }
-//}
+// }

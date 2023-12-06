@@ -5,13 +5,13 @@
 ////  Created by Joseph Heck on 7/3/22.
 ////
 //
-//import Foundation
-//import SwiftSoup
+// import Foundation
+// import SwiftSoup
 //
 ///// A type that invokes a search and collects results from Swift Package Index.
 /////
 ///// The results are parsed into a ``SPISearch/SearchResultSet``.
-//enum SPISearchParser {
+// enum SPISearchParser {
 //    static var serverHost = "https://swiftpackageindex.com/search?query=bezier"
 //    static var localHost = "http://127.0.0.1:8080/search?query=bezier"
 //
@@ -178,4 +178,4 @@
 //        // print("Title: \(titleString)")
 //        return results
 //    }
-//}
+// }

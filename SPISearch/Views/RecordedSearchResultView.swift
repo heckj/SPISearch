@@ -5,9 +5,9 @@
 ////  Created by Joseph Heck on 7/3/22.
 ////
 //
-//import SwiftUI
+// import SwiftUI
 //
-//struct RecordedSearchResultView: View {
+// struct RecordedSearchResultView: View {
 //    let recordedSearch: RecordedSearchResult
 //    let relevanceRecords: [RelevanceRecord]
 //    let averageRelevancyValues: ComputedRelevancyValues?
@@ -93,9 +93,9 @@
 //        self.relevanceRecords = relevanceRecords
 //        averageRelevancyValues = relevancyValues
 //    }
-//}
+// }
 //
-//struct SearchResultsView_Previews: PreviewProvider {
+// struct SearchResultsView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        RecordedSearchResultView(
 //            RecordedSearchResult(
@@ -116,4 +116,4 @@
 //            relevancyValues: RelevanceRecord.example.computedValues()
 //        )
 //    }
-//}
+// }

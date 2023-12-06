@@ -22,7 +22,7 @@ struct SearchRankDocument: FileDocument {
     init() {
         searchRanking = SearchRank(id: UUID(), nil)
     }
-    
+
     static var readableContentTypes: [UTType] { [.SPISearchRank] }
 
     init(configuration: ReadConfiguration) throws {

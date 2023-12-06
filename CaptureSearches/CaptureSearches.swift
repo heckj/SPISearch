@@ -41,7 +41,7 @@ struct CaptureSearches: AsyncParsableCommand {
            let newlineAsData = "\n".data(using: .utf8)
         {
             // Write data
-            fileHandle.write("Test line 1\n".data(using: .utf8)!)
+            fileHandle.write("# Captured Search Queries\n".data(using: .utf8)!)
 
             do {
                 let (bytes, response) = try await URLSession.shared.bytes(from: fileURLtoRead)

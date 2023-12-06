@@ -52,7 +52,7 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "~/src/SPISearch/searchRankDocs/queries.txt"
+            argument = "~/src/SPISearch/SPISearchTests/queries.txt"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

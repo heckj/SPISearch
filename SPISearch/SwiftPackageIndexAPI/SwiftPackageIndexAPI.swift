@@ -60,6 +60,9 @@ public struct SwiftPackageIndexAPI {
         var req = URLRequest(url: url)
         req.setValue("Bearer \(apiToken)", forHTTPHeaderField: "Authorization")
         let (data, _) = try await URLSession.shared.data(for: req)
+        if let rawdata = String(bytes: data, encoding: .utf8) {
+            print("\(rawdata)")
+        }
         let results = try Self.decoder.decode(SearchResponse.self, from: data)
         return results
     }

@@ -1,9 +1,6 @@
 import ArgumentParser
 import Foundation
 
-// Example invocation
-// /Users/heckj/Library/Developer/Xcode/DerivedData/SPISearch-auuhugbmpqngrkepntoqrhshlkmh/Build/Products/Debug/CaptureSearches searchRankDocs/queries.txt
-
 @main
 struct CaptureSearches: AsyncParsableCommand {
     @Argument(help: "A file with the search queries to use.")
@@ -55,10 +52,11 @@ struct CaptureSearches: AsyncParsableCommand {
                     let searchresult = try await makeASearchResult(terms: line,
                                                                    from: host,
                                                                    apiToken: apiToken)
-                    dump(searchresult)
+                    print("Found \(searchresult.keywords.count) keywords, \(searchresult.authors.count) authors, and \(searchresult.packages.count) packages.")
                     let encoded = try jsonEncoder.encode(searchresult)
                     fileHandle.write(encoded)
                     fileHandle.write(newlineAsData)
+                    try await Task.sleep(for: .seconds(5))
                 }
             } catch {
                 print("Error: \(error.localizedDescription)")

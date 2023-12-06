@@ -26,26 +26,26 @@ struct ReportSearchRank: ParsableCommand {
                     // print("fileURL constructed: \(fileURL)")
                     let searchRanking = try JSONDecoder().decode(SearchRank.self, from: Data(contentsOf: fileURL))
 
-                    if let medianRanking = searchRanking.medianRelevancyRanking {
-                        for storedSearch in searchRanking.storedSearches {
-                            let searchStringRep = "\(storedSearch.recordedDate.formatted(date: .abbreviated, time: .omitted)) (\(storedSearch.host))"
-                            print("'\(fileURL.lastPathComponent)' query terms: \(searchRanking.storedSearches.first?.searchTerms ?? "")")
-
-                            if let metrics = SearchMetrics(searchResult: storedSearch,
-                                                           ranking: medianRanking)
-                            {
-                                print(" - \(searchStringRep)")
-                                print("   -            Precision: \(metrics.precision.formatted(myDoubleFormat))")
-                                print("   -               Recall: \(metrics.recall.formatted(myDoubleFormat))")
-                                print("   - Mean Reciprocal Rank: \(metrics.meanReciprocalRank.formatted(myDoubleFormat))")
-                                print("   - NDCG: \(metrics.ndcg.formatted(myDoubleFormat))")
-                            } else {
-                                print(" - \(searchStringRep)\n  ranking is incomplete, metrics are unavailable.")
-                            }
-                        }
-                    } else {
-                        print("No rankings are available in \(report)")
-                    }
+//                    if let medianRanking = searchRanking.medianRelevancyRanking {
+//                        for storedSearch in searchRanking.storedSearches {
+//                            let searchStringRep = "\(storedSearch.recordedDate.formatted(date: .abbreviated, time: .omitted)) (\(storedSearch.host))"
+//                            print("'\(fileURL.lastPathComponent)' query terms: \(searchRanking.storedSearches.first?.searchTerms ?? "")")
+//
+//                            if let metrics = SearchMetrics(searchResult: storedSearch,
+//                                                           ranking: medianRanking)
+//                            {
+//                                print(" - \(searchStringRep)")
+//                                print("   -            Precision: \(metrics.precision.formatted(myDoubleFormat))")
+//                                print("   -               Recall: \(metrics.recall.formatted(myDoubleFormat))")
+//                                print("   - Mean Reciprocal Rank: \(metrics.meanReciprocalRank.formatted(myDoubleFormat))")
+//                                print("   - NDCG: \(metrics.ndcg.formatted(myDoubleFormat))")
+//                            } else {
+//                                print(" - \(searchStringRep)\n  ranking is incomplete, metrics are unavailable.")
+//                            }
+//                        }
+//                    } else {
+//                        print("No rankings are available in \(report)")
+//                    }
                 }
             } catch {
                 print("Error: \(error)")

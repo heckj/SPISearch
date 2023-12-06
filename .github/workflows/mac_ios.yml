@@ -70,6 +70,9 @@ jobs:
       - name: macOS build for ReportSearch
         run: xcodebuild clean build -scheme 'ReportSearch' -destination 'platform=macOS' -sdk macosx13.3 -showBuildTimingSummary
 
+      - name: macOS build for CaptureSearches
+        run: xcodebuild clean build -scheme 'CaptureSearches' -destination 'platform=macOS' -sdk macosx13.3 -showBuildTimingSummary
+
 # w/ Xcode 14 beta 3:
 # Local: xcodebuild clean test -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=16.0,name=iPhone 8' -sdk iphonesimulator16.0
 

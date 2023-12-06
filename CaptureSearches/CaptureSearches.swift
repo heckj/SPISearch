@@ -15,6 +15,7 @@ struct CaptureSearches: AsyncParsableCommand {
     mutating func run() async throws {
         let jsonEncoder = JSONEncoder()
         jsonEncoder.dateEncodingStrategy = .iso8601
+        jsonEncoder.outputFormatting = .sortedKeys
 
         let info = ProcessInfo.processInfo
         guard let apiToken = info.environment["SPI_API_TOKEN"] else {

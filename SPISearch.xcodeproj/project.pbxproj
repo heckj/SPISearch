@@ -79,6 +79,7 @@
 		1AEB000328760E3E009055BE /* SearchRankDocumentOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */; };
 		1AEB0005287611EF009055BE /* SearchResultSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */; };
 		1AEDE79C287BA55A009B1CA4 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 1AEDE79B287BA55A009B1CA4 /* ArgumentParser */; };
+		1AEE50642B213C4300BD46B1 /* SearchResult+exampleCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE50632B213C4300BD46B1 /* SearchResult+exampleCollection.swift */; };
 		1AFF37DE2B1D51CE009E518B /* SPISearchResult in Frameworks */ = {isa = PBXBuildFile; productRef = 1AFF37DD2B1D51CE009E518B /* SPISearchResult */; };
 /* End PBXBuildFile section */
 
@@ -168,6 +169,7 @@
 		1AEADD512877916900023487 /* SettingsFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFormView.swift; sourceTree = "<group>"; };
 		1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankDocumentOverview.swift; sourceTree = "<group>"; };
 		1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSetSummaryView.swift; sourceTree = "<group>"; };
+		1AEE50632B213C4300BD46B1 /* SearchResult+exampleCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchResult+exampleCollection.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -307,10 +309,11 @@
 			isa = PBXGroup;
 			children = (
 				1A7850002873380B00AFB33F /* SearchRankDocument.swift */,
+				1AEE50632B213C4300BD46B1 /* SearchResult+exampleCollection.swift */,
 				1A78500228733B5500AFB33F /* SearchRank.swift */,
+				1A39750A2B1E9182009F9FF7 /* ReviewSet.swift */,
 				1A7FD6AA2873797E008C76AB /* Relevance.swift */,
 				1A39750C2B1E91C0009F9FF7 /* oldstuff.swift */,
-				1A39750A2B1E9182009F9FF7 /* ReviewSet.swift */,
 				1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */,
 				1A6A29C728762B6C0096F600 /* SearchMetrics.swift */,
 			);
@@ -335,11 +338,11 @@
 			isa = PBXGroup;
 			children = (
 				1AEADD512877916900023487 /* SettingsFormView.swift */,
-				1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */,
 				1A624BB82876620A00312840 /* RelevanceSetSummaryView.swift */,
 				1A8144AD287218F900F58B48 /* RelevanceSelectorView.swift */,
 				1A9D79DD287B3EBD0068DF3A /* RelevanceResultView.swift */,
 				1A8144A92872056300F58B48 /* CapsuleText.swift */,
+				1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */,
 				1A032CFD287A24F9007DA587 /* SearchMetricsView.swift */,
 			);
 			path = "Supplemental Views";
@@ -543,6 +546,7 @@
 				1A78500528733F0500AFB33F /* SearchRankEditorView.swift in Sources */,
 				1A2B94F52B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift in Sources */,
 				1A2B94F22B195BE9005B92E1 /* SwiftPackageIndexAPI.swift in Sources */,
+				1AEE50642B213C4300BD46B1 /* SearchResult+exampleCollection.swift in Sources */,
 				1A1FADF028737BFF0037D674 /* RankResultsView.swift in Sources */,
 				1A8144AC28720E7000F58B48 /* RecordedSearchResultView.swift in Sources */,
 				1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */,

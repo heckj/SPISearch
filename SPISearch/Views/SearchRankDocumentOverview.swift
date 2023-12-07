@@ -25,33 +25,26 @@ struct SearchRankDocumentOverview: View {
 //    }
 
     var body: some View {
-        Text("TOP LEVEL VIEW")
-//        List {
-//            Section {
-//                Text("Searches for **\(document.searchRanking.storedSearches.first?.searchTerms ?? "")**")
-//                    .font(.title)
-//            }
-//            Section {
-//                ForEach($document.searchRanking.relevanceSets) { ranking in
-//                    HStack {
-//                        RelevanceSetSummaryView(ranking.wrappedValue)
-//                        NavigationLink("") {
+        List {
+            Section {
+                Text("Collection of \(document.searchRanking.searchResultCollection.count) searches")
+                    .font(.title)
+            }
+            Section {
+                ForEach(document.searchRanking.reviewedEvaluationCollections) { evalCollection in
+                    HStack {
+                        Text("\(evalCollection.reviewer.name) (\(evalCollection.reviewer.id)) has \(evalCollection.rankings.count) evaluations stored")
+                        // RelevanceSetSummaryView(ranking.wrappedValue)
+                        NavigationLink("") {
 //                            RankResultsView(
 //                                searchRankDoc: $document, relevanceRecordBinding: ranking,
 //                                recordedSearch: document.searchRanking.combinedRandomizedSearchResult()
 //                            )
-//                        }
-//                    }
-//                    .contextMenu {
-//                        Button {
-//                            document.searchRanking.relevanceSets.removeAll { $0.id == ranking.id
-//                            }
-//                        } label: {
-//                            Image(systemName: "minus.circle.fill")
-//                        }
-//                    }
-//                }
-//            } header: {
+                        }
+                    }
+                }
+            }
+//                header: {
 //                VStack(alignment: .leading) {
 //                    Text("Rankings")
 //                        .font(.title)
@@ -67,65 +60,29 @@ struct SearchRankDocumentOverview: View {
 //                    #endif
 //                }
 //            }
-//            Section {
-//                ForEach(document.searchRanking.storedSearches) { storedSearch in
-//                    NavigationLink("Search on \(storedSearch.recordedDate.formatted(date: .abbreviated, time: .omitted)) (\(storedSearch.host))") {
+            Section {
+                ForEach(document.searchRanking.searchResultCollection) { searchResult in
+                    NavigationLink("Search on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))") {
+                        Text("\(searchResult.query) -> \(searchResult.packages.count) packages")
 //                        RecordedSearchResultView(storedSearch,
 //                                                 relevanceRecords: document.searchRanking.relevanceSets,
 //                                                 relevancyValues: document.searchRanking.medianRelevancyRanking)
-//                    }
-//                    .contextMenu {
-//                        Button {
-//                            document.searchRanking.storedSearches.removeAll {
-//                                $0.id == storedSearch.id
-//                            }
-//                        } label: {
-//                            Image(systemName: "minus.circle.fill")
-//                                .foregroundColor(.red)
-//                        }
-//                    }
-//                }
-//            } header: {
-//                VStack(alignment: .leading) {
-//                    Text("Stored Searches")
-//                        .font(.title)
-//                    HStack {
-//                        Button {
-//                            captureSearch()
-//                        } label: {
-//                            HStack {
-//                                Image(systemName: "plus.circle")
-//                                Image(systemName: "cloud")
-//                            }
-//                        }
-//                        #if os(iOS)
-//                        .buttonStyle(.borderless)
-//                        #endif
-//                        #if os(macOS)
-//                            Button {
-//                                captureSearch(localhost: true)
-//                            } label: {
-//                                HStack {
-//                                    Image(systemName: "plus.circle")
-//                                    Image(systemName: "laptopcomputer")
-//                                }
-//                            }
-//                        #endif
-//                    }
-//                }
-//            }
-//        }
-//        #if os(macOS)
-//        .listStyle(.sidebar)
-//        #endif
-//        .sheet(isPresented: $showingSheet) {
+                    }
+                }
+            }
+        }
+        #if os(macOS)
+        .listStyle(.sidebar)
+        #endif
+        .sheet(isPresented: $showingSheet) {
+            Text("CONFIGURE REVIEWER ID")
 //            ConfigureReviewer(.constant(SearchRank.extendedExample))
-//        }
-//        .onAppear {
-//            if localReviewer.isEmpty {
-//                showingSheet = true
-//            }
-//        }
+        }
+        .onAppear {
+            if localReviewer.isEmpty {
+                showingSheet = true
+            }
+        }
     }
 
     init(_ document: Binding<SearchRankDocument>) {

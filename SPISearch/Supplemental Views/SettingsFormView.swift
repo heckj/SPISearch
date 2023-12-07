@@ -8,21 +8,23 @@
 import SwiftUI
 
 struct SettingsFormView: View {
-    @AppStorage(SPISearchApp.reviewerKey) private var reviewerId: String = ""
+    @AppStorage(SPISearchApp.reviewerIDKey) var localReviewerId: String = UUID().uuidString
+    @AppStorage(SPISearchApp.reviewerNameKey) private var reviewerName: String = ""
     var body: some View {
         Form {
-            HStack(alignment: .firstTextBaseline) {
-                Text("Enter your reviewer ID")
-                TextField(text: $reviewerId) {
-                    Text("reviewer id")
+            Section("Evaluator \(localReviewerId)") {
+                HStack(alignment: .firstTextBaseline) {
+                    TextField(text: $reviewerName) {
+                        Text("Reviewer Name")
+                    }
+                    .disableAutocorrection(true)
+                    #if os(iOS)
+                        .textInputAutocapitalization(.never)
+                    #endif
+                        .textFieldStyle(.roundedBorder)
                 }
-                .disableAutocorrection(true)
-                #if os(iOS)
-                    .textInputAutocapitalization(.never)
-                #endif
-                    .textFieldStyle(.roundedBorder)
+                .padding()
             }
-            .padding()
         }
     }
 }

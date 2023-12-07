@@ -12,9 +12,8 @@ import SwiftUI
 @main
 struct SPISearchApp: App {
     var body: some Scene {
-        DocumentGroup(newDocument: SearchRankDocument()) { _ in
-//            SearchRankEditorView(document: file.$document)
-            Text("TOP LEVEL DOCUMENT VIEW")
+        DocumentGroup(newDocument: SearchRankDocument()) { file in
+            SearchRankEditorView(document: file.$document)
         }
         #if os(macOS)
             Settings {
@@ -26,6 +25,6 @@ struct SPISearchApp: App {
         //        #endif
     }
 
-    /// The key used for storing the identity of the reviwer in AppStorage (UserDefaults).
+    /// The key used for storing the identity of the reviewer in AppStorage (UserDefaults).
     static var reviewerKey: String = "reviewer"
 }

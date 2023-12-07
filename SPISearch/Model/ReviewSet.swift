@@ -28,7 +28,7 @@ struct RelevanceEvaluation: Hashable, Identifiable, Codable {
 }
 
 /// The reviewer of search results for relevance
-struct Reviewer: Hashable, Identifiable, Codable {
+struct Reviewer: Hashable, Identifiable, Codable, CustomStringConvertible {
     /// The unique identifier for the reviewer
     let id: UUID
 
@@ -40,5 +40,9 @@ struct Reviewer: Hashable, Identifiable, Codable {
     init(name: String) {
         id = UUID()
         self.name = name
+    }
+
+    var description: String {
+        name
     }
 }

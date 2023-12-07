@@ -27,7 +27,19 @@ struct SearchRank: Identifiable, Codable {
 
     var searchResultCollection: [SPISearchResult.SearchResult] = []
     var reviewedEvaluationCollections: [RelevanceEvaluation] = []
-//
+
+//    init(id: UUID = UUID(), _ result: SPISearchResult.SearchResult? = nil) {
+//        self.id = id
+//        if let result {
+//            searchResultCollection.append(result)
+//        }
+//    }
+
+    init(id: UUID = UUID(), _ result: [SPISearchResult.SearchResult] = []) {
+        self.id = id
+        searchResultCollection = result
+    }
+
 //    /// Load all of the keywords and package results from all of the stored searches, combining them into a sorted order for each
 //    /// in order to rank them.
 //    /// - Returns: A merged and ordered recorded search result with the synthesis of all the saved searches.
@@ -169,18 +181,6 @@ struct SearchRank: Identifiable, Codable {
 //    }
 //
 //    func searchMetrics(searchResult _: RecordedSearchResult, ranking _: RelevanceRecord) {}
-
-    init(id: UUID = UUID(), _ result: SPISearchResult.SearchResult? = nil) {
-        self.id = id
-        if let result {
-            searchResultCollection.append(result)
-        }
-    }
-
-    init(id: UUID = UUID(), _ result: [SPISearchResult.SearchResult] = []) {
-        self.id = id
-        searchResultCollection = result
-    }
 
 //    static var example: SearchRank {
 //        SearchRank(RecordedSearchResult.example)

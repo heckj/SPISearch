@@ -5,6 +5,7 @@
 //  Created by Joseph Heck on 7/4/22.
 //
 
+import SPISearchResult
 import SwiftUI
 import UniformTypeIdentifiers
 
@@ -19,8 +20,8 @@ extension UTType {
 struct SearchRankDocument: FileDocument {
     var searchRanking: SearchRank
 
-    init() {
-        searchRanking = SearchRank(id: UUID(), nil)
+    init(_ searchResultCollection: [SPISearchResult.SearchResult] = []) {
+        searchRanking = SearchRank(id: UUID(), searchResultCollection)
     }
 
     static var readableContentTypes: [UTType] { [.SPISearchRank] }

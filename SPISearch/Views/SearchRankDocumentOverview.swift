@@ -9,14 +9,6 @@ import os
 import SPISearchResult
 import SwiftUI
 
-// default logger
-let logger = Logger()
-
-enum ImportError: Error {
-    case fileAccessError(url: URL)
-    case readError(url: URL)
-}
-
 struct SearchRankDocumentOverview: View {
     @Binding var document: SearchRankDocument
 
@@ -24,51 +16,6 @@ struct SearchRankDocumentOverview: View {
     @State private var reviewerId: String = ""
 
     @State private var importerEnabled = false
-
-    private func bestEffortImportFromfileURL(fileURL: URL) throws -> [SearchResult] {
-        var searchResults: [SearchResult] = []
-        // gain access to the file
-        let gotAccess = fileURL.startAccessingSecurityScopedResource()
-        if !gotAccess { throw ImportError.fileAccessError(url: fileURL) }
-
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-
-        do {
-            let wholeDamnThing = try String(contentsOf: fileURL, encoding: .utf8)
-            wholeDamnThing.enumerateLines { line, _ in
-                if !line.starts(with: "#") {
-                    if let newDataBlob = line.data(using: .utf8) {
-                        do {
-                            let aSearchResult = try decoder.decode(SPISearchResult.SearchResult.self, from: newDataBlob)
-                            searchResults.append(aSearchResult)
-                        } catch {
-                            logger.warning("Skipping embedded JSON-encoded search result: Unable to decode search result from \(line): \(error), ")
-                        }
-                    } else {
-                        logger.warning("skipping embedded JSON-encoded search result: Unable to convert \(line) back into data using .utf8 encoding.")
-                    }
-                }
-            }
-        } catch {
-            // from try String(contentsOf:encoding:)
-            throw ImportError.readError(url: fileURL)
-        }
-        // release access to the file
-        fileURL.stopAccessingSecurityScopedResource()
-        return searchResults
-    }
-
-//    private func captureSearch(localhost: Bool = false) {
-//        if let terms = document.searchRanking.storedSearches.first?.searchTerms {
-//            Task {
-//                let searchResults = await SPISearchParser.recordSearch(terms: terms, localhost: localhost)
-//                DispatchQueue.main.async {
-//                    document.searchRanking.storedSearches.append(searchResults)
-//                }
-//            }
-//        }
-//    }
 
     var body: some View {
         List {
@@ -81,11 +28,13 @@ struct SearchRankDocumentOverview: View {
                             importerEnabled = true
                         }
                         .fileImporter(isPresented: $importerEnabled, allowedContentTypes: [.text]) { result in
+
+                            let logger = Logger()
                             // # result type is -> URL/error
                             switch result {
                             case let .success(fileURL):
                                 do {
-                                    for aSearchResult in try bestEffortImportFromfileURL(fileURL: fileURL) {
+                                    for aSearchResult in try SearchResultImporter.bestEffort(from: fileURL) {
                                         document.searchRanking.searchResultCollection.append(aSearchResult)
                                     }
                                 } catch {

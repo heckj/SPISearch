@@ -18,7 +18,7 @@ struct SearchRankDocumentOverview: View {
 
     var body: some View {
         List {
-            Section {
+            Section("Summary") {
                 // only display import on an empty document?
                 if document.searchRanking.searchResultCollection.isEmpty {
                     HStack {
@@ -47,11 +47,20 @@ struct SearchRankDocumentOverview: View {
                         Spacer()
                     }
                 } else {
-                    Text("Collection of \(document.searchRanking.searchResultCollection.count) searches")
-                        .font(.title)
+                    Text("\(document.searchRanking.searchResultCollection.count) search collections")
+                    Text("\(document.searchRanking.reviewedEvaluationCollections.count) evaluations")
                 }
             }
-            Section {
+
+            Section("Searches") {
+                ForEach(document.searchRanking.searchResultCollection) { searchResult in
+                    NavigationLink("Search on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))") {
+                        SearchResultView(searchResult)
+                    }
+                }
+            }
+
+            Section("Evaluations") {
                 ForEach(document.searchRanking.reviewedEvaluationCollections) { evalCollection in
                     HStack {
                         Text("\(evalCollection.reviewer.name) (\(evalCollection.reviewer.id)) has \(evalCollection.rankings.count) evaluations stored")
@@ -81,13 +90,6 @@ struct SearchRankDocumentOverview: View {
 //                    #endif
 //                }
 //            }
-            Section {
-                ForEach(document.searchRanking.searchResultCollection) { searchResult in
-                    NavigationLink("Search on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))") {
-                        SearchResultView(searchResult)
-                    }
-                }
-            }
         }
         #if os(macOS)
         .listStyle(.sidebar)

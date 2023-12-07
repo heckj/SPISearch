@@ -73,6 +73,7 @@
 		1AD3E3432878BA120049E655 /* MedianRelevancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3E3422878BA120049E655 /* MedianRelevancyTests.swift */; };
 		1AD6D6C02B0EDFBE00A4A61A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */; };
 		1ADB927F2B2251E60022831F /* SearchResultImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADB927E2B2251E60022831F /* SearchResultImporter.swift */; };
+		1ADB92812B22542F0022831F /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADB92802B22542F0022831F /* Logging.swift */; };
 		1AE2268328725560008C4ED1 /* SearchingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2268228725560008C4ED1 /* SearchingView.swift */; };
 		1AE699EE2B2009D9008CB0F6 /* ReviewSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A39750A2B1E9182009F9FF7 /* ReviewSet.swift */; };
 		1AE699F02B2009FC008CB0F6 /* SPISearchResult in Frameworks */ = {isa = PBXBuildFile; productRef = 1AE699EF2B2009FC008CB0F6 /* SPISearchResult */; };
@@ -167,6 +168,7 @@
 		1AD3E3422878BA120049E655 /* MedianRelevancyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedianRelevancyTests.swift; sourceTree = "<group>"; };
 		1ADA990F287106AD008FACDF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1ADB927E2B2251E60022831F /* SearchResultImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultImporter.swift; sourceTree = "<group>"; };
+		1ADB92802B22542F0022831F /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		1AE2268228725560008C4ED1 /* SearchingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingView.swift; sourceTree = "<group>"; };
 		1AEADD512877916900023487 /* SettingsFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFormView.swift; sourceTree = "<group>"; };
 		1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankDocumentOverview.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				1A1650432870F98F00AC4DB2 /* SPISearchApp.swift */,
 				1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */,
 				1A13C4C82B0BE3B1007D20AD /* SPISearchAPI.swift */,
+				1ADB92802B22542F0022831F /* Logging.swift */,
 				1A2B94E82B195BA8005B92E1 /* SwiftPackageIndexAPI */,
 				1AC55377287363610050F0D6 /* Views */,
 				1AC55378287363930050F0D6 /* Supplemental Views */,
@@ -556,6 +559,7 @@
 				1A562F6E2878C681006B29A8 /* ComputedRelevancyValues.swift in Sources */,
 				1A39750D2B1E91C0009F9FF7 /* oldstuff.swift in Sources */,
 				1A78500328733B5500AFB33F /* SearchRank.swift in Sources */,
+				1ADB92812B22542F0022831F /* Logging.swift in Sources */,
 				1A6A29C828762B6D0096F600 /* SearchMetrics.swift in Sources */,
 				1AEADD522877916900023487 /* SettingsFormView.swift in Sources */,
 				1ADB927F2B2251E60022831F /* SearchResultImporter.swift in Sources */,

@@ -11,8 +11,8 @@ import SwiftUI
 struct SearchRankDocumentOverview: View {
     @Binding var document: SearchRankDocument
 
-    @AppStorage(SPISearchApp.reviewerKey) var localReviewer: String = ""
-    @State private var reviewerId: String = ""
+    @AppStorage(SPISearchApp.reviewerIDKey) var localReviewerId: String = UUID().uuidString
+    @AppStorage(SPISearchApp.reviewerNameKey) var localReviewerName: String = ""
 
     @State private var importerEnabled = false
 

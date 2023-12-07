@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A0099432B22916200A7A45E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 1A0099422B22916200A7A45E /* PrivacyInfo.xcprivacy */; };
 		1A032CFE287A24F9007DA587 /* SearchMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A032CFD287A24F9007DA587 /* SearchMetricsView.swift */; };
 		1A134E2E2B1A6B5A009478B1 /* RelevanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A134E2D2B1A6B5A009478B1 /* RelevanceTests.swift */; };
 		1A13C4C92B0BE3B1007D20AD /* SPISearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A13C4C82B0BE3B1007D20AD /* SPISearchAPI.swift */; };
@@ -117,6 +118,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A0099422B22916200A7A45E /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		1A032CFD287A24F9007DA587 /* SearchMetricsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetricsView.swift; sourceTree = "<group>"; };
 		1A134E2D2B1A6B5A009478B1 /* RelevanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceTests.swift; sourceTree = "<group>"; };
 		1A13C4C82B0BE3B1007D20AD /* SPISearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPISearchAPI.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				1A1650492870F99000AC4DB2 /* SPISearch.entitlements */,
 				1A16504A2870F99000AC4DB2 /* Preview Content */,
 				1A1CBC9428734A7A0033EE43 /* Documentation.docc */,
+				1A0099422B22916200A7A45E /* PrivacyInfo.xcprivacy */,
 			);
 			path = SPISearch;
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A0099432B22916200A7A45E /* PrivacyInfo.xcprivacy in Resources */,
 				1A16504C2870F99000AC4DB2 /* Preview Assets.xcassets in Resources */,
 				1A1650482870F99000AC4DB2 /* Assets.xcassets in Resources */,
 			);

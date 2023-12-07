@@ -5,7 +5,6 @@
 //  Created by Joseph Heck on 7/6/22.
 //
 
-import os
 import SPISearchResult
 import SwiftUI
 
@@ -29,7 +28,6 @@ struct SearchRankDocumentOverview: View {
                         }
                         .fileImporter(isPresented: $importerEnabled, allowedContentTypes: [.text]) { result in
 
-                            let logger = Logger()
                             // # result type is -> URL/error
                             switch result {
                             case let .success(fileURL):

@@ -1,12 +1,4 @@
-//
-//  SearchResultImporter.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 12/7/23.
-//
-
 import Foundation
-import os
 import SPISearchResult
 
 enum SearchResultImporter {
@@ -16,7 +8,6 @@ enum SearchResultImporter {
     }
 
     static func bestEffort(from fileURL: URL) throws -> [SearchResult] {
-        let logger = Logger()
         var searchResults: [SearchResult] = []
         // The fileURL provided is a security scoped resource - so we need to request
         // (synchronous) access before we can use it. It's the stuff returned from

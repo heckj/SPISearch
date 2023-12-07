@@ -23,8 +23,10 @@ struct SearchRankDocumentOverview: View {
                 if document.searchRanking.searchResultCollection.isEmpty {
                     HStack {
                         Spacer()
-                        Button("Import", systemImage: "square.and.arrow.down.on.square") {
+                        Button {
                             importerEnabled = true
+                        } label: {
+                            Label("Import", image: "square.and.arrow.down.on.square")
                         }
                         .fileImporter(isPresented: $importerEnabled, allowedContentTypes: [.text]) { result in
 

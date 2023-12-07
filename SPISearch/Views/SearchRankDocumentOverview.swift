@@ -5,13 +5,59 @@
 //  Created by Joseph Heck on 7/6/22.
 //
 
+import os
+import SPISearchResult
 import SwiftUI
 
+// default logger
+let logger = Logger()
+
+enum ImportError: Error {
+    case fileAccessError(url: URL)
+    case readError(url: URL)
+}
+
 struct SearchRankDocumentOverview: View {
+    @Binding var document: SearchRankDocument
+
     @AppStorage(SPISearchApp.reviewerKey) var localReviewer: String = ""
     @State private var reviewerId: String = ""
-    @Binding var document: SearchRankDocument
-    @State private var showingSheet = false
+
+    @State private var importerEnabled = false
+
+    private func bestEffortImportFromfileURL(fileURL: URL) throws -> [SearchResult] {
+        var searchResults: [SearchResult] = []
+        // gain access to the file
+        let gotAccess = fileURL.startAccessingSecurityScopedResource()
+        if !gotAccess { throw ImportError.fileAccessError(url: fileURL) }
+
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+
+        do {
+            let wholeDamnThing = try String(contentsOf: fileURL, encoding: .utf8)
+            wholeDamnThing.enumerateLines { line, _ in
+                if !line.starts(with: "#") {
+                    if let newDataBlob = line.data(using: .utf8) {
+                        do {
+                            let aSearchResult = try decoder.decode(SPISearchResult.SearchResult.self, from: newDataBlob)
+                            searchResults.append(aSearchResult)
+                        } catch {
+                            logger.warning("Skipping embedded JSON-encoded search result: Unable to decode search result from \(line): \(error), ")
+                        }
+                    } else {
+                        logger.warning("skipping embedded JSON-encoded search result: Unable to convert \(line) back into data using .utf8 encoding.")
+                    }
+                }
+            }
+        } catch {
+            // from try String(contentsOf:encoding:)
+            throw ImportError.readError(url: fileURL)
+        }
+        // release access to the file
+        fileURL.stopAccessingSecurityScopedResource()
+        return searchResults
+    }
 
 //    private func captureSearch(localhost: Bool = false) {
 //        if let terms = document.searchRanking.storedSearches.first?.searchTerms {
@@ -27,8 +73,34 @@ struct SearchRankDocumentOverview: View {
     var body: some View {
         List {
             Section {
-                Text("Collection of \(document.searchRanking.searchResultCollection.count) searches")
-                    .font(.title)
+                // only display import on an empty document?
+                if document.searchRanking.searchResultCollection.isEmpty {
+                    HStack {
+                        Spacer()
+                        Button("Import", systemImage: "square.and.arrow.down.on.square") {
+                            importerEnabled = true
+                        }
+                        .fileImporter(isPresented: $importerEnabled, allowedContentTypes: [.text]) { result in
+                            // # result type is -> URL/error
+                            switch result {
+                            case let .success(fileURL):
+                                do {
+                                    for aSearchResult in try bestEffortImportFromfileURL(fileURL: fileURL) {
+                                        document.searchRanking.searchResultCollection.append(aSearchResult)
+                                    }
+                                } catch {
+                                    logger.warning("Error importing search results: \(error)")
+                                }
+                            case let .failure(error):
+                                logger.warning("Error attempting to import search results: \(error)")
+                            }
+                        }
+                        Spacer()
+                    }
+                } else {
+                    Text("Collection of \(document.searchRanking.searchResultCollection.count) searches")
+                        .font(.title)
+                }
             }
             Section {
                 ForEach(document.searchRanking.reviewedEvaluationCollections) { evalCollection in
@@ -74,15 +146,6 @@ struct SearchRankDocumentOverview: View {
         #if os(macOS)
         .listStyle(.sidebar)
         #endif
-        .sheet(isPresented: $showingSheet) {
-            Text("CONFIGURE REVIEWER ID")
-//            ConfigureReviewer(.constant(SearchRank.extendedExample))
-        }
-        .onAppear {
-            if localReviewer.isEmpty {
-                showingSheet = true
-            }
-        }
     }
 
     init(_ document: Binding<SearchRankDocument>) {

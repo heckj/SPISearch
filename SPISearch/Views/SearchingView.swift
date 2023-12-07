@@ -47,7 +47,7 @@
 //                Button(action: { print("doing something about saving this...") }, label: {
 //                    Text("Export")
 //                })
-//                RecordedSearchResultView(searchResults)
+//                SearchResultView(searchResults)
 //                    .padding()
 //            } else {
 //                Form {

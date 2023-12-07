@@ -84,10 +84,7 @@ struct SearchRankDocumentOverview: View {
             Section {
                 ForEach(document.searchRanking.searchResultCollection) { searchResult in
                     NavigationLink("Search on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))") {
-                        Text("\(searchResult.query) -> \(searchResult.packages.count) packages")
-//                        RecordedSearchResultView(storedSearch,
-//                                                 relevanceRecords: document.searchRanking.relevanceSets,
-//                                                 relevancyValues: document.searchRanking.medianRelevancyRanking)
+                        SearchResultView(searchResult)
                     }
                 }
             }
@@ -105,7 +102,8 @@ struct SearchRankDocumentOverview: View {
 struct SearchRankDocumentOverview_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SearchRankDocumentOverview(.constant(SearchRankDocument()))
+            SearchRankDocumentOverview(.constant(SearchRankDocument(SearchResult.exampleCollection))
+            )
         }
     }
 }

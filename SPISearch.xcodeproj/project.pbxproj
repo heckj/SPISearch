@@ -55,7 +55,7 @@
 		1A789D7728721EE700E8108A /* PackageSearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A789D7628721EE700E8108A /* PackageSearchResultView.swift */; };
 		1A7FD6AB2873797E008C76AB /* Relevance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7FD6AA2873797E008C76AB /* Relevance.swift */; };
 		1A8144AA2872056300F58B48 /* CapsuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144A92872056300F58B48 /* CapsuleText.swift */; };
-		1A8144AC28720E7000F58B48 /* RecordedSearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144AB28720E7000F58B48 /* RecordedSearchResultView.swift */; };
+		1A8144AC28720E7000F58B48 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144AB28720E7000F58B48 /* SearchResultView.swift */; };
 		1A8144AE287218F900F58B48 /* RelevanceSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144AD287218F900F58B48 /* RelevanceSelectorView.swift */; };
 		1A88E3442A9029CA005E5B2E /* bezier_query_18aug2023.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A88E3432A9029CA005E5B2E /* bezier_query_18aug2023.txt */; };
 		1A9D79DE287B3EBD0068DF3A /* RelevanceResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D79DD287B3EBD0068DF3A /* RelevanceResultView.swift */; };
@@ -152,7 +152,7 @@
 		1A789D7628721EE700E8108A /* PackageSearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageSearchResultView.swift; sourceTree = "<group>"; };
 		1A7FD6AA2873797E008C76AB /* Relevance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relevance.swift; sourceTree = "<group>"; };
 		1A8144A92872056300F58B48 /* CapsuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleText.swift; sourceTree = "<group>"; };
-		1A8144AB28720E7000F58B48 /* RecordedSearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordedSearchResultView.swift; sourceTree = "<group>"; };
+		1A8144AB28720E7000F58B48 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		1A8144AD287218F900F58B48 /* RelevanceSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceSelectorView.swift; sourceTree = "<group>"; };
 		1A88E3432A9029CA005E5B2E /* bezier_query_18aug2023.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = bezier_query_18aug2023.txt; sourceTree = "<group>"; };
 		1A98A1452877A1D00021E214 /* AppPrivacyPolicy.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AppPrivacyPolicy.md; sourceTree = "<group>"; };
@@ -253,6 +253,7 @@
 				1AC90C4E2871FB5600254B83 /* SPISearchParser.swift */,
 				1A13C4C82B0BE3B1007D20AD /* SPISearchAPI.swift */,
 				1ADB92802B22542F0022831F /* Logging.swift */,
+				1ADB927E2B2251E60022831F /* SearchResultImporter.swift */,
 				1A2B94E82B195BA8005B92E1 /* SwiftPackageIndexAPI */,
 				1AC55377287363610050F0D6 /* Views */,
 				1AC55378287363930050F0D6 /* Supplemental Views */,
@@ -330,11 +331,10 @@
 			children = (
 				1A78500428733F0500AFB33F /* SearchRankEditorView.swift */,
 				1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */,
-				1ADB927E2B2251E60022831F /* SearchResultImporter.swift */,
+				1A8144AB28720E7000F58B48 /* SearchResultView.swift */,
 				1A1FADEF28737BFF0037D674 /* RankResultsView.swift */,
 				1ACF873F287C9D9B00D72B9C /* ConfigureReviewer.swift */,
 				1AE2268228725560008C4ED1 /* SearchingView.swift */,
-				1A8144AB28720E7000F58B48 /* RecordedSearchResultView.swift */,
 				1A789D7628721EE700E8108A /* PackageSearchResultView.swift */,
 			);
 			path = Views;
@@ -554,7 +554,7 @@
 				1A2B94F22B195BE9005B92E1 /* SwiftPackageIndexAPI.swift in Sources */,
 				1AEE50642B213C4300BD46B1 /* SearchResult+exampleCollection.swift in Sources */,
 				1A1FADF028737BFF0037D674 /* RankResultsView.swift in Sources */,
-				1A8144AC28720E7000F58B48 /* RecordedSearchResultView.swift in Sources */,
+				1A8144AC28720E7000F58B48 /* SearchResultView.swift in Sources */,
 				1A624BB92876620A00312840 /* RelevanceSetSummaryView.swift in Sources */,
 				1A562F6E2878C681006B29A8 /* ComputedRelevancyValues.swift in Sources */,
 				1A39750D2B1E91C0009F9FF7 /* oldstuff.swift in Sources */,

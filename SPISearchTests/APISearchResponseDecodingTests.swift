@@ -6,6 +6,7 @@
 //
 
 @testable import SPISearch
+import SPISearchResult
 import XCTest
 
 final class APISearchResponseDecodingTests: XCTestCase {
@@ -817,5 +818,9 @@ final class APISearchResponseDecodingTests: XCTestCase {
         let results = try decoder.decode(SwiftPackageIndexAPI.SearchResponse.self, from: raw_data)
         // dump(results)
         XCTAssertEqual(results.results.count, 40)
+    }
+    
+    func testStoredConvertedExamples() async throws {
+        XCTAssertEqual(SearchResult.exampleCollection.count, 3)
     }
 }

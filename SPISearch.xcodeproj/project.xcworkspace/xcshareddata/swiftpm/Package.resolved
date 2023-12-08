@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/heckj/SPISearchResult",
       "state" : {
-        "revision" : "53727f2fa76b3397958128eaa517d39763708aef",
-        "version" : "0.3.0"
+        "revision" : "438f1d077092cfcb5e05a29da5342f2aecce3e5a",
+        "version" : "0.4.0"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-argument-parser.git",
       "state" : {
-        "revision" : "8f4d2753f0e4778c76d5f05ad16c74f707390531",
-        "version" : "1.2.3"
+        "revision" : "c8ed701b513cf5177118a175d85fbbbcd707ab41",
+        "version" : "1.3.0"
       }
     },
     {

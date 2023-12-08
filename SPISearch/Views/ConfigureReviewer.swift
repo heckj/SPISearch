@@ -11,6 +11,7 @@ import SwiftUI
 struct ConfigureReviewer: View {
     // @Environment(\.presentationMode) var presentation
     @Environment(\.dismiss) var dismiss
+    @Binding var document: SearchRankDocument
     @AppStorage(SPISearchApp.reviewerIDKey) var localReviewerId: String = UUID().uuidString
     @AppStorage(SPISearchApp.reviewerNameKey) var localReviewerName: String = ""
     // To allow creating a local reviewer document if the
@@ -56,7 +57,9 @@ struct ConfigureReviewer: View {
                     }.padding()
                 #endif
             }.onAppear {
-                reviewerName = localReviewerName
+                localReviewerName = reviewerName
+                document.searchRanking.addOrUpdateEvaluator(reviewerId: localReviewerId,
+                                                            reviewerName: localReviewerName)
             }
         }
     }
@@ -64,13 +67,14 @@ struct ConfigureReviewer: View {
 
 private struct HostingView: View {
     @State private var showingSheet = false
+    @Binding var document: SearchRankDocument
     var body: some View {
         VStack {
             Button("Show Sheet") {
                 showingSheet.toggle()
             }
             .sheet(isPresented: $showingSheet) {
-                ConfigureReviewer()
+                ConfigureReviewer(document: $document)
             }
         }
     }
@@ -78,6 +82,6 @@ private struct HostingView: View {
 
 struct ConfigureReviewer_Previews: PreviewProvider {
     static var previews: some View {
-        HostingView()
+        HostingView(document: .constant(SearchRankDocument(SearchResult.exampleCollection)))
     }
 }

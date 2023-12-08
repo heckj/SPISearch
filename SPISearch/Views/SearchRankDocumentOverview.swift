@@ -15,6 +15,7 @@ struct SearchRankDocumentOverview: View {
     @AppStorage(SPISearchApp.reviewerNameKey) var localReviewerName: String = ""
 
     @State private var importerEnabled = false
+    @State private var configureReviewerSheetShown = false
 
     var body: some View {
         List {
@@ -29,8 +30,6 @@ struct SearchRankDocumentOverview: View {
                             Label("Import", image: "square.and.arrow.down.on.square")
                         }
                         .fileImporter(isPresented: $importerEnabled, allowedContentTypes: [.text]) { result in
-
-                            // # result type is -> URL/error
                             switch result {
                             case let .success(fileURL):
                                 do {
@@ -63,7 +62,7 @@ struct SearchRankDocumentOverview: View {
             Section("Evaluations") {
                 ForEach(document.searchRanking.reviewedEvaluationCollections) { evalCollection in
                     HStack {
-                        Text("\(evalCollection.reviewer.name) (\(evalCollection.reviewer.id)) has \(evalCollection.rankings.count) evaluations stored")
+                        Text("\(document.searchRanking.reviewerNames[evalCollection.id] ?? "unknown") (\(evalCollection.id)) has \(evalCollection.rankings.count) evaluations stored")
                         // RelevanceSetSummaryView(ranking.wrappedValue)
                         NavigationLink("") {
 //                            RankResultsView(
@@ -94,6 +93,19 @@ struct SearchRankDocumentOverview: View {
         #if os(macOS)
         .listStyle(.sidebar)
         #endif
+        .sheet(isPresented: $configureReviewerSheetShown) {
+            ConfigureReviewer(document: $document)
+        }
+        .onAppear(perform: {
+            // On document open, if there's a set reviewer name, update the document (if needed)
+            // to make sure its current.
+            if !localReviewerName.isEmpty {
+                document.searchRanking.addOrUpdateEvaluator(reviewerId: localReviewerId, reviewerName: localReviewerName)
+            } else {
+                // If the reviewer name _isn't_ yet set, then get in their face and get a name
+                configureReviewerSheetShown = true
+            }
+        })
     }
 
     init(_ document: Binding<SearchRankDocument>) {

@@ -11,38 +11,14 @@ struct ReviewSet: Hashable, Codable {
 
 /// A collection of the reviews by a reviewer.
 struct RelevanceEvaluation: Hashable, Identifiable, Codable {
-    /// An opaque identifier of the reviewers rankings
-    var id: UUID
-
     /// The review providing the relevance evaluations
-    let reviewer: Reviewer
+    var id: UUID
 
     /// The evaluations provided by the reviewer.
     var rankings: [ReviewSet] // set?
 
-    init(reviewer: Reviewer, rankings: [ReviewSet] = []) {
-        id = UUID()
-        self.reviewer = reviewer
+    init(reviewer: UUID, rankings: [ReviewSet] = []) {
+        id = reviewer
         self.rankings = rankings
-    }
-}
-
-/// The reviewer of search results for relevance
-struct Reviewer: Hashable, Identifiable, Codable, CustomStringConvertible {
-    /// The unique identifier for the reviewer
-    let id: UUID
-
-    /// The display name for the reviewer/
-    var name: String
-
-    /// Creates a new reviewer with the name you provide.
-    /// - Parameter name: The name of the reviewer.
-    init(name: String) {
-        id = UUID()
-        self.name = name
-    }
-
-    var description: String {
-        name
     }
 }

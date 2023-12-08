@@ -27,6 +27,7 @@ struct SearchRank: Identifiable, Codable {
 
     var searchResultCollection: [SPISearchResult.SearchResult] = []
     var reviewedEvaluationCollections: [RelevanceEvaluation] = []
+    var reviewerNames: [RelevanceEvaluation.ID: String]
 
 //    init(id: UUID = UUID(), _ result: SPISearchResult.SearchResult? = nil) {
 //        self.id = id
@@ -38,6 +39,14 @@ struct SearchRank: Identifiable, Codable {
     init(id: UUID = UUID(), _ result: [SPISearchResult.SearchResult] = []) {
         self.id = id
         searchResultCollection = result
+        reviewerNames = [:]
+    }
+
+    mutating func addOrUpdateEvaluator(reviewerId: String, reviewerName: String) {
+        guard let properId = UUID(uuidString: reviewerId) else {
+            return
+        }
+        reviewerNames[properId] = reviewerName
     }
 
 //    /// Load all of the keywords and package results from all of the stored searches, combining them into a sorted order for each
@@ -178,24 +187,5 @@ struct SearchRank: Identifiable, Codable {
 //        Set<String>(storedSearches.flatMap { storedSearch in
 //            storedSearch.resultSet.matched_keywords
 //        }).sorted()
-//    }
-//
-//    func searchMetrics(searchResult _: RecordedSearchResult, ranking _: RelevanceRecord) {}
-
-//    static var example: SearchRank {
-//        SearchRank(RecordedSearchResult.example)
-//    }
-//
-//    static var extendedExample: SearchRankDocument {
-//        var doc = SearchRankDocument(.example)
-//        var secondSearch = RecordedSearchResult.example
-//        secondSearch.id = UUID()
-//        doc.searchRanking.storedSearches.append(secondSearch)
-//        doc.searchRanking.relevanceSets.append(RelevanceRecord.example)
-//        var secondRanking = RelevanceRecord.example
-//        secondRanking.id = UUID()
-//        secondRanking.reviewer = "heckj"
-//        doc.searchRanking.relevanceSets.append(secondRanking)
-//        return doc
 //    }
 }

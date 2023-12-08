@@ -34,11 +34,7 @@ struct SearchResultView: View {
                 }
                 Section("\(recordedSearch.packages.count) Packages") {
                     List(recordedSearch.packages) { package in
-                        Text("\(package.id.description): \(package.summary ?? "")")
-                        // PackageSearchResultView(result)
-//                        #if os(macOS)
-//                            Divider()
-//                        #endif
+                        SearchResultPackageView(package, keywords: recordedSearch.keywords)
                     }
                 }
             }
@@ -58,6 +54,9 @@ struct SearchResultsView_Previews: PreviewProvider {
         )
         SearchResultView(
             SearchResult.exampleCollection[1]
+        )
+        SearchResultView(
+            SearchResult.exampleCollection[2]
         )
     }
 }

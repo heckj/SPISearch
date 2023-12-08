@@ -16,6 +16,7 @@
 		1A16504C2870F99000AC4DB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */; };
 		1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1650532870F9B700AC4DB2 /* SwiftSoup */; };
 		1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CBC9428734A7A0033EE43 /* Documentation.docc */; };
+		1A1E44502B23C0FB004925FC /* searchcollection_staging_8dec2023.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A1E444F2B23C0FA004925FC /* searchcollection_staging_8dec2023.txt */; };
 		1A1FADF028737BFF0037D674 /* RankResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1FADEF28737BFF0037D674 /* RankResultsView.swift */; };
 		1A2B94F02B195BE9005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94E92B195BE8005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift */; };
 		1A2B94F22B195BE9005B92E1 /* SwiftPackageIndexAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EB2B195BE8005B92E1 /* SwiftPackageIndexAPI.swift */; };
@@ -53,7 +54,7 @@
 		1A7850012873380B00AFB33F /* SearchRankDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7850002873380B00AFB33F /* SearchRankDocument.swift */; };
 		1A78500328733B5500AFB33F /* SearchRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500228733B5500AFB33F /* SearchRank.swift */; };
 		1A78500528733F0500AFB33F /* SearchRankEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500428733F0500AFB33F /* SearchRankEditorView.swift */; };
-		1A789D7728721EE700E8108A /* PackageSearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A789D7628721EE700E8108A /* PackageSearchResultView.swift */; };
+		1A789D7728721EE700E8108A /* SearchResultPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A789D7628721EE700E8108A /* SearchResultPackageView.swift */; };
 		1A7FD6AB2873797E008C76AB /* Relevance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7FD6AA2873797E008C76AB /* Relevance.swift */; };
 		1A8144AA2872056300F58B48 /* CapsuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144A92872056300F58B48 /* CapsuleText.swift */; };
 		1A8144AC28720E7000F58B48 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144AB28720E7000F58B48 /* SearchResultView.swift */; };
@@ -61,7 +62,6 @@
 		1A88E3442A9029CA005E5B2E /* bezier_query_18aug2023.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A88E3432A9029CA005E5B2E /* bezier_query_18aug2023.txt */; };
 		1A9D79DE287B3EBD0068DF3A /* RelevanceResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A9D79DD287B3EBD0068DF3A /* RelevanceResultView.swift */; };
 		1AA317EC28789BBC009CD13F /* SPISearchParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AA317EB28789BBC009CD13F /* SPISearchParserTest.swift */; };
-		1AAD70AF2B2112540001AD0E /* searchcollection_staging_6dec2023.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1AAD70AD2B2112530001AD0E /* searchcollection_staging_6dec2023.txt */; };
 		1AAD70B12B2112990001AD0E /* searchcollection_testexample.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1AAD70B02B2112990001AD0E /* searchcollection_testexample.txt */; };
 		1ABC74BA2B19693900B7E6EB /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94E92B195BE8005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift */; };
 		1ABC74BC2B19693900B7E6EB /* SwiftPackageIndexAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EB2B195BE8005B92E1 /* SwiftPackageIndexAPI.swift */; };
@@ -129,6 +129,7 @@
 		1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1A1650552871014E00AC4DB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1A1CBC9428734A7A0033EE43 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
+		1A1E444F2B23C0FA004925FC /* searchcollection_staging_8dec2023.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = searchcollection_staging_8dec2023.txt; sourceTree = "<group>"; };
 		1A1FADEF28737BFF0037D674 /* RankResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankResultsView.swift; sourceTree = "<group>"; };
 		1A2B94E92B195BE8005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftPackageIndexAPI+ImportedModels.swift"; sourceTree = "<group>"; };
 		1A2B94EB2B195BE8005B92E1 /* SwiftPackageIndexAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPackageIndexAPI.swift; sourceTree = "<group>"; };
@@ -151,7 +152,7 @@
 		1A7850002873380B00AFB33F /* SearchRankDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankDocument.swift; sourceTree = "<group>"; };
 		1A78500228733B5500AFB33F /* SearchRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRank.swift; sourceTree = "<group>"; };
 		1A78500428733F0500AFB33F /* SearchRankEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankEditorView.swift; sourceTree = "<group>"; };
-		1A789D7628721EE700E8108A /* PackageSearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageSearchResultView.swift; sourceTree = "<group>"; };
+		1A789D7628721EE700E8108A /* SearchResultPackageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultPackageView.swift; sourceTree = "<group>"; };
 		1A7FD6AA2873797E008C76AB /* Relevance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relevance.swift; sourceTree = "<group>"; };
 		1A8144A92872056300F58B48 /* CapsuleText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapsuleText.swift; sourceTree = "<group>"; };
 		1A8144AB28720E7000F58B48 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
@@ -161,7 +162,6 @@
 		1A9D79DD287B3EBD0068DF3A /* RelevanceResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevanceResultView.swift; sourceTree = "<group>"; };
 		1AA317EB28789BBC009CD13F /* SPISearchParserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPISearchParserTest.swift; sourceTree = "<group>"; };
 		1AAD70AC2B2112530001AD0E /* queries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = queries.txt; sourceTree = "<group>"; };
-		1AAD70AD2B2112530001AD0E /* searchcollection_staging_6dec2023.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = searchcollection_staging_6dec2023.txt; sourceTree = "<group>"; };
 		1AAD70B02B2112990001AD0E /* searchcollection_testexample.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = searchcollection_testexample.txt; sourceTree = "<group>"; };
 		1AC5537D28736A590050F0D6 /* SPISearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPISearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC5537F28736A590050F0D6 /* SearchRankTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankTests.swift; sourceTree = "<group>"; };
@@ -335,10 +335,10 @@
 				1A78500428733F0500AFB33F /* SearchRankEditorView.swift */,
 				1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */,
 				1A8144AB28720E7000F58B48 /* SearchResultView.swift */,
+				1A789D7628721EE700E8108A /* SearchResultPackageView.swift */,
 				1A1FADEF28737BFF0037D674 /* RankResultsView.swift */,
 				1ACF873F287C9D9B00D72B9C /* ConfigureReviewer.swift */,
 				1AE2268228725560008C4ED1 /* SearchingView.swift */,
-				1A789D7628721EE700E8108A /* PackageSearchResultView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -360,8 +360,8 @@
 		1AC5537E28736A590050F0D6 /* SPISearchTests */ = {
 			isa = PBXGroup;
 			children = (
+				1A1E444F2B23C0FA004925FC /* searchcollection_staging_8dec2023.txt */,
 				1AAD70AC2B2112530001AD0E /* queries.txt */,
-				1AAD70AD2B2112530001AD0E /* searchcollection_staging_6dec2023.txt */,
 				1AAD70B02B2112990001AD0E /* searchcollection_testexample.txt */,
 				1A88E3432A9029CA005E5B2E /* bezier_query_18aug2023.txt */,
 				1A2DF7F628789E580070841E /* bezier_query_8jul22.txt */,
@@ -535,8 +535,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A88E3442A9029CA005E5B2E /* bezier_query_18aug2023.txt in Resources */,
-				1AAD70AF2B2112540001AD0E /* searchcollection_staging_6dec2023.txt in Resources */,
 				1AAD70B12B2112990001AD0E /* searchcollection_testexample.txt in Resources */,
+				1A1E44502B23C0FB004925FC /* searchcollection_staging_8dec2023.txt in Resources */,
 				1A2DF7F728789E580070841E /* bezier_query_8jul22.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,7 +548,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A789D7728721EE700E8108A /* PackageSearchResultView.swift in Sources */,
+				1A789D7728721EE700E8108A /* SearchResultPackageView.swift in Sources */,
 				1A1650442870F98F00AC4DB2 /* SPISearchApp.swift in Sources */,
 				1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */,
 				1A2B94F42B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift in Sources */,
@@ -767,7 +767,7 @@
 				CODE_SIGN_ENTITLEMENTS = SPISearch/SPISearch.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SPISearch/Preview Content\"";
@@ -805,7 +805,7 @@
 				CODE_SIGN_ENTITLEMENTS = SPISearch/SPISearch.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SPISearch/Preview Content\"";
@@ -916,7 +916,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
 				DEAD_CODE_STRIPPING = YES;
@@ -941,7 +941,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "-";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
 				DEAD_CODE_STRIPPING = YES;

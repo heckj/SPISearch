@@ -36,10 +36,13 @@ enum SPISearchHosts: String, CaseIterable {
 // PROD: https://redocly.github.io/redoc/?url=https://swiftpackageindex.com/openapi/openapi.json
 
 func createPackage(from apiPackage: SwiftPackageIndexAPI.SearchResponse.Result.Package) -> SPISearchResult.SearchResult.Package {
-    SearchResult.Package(id: .init(owner: apiPackage.repositoryOwner, repository: apiPackage.repositoryName),
-                         package_keywords: apiPackage.keywords,
-                         summary: apiPackage.summary,
-                         stars: apiPackage.stars)
+    SearchResult.Package(
+        id: .init(owner: apiPackage.repositoryOwner, repository: apiPackage.repositoryName),
+        name: apiPackage.packageName,
+        package_keywords: apiPackage.keywords,
+        summary: apiPackage.summary,
+        stars: apiPackage.stars
+    )
 }
 
 func makeASearchResult(terms: String, from: SPISearchHosts = .staging, apiToken: String) async throws -> SearchResult {

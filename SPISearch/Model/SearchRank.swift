@@ -25,9 +25,29 @@ import SwiftUI
 struct SearchRank: Identifiable, Codable {
     var id = UUID()
 
+    typealias ReviewerID = UUID
+
     var searchResultCollection: [SearchResult] = []
-    var reviewedEvaluationCollections: [RelevanceEvaluation] = []
-    var reviewerNames: [RelevanceEvaluation.ID: String]
+    var reviewedEvaluationCollections: [ReviewerID: [ReviewSet]] = [:]
+    var reviewerNames: [ReviewerID: String]
+
+    // specifically for SwiftUI consumption - constructed random-access stuff
+    // lexically sorted by reviewer "id" - the uuidString
+    var sortedEvaluations: [(ReviewerID, [ReviewSet])] {
+        var output: [(ReviewerID, [ReviewSet])] = []
+        let sortedReviewers = reviewedEvaluationCollections.keys.sorted { lhs, rhs in
+            // reconsider this into a lookup of the reviewer Id's name
+            lhs.uuidString < rhs.uuidString
+        }
+
+        for reviewer in sortedReviewers {
+            if let evalset = reviewedEvaluationCollections[reviewer] {
+                output.append((reviewer, evalset))
+            }
+        }
+
+        return output
+    }
 
 //    init(id: UUID = UUID(), _ result: SPISearchResult.SearchResult? = nil) {
 //        self.id = id
@@ -49,6 +69,22 @@ struct SearchRank: Identifiable, Codable {
         reviewerNames[properId] = reviewerName
     }
 
+    mutating func addOrUpdateRelevanceEvaluation(reviewer: UUID, query: String, packageId: SearchResult.Package.PackageId, relevance: Relevance) {
+        if let reviewSets = reviewedEvaluationCollections[reviewer] {
+            if let set = reviewSets.first(where: { reviewSet in
+                reviewSet.query_terms == query
+            }) {
+                set.reviews[packageId] = relevance
+            } else {
+                // no review sets exist that match this query
+                reviewedEvaluationCollections[reviewer]?.append(ReviewSet(query_terms: query, reviews: [packageId: relevance]))
+            }
+        } else {
+            // no reviewSets for the reviewer
+            reviewedEvaluationCollections[reviewer] = [ReviewSet(query_terms: query, reviews: [packageId: relevance])]
+        }
+    }
+
     func queueOfReviews(reviewerId: String) -> [String: Set<SearchResult.Package.PackageId>] {
         var packagesToReview: [String: Set<SearchResult.Package.PackageId>] = [:]
         guard let properId = UUID(uuidString: reviewerId) else {
@@ -58,32 +94,32 @@ struct SearchRank: Identifiable, Codable {
         // review
         for search in searchResultCollection {
             let packageIds = search.packages.map(\.id)
-            if packagesToReview[search.query] != nil {
-                for p in packageIds {
-                    packagesToReview[search.query]?.insert(p)
+            // create the empty set for this query, if it doesn't already exist
+            if packagesToReview[search.query] == nil {
+                packagesToReview[search.query] = Set<SearchResult.Package.PackageId>()
+            }
+            // iterating through the packages listed in this query to potentially add them
+            for pkgId in packageIds {
+                // FILTERING - check to see if THIS reviewer has evaluations already recorded
+                // for this query
+                if let existingReviewSet = reviewedEvaluationCollections[properId]?.first(where: { reviewset in
+                    reviewset.query_terms == search.query
+                }) {
+                    // If they do, then check to see if the package is already included in those
+                    // evaluations. If it is, skip it. If it isn't, add it to the list of packages
+                    // to review.
+                    if existingReviewSet.reviews[pkgId] == nil {
+                        // there's not already a review by this person,
+                        packagesToReview[search.query]?.insert(pkgId)
+                    }
+                } else {
+                    // no reviews yet by this reviewer, so add the package for review
+                    packagesToReview[search.query]?.insert(pkgId)
                 }
-            } else {
-                packagesToReview[search.query] = Set(packageIds)
             }
         }
 
-        if let existingReviewSetsForThisPerson = reviewedEvaluationCollections.first(where: { relevanceEval in
-            relevanceEval.id == properId
-        }) {
-            // existingReviewSetsForThisPerson: RelevanceEvaluation is the set of rankings for this person
-            let filteredPackagesToReview = packagesToReview.filter { queryTerms, packageId in
-                for reviewSet in existingReviewSetsForThisPerson.rankings.filter({ $0.query_terms == queryTerms }) {
-                    if reviewSet.reviews.keys.contains(packageId) {
-                        return false
-                    }
-                }
-                return true
-            }
-            return filteredPackagesToReview
-        } else {
-            // no evaluations by this person
-            return packagesToReview
-        }
+        return packagesToReview
     }
 
 //    /// Load all of the keywords and package results from all of the stored searches, combining them into a sorted order for each

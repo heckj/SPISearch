@@ -25,7 +25,7 @@ import SwiftUI
 struct SearchRank: Identifiable, Codable {
     var id = UUID()
 
-    var searchResultCollection: [SPISearchResult.SearchResult] = []
+    var searchResultCollection: [SearchResult] = []
     var reviewedEvaluationCollections: [RelevanceEvaluation] = []
     var reviewerNames: [RelevanceEvaluation.ID: String]
 
@@ -36,7 +36,7 @@ struct SearchRank: Identifiable, Codable {
 //        }
 //    }
 
-    init(id: UUID = UUID(), _ result: [SPISearchResult.SearchResult] = []) {
+    init(id: UUID = UUID(), _ result: [SearchResult] = []) {
         self.id = id
         searchResultCollection = result
         reviewerNames = [:]
@@ -47,6 +47,43 @@ struct SearchRank: Identifiable, Codable {
             return
         }
         reviewerNames[properId] = reviewerName
+    }
+
+    func queueOfReviews(reviewerId: String) -> [String: Set<SearchResult.Package.PackageId>] {
+        var packagesToReview: [String: Set<SearchResult.Package.PackageId>] = [:]
+        guard let properId = UUID(uuidString: reviewerId) else {
+            return [:]
+        }
+        // build a collection of all the possible summary -> packageId combinations to possibly
+        // review
+        for search in searchResultCollection {
+            var packageIds = search.packages.map(\.id)
+            if packagesToReview[search.query] != nil {
+                for p in packageIds {
+                    packagesToReview[search.query]?.insert(p)
+                }
+            } else {
+                packagesToReview[search.query] = Set(packageIds)
+            }
+        }
+
+        if let existingReviewSetsForThisPerson = reviewedEvaluationCollections.first(where: { relevanceEval in
+            relevanceEval.id == properId
+        }) {
+            // existingReviewSetsForThisPerson: RelevanceEvaluation is the set of rankings for this person
+            let filteredPackagesToReview = packagesToReview.filter { queryTerms, packageId in
+                for reviewSet in existingReviewSetsForThisPerson.rankings.filter({ $0.query_terms == queryTerms }) {
+                    if reviewSet.reviews.keys.contains(packageId) {
+                        return false
+                    }
+                }
+                return true
+            }
+            return filteredPackagesToReview
+        } else {
+            // no evaluations by this person
+            return packagesToReview
+        }
     }
 
 //    /// Load all of the keywords and package results from all of the stored searches, combining them into a sorted order for each

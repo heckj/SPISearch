@@ -116,7 +116,8 @@ struct SearchRankDocumentOverview: View {
 struct SearchRankDocumentOverview_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SearchRankDocumentOverview(.constant(SearchRankDocument(SearchResult.exampleCollection))
+            SearchRankDocumentOverview(
+                .constant(SearchRankDocument(SearchResult.exampleCollection))
             )
         }
     }

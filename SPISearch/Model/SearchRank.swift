@@ -57,7 +57,7 @@ struct SearchRank: Identifiable, Codable {
         // build a collection of all the possible summary -> packageId combinations to possibly
         // review
         for search in searchResultCollection {
-            var packageIds = search.packages.map(\.id)
+            let packageIds = search.packages.map(\.id)
             if packagesToReview[search.query] != nil {
                 for p in packageIds {
                     packagesToReview[search.query]?.insert(p)

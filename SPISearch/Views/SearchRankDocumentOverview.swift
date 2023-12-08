@@ -60,9 +60,9 @@ struct SearchRankDocumentOverview: View {
             }
 
             Section("Evaluations") {
-                ForEach(document.searchRanking.reviewedEvaluationCollections) { evalCollection in
+                ForEach(document.searchRanking.sortedEvaluations, id: \.0) { reviewerId, reviewsets in
                     HStack {
-                        Text("\(document.searchRanking.reviewerNames[evalCollection.id] ?? "unknown") (\(evalCollection.id)) has \(evalCollection.rankings.count) evaluations stored")
+                        Text("\(reviewerId) has \(reviewsets.count) evaluations stored")
                         // RelevanceSetSummaryView(ranking.wrappedValue)
                         NavigationLink("") {
 //                            RankResultsView(

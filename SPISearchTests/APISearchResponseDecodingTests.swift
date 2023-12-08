@@ -819,7 +819,7 @@ final class APISearchResponseDecodingTests: XCTestCase {
         // dump(results)
         XCTAssertEqual(results.results.count, 40)
     }
-    
+
     func testStoredConvertedExamples() async throws {
         XCTAssertEqual(SearchResult.exampleCollection.count, 3)
     }

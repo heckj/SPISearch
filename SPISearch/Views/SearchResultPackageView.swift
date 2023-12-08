@@ -11,83 +11,42 @@ import SwiftUI
 struct SearchResultPackageView: View {
     let package: SearchResult.Package
     let search_result_keywords: [String]
-
     #if os(iOS)
         @Environment(\.horizontalSizeClass) var horizontalSizeClass
-
-        var body: some View {
-            VStack(alignment: .leading) {
-                if horizontalSizeClass == .compact {
-                    VStack {
-                        VStack(alignment: .leading) {
-                            Text(package.id.description)
-                                .font(.title)
-                                .textSelection(.enabled)
-                            Text("\(package.stars) github stars")
-                                .font(.callout)
-                                .textSelection(.enabled)
-                        }
-                        HStack(alignment: .firstTextBaseline) {
-                            ForEach(package.package_keywords, id: \.self) { word in
-                                if search_result_keywords.contains(word) {
-                                    CapsuleText(word)
-                                        .textSelection(.enabled)
-                                }
-                            }
-                        }
-                        Text(package.summary ?? "")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .textSelection(.enabled)
-                    }
-                } else {
-                    VStack(alignment: .leading) {
-                        HStack(alignment: .firstTextBaseline) {
-                            Text(package.id.description)
-                                .font(.title)
-                                .textSelection(.enabled)
-                            Text("\(package.stars) github stars")
-                                .font(.callout)
-                                .textSelection(.enabled)
-                        }
-                        HStack(alignment: .firstTextBaseline) {
-                            ForEach(package.package_keywords, id: \.self) { word in
-                                if search_result_keywords.contains(word) {
-                                    CapsuleText(word)
-                                        .textSelection(.enabled)
-                                }
-                            }
-                        }
-                        Text(package.summary ?? "")
-                            .fixedSize(horizontal: false, vertical: true)
-                            .textSelection(.enabled)
-                    }                }
-            }
-        }
-    #else // macOS
-        var body: some View {
-            VStack(alignment: .leading) {
-                HStack(alignment: .firstTextBaseline) {
-                    Text(package.id.description)
-                        .font(.title)
-                        .textSelection(.enabled)
-                    Text("\(package.stars) github stars")
-                        .font(.callout)
-                        .textSelection(.enabled)
-                }
-                HStack(alignment: .firstTextBaseline) {
-                    ForEach(package.package_keywords, id: \.self) { word in
-                        if search_result_keywords.contains(word) {
-                            CapsuleText(word)
-                                .textSelection(.enabled)
-                        }
-                    }
-                }
-                Text(package.summary ?? "")
-                    .fixedSize(horizontal: false, vertical: true)
-                    .textSelection(.enabled)
-            }
-        }
     #endif
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text(package.name)
+                .font(.title)
+            Text(package.summary ?? "")
+                .fixedSize(horizontal: false, vertical: true)
+            HStack(alignment: .firstTextBaseline) {
+                Text("Matching keywords:")
+                #if os(iOS)
+                    .font(horizontalSizeClass == .compact ? .caption : .body)
+                #endif
+                    .font(.body)
+
+                ForEach(package.package_keywords, id: \.self) { word in
+                    if search_result_keywords.contains(word) {
+                        CapsuleText(word)
+                    }
+                }
+                #if os(iOS)
+                .font(horizontalSizeClass == .compact ? .caption.bold() : .body.bold())
+                #endif
+                .font(.body.bold())
+            }
+
+            HStack(alignment: .firstTextBaseline) {
+                Text("\(package.id.description)")
+                Image(systemName: "star.fill")
+                Text("\(package.stars) stars")
+            }.font(.caption)
+        }
+        .textSelection(.enabled)
+    }
 
     init(_ p: SearchResult.Package, keywords: [String]) {
         package = p

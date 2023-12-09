@@ -18,7 +18,7 @@ struct RelevanceResultView: View {
             case .relevant:
                 Image(systemName: "hand.thumbsup")
             case .partial:
-                Image(systemName: "minus.diamond")
+                Image(systemName: "minus.square")
             case .not:
                 Image(systemName: "hand.thumbsdown")
             }

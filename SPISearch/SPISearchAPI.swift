@@ -41,7 +41,9 @@ func createPackage(from apiPackage: SwiftPackageIndexAPI.SearchResponse.Result.P
         name: apiPackage.packageName,
         package_keywords: apiPackage.keywords,
         summary: apiPackage.summary,
-        stars: apiPackage.stars
+        stars: apiPackage.stars,
+        has_docs: apiPackage.hasDocs,
+        last_activity: apiPackage.lastActivityAt
     )
 }
 

@@ -78,21 +78,35 @@ struct SearchRank: Identifiable, Codable {
         }
     }
 
-    func queueOfReviews(reviewerId: String) -> [String: Set<SearchResult.Package.PackageId>] {
-        var packagesToReview: [String: Set<SearchResult.Package.PackageId>] = [:]
+    struct PackageToEvaluate {
+        let query: String
+        let keywords: [String]
+        let package: SearchResult.Package
+
+        init(query: String, keywords: [String], package: SearchResult.Package) {
+            self.query = query
+            self.keywords = keywords
+            self.package = package
+        }
+    }
+
+    func queueOfReviews(reviewerId: String) -> [PackageToEvaluate] {
+        var packagesToReview: [String: Set<SearchResult.Package>] = [:]
+        var matched_keywords: [String: [String]] = [:]
         guard let properId = UUID(uuidString: reviewerId) else {
-            return [:]
+            return []
         }
         // build a collection of all the possible summary -> packageId combinations to possibly
         // review
         for search in searchResultCollection {
-            let packageIds = search.packages.map(\.id)
+            let packages = search.packages
             // create the empty set for this query, if it doesn't already exist
             if packagesToReview[search.query] == nil {
-                packagesToReview[search.query] = Set<SearchResult.Package.PackageId>()
+                packagesToReview[search.query] = Set<SearchResult.Package>()
+                matched_keywords[search.query] = search.keywords
             }
             // iterating through the packages listed in this query to potentially add them
-            for pkgId in packageIds {
+            for pkg in packages {
                 // FILTERING - check to see if THIS reviewer has evaluations already recorded
                 // for this query
                 if let existingReviewSet = reviewedEvaluationCollections[properId]?.first(where: { reviewset in
@@ -101,25 +115,25 @@ struct SearchRank: Identifiable, Codable {
                     // If they do, then check to see if the package is already included in those
                     // evaluations. If it is, skip it. If it isn't, add it to the list of packages
                     // to review.
-                    if existingReviewSet.reviews[pkgId] == nil {
+                    if existingReviewSet.reviews[pkg.id] == nil {
                         // there's not already a review by this person,
-                        packagesToReview[search.query]?.insert(pkgId)
+                        packagesToReview[search.query]?.insert(pkg)
                     }
                 } else {
                     // no reviews yet by this reviewer, so add the package for review
-                    packagesToReview[search.query]?.insert(pkgId)
+                    packagesToReview[search.query]?.insert(pkg)
                 }
             }
         }
 
-        //let x: [String: Set<SearchResult.Package.PackageId>] = document.searchRanking.queueOfReviews(reviewerId: localReviewerId)
-        // transform this into
-        //[ (search_query, matched_keywords, [list of packages]) ]
-        // and then for each search_query, find the possible search results that match the query, then of all the packages within those, find the first that matches the package ID - and pass THAT to this view.
-        // we want a searchresult and package
-        // for this view in order to choose a relevance evaluation.
+        var finalQueue: [PackageToEvaluate] = []
+        for query in packagesToReview.keys.sorted() {
+            for pkg in packagesToReview[query] ?? [] {
+                finalQueue.append(PackageToEvaluate(query: query, keywords: matched_keywords[query] ?? [], package: pkg))
+            }
+        }
 
-        return packagesToReview
+        return finalQueue
     }
 
     //    var medianRelevancyRanking: ComputedRelevancyValues? {

@@ -31,11 +31,8 @@ final class SearchRankTests: XCTestCase {
         let reviewerId = UUID().uuidString
         let queue = searchrank.queueOfReviews(reviewerId: reviewerId)
 
-        XCTAssertEqual(queue.count, 1)
-        XCTAssertNotNil(queue["crdt"])
-
-        let setOfPackagesToReview = try XCTUnwrap(queue["crdt"])
-        XCTAssertEqual(setOfPackagesToReview.count, 6)
+        XCTAssertEqual(queue.count, 6)
+        XCTAssertEqual(queue[0].query, "crdt")
     }
 
     func testEvalQueueRetrievalWithSameTwoQueriesAndDifferentResults() throws {
@@ -55,11 +52,8 @@ final class SearchRankTests: XCTestCase {
         let reviewerId = UUID().uuidString
         let queue = searchrank.queueOfReviews(reviewerId: reviewerId)
 
-        XCTAssertEqual(queue.count, 1)
-        XCTAssertNotNil(queue["crdt"])
-
-        let setOfPackagesToReview = try XCTUnwrap(queue["crdt"])
-        XCTAssertEqual(setOfPackagesToReview.count, 6)
+        XCTAssertEqual(queue.count, 6)
+        XCTAssertEqual(queue[0].query, "crdt")
     }
 
     func testEvalQueueRetrievalWithTwoDifferentQueries() throws {
@@ -84,15 +78,9 @@ final class SearchRankTests: XCTestCase {
         let reviewerId = UUID().uuidString
         let queue = searchrank.queueOfReviews(reviewerId: reviewerId)
 
-        XCTAssertEqual(queue.count, 2)
-        XCTAssertNotNil(queue["crdt"])
-        XCTAssertNotNil(queue["bezier"])
-
-        let setOfCRDTPackagesToReview = try XCTUnwrap(queue["crdt"])
-        XCTAssertEqual(setOfCRDTPackagesToReview.count, 6)
-
-        let setOfBezierPackagesToReview = try XCTUnwrap(queue["bezier"])
-        XCTAssertEqual(setOfBezierPackagesToReview.count, 8)
+        XCTAssertEqual(queue.count, 14)
+        XCTAssertEqual(queue[0].query, "bezier")
+        XCTAssertEqual(queue[8].query, "crdt")
     }
 
     func testAddEvaluator() throws {
@@ -133,10 +121,7 @@ final class SearchRankTests: XCTestCase {
 
         let queue = searchrank.queueOfReviews(reviewerId: reviewerId.uuidString)
 
-        XCTAssertEqual(queue.count, 1)
-        XCTAssertNotNil(queue["crdt"])
-
-        let setOfCRDTPackagesToReview = try XCTUnwrap(queue["crdt"])
-        XCTAssertEqual(setOfCRDTPackagesToReview.count, 5)
+        XCTAssertEqual(queue.count, 5)
+        XCTAssertEqual(queue[0].query, "crdt")
     }
 }

@@ -76,6 +76,19 @@
 		1AEB0005287611EF009055BE /* SearchResultSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */; };
 		1AEDE79C287BA55A009B1CA4 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 1AEDE79B287BA55A009B1CA4 /* ArgumentParser */; };
 		1AEE50642B213C4300BD46B1 /* SearchResult+exampleCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE50632B213C4300BD46B1 /* SearchResult+exampleCollection.swift */; };
+		1AF8A6632B251BDE0064B945 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 1AF8A6622B251BDE0064B945 /* Collections */; };
+		1AF8A6652B251BDE0064B945 /* SPISearchResult in Frameworks */ = {isa = PBXBuildFile; productRef = 1AF8A6642B251BDE0064B945 /* SPISearchResult */; };
+		1AF8A6662B251CBA0064B945 /* SearchResult+exampleCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE50632B213C4300BD46B1 /* SearchResult+exampleCollection.swift */; };
+		1AF8A6672B251CBA0064B945 /* SearchRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500228733B5500AFB33F /* SearchRank.swift */; };
+		1AF8A6682B251CBA0064B945 /* SearchRankDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7850002873380B00AFB33F /* SearchRankDocument.swift */; };
+		1AF8A6692B251CF30064B945 /* SearchMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A29C728762B6C0096F600 /* SearchMetrics.swift */; };
+		1AF8A66A2B251CF30064B945 /* ReviewSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A39750A2B1E9182009F9FF7 /* ReviewSet.swift */; };
+		1AF8A66B2B251CF30064B945 /* ComputedRelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */; };
+		1AF8A66C2B251CF30064B945 /* Relevance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7FD6AA2873797E008C76AB /* Relevance.swift */; };
+		1AF8A66D2B251D430064B945 /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94E92B195BE8005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift */; };
+		1AF8A66E2B251D430064B945 /* SwiftPackageIndexAPI+PackageId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EE2B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift */; };
+		1AF8A66F2B251D430064B945 /* SwiftPackageIndexAPI+Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94ED2B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift */; };
+		1AF8A6702B251D430064B945 /* SwiftPackageIndexAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EB2B195BE8005B92E1 /* SwiftPackageIndexAPI.swift */; };
 		1AFF37DE2B1D51CE009E518B /* SPISearchResult in Frameworks */ = {isa = PBXBuildFile; productRef = 1AFF37DD2B1D51CE009E518B /* SPISearchResult */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +217,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AF8A6652B251BDE0064B945 /* SPISearchResult in Frameworks */,
+				1AF8A6632B251BDE0064B945 /* Collections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,6 +458,10 @@
 				1AC5538228736A590050F0D6 /* PBXTargetDependency */,
 			);
 			name = SPISearchTests;
+			packageProductDependencies = (
+				1AF8A6622B251BDE0064B945 /* Collections */,
+				1AF8A6642B251BDE0064B945 /* SPISearchResult */,
+			);
 			productName = SPISearchTests;
 			productReference = 1AC5537D28736A590050F0D6 /* SPISearchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -468,7 +487,6 @@
 					};
 					1AC5537C28736A590050F0D6 = {
 						CreatedOnToolsVersion = 14.0;
-						TestTargetID = 1A16503F2870F98F00AC4DB2;
 					};
 				};
 			};
@@ -595,10 +613,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AF8A6702B251D430064B945 /* SwiftPackageIndexAPI.swift in Sources */,
 				1AC5538028736A590050F0D6 /* SearchRankTests.swift in Sources */,
 				1A45D916287634650077EC9E /* SearchMetricsTests.swift in Sources */,
 				1A773D342B1FF7CF000C1919 /* APISearchResponseDecodingTests.swift in Sources */,
+				1AF8A66C2B251CF30064B945 /* Relevance.swift in Sources */,
+				1AF8A6662B251CBA0064B945 /* SearchResult+exampleCollection.swift in Sources */,
+				1AF8A66A2B251CF30064B945 /* ReviewSet.swift in Sources */,
+				1AF8A66F2B251D430064B945 /* SwiftPackageIndexAPI+Package.swift in Sources */,
+				1AF8A6682B251CBA0064B945 /* SearchRankDocument.swift in Sources */,
 				1AD3E3432878BA120049E655 /* MedianRelevancyTests.swift in Sources */,
+				1AF8A66D2B251D430064B945 /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */,
+				1AF8A6692B251CF30064B945 /* SearchMetrics.swift in Sources */,
+				1AF8A66B2B251CF30064B945 /* ComputedRelevancyValues.swift in Sources */,
+				1AF8A6672B251CBA0064B945 /* SearchRank.swift in Sources */,
+				1AF8A66E2B251D430064B945 /* SwiftPackageIndexAPI+PackageId.swift in Sources */,
 				1A134E2E2B1A6B5A009478B1 /* RelevanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -888,7 +917,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -905,7 +933,6 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SPISearch.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SPISearch";
 			};
 			name = Debug;
 		};
@@ -913,7 +940,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
@@ -930,7 +956,6 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SPISearch.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SPISearch";
 			};
 			name = Release;
 		};
@@ -1087,6 +1112,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
+		};
+		1AF8A6622B251BDE0064B945 /* Collections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */;
+			productName = Collections;
+		};
+		1AF8A6642B251BDE0064B945 /* SPISearchResult */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1AFF37DC2B1D51CE009E518B /* XCRemoteSwiftPackageReference "SPISearchResult" */;
+			productName = SPISearchResult;
 		};
 		1AFF37DD2B1D51CE009E518B /* SPISearchResult */ = {
 			isa = XCSwiftPackageProductDependency;

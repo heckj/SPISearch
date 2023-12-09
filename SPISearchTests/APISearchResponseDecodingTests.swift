@@ -5,7 +5,6 @@
 //  Created by Joseph Heck on 12/5/23.
 //
 
-@testable import SPISearch
 import SPISearchResult
 import XCTest
 

@@ -5,7 +5,6 @@
 ////  Created by Joseph Heck on 7/8/22.
 ////
 //
-// @testable import SPISearch
 // import XCTest
 //
 // final class MedianRelevancyTests: XCTestCase {

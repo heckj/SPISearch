@@ -5,7 +5,6 @@
 //  Created by Joseph Heck on 7/4/22.
 //
 
-@testable import SPISearch
 import SPISearchResult
 import XCTest
 final class SearchRankTests: XCTestCase {

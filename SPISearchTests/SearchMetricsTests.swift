@@ -5,7 +5,6 @@
 ////  Created by Joseph Heck on 7/6/22.
 ////
 //
-// @testable import SPISearch
 // import XCTest
 //
 // final class SearchMetricsTests: XCTestCase {

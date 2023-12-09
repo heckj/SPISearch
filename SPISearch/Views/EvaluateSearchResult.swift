@@ -1,5 +1,5 @@
 //
-//  RankResultsView.swift
+//  EvaluateSearchResult.swift
 //  SPISearch
 //
 //  Created by Joseph Heck on 7/4/22.
@@ -50,16 +50,15 @@ struct EvaluateSearchResult: View {
         }
         .onAppear(perform: {
             //
-            //let x: [String: Set<SearchResult.Package.PackageId>] = document.searchRanking.queueOfReviews(reviewerId: localReviewerId)
+            // let x: [String: Set<SearchResult.Package.PackageId>] = document.searchRanking.queueOfReviews(reviewerId: localReviewerId)
             // transform this into
-            //[ (search_query, matched_keywords, [list of packages]) ]
+            // [ (search_query, matched_keywords, [list of packages]) ]
             // and then for each search_query, find the possible search results that match the query, then of all the packages within those, find the first that matches the package ID - and pass THAT to this view.
             // we want a searchresult and package
             // for this view in order to choose a relevance evaluation.
-            
+
         })
     }
-        
 
     init(searchRankDoc: Binding<SearchRankDocument>,
          searchResult: SearchResult,
@@ -75,7 +74,7 @@ struct RankingSearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
         EvaluateSearchResult(
             searchRankDoc: .constant(SearchRankDocument(SearchResult.exampleCollection)),
-            searchResult: SearchResult.exampleCollection[1], 
+            searchResult: SearchResult.exampleCollection[1],
             package: SearchResult.exampleCollection[1].packages[1]
         )
     }

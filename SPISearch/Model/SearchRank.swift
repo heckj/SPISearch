@@ -78,18 +78,6 @@ struct SearchRank: Identifiable, Codable {
         }
     }
 
-    struct PackageToEvaluate {
-        let query: String
-        let keywords: [String]
-        let package: SearchResult.Package
-
-        init(query: String, keywords: [String], package: SearchResult.Package) {
-            self.query = query
-            self.keywords = keywords
-            self.package = package
-        }
-    }
-
     func queueOfReviews(reviewerId: String) -> [PackageToEvaluate] {
         var packagesToReview: [String: Set<SearchResult.Package>] = [:]
         var matched_keywords: [String: [String]] = [:]

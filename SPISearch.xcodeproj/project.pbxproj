@@ -32,6 +32,8 @@
 		1A372CA0287C63C60020CFAC /* ComputedRelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */; };
 		1A372CA3287C63F70020CFAC /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 1A372CA2287C63F70020CFAC /* SwiftSoup */; };
 		1A39750B2B1E9182009F9FF7 /* ReviewSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A39750A2B1E9182009F9FF7 /* ReviewSet.swift */; };
+		1A45A5F82B25225E00895305 /* PackageToEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45A5F72B25225E00895305 /* PackageToEvaluate.swift */; };
+		1A45A5F92B25228400895305 /* PackageToEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45A5F72B25225E00895305 /* PackageToEvaluate.swift */; };
 		1A45D916287634650077EC9E /* SearchMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D915287634650077EC9E /* SearchMetricsTests.swift */; };
 		1A562F6E2878C681006B29A8 /* ComputedRelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */; };
 		1A5F6C132B2507D400780F91 /* searchcollection_staging_9dec2023.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A5F6C122B2507D400780F91 /* searchcollection_staging_9dec2023.txt */; };
@@ -144,6 +146,7 @@
 		1A372C91287C61A30020CFAC /* ReportSearch */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReportSearch; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A372C93287C61A30020CFAC /* ReportSearchRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSearchRank.swift; sourceTree = "<group>"; };
 		1A39750A2B1E9182009F9FF7 /* ReviewSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSet.swift; sourceTree = "<group>"; };
+		1A45A5F72B25225E00895305 /* PackageToEvaluate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageToEvaluate.swift; sourceTree = "<group>"; };
 		1A45D915287634650077EC9E /* SearchMetricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetricsTests.swift; sourceTree = "<group>"; };
 		1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputedRelevancyValues.swift; sourceTree = "<group>"; };
 		1A5F6C122B2507D400780F91 /* searchcollection_staging_9dec2023.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = searchcollection_staging_9dec2023.txt; sourceTree = "<group>"; };
@@ -321,6 +324,7 @@
 				1A7850002873380B00AFB33F /* SearchRankDocument.swift */,
 				1AEE50632B213C4300BD46B1 /* SearchResult+exampleCollection.swift */,
 				1A78500228733B5500AFB33F /* SearchRank.swift */,
+				1A45A5F72B25225E00895305 /* PackageToEvaluate.swift */,
 				1A39750A2B1E9182009F9FF7 /* ReviewSet.swift */,
 				1A7FD6AA2873797E008C76AB /* Relevance.swift */,
 				1A562F6D2878C681006B29A8 /* ComputedRelevancyValues.swift */,
@@ -547,6 +551,7 @@
 			files = (
 				1A789D7728721EE700E8108A /* SearchResultPackageView.swift in Sources */,
 				1A1650442870F98F00AC4DB2 /* SPISearchApp.swift in Sources */,
+				1A45A5F82B25225E00895305 /* PackageToEvaluate.swift in Sources */,
 				1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */,
 				1A2B94F42B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift in Sources */,
 				1A032CFE287A24F9007DA587 /* SearchMetricsView.swift in Sources */,
@@ -616,6 +621,7 @@
 				1AF8A6702B251D430064B945 /* SwiftPackageIndexAPI.swift in Sources */,
 				1AC5538028736A590050F0D6 /* SearchRankTests.swift in Sources */,
 				1A45D916287634650077EC9E /* SearchMetricsTests.swift in Sources */,
+				1A45A5F92B25228400895305 /* PackageToEvaluate.swift in Sources */,
 				1A773D342B1FF7CF000C1919 /* APISearchResponseDecodingTests.swift in Sources */,
 				1AF8A66C2B251CF30064B945 /* Relevance.swift in Sources */,
 				1AF8A6662B251CBA0064B945 /* SearchResult+exampleCollection.swift in Sources */,

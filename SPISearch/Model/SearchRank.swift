@@ -112,6 +112,13 @@ struct SearchRank: Identifiable, Codable {
             }
         }
 
+        //let x: [String: Set<SearchResult.Package.PackageId>] = document.searchRanking.queueOfReviews(reviewerId: localReviewerId)
+        // transform this into
+        //[ (search_query, matched_keywords, [list of packages]) ]
+        // and then for each search_query, find the possible search results that match the query, then of all the packages within those, find the first that matches the package ID - and pass THAT to this view.
+        // we want a searchresult and package
+        // for this view in order to choose a relevance evaluation.
+
         return packagesToReview
     }
 

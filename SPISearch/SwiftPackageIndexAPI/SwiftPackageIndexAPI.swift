@@ -94,6 +94,7 @@ public struct SwiftPackageIndexAPI {
                 var summary: String?
                 var keywords: [String]
                 var stars: Int
+                var lastActivityAt: Date
             }
             // Package Example
 //    {

@@ -40,10 +40,18 @@ struct SearchMetrics {
     init?(searchResult: SearchResult, reviews: RelevancyValues) {
         // determine completeness of reviews by checking searchresult.query == computedRelevancy.query
         // and that all packageIds in the search result have a value in RelevancyValues
+        if searchResult.query != reviews.query_terms {
+            // mismatched searchresult and set of relevancy values
+            return nil
+        }
 
-//        let allPackagesAccounted = packageIDs.allSatisfy { pkgID_to_check in
-//            packages.keys.contains(pkgID_to_check)
-//        }
+        let completelyEvaluated = searchResult.packages.allSatisfy { package in
+            reviews.relevanceValue.keys.contains(package.id)
+        }
+
+        if !completelyEvaluated {
+            return nil
+        }
 
         precision = SearchMetrics.calculatePrecision(searchResult: searchResult, ranking: reviews)
         recall = SearchMetrics.calculateRecall(searchResult: searchResult, ranking: reviews)

@@ -1,15 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "keychainaccess",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/kishikawakatsumi/KeychainAccess",
-      "state" : {
-        "revision" : "84e546727d66f1adc5439debad16270d0fdd04e7",
-        "version" : "4.2.2"
-      }
-    },
-    {
       "identity" : "spisearchresult",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/heckj/SPISearchResult",
@@ -34,15 +25,6 @@
       "state" : {
         "revision" : "a902f1823a7ff3c9ab2fba0f992396b948eda307",
         "version" : "1.0.5"
-      }
-    },
-    {
-      "identity" : "swiftsoup",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/scinfu/SwiftSoup.git",
-      "state" : {
-        "revision" : "8b6cf29eead8841a1fa7822481cb3af4ddaadba6",
-        "version" : "2.6.1"
       }
     }
   ],

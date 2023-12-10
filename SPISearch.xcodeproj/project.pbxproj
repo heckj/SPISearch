@@ -14,7 +14,6 @@
 		1A1650442870F98F00AC4DB2 /* SPISearchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1650432870F98F00AC4DB2 /* SPISearchApp.swift */; };
 		1A1650482870F99000AC4DB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A1650472870F99000AC4DB2 /* Assets.xcassets */; };
 		1A16504C2870F99000AC4DB2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A16504B2870F99000AC4DB2 /* Preview Assets.xcassets */; };
-		1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 1A1650532870F9B700AC4DB2 /* SwiftSoup */; };
 		1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 1A1CBC9428734A7A0033EE43 /* Documentation.docc */; };
 		1A1FADF028737BFF0037D674 /* EvaluateAvailableSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1FADEF28737BFF0037D674 /* EvaluateAvailableSearchResults.swift */; };
 		1A2B94F02B195BE9005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94E92B195BE8005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift */; };
@@ -30,7 +29,6 @@
 		1A372C9E287C63C50020CFAC /* SearchMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6A29C728762B6C0096F600 /* SearchMetrics.swift */; };
 		1A372C9F287C63C50020CFAC /* SearchRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500228733B5500AFB33F /* SearchRank.swift */; };
 		1A372CA0287C63C60020CFAC /* RelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* RelevancyValues.swift */; };
-		1A372CA3287C63F70020CFAC /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 1A372CA2287C63F70020CFAC /* SwiftSoup */; };
 		1A39750B2B1E9182009F9FF7 /* ReviewSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A39750A2B1E9182009F9FF7 /* ReviewSet.swift */; };
 		1A45A5F82B25225E00895305 /* PackageToEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45A5F72B25225E00895305 /* PackageToEvaluate.swift */; };
 		1A45A5F92B25228400895305 /* PackageToEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45A5F72B25225E00895305 /* PackageToEvaluate.swift */; };
@@ -68,7 +66,6 @@
 		1AC5538028736A590050F0D6 /* SearchRankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC5537F28736A590050F0D6 /* SearchRankTests.swift */; };
 		1ACF8740287C9D9B00D72B9C /* ConfigureReviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACF873F287C9D9B00D72B9C /* ConfigureReviewer.swift */; };
 		1AD3E3432878BA120049E655 /* MedianRelevancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3E3422878BA120049E655 /* MedianRelevancyTests.swift */; };
-		1AD6D6C02B0EDFBE00A4A61A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */; };
 		1ADB927F2B2251E60022831F /* SearchResultImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADB927E2B2251E60022831F /* SearchResultImporter.swift */; };
 		1ADB92812B22542F0022831F /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADB92802B22542F0022831F /* Logging.swift */; };
 		1AE699EE2B2009D9008CB0F6 /* ReviewSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A39750A2B1E9182009F9FF7 /* ReviewSet.swift */; };
@@ -76,7 +73,6 @@
 		1AEADD522877916900023487 /* SettingsFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEADD512877916900023487 /* SettingsFormView.swift */; };
 		1AEB000328760E3E009055BE /* SearchRankDocumentOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB000228760E3E009055BE /* SearchRankDocumentOverview.swift */; };
 		1AEB0005287611EF009055BE /* SearchResultSetSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEB0004287611EF009055BE /* SearchResultSetSummaryView.swift */; };
-		1AEDE79C287BA55A009B1CA4 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 1AEDE79B287BA55A009B1CA4 /* ArgumentParser */; };
 		1AEE50642B213C4300BD46B1 /* SearchResult+exampleCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AEE50632B213C4300BD46B1 /* SearchResult+exampleCollection.swift */; };
 		1AF8A6632B251BDE0064B945 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 1AF8A6622B251BDE0064B945 /* Collections */; };
 		1AF8A6652B251BDE0064B945 /* SPISearchResult in Frameworks */ = {isa = PBXBuildFile; productRef = 1AF8A6642B251BDE0064B945 /* SPISearchResult */; };
@@ -185,12 +181,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AD6D6C02B0EDFBE00A4A61A /* KeychainAccess in Frameworks */,
-				1AEDE79C287BA55A009B1CA4 /* ArgumentParser in Frameworks */,
 				1A2B94FB2B195C94005B92E1 /* DequeModule in Frameworks */,
 				1AFF37DE2B1D51CE009E518B /* SPISearchResult in Frameworks */,
 				1A2B94F92B195C94005B92E1 /* Collections in Frameworks */,
-				1A1650542870F9B700AC4DB2 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +194,6 @@
 				1AE699F02B2009FC008CB0F6 /* SPISearchResult in Frameworks */,
 				1ABC74C22B19697000B7E6EB /* Collections in Frameworks */,
 				1A372C9A287C62070020CFAC /* ArgumentParser in Frameworks */,
-				1A372CA3287C63F70020CFAC /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,9 +382,6 @@
 			);
 			name = SPISearch;
 			packageProductDependencies = (
-				1A1650532870F9B700AC4DB2 /* SwiftSoup */,
-				1AEDE79B287BA55A009B1CA4 /* ArgumentParser */,
-				1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */,
 				1A2B94F82B195C94005B92E1 /* Collections */,
 				1A2B94FA2B195C94005B92E1 /* DequeModule */,
 				1AFF37DD2B1D51CE009E518B /* SPISearchResult */,
@@ -416,7 +405,6 @@
 			name = ReportSearch;
 			packageProductDependencies = (
 				1A372C99287C62070020CFAC /* ArgumentParser */,
-				1A372CA2287C63F70020CFAC /* SwiftSoup */,
 				1ABC74C12B19697000B7E6EB /* Collections */,
 				1AE699EF2B2009FC008CB0F6 /* SPISearchResult */,
 			);
@@ -502,9 +490,7 @@
 			);
 			mainGroup = 1A1650372870F98F00AC4DB2;
 			packageReferences = (
-				1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
 				1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
-				1AD6D6BE2B0EDFBE00A4A61A /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				1AFF37DC2B1D51CE009E518B /* XCRemoteSwiftPackageReference "SPISearchResult" */,
 			);
@@ -1014,28 +1000,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/scinfu/SwiftSoup.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-collections.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.5;
-			};
-		};
-		1AD6D6BE2B0EDFBE00A4A61A /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
 			};
 		};
 		1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
@@ -1057,11 +1027,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		1A1650532870F9B700AC4DB2 /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
-		};
 		1A2B94F82B195C94005B92E1 /* Collections */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */;
@@ -1076,11 +1041,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
-		};
-		1A372CA2287C63F70020CFAC /* SwiftSoup */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1A1650522870F9B700AC4DB2 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
-			productName = SwiftSoup;
 		};
 		1A6E759E2B1FDAA2004A1A17 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1102,20 +1062,10 @@
 			package = 1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = Collections;
 		};
-		1AD6D6BF2B0EDFBE00A4A61A /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1AD6D6BE2B0EDFBE00A4A61A /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
-		};
 		1AE699EF2B2009FC008CB0F6 /* SPISearchResult */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1AFF37DC2B1D51CE009E518B /* XCRemoteSwiftPackageReference "SPISearchResult" */;
 			productName = SPISearchResult;
-		};
-		1AEDE79B287BA55A009B1CA4 /* ArgumentParser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
-			productName = ArgumentParser;
 		};
 		1AF8A6622B251BDE0064B945 /* Collections */ = {
 			isa = XCSwiftPackageProductDependency;

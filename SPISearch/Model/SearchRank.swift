@@ -124,76 +124,103 @@ struct SearchRank: Identifiable, Codable {
         return finalQueue
     }
 
-    //    var medianRelevancyRanking: RelevancyValues? {
-    //        if relevanceSets.isEmpty {
-    //            return nil
-    //        }
-    //        var medianRecord = ComputedRelevancyValues()
-    //
-    //        // retrieve a list of matched keywords from all the relevance sets
-    //        // and toss them into a Set to de-duplicate them.
-    //        let all_keywords = Set<String>(relevanceSets.flatMap { record in
-    //            record.keywords.ratings.keys
-    //        })
-    //
-    //        // Iterate through the set of all keywords and compute a median relevancy value
-    //        for keyword in all_keywords {
-    //            // this grabs and returns a list of relevancy enumerations where
-    //            // the value isn't `.unknown`
-    //
-    //            let listOfRelevance = relevanceSets.compactMap { record -> Relevance? in
-    //                let foundRelevance = record.keywords[keyword]
-    //                if foundRelevance != .unknown { return foundRelevance }
-    //                return nil
-    //            }
-    //            // We then convert those enumerated instances into valuation
-    //            // numbers, sum them up, and divide by the number of relevancy
-    //            // values found (again, not counting the "unknown" ones.
-    //            let medianValue = listOfRelevance
-    //                .map { $0.relevanceValue() }
-    //                .reduce(into: 0) { partialResult, relValue in
-    //                    partialResult += relValue
-    //                } / Double(listOfRelevance.count)
-    //            // No known relevancy options will result in a count of 0, and /0 == .nan
-    //            // So don't include the keyword in the results.
-    //            if !medianValue.isNaN {
-    //                // Apply back into the return set.
-    //                medianRecord.keywords[keyword] = medianValue
-    //            }
-    //        }
-    //
-    //        // retrieve a list of matched package identifiers from all the relevance sets
-    //        // and toss them into a Set to de-duplicate them.
-    //        let all_package_identifiers = Set<String>(relevanceSets.flatMap { record in
-    //            record.packages.ratings.keys
-    //        })
-    //
-    //        // Iterate through the set of all keywords and compute a median relevancy value
-    //        for pkgId in all_package_identifiers {
-    //            // this grabs and returns a list of relevancy enumerations where
-    //            // the value isn't `.unknown`
-    //            let listOfRelevance = relevanceSets.compactMap { record -> Relevance? in
-    //                let foundRelevance = record.packages[pkgId]
-    //                if foundRelevance != .unknown { return foundRelevance }
-    //                return nil
-    //            }
-    //            // We then convert those enumerated instances into valuation
-    //            // numbers, sum them up, and divide by the number of relevancy
-    //            // values found (again, not counting the "unknown" ones.
-    //            let medianValue = listOfRelevance
-    //                .map { $0.relevanceValue() }
-    //                .reduce(into: 0) { partialResult, relValue in
-    //                    partialResult += relValue
-    //                } / Double(listOfRelevance.count)
-    //            // No known relevancy options will result in a count of 0, and /0 == .nan
-    //            // So don't include the keyword in the results.
-    //            if !medianValue.isNaN {
-    //                // Apply back into the return set.
-    //                medianRecord.packages[pkgId] = medianValue
-    //            }
-    //        }
-    //
-    //        // IMPL
-    //        return medianRecord
-    //    }
+    func percentEvaluationComplete(for searchResult: SearchResult, for reviewer: ReviewerID) -> Double {
+        if let reviewsFromReviewer = reviewedEvaluationCollections[reviewer],
+           let reviewSetToCheck = reviewsFromReviewer.first(where: { reviewSet in
+               reviewSet.query_terms == searchResult.query
+           })
+        {
+            let countComplete = searchResult.packages.reduce(into: 0) { partialResult, package in
+                if reviewSetToCheck.reviews.keys.contains(package.id) {
+                    partialResult = partialResult + 1
+                }
+            }
+            return Double(countComplete) / Double(searchResult.packages.count)
+        }
+        return 0
+    }
+
+    func evaluationComplete(for searchResult: SearchResult, for reviewer: ReviewerID) -> Bool {
+        if let reviewsFromReviewer = reviewedEvaluationCollections[reviewer],
+           let reviewSetToCheck = reviewsFromReviewer.first(where: { reviewSet in
+               reviewSet.query_terms == searchResult.query
+           })
+        {
+            let completelyEvaluated = searchResult.packages.allSatisfy { package in
+                reviewSetToCheck.reviews.keys.contains(package.id)
+            }
+            return completelyEvaluated
+        }
+        return false
+    }
+
+    func evaluationGloballyComplete(for searchResult: SearchResult) -> Bool {
+        // grabs all the reviewSets (from all reviewers) where the query terms match the searchresult
+        let setsToCheck = reviewedEvaluationCollections.flatMap { (_: ReviewerID, reviewSets: [ReviewSet]) in
+            reviewSets.filter { set in
+                set.query_terms == searchResult.query
+            }
+        }
+        let complete = searchResult.packages.allSatisfy { pkg in
+            let relevanceMarkers = setsToCheck.compactMap { set in
+                set.reviews[pkg.id]
+            }
+            if relevanceMarkers.isEmpty {
+                return false
+            } else {
+                return true
+            }
+        }
+        return complete
+    }
+
+    func medianRelevancyValues(for searchResult: SearchResult) -> RelevancyValues? {
+        var values = RelevancyValues(query_terms: searchResult.query, relevanceValue: [:])
+        let setsToCheck = reviewedEvaluationCollections.flatMap { (_: ReviewerID, reviewSets: [ReviewSet]) in
+            reviewSets.filter { set in
+                set.query_terms == searchResult.query
+            }
+        }
+        if setsToCheck.isEmpty {
+            // no evaluations exist
+            return nil
+        }
+
+        for pkg in searchResult.packages {
+            let listOfRelevance = setsToCheck.compactMap { reviewSet in
+                reviewSet.reviews[pkg.id]
+            }
+            if listOfRelevance.isEmpty {
+                // no evaluations exist
+                return nil
+            } else {
+                let sum = listOfRelevance.reduce(into: 0.0) { partialResult, relevance in
+                    partialResult += relevance.relevanceValue()
+                }
+                let avg = sum / Double(listOfRelevance.count)
+                values.relevanceValue[pkg.id] = avg
+            }
+        }
+        return values
+    }
+
+    func relevancyValues(for searchResult: SearchResult, by reviewer: ReviewerID) -> RelevancyValues? {
+        var values = RelevancyValues(query_terms: searchResult.query, relevanceValue: [:])
+        guard let reviewSet = reviewedEvaluationCollections[reviewer]?.first(where: { set in
+            set.query_terms == searchResult.query
+        }) else {
+            return nil
+        }
+        for pkg in searchResult.packages {
+            if let valueOfEval = reviewSet.reviews[pkg.id] {
+                values.relevanceValue[pkg.id] = valueOfEval.relevanceValue()
+            } else {
+                // no review recorded, set it to a 0 value, meaning assumed irrelevant
+                // values.relevanceValue[pkg.id] = 0.0
+                // or maybe return nil, since we can't make a complete set of relevancy values?
+                return nil
+            }
+        }
+        return values
+    }
 }

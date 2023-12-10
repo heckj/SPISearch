@@ -53,6 +53,7 @@
 		1A78500328733B5500AFB33F /* SearchRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500228733B5500AFB33F /* SearchRank.swift */; };
 		1A78500528733F0500AFB33F /* SearchRankEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500428733F0500AFB33F /* SearchRankEditorView.swift */; };
 		1A789D7728721EE700E8108A /* SearchResultPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A789D7628721EE700E8108A /* SearchResultPackageView.swift */; };
+		1A7922692B254345009F42D9 /* PackageToEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45A5F72B25225E00895305 /* PackageToEvaluate.swift */; };
 		1A7FD6AB2873797E008C76AB /* Relevance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7FD6AA2873797E008C76AB /* Relevance.swift */; };
 		1A8144AA2872056300F58B48 /* CapsuleText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144A92872056300F58B48 /* CapsuleText.swift */; };
 		1A8144AC28720E7000F58B48 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8144AB28720E7000F58B48 /* SearchResultView.swift */; };
@@ -594,6 +595,7 @@
 				1ABC74BC2B19693900B7E6EB /* SwiftPackageIndexAPI.swift in Sources */,
 				1A372C94287C61A30020CFAC /* ReportSearchRank.swift in Sources */,
 				1A372C9C287C63C50020CFAC /* SearchRankDocument.swift in Sources */,
+				1A7922692B254345009F42D9 /* PackageToEvaluate.swift in Sources */,
 				1A372CA0287C63C60020CFAC /* ComputedRelevancyValues.swift in Sources */,
 				1A372C9F287C63C50020CFAC /* SearchRank.swift in Sources */,
 				1ABC74BF2B19693900B7E6EB /* SwiftPackageIndexAPI+PackageId.swift in Sources */,

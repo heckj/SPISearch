@@ -124,7 +124,7 @@ struct SearchRank: Identifiable, Codable {
         return finalQueue
     }
 
-    //    var medianRelevancyRanking: ComputedRelevancyValues? {
+    //    var medianRelevancyRanking: RelevancyValues? {
     //        if relevanceSets.isEmpty {
     //            return nil
     //        }

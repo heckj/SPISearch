@@ -21,13 +21,10 @@ struct SearchResultView: View {
                     Text(recordedSearch.query)
                 }
                 Section("Matched Keywords") {
-                    ScrollView(.horizontal, showsIndicators: true) {
-                        LazyHGrid(rows: [GridItem(.flexible())]) {
-                            ForEach(recordedSearch.keywords, id: \.self) { word in
-                                CapsuleText(word)
-                                    .textSelection(.enabled)
-                                    .fixedSize()
-                            }
+                    OverflowGrid(horizontalSpacing: 4) {
+                        ForEach(recordedSearch.keywords, id: \.self) { word in
+                            CapsuleText(word)
+                                .textSelection(.enabled)
                         }
                     }
                     .frame(maxHeight: 50)

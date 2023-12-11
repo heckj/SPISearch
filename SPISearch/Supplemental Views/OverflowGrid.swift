@@ -8,8 +8,9 @@ public struct OverflowGrid: Layout {
         self.horizontalSpacing = horizontalSpacing
         self.verticalSpacing = verticalSpacing ?? horizontalSpacing
     }
-    public func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
-        let height = subviews.max(by: {$0.dimensions(in: proposal).height > $1.dimensions(in: proposal).height})?.dimensions(in: proposal).height ?? 0
+
+    public func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache _: inout ()) -> CGSize {
+        let height = subviews.max(by: { $0.dimensions(in: proposal).height > $1.dimensions(in: proposal).height })?.dimensions(in: proposal).height ?? 0
         var rows = [CGFloat]()
         subviews.indices.forEach { index in
             let rowIndex = rows.count - 1
@@ -20,25 +21,25 @@ public struct OverflowGrid: Layout {
             }
             let newWidth = rows[rowIndex] + subViewWidth + horizontalSpacing
             if newWidth < proposal.width ?? 0 {
-                rows[rowIndex] += (rows[rowIndex] > 0 ? horizontalSpacing: 0) + subViewWidth
-            }else {
+                rows[rowIndex] += (rows[rowIndex] > 0 ? horizontalSpacing : 0) + subViewWidth
+            } else {
                 rows.append(subViewWidth)
             }
         }
         let count = CGFloat(rows.count)
         return CGSize(width: rows.max() ?? 0, height: count * height + (count - 1) * verticalSpacing)
-        
     }
-    public func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
-        let height = subviews.max(by: {$0.dimensions(in: proposal).height > $1.dimensions(in: proposal).height})?.dimensions(in: proposal).height ?? 0
-        guard !subviews.isEmpty else {return}
+
+    public func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache _: inout ()) {
+        let height = subviews.max(by: { $0.dimensions(in: proposal).height > $1.dimensions(in: proposal).height })?.dimensions(in: proposal).height ?? 0
+        guard !subviews.isEmpty else { return }
         var x = bounds.minX
-        var y = height/2 + bounds.minY
+        var y = height / 2 + bounds.minY
         subviews.indices.forEach { index in
             let subView = subviews[index]
-            x += subView.dimensions(in: proposal).width/2
+            x += subView.dimensions(in: proposal).width / 2
             subviews[index].place(at: CGPoint(x: x, y: y), anchor: .center, proposal: ProposedViewSize(width: subView.dimensions(in: proposal).width, height: subView.dimensions(in: proposal).height))
-            x += horizontalSpacing + subView.dimensions(in: proposal).width/2
+            x += horizontalSpacing + subView.dimensions(in: proposal).width / 2
             if x > bounds.width {
                 x = bounds.minX
                 y += height + verticalSpacing

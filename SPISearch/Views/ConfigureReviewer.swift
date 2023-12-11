@@ -12,7 +12,7 @@ struct ConfigureReviewer: View {
     // @Environment(\.presentationMode) var presentation
     @Environment(\.dismiss) var dismiss
     @Binding var document: SearchRankDocument
-    @AppStorage(SPISearchApp.reviewerIDKey) var localReviewerId: String = UUID().uuidString
+    let reviewerID: String
     @AppStorage(SPISearchApp.reviewerNameKey) var localReviewerName: String = ""
     // To allow creating a local reviewer document if the
     // document doesn't already have one.
@@ -58,7 +58,7 @@ struct ConfigureReviewer: View {
                 #endif
             }.onAppear {
                 localReviewerName = reviewerName
-                document.searchRanking.addOrUpdateEvaluator(reviewerId: localReviewerId,
+                document.searchRanking.addOrUpdateEvaluator(reviewerId: reviewerID,
                                                             reviewerName: localReviewerName)
             }
         }
@@ -74,7 +74,7 @@ private struct HostingView: View {
                 showingSheet.toggle()
             }
             .sheet(isPresented: $showingSheet) {
-                ConfigureReviewer(document: $document)
+                ConfigureReviewer(document: $document, reviewerID: UUID().uuidString)
             }
         }
     }

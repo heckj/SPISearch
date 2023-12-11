@@ -27,12 +27,12 @@ struct SearchResultPackageView: View {
                     .font(horizontalSizeClass == .compact ? .caption : .body)
                 #endif
                     .font(.body)
-                    OverflowGrid(horizontalSpacing: 4) {
-                        ForEach(package.package_keywords, id: \.self) { word in
-                            CapsuleText(word)
-                                .textSelection(.enabled)
-                        }
+                OverflowGrid(horizontalSpacing: 4) {
+                    ForEach(package.package_keywords, id: \.self) { word in
+                        CapsuleText(word)
+                            .textSelection(.enabled)
                     }
+                }
                 #if os(iOS)
                 .font(horizontalSizeClass == .compact ? .caption.bold() : .body.bold())
                 #endif

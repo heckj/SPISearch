@@ -55,11 +55,8 @@ struct SearchRank: Identifiable, Codable {
         reviewerNames = [:]
     }
 
-    mutating func addOrUpdateEvaluator(reviewerId: String, reviewerName: String) {
-        guard let properId = UUID(uuidString: reviewerId) else {
-            return
-        }
-        reviewerNames[properId] = reviewerName
+    mutating func addOrUpdateEvaluator(reviewerId: UUID, reviewerName: String) {
+        reviewerNames[reviewerId] = reviewerName
     }
 
     mutating func addOrUpdateRelevanceEvaluation(reviewer: UUID, query: String, packageId: SearchResult.Package.PackageId, relevance: Relevance) {
@@ -78,12 +75,9 @@ struct SearchRank: Identifiable, Codable {
         }
     }
 
-    func queueOfReviews(reviewerId: String) -> [PackageToEvaluate] {
+    func queueOfReviews(reviewerId: UUID) -> [PackageToEvaluate] {
         var packagesToReview: [String: Set<SearchResult.Package>] = [:]
         var matched_keywords: [String: [String]] = [:]
-        guard let properId = UUID(uuidString: reviewerId) else {
-            return []
-        }
         // build a collection of all the possible summary -> packageId combinations to possibly
         // review
         for search in searchResultCollection {
@@ -97,7 +91,7 @@ struct SearchRank: Identifiable, Codable {
             for pkg in packages {
                 // FILTERING - check to see if THIS reviewer has evaluations already recorded
                 // for this query
-                if let existingReviewSet = reviewedEvaluationCollections[properId]?.first(where: { reviewset in
+                if let existingReviewSet = reviewedEvaluationCollections[reviewerId]?.first(where: { reviewset in
                     reviewset.query_terms == search.query
                 }) {
                     // If they do, then check to see if the package is already included in those

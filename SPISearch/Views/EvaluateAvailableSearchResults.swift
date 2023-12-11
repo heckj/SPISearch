@@ -9,10 +9,8 @@ import SPISearchResult
 import SwiftUI
 
 struct EvaluateAvailableSearchResults: View {
-    let localReviewerId: String
-
-    @AppStorage(SPISearchApp.reviewerNameKey) var localReviewerName: String = ""
     @Binding var document: SearchRankDocument
+    let localReviewerId = SPISearchApp.reviewerID()
 
     @State private var queueCount: Int = 0
     @State private var evaluationQueue: [PackageToEvaluate] = []
@@ -32,13 +30,11 @@ struct EvaluateAvailableSearchResults: View {
     }
 
     func updateRelevanceAndAdvance(_ relevance: Relevance) {
-        guard let properId = UUID(uuidString: localReviewerId),
-              let packageToEvaluate
-        else {
+        guard let packageToEvaluate else {
             return
         }
         document.searchRanking.addOrUpdateRelevanceEvaluation(
-            reviewer: properId,
+            reviewer: localReviewerId,
             query: packageToEvaluate.query,
             packageId: packageToEvaluate.package.id,
             relevance: relevance
@@ -103,8 +99,7 @@ struct EvaluateAvailableSearchResults: View {
         })
     }
 
-    init(searchRankDoc: Binding<SearchRankDocument>, reviewer: String) {
-        localReviewerId = reviewer
+    init(searchRankDoc: Binding<SearchRankDocument>) {
         _document = searchRankDoc
     }
 }
@@ -112,8 +107,7 @@ struct EvaluateAvailableSearchResults: View {
 struct RankingSearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
         EvaluateAvailableSearchResults(
-            searchRankDoc: .constant(SearchRankDocument(SearchResult.exampleCollection)),
-            reviewer: UUID().uuidString
+            searchRankDoc: .constant(SearchRankDocument(SearchResult.exampleCollection))
         )
     }
 }

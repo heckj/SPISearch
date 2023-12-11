@@ -9,9 +9,8 @@ import SPISearchResult
 import SwiftUI
 
 struct SearchRankDocumentOverview: View {
+    let localReviewerId: String
     @Binding var document: SearchRankDocument
-
-    @AppStorage(SPISearchApp.reviewerIDKey) var localReviewerId: String = UUID().uuidString
     @AppStorage(SPISearchApp.reviewerNameKey) var localReviewerName: String = ""
 
     @State private var importerEnabled = false
@@ -60,6 +59,10 @@ struct SearchRankDocumentOverview: View {
             }
 
             Section("Evaluations") {
+// Well - this doesn't work at all on macOS
+                NavigationLink("Evaluate") {
+                    EvaluateAvailableSearchResults(searchRankDoc: $document, reviewer: localReviewerId)
+                }
                 ForEach(document.searchRanking.sortedEvaluations, id: \.0) { reviewerId, reviewsets in
                     HStack {
                         Text("\(reviewerId) has \(reviewsets.count) evaluations stored")
@@ -94,7 +97,7 @@ struct SearchRankDocumentOverview: View {
         .listStyle(.sidebar)
         #endif
         .sheet(isPresented: $configureReviewerSheetShown) {
-            ConfigureReviewer(document: $document)
+            ConfigureReviewer(document: $document, reviewerID: localReviewerId)
         }
         .onAppear(perform: {
             // On document open, if there's a set reviewer name, update the document (if needed)
@@ -108,7 +111,8 @@ struct SearchRankDocumentOverview: View {
         })
     }
 
-    init(_ document: Binding<SearchRankDocument>) {
+    init(_ document: Binding<SearchRankDocument>, reviewer: String) {
+        localReviewerId = reviewer
         _document = document
     }
 }
@@ -117,7 +121,8 @@ struct SearchRankDocumentOverview_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             SearchRankDocumentOverview(
-                .constant(SearchRankDocument(SearchResult.exampleCollection))
+                .constant(SearchRankDocument(SearchResult.exampleCollection)),
+                reviewer: UUID().uuidString
             )
         }
     }

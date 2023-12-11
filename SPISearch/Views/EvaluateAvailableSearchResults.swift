@@ -9,9 +9,9 @@ import SPISearchResult
 import SwiftUI
 
 struct EvaluateAvailableSearchResults: View {
-    @AppStorage(SPISearchApp.reviewerIDKey) var localReviewerId: String = UUID().uuidString
-    @AppStorage(SPISearchApp.reviewerNameKey) var localReviewerName: String = ""
+    let localReviewerId: String
 
+    @AppStorage(SPISearchApp.reviewerNameKey) var localReviewerName: String = ""
     @Binding var document: SearchRankDocument
 
     @State private var queueCount: Int = 0
@@ -49,6 +49,7 @@ struct EvaluateAvailableSearchResults: View {
     var body: some View {
         VStack {
             if let packageToEvaluate {
+                Text("Reviewer ID: \(localReviewerId)")
                 Text("Query Terms: \(packageToEvaluate.query)")
                 HStack(alignment: .firstTextBaseline) {
                     Text("Keywords:")
@@ -102,7 +103,8 @@ struct EvaluateAvailableSearchResults: View {
         })
     }
 
-    init(searchRankDoc: Binding<SearchRankDocument>) {
+    init(searchRankDoc: Binding<SearchRankDocument>, reviewer: String) {
+        localReviewerId = reviewer
         _document = searchRankDoc
     }
 }
@@ -110,7 +112,8 @@ struct EvaluateAvailableSearchResults: View {
 struct RankingSearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
         EvaluateAvailableSearchResults(
-            searchRankDoc: .constant(SearchRankDocument(SearchResult.exampleCollection))
+            searchRankDoc: .constant(SearchRankDocument(SearchResult.exampleCollection)),
+            reviewer: UUID().uuidString
         )
     }
 }

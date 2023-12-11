@@ -1,18 +1,19 @@
 import SPISearchResult
 import SwiftUI
+
 /// The primary document editor view.
 struct SearchRankEditorView: View {
     @Binding var document: SearchRankDocument
-    @AppStorage(SPISearchApp.reviewerIDKey) private var localReviewerId: String = UUID().uuidString
+
     var body: some View {
         VStack {
             #if os(macOS)
                 NavigationView {
-                    SearchRankDocumentOverview($document, reviewer: localReviewerId)
+                    SearchRankDocumentOverview($document)
                     Text("Select ranking or search in the sidebar to view.")
                 }
             #else
-            SearchRankDocumentOverview($document, reviewer: localReviewerId)
+                SearchRankDocumentOverview($document)
             #endif
         }
         // Applied to the top level view in a macOS App, this controls both the initial size

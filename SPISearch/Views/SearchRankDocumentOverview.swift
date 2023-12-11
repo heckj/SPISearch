@@ -9,9 +9,7 @@ import SPISearchResult
 import SwiftUI
 
 struct SearchRankDocumentOverview: View {
-    let localReviewerId: String
     @Binding var document: SearchRankDocument
-    @AppStorage(SPISearchApp.reviewerNameKey) var localReviewerName: String = ""
 
     @State private var importerEnabled = false
     @State private var configureReviewerSheetShown = false
@@ -59,9 +57,9 @@ struct SearchRankDocumentOverview: View {
             }
 
             Section("Evaluations") {
-// Well - this doesn't work at all on macOS
+                // Well - this doesn't work at all on macOS
                 NavigationLink("Evaluate") {
-                    EvaluateAvailableSearchResults(searchRankDoc: $document, reviewer: localReviewerId)
+                    EvaluateAvailableSearchResults(searchRankDoc: $document)
                 }
                 ForEach(document.searchRanking.sortedEvaluations, id: \.0) { reviewerId, reviewsets in
                     HStack {
@@ -97,22 +95,20 @@ struct SearchRankDocumentOverview: View {
         .listStyle(.sidebar)
         #endif
         .sheet(isPresented: $configureReviewerSheetShown) {
-            ConfigureReviewer(document: $document, reviewerID: localReviewerId)
+            ConfigureReviewer(document: $document)
         }
         .onAppear(perform: {
             // On document open, if there's a set reviewer name, update the document (if needed)
             // to make sure its current.
-            if !localReviewerName.isEmpty {
-                document.searchRanking.addOrUpdateEvaluator(reviewerId: localReviewerId, reviewerName: localReviewerName)
-            } else {
+            let reviewerID = SPISearchApp.reviewerID()
+            if document.searchRanking.reviewerNames[reviewerID] == nil {
                 // If the reviewer name _isn't_ yet set, then get in their face and get a name
                 configureReviewerSheetShown = true
             }
         })
     }
 
-    init(_ document: Binding<SearchRankDocument>, reviewer: String) {
-        localReviewerId = reviewer
+    init(_ document: Binding<SearchRankDocument>) {
         _document = document
     }
 }
@@ -121,8 +117,7 @@ struct SearchRankDocumentOverview_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             SearchRankDocumentOverview(
-                .constant(SearchRankDocument(SearchResult.exampleCollection)),
-                reviewer: UUID().uuidString
+                .constant(SearchRankDocument(SearchResult.exampleCollection))
             )
         }
     }

@@ -28,4 +28,20 @@ struct SPISearchApp: App {
     /// The key used for storing the identity of the reviewer in AppStorage (UserDefaults).
     static var reviewerIDKey: String = "reviewerId"
     static var reviewerNameKey: String = "reviewerName"
+
+    /// Returns a reviewer identifier.
+    /// - Returns: The UUID that represents this reviewer
+    ///
+    /// The reviewer ID is a randomly generated UUID, stored in UserDefaults for future runs or working with other documents.
+    static func reviewerID() -> UUID {
+        if let reviewerString = UserDefaults.standard.string(forKey: SPISearchApp.reviewerIDKey),
+           let reviewerID = UUID(uuidString: reviewerString)
+        {
+            return reviewerID
+        } else {
+            let newID = UUID()
+            UserDefaults.standard.set(newID.uuidString, forKey: SPISearchApp.reviewerIDKey)
+            return newID
+        }
+    }
 }

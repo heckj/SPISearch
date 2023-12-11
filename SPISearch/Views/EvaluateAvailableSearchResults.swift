@@ -47,12 +47,13 @@ struct EvaluateAvailableSearchResults: View {
             if let packageToEvaluate {
                 Text("Reviewer ID: \(localReviewerId)")
                 Text("Query Terms: \(packageToEvaluate.query)")
-                HStack(alignment: .firstTextBaseline) {
+                HStack {
                     Text("Keywords:")
-                    ForEach(packageToEvaluate.keywords, id: \.self) { word in
-                        CapsuleText(word)
-                            .textSelection(.enabled)
-                            .fixedSize()
+                    OverflowGrid(horizontalSpacing: 4) {
+                        ForEach(packageToEvaluate.keywords, id: \.self) { word in
+                            CapsuleText(word)
+                                .textSelection(.enabled)
+                        }
                     }
                 }
                 Divider()
@@ -60,7 +61,7 @@ struct EvaluateAvailableSearchResults: View {
                 SearchResultPackageView(packageToEvaluate.package, keywords: packageToEvaluate.keywords)
                     .padding(.horizontal)
 
-                Divider()
+                Spacer()
                 HStack {
                     Spacer()
                     Button(action: {

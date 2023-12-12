@@ -66,9 +66,9 @@ struct SearchRank: Identifiable, Hashable, Codable {
 
     func nameOfReviewer(reviewerId: UUID) -> String {
         if let name = reviewerNames[reviewerId] {
-            name
+            return name
         } else {
-            "unknown"
+            return "unknown"
         }
     }
 

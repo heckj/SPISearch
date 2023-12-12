@@ -1,10 +1,3 @@
-//
-//  ConfigureReviewer.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 7/11/22.
-//
-
 import SPISearchResult
 import SwiftUI
 

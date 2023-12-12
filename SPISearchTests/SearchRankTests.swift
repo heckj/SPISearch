@@ -124,4 +124,24 @@ final class SearchRankTests: XCTestCase {
         XCTAssertEqual(queue.count, 5)
         XCTAssertEqual(queue[0].query, "crdt")
     }
+
+    func testExampleWithReviews() throws {
+        let sample = SearchRank.exampleWithReviews()
+        XCTAssertEqual(sample.reviewerNames.count, 1)
+
+        let reviewerIDs = sample.reviewerNames.keys
+        XCTAssertEqual(reviewerIDs.count, 1)
+        XCTAssertEqual(try sample.reviewerNames[XCTUnwrap(sample.reviewerNames.keys.first)], "Fred")
+        XCTAssertEqual(sample.reviewedEvaluationCollections.count, 1)
+        XCTAssertEqual(try sample.reviewedEvaluationCollections[XCTUnwrap(sample.reviewerNames.keys.first)]?.count, 5)
+    }
+
+    func testExampleRankingAccessors() throws {
+        let sample = SearchRank.exampleWithReviews()
+        let reviewerID = try XCTUnwrap(sample.reviewerNames.keys.first)
+        XCTAssertEqual(sample.reviewers.count, 1)
+        XCTAssertEqual(sample.queriesReviewed(for: reviewerID), ["crdt"])
+        print(sample.reviews(for: reviewerID, query: "crdt"))
+        XCTAssertEqual(sample.reviews(for: reviewerID, query: "crdt").count, 5)
+    }
 }

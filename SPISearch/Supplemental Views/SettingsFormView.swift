@@ -1,10 +1,3 @@
-//
-//  SettingsFormView.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 7/7/22.
-//
-
 import SwiftUI
 
 struct SettingsFormView: View {

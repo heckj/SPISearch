@@ -16,11 +16,11 @@ struct SearchRankDocumentOverview: View {
 
     var body: some View {
         List {
-//#if DEBUG
+            // #if DEBUG
 //    #if os(macOS)
 //            let _ = Self._printChanges()
 //    #endif
-//#endif
+            // #endif
             Section("Summary") {
                 // only display import on an empty document?
                 if document.searchRanking.searchResultCollection.isEmpty {

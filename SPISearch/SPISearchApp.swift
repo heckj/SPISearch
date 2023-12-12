@@ -23,6 +23,10 @@ struct SPISearchApp: App {
         //        #if os(macOS) // macOS 13+ only
         //        .defaultSize(width: 1000, height: 650)
         //        #endif
+
+//        WindowGroup(id: "eval", for: SearchRank) { searchrank in
+//            EvaluateAvailableSearchResults(searchRankDoc: searchrank)
+//        }
     }
 
     /// The key used for storing the identity of the reviewer in AppStorage (UserDefaults).

@@ -127,20 +127,36 @@ final class SearchRankTests: XCTestCase {
 
     func testExampleWithReviews() throws {
         let sample = SearchRank.exampleWithReviews()
+
+        XCTAssertEqual(sample.reviewedEvaluationCollections.count, 1)
+        let listOfReviewsByReviewer = try XCTUnwrap(sample.reviewedEvaluationCollections[XCTUnwrap(sample.reviewerNames.keys.first)])
+        XCTAssertEqual(listOfReviewsByReviewer.count, 1)
+        XCTAssertEqual(listOfReviewsByReviewer[0].reviews.count, 5)
+    }
+
+    func testReviewerName() throws {
+        let sample = SearchRank.exampleWithReviews()
         XCTAssertEqual(sample.reviewerNames.count, 1)
 
         let reviewerIDs = sample.reviewerNames.keys
         XCTAssertEqual(reviewerIDs.count, 1)
         XCTAssertEqual(try sample.reviewerNames[XCTUnwrap(sample.reviewerNames.keys.first)], "Fred")
-        XCTAssertEqual(sample.reviewedEvaluationCollections.count, 1)
-        XCTAssertEqual(try sample.reviewedEvaluationCollections[XCTUnwrap(sample.reviewerNames.keys.first)]?.count, 5)
     }
 
-    func testExampleRankingAccessors() throws {
+    func testReviewNames() throws {
+        let sample = SearchRank.exampleWithReviews()
+        XCTAssertEqual(sample.reviewers.count, 1)
+    }
+
+    func testQueriesReviewed() throws {
         let sample = SearchRank.exampleWithReviews()
         let reviewerID = try XCTUnwrap(sample.reviewerNames.keys.first)
-        XCTAssertEqual(sample.reviewers.count, 1)
         XCTAssertEqual(sample.queriesReviewed(for: reviewerID), ["crdt"])
+    }
+
+    func testReviewsByIdForQuery() throws {
+        let sample = SearchRank.exampleWithReviews()
+        let reviewerID = try XCTUnwrap(sample.reviewerNames.keys.first)
         print(sample.reviews(for: reviewerID, query: "crdt"))
         XCTAssertEqual(sample.reviews(for: reviewerID, query: "crdt").count, 5)
     }

@@ -31,6 +31,13 @@ struct SearchRank: Identifiable, Hashable, Codable {
     var reviewedEvaluationCollections: [ReviewerID: [ReviewSet]] = [:]
     var reviewerNames: [ReviewerID: String]
 
+    var reviewers: [ReviewerID] {
+        reviewedEvaluationCollections.keys.sorted { lhs, rhs in
+            // reconsider this into a lookup of the reviewer Id's name
+            lhs.uuidString < rhs.uuidString
+        }
+    }
+
     // specifically for SwiftUI consumption - constructed random-access stuff
     // lexically sorted by reviewer "id" - the uuidString
     var sortedEvaluations: [(ReviewerID, [ReviewSet])] {
@@ -54,6 +61,44 @@ struct SearchRank: Identifiable, Hashable, Codable {
         searchResultCollection = result
         reviewerNames = [:]
     }
+
+    // REVIEW ACCESSORS
+
+    func nameOfReviewer(reviewerId: UUID) -> String {
+        if let name = reviewerNames[reviewerId] {
+            name
+        } else {
+            "unknown"
+        }
+    }
+
+    func queriesReviewed(for reviewer: UUID) -> [String] {
+        if let collection = reviewedEvaluationCollections[reviewer] {
+            let queries = collection.reduce(into: Set<String>()) { partialResult, reviewSet in
+                partialResult.insert(reviewSet.query_terms)
+            }
+            return queries.sorted()
+        }
+        return []
+    }
+
+    func reviews(for reviewer: UUID, query: String) -> [(SearchResult.Package.PackageId, Relevance)] {
+        var listToReturn: [(SearchResult.Package.PackageId, Relevance)] = []
+        if let collection = reviewedEvaluationCollections[reviewer],
+           let reviewset = collection.first(where: { reviewSet in
+               reviewSet.query_terms == query
+           })
+        {
+            for key in reviewset.reviews.keys.sorted() {
+                if let relevance = reviewset.reviews[key] {
+                    listToReturn.append((key, relevance))
+                }
+            }
+        }
+        return listToReturn
+    }
+
+    // UPDATING EVALUATIONS
 
     mutating func addOrUpdateEvaluator(reviewerId: UUID, reviewerName: String) {
         reviewerNames[reviewerId] = reviewerName

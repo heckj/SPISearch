@@ -62,19 +62,16 @@ struct SearchRankDocumentOverview: View {
             }
 
             Section("Evaluations") {
-                // Well - this doesn't work at all on macOS
+                // Well - this doesn't work at all on macOS due to rendering issues with (deprecated) NavigationView
                 NavigationLink("Evaluate") {
                     EvaluateAvailableSearchResults(searchRankDoc: $document)
                 }
-                ForEach(document.searchRanking.sortedEvaluations, id: \.0) { reviewerId, reviewsets in
+
+                ForEach(document.searchRanking.reviewers, id: \.self) { reviewerId in
                     HStack {
-                        Text("\(reviewerId) has \(reviewsets.count) evaluations stored")
-                        // RelevanceSetSummaryView(ranking.wrappedValue)
+                        Text("\(document.searchRanking.nameOfReviewer(reviewerId: reviewerId)) has \(document.searchRanking.reviewedEvaluationCollections[reviewerId]?.count ?? 0) evaluations stored")
                         NavigationLink("") {
-//                            RankResultsView(
-//                                searchRankDoc: $document, relevanceRecordBinding: ranking,
-//                                recordedSearch: document.searchRanking.combinedRandomizedSearchResult()
-//                            )
+                            ReviewSetsView(reviewerID: reviewerId, searchrank: document.searchRanking)
                         }
                     }
                 }

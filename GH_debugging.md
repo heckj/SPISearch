@@ -5,12 +5,18 @@
 The images on Github Actions runners have a version of Xcode that you can't install on Sonoma, because... reason. So it's off to the world of VMs.
 
     brew install cirruslabs/cli/tart
-    tart clone ghcr.io/cirruslabs/macos-ventura-xcode macos-ventura-xcode
-    tart run --dir=project:~/src/SPISearch macos-venture-xcode
+    tart pull tart pull ghcr.io/cirruslabs/macos-ventura-xcode:14.3.1
+    tart clone ghcr.io/cirruslabs/macos-ventura-xcode:14.3.1 macos-ventura-xcode
+    tart run --dir=project:~/src/SPISearch macos-ventura-xcode
 
 The project is available at `/Volumes/My Shared Files/project` inside the Guest OS (MacOS 13 Ventura in this case)
 
-Note: this will consume at least 50GB of disk space - the raw image alone is ~43.4 GB compressed.
+Note: this will consume at least 52GB of disk space - the raw image alone is ~43.4 GB compressed. The disk space consumed of the stock image on disk (`~/.tart`):
+
+```
+ 96G cache
+ 52G vms
+```
 
 More details available on using Tart at https://tart.run/quick-start/
 

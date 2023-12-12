@@ -22,7 +22,7 @@ import SwiftUI
 /// cover all of the search results for all stored searches.
 ///
 /// Any search, when combined with a relevance review set, should be able to provide specific metrics about the search results.
-struct SearchRank: Identifiable, Codable {
+struct SearchRank: Identifiable, Hashable, Codable {
     var id = UUID()
 
     typealias ReviewerID = UUID

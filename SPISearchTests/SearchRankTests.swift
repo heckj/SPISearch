@@ -28,7 +28,7 @@ final class SearchRankTests: XCTestCase {
         XCTAssertEqual(searchrank.searchResultCollection[0].authors.count, 1)
         XCTAssertEqual(searchrank.searchResultCollection[0].keywords.count, 3)
 
-        let reviewerId = UUID().uuidString
+        let reviewerId = UUID()
         let queue = searchrank.queueOfReviews(reviewerId: reviewerId)
 
         XCTAssertEqual(queue.count, 6)
@@ -49,7 +49,7 @@ final class SearchRankTests: XCTestCase {
         XCTAssertEqual(searchrank.searchResultCollection[1].authors.count, 1)
         XCTAssertEqual(searchrank.searchResultCollection[1].keywords.count, 3)
 
-        let reviewerId = UUID().uuidString
+        let reviewerId = UUID()
         let queue = searchrank.queueOfReviews(reviewerId: reviewerId)
 
         XCTAssertEqual(queue.count, 6)
@@ -75,7 +75,7 @@ final class SearchRankTests: XCTestCase {
         XCTAssertEqual(searchrank.searchResultCollection[2].authors.count, 0)
         XCTAssertEqual(searchrank.searchResultCollection[2].keywords.count, 5)
 
-        let reviewerId = UUID().uuidString
+        let reviewerId = UUID()
         let queue = searchrank.queueOfReviews(reviewerId: reviewerId)
 
         XCTAssertEqual(queue.count, 14)
@@ -91,7 +91,7 @@ final class SearchRankTests: XCTestCase {
 
         let reviewerId = UUID()
         let reviewName = "exampleReviewer"
-        searchrank.addOrUpdateEvaluator(reviewerId: reviewerId.uuidString, reviewerName: reviewName)
+        searchrank.addOrUpdateEvaluator(reviewerId: reviewerId, reviewerName: reviewName)
 
         XCTAssertEqual(searchrank.reviewedEvaluationCollections.count, 0)
         XCTAssertEqual(searchrank.reviewerNames.count, 1)
@@ -105,7 +105,7 @@ final class SearchRankTests: XCTestCase {
 
         let reviewerId = UUID()
         let reviewName = "exampleReviewer"
-        searchrank.addOrUpdateEvaluator(reviewerId: reviewerId.uuidString, reviewerName: reviewName)
+        searchrank.addOrUpdateEvaluator(reviewerId: reviewerId, reviewerName: reviewName)
 
         XCTAssertEqual(searchrank.reviewedEvaluationCollections.count, 0)
         XCTAssertEqual(searchrank.reviewerNames.count, 1)
@@ -119,7 +119,7 @@ final class SearchRankTests: XCTestCase {
 
         XCTAssertEqual(searchrank.reviewedEvaluationCollections.count, 1)
 
-        let queue = searchrank.queueOfReviews(reviewerId: reviewerId.uuidString)
+        let queue = searchrank.queueOfReviews(reviewerId: reviewerId)
 
         XCTAssertEqual(queue.count, 5)
         XCTAssertEqual(queue[0].query, "crdt")

@@ -334,7 +334,6 @@
 				1A8144AB28720E7000F58B48 /* SearchResultView.swift */,
 				1A789D7628721EE700E8108A /* SearchResultPackageView.swift */,
 				1A1FADEF28737BFF0037D674 /* EvaluateAvailableSearchResults.swift */,
-				1ACF873F287C9D9B00D72B9C /* ConfigureReviewer.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -343,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				1A4BED212B27AC1200BDC595 /* OverflowGrid.swift */,
+				1ACF873F287C9D9B00D72B9C /* ConfigureReviewer.swift */,
 				1AEADD512877916900023487 /* SettingsFormView.swift */,
 				1A9D79DD287B3EBD0068DF3A /* RelevanceResultView.swift */,
 				1A8144A92872056300F58B48 /* CapsuleText.swift */,

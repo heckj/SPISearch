@@ -9,13 +9,13 @@ import SPISearchResult
 import SwiftUI
 
 struct ConfigureReviewer: View {
-    // @Environment(\.presentationMode) var presentation
     @Environment(\.dismiss) var dismiss
+
     @Binding var document: SearchRankDocument
+
     let reviewerID: UUID = SPISearchApp.reviewerID()
+
     @AppStorage(SPISearchApp.reviewerNameKey) var localReviewerName: String = ""
-    // To allow creating a local reviewer document if the
-    // document doesn't already have one.
     @State var reviewerName: String = ""
 
     var body: some View {

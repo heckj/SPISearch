@@ -49,6 +49,8 @@ struct ConfigureReviewer: View {
                         Button {
                             if localReviewerName != reviewerName {
                                 localReviewerName = reviewerName
+                                document.searchRanking.addOrUpdateEvaluator(reviewerId: reviewerID,
+                                                                            reviewerName: localReviewerName)
                             }
                             dismiss()
                         } label: {
@@ -57,9 +59,11 @@ struct ConfigureReviewer: View {
                     }.padding()
                 #endif
             }.onAppear {
-                localReviewerName = reviewerName
-                document.searchRanking.addOrUpdateEvaluator(reviewerId: reviewerID,
-                                                            reviewerName: localReviewerName)
+                reviewerName = localReviewerName
+                if !localReviewerName.isEmpty {
+                    document.searchRanking.addOrUpdateEvaluator(reviewerId: reviewerID,
+                                                                reviewerName: localReviewerName)
+                }
             }
         }
     }

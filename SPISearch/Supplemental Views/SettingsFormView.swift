@@ -8,23 +8,36 @@
 import SwiftUI
 
 struct SettingsFormView: View {
-    @AppStorage(SPISearchApp.reviewerIDKey) var localReviewerId: String = UUID().uuidString
-    @AppStorage(SPISearchApp.reviewerNameKey) private var reviewerName: String = ""
+    @AppStorage(SPISearchApp.reviewerNameKey) private var localReviewerName: String = ""
+    @State var reviewerName: String = ""
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
         Form {
-            Section("Evaluator \(localReviewerId)") {
-                HStack(alignment: .firstTextBaseline) {
+            Section("Reviewer") {
+                VStack {
+                    Text("Reviewer ID: \(SPISearchApp.reviewerID())")
+                    Text("Enter a name to display as evaluator.")
                     TextField(text: $reviewerName) {
-                        Text("Reviewer Name")
+                        Text("ID")
                     }
                     .disableAutocorrection(true)
-                    #if os(iOS)
-                        .textInputAutocapitalization(.never)
-                    #endif
-                        .textFieldStyle(.roundedBorder)
+                    .textFieldStyle(.roundedBorder)
+                    Button {
+                        if localReviewerName != reviewerName {
+                            localReviewerName = reviewerName
+                        }
+                        dismiss()
+                    } label: {
+                        Text("Submit")
+                    }
                 }
                 .padding()
             }
+        }
+        .padding()
+        .onAppear {
+            reviewerName = localReviewerName
         }
     }
 }

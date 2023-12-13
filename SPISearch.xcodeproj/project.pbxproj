@@ -30,6 +30,7 @@
 		1A372C9F287C63C50020CFAC /* SearchRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A78500228733B5500AFB33F /* SearchRank.swift */; };
 		1A372CA0287C63C60020CFAC /* RelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* RelevancyValues.swift */; };
 		1A39750B2B1E9182009F9FF7 /* ReviewSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A39750A2B1E9182009F9FF7 /* ReviewSet.swift */; };
+		1A448FC62B2928AE000929E4 /* CustomDump in Frameworks */ = {isa = PBXBuildFile; productRef = 1A448FC52B2928AE000929E4 /* CustomDump */; };
 		1A45A5F82B25225E00895305 /* PackageToEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45A5F72B25225E00895305 /* PackageToEvaluate.swift */; };
 		1A45A5F92B25228400895305 /* PackageToEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45A5F72B25225E00895305 /* PackageToEvaluate.swift */; };
 		1A45D916287634650077EC9E /* SearchMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D915287634650077EC9E /* SearchMetricsTests.swift */; };
@@ -69,7 +70,7 @@
 		1ABC74C22B19697000B7E6EB /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 1ABC74C12B19697000B7E6EB /* Collections */; };
 		1AC5538028736A590050F0D6 /* SearchRankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC5537F28736A590050F0D6 /* SearchRankTests.swift */; };
 		1ACF8740287C9D9B00D72B9C /* ConfigureReviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACF873F287C9D9B00D72B9C /* ConfigureReviewer.swift */; };
-		1AD3E3432878BA120049E655 /* MedianRelevancyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3E3422878BA120049E655 /* MedianRelevancyTests.swift */; };
+		1AD3E3432878BA120049E655 /* RelevancyScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3E3422878BA120049E655 /* RelevancyScoreTests.swift */; };
 		1ADB927F2B2251E60022831F /* SearchResultImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADB927E2B2251E60022831F /* SearchResultImporter.swift */; };
 		1ADB92812B22542F0022831F /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADB92802B22542F0022831F /* Logging.swift */; };
 		1AE699EE2B2009D9008CB0F6 /* ReviewSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A39750A2B1E9182009F9FF7 /* ReviewSet.swift */; };
@@ -172,7 +173,7 @@
 		1AC5537D28736A590050F0D6 /* SPISearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPISearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC5537F28736A590050F0D6 /* SearchRankTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankTests.swift; sourceTree = "<group>"; };
 		1ACF873F287C9D9B00D72B9C /* ConfigureReviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureReviewer.swift; sourceTree = "<group>"; };
-		1AD3E3422878BA120049E655 /* MedianRelevancyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedianRelevancyTests.swift; sourceTree = "<group>"; };
+		1AD3E3422878BA120049E655 /* RelevancyScoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevancyScoreTests.swift; sourceTree = "<group>"; };
 		1ADA990F287106AD008FACDF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		1ADB927E2B2251E60022831F /* SearchResultImporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultImporter.swift; sourceTree = "<group>"; };
 		1ADB92802B22542F0022831F /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
@@ -217,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AF8A6652B251BDE0064B945 /* SPISearchResult in Frameworks */,
+				1A448FC62B2928AE000929E4 /* CustomDump in Frameworks */,
 				1AF8A6632B251BDE0064B945 /* Collections in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,7 +368,7 @@
 				1A773D332B1FF7CF000C1919 /* APISearchResponseDecodingTests.swift */,
 				1A134E2D2B1A6B5A009478B1 /* RelevanceTests.swift */,
 				1AC5537F28736A590050F0D6 /* SearchRankTests.swift */,
-				1AD3E3422878BA120049E655 /* MedianRelevancyTests.swift */,
+				1AD3E3422878BA120049E655 /* RelevancyScoreTests.swift */,
 				1A45D915287634650077EC9E /* SearchMetricsTests.swift */,
 			);
 			path = SPISearchTests;
@@ -458,6 +460,7 @@
 			packageProductDependencies = (
 				1AF8A6622B251BDE0064B945 /* Collections */,
 				1AF8A6642B251BDE0064B945 /* SPISearchResult */,
+				1A448FC52B2928AE000929E4 /* CustomDump */,
 			);
 			productName = SPISearchTests;
 			productReference = 1AC5537D28736A590050F0D6 /* SPISearchTests.xctest */;
@@ -500,6 +503,7 @@
 				1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
 				1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				1AFF37DC2B1D51CE009E518B /* XCRemoteSwiftPackageReference "SPISearchResult" */,
+				1A448FC42B2928AE000929E4 /* XCRemoteSwiftPackageReference "swift-custom-dump" */,
 			);
 			productRefGroup = 1A1650412870F98F00AC4DB2 /* Products */;
 			projectDirPath = "";
@@ -622,7 +626,7 @@
 				1A5F92C82B28DBFC00B2B3CB /* SearchRank+exampleWithReviews.swift in Sources */,
 				1AF8A66F2B251D430064B945 /* SwiftPackageIndexAPI+Package.swift in Sources */,
 				1AF8A6682B251CBA0064B945 /* SearchRankDocument.swift in Sources */,
-				1AD3E3432878BA120049E655 /* MedianRelevancyTests.swift in Sources */,
+				1AD3E3432878BA120049E655 /* RelevancyScoreTests.swift in Sources */,
 				1AF8A66D2B251D430064B945 /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */,
 				1AF8A6692B251CF30064B945 /* SearchMetrics.swift in Sources */,
 				1AF8A66B2B251CF30064B945 /* RelevancyValues.swift in Sources */,
@@ -1018,6 +1022,14 @@
 				minimumVersion = 1.0.5;
 			};
 		};
+		1A448FC42B2928AE000929E4 /* XCRemoteSwiftPackageReference "swift-custom-dump" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-custom-dump.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.2;
+			};
+		};
 		1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
@@ -1051,6 +1063,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
 			productName = ArgumentParser;
+		};
+		1A448FC52B2928AE000929E4 /* CustomDump */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A448FC42B2928AE000929E4 /* XCRemoteSwiftPackageReference "swift-custom-dump" */;
+			productName = CustomDump;
 		};
 		1A6E759E2B1FDAA2004A1A17 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -5,6 +5,12 @@ struct ReviewSetsView: View {
     let reviewerID: SearchRank.ReviewerID?
     let searchrank: SearchRank
 
+    let columns: [GridItem] = [
+        GridItem(.flexible(minimum: 230, maximum: .infinity)),
+        GridItem(.fixed(18)),
+        GridItem(.flexible(maximum: 100)),
+    ]
+
     var body: some View {
         VStack(alignment: .leading) {
             if let reviewerID {
@@ -17,15 +23,17 @@ struct ReviewSetsView: View {
                         LazyVStack(alignment: .leading) {
                             ForEach(searchrank.reviews(by: reviewerID, query: queryterm), id: \.0) { pkgId, relevance in
                                 // key => [(SearchResult.Package.PackageId, Relevance)]
-                                HStack {
+
+                                LazyVGrid(columns: columns, alignment: .leading, content: {
                                     Text("\(pkgId.description)")
                                     RelevanceResultView(relevance)
                                     Text("\(relevance.description)")
-                                }
+                                })
                             }
                         }
                     }
                 }
+                Spacer()
             } else {
                 EmptyView()
             }
@@ -39,11 +47,7 @@ struct ReviewSetsView_Previews: PreviewProvider {
     }
 
     static var previews: some View {
-        NavigationView {
-            VStack {
-                ReviewSetsView(reviewerID: model.reviewerNames.keys.first,
-                               searchrank: model)
-            }
-        }
+        ReviewSetsView(reviewerID: model.reviewerNames.keys.first,
+                       searchrank: model)
     }
 }

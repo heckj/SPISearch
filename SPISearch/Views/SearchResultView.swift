@@ -35,8 +35,15 @@ struct SearchResultView: View {
                     }
                 }
                 Section("\(recordedSearch.packages.count) Packages") {
-                    List(recordedSearch.packages) { package in
-                        SearchResultPackageView(package, keywords: recordedSearch.keywords)
+                    ForEach(recordedSearch.packages) { package in
+                        HStack {
+                            SearchResultPackageView(package, keywords: recordedSearch.keywords)
+                                .frame(minWidth: 120, maxWidth: .infinity, alignment: .leading)
+                                .padding(.leading)
+
+                            RelevanceSelectorView($model, query: recordedSearch.query, for: package).frame(minWidth: 10, maxWidth: 50)
+                                .padding(.trailing)
+                        }
                     }
                 }
             }

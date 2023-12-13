@@ -343,6 +343,7 @@
 				1A8144AB28720E7000F58B48 /* SearchResultView.swift */,
 				1A789D7628721EE700E8108A /* SearchResultPackageView.swift */,
 				1A1FADEF28737BFF0037D674 /* EvaluateAvailableSearchResults.swift */,
+				1A8144AD287218F900F58B48 /* RelevanceSelectorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -357,7 +358,6 @@
 				1A9D79DD287B3EBD0068DF3A /* RelevanceResultView.swift */,
 				1A8144A92872056300F58B48 /* CapsuleText.swift */,
 				1A032CFD287A24F9007DA587 /* SearchMetricsView.swift */,
-				1A8144AD287218F900F58B48 /* RelevanceSelectorView.swift */,
 			);
 			path = "Supplemental Views";
 			sourceTree = "<group>";
@@ -778,7 +778,7 @@
 				CODE_SIGN_ENTITLEMENTS = SPISearch/SPISearch.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SPISearch/Preview Content\"";
@@ -816,7 +816,7 @@
 				CODE_SIGN_ENTITLEMENTS = SPISearch/SPISearch.entitlements;
 				CODE_SIGN_IDENTITY = "-";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SPISearch/Preview Content\"";

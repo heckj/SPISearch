@@ -9,19 +9,6 @@ struct EvaluateAvailableSearchResults: View {
     @State private var evaluationQueue: [PackageToEvaluate] = []
     @State private var packageToEvaluate: PackageToEvaluate?
 
-    func highlightColor(_ relevance: Relevance) -> Color {
-        switch relevance {
-        case .unknown:
-            return .yellow.opacity(0.5)
-        case .not:
-            return .gray.opacity(0.1)
-        case .partial:
-            return .green.opacity(0.2)
-        case .relevant:
-            return .green.opacity(0.5)
-        }
-    }
-
     func updateRelevanceAndAdvance(_ relevance: Relevance) {
         guard let packageToEvaluate else {
             return

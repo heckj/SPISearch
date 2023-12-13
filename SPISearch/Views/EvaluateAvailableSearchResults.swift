@@ -42,7 +42,7 @@ struct EvaluateAvailableSearchResults: View {
                 Text("Query Terms: \(packageToEvaluate.query)")
                 HStack {
                     Text("Keywords:")
-                    OverflowGrid(horizontalSpacing: 4) {
+                    FlowLayout(spacing: 4) {
                         ForEach(packageToEvaluate.keywords, id: \.self) { word in
                             CapsuleText(word)
                                 .textSelection(.enabled)

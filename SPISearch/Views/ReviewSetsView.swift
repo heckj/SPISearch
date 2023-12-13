@@ -11,11 +11,11 @@ struct ReviewSetsView: View {
                 Text("Reviewer: \(searchrank.nameOfReviewer(reviewerId: reviewerID))")
                 Text("\(reviewerID.uuidString)").font(.caption)
 
-                ForEach(searchrank.queriesReviewed(for: reviewerID), id: \.self) { queryterm in
+                ForEach(searchrank.queriesReviewed(by: reviewerID), id: \.self) { queryterm in
                     VStack(alignment: .leading) {
                         Text("Search for: \(queryterm)")
                         LazyVStack(alignment: .leading) {
-                            ForEach(searchrank.reviews(for: reviewerID, query: queryterm), id: \.0) { pkgId, relevance in
+                            ForEach(searchrank.reviews(by: reviewerID, query: queryterm), id: \.0) { pkgId, relevance in
                                 // key => [(SearchResult.Package.PackageId, Relevance)]
                                 HStack {
                                     Text("\(pkgId.description)")

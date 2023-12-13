@@ -151,13 +151,13 @@ final class SearchRankTests: XCTestCase {
     func testQueriesReviewed() throws {
         let sample = SearchRank.exampleWithReviews()
         let reviewerID = try XCTUnwrap(sample.reviewerNames.keys.first)
-        XCTAssertEqual(sample.queriesReviewed(for: reviewerID), ["crdt"])
+        XCTAssertEqual(sample.queriesReviewed(by: reviewerID), ["crdt"])
     }
 
     func testReviewsByIdForQuery() throws {
         let sample = SearchRank.exampleWithReviews()
         let reviewerID = try XCTUnwrap(sample.reviewerNames.keys.first)
-        print(sample.reviews(for: reviewerID, query: "crdt"))
-        XCTAssertEqual(sample.reviews(for: reviewerID, query: "crdt").count, 5)
+        print(sample.reviews(by: reviewerID, query: "crdt"))
+        XCTAssertEqual(sample.reviews(by: reviewerID, query: "crdt").count, 5)
     }
 }

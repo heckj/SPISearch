@@ -38,24 +38,6 @@ struct SearchRank: Identifiable, Hashable, Codable {
         }
     }
 
-    // specifically for SwiftUI consumption - constructed random-access stuff
-    // lexically sorted by reviewer "id" - the uuidString
-    var sortedEvaluations: [(ReviewerID, [ReviewSet])] {
-        var output: [(ReviewerID, [ReviewSet])] = []
-        let sortedReviewers = reviewedEvaluationCollections.keys.sorted { lhs, rhs in
-            // reconsider this into a lookup of the reviewer Id's name
-            lhs.uuidString < rhs.uuidString
-        }
-
-        for reviewer in sortedReviewers {
-            if let evalset = reviewedEvaluationCollections[reviewer] {
-                output.append((reviewer, evalset))
-            }
-        }
-
-        return output
-    }
-
     init(id: UUID = UUID(), _ result: [SearchResult] = []) {
         self.id = id
         searchResultCollection = result
@@ -72,7 +54,7 @@ struct SearchRank: Identifiable, Hashable, Codable {
         }
     }
 
-    func queriesReviewed(for reviewer: UUID) -> [String] {
+    func queriesReviewed(by reviewer: UUID) -> [String] {
         if let collection = reviewedEvaluationCollections[reviewer] {
             let queries = collection.reduce(into: Set<String>()) { partialResult, reviewSet in
                 partialResult.insert(reviewSet.query_terms)
@@ -82,7 +64,7 @@ struct SearchRank: Identifiable, Hashable, Codable {
         return []
     }
 
-    func reviews(for reviewer: UUID, query: String) -> [(SearchResult.Package.PackageId, Relevance)] {
+    func reviews(by reviewer: UUID, query: String) -> [(SearchResult.Package.PackageId, Relevance)] {
         var listToReturn: [(SearchResult.Package.PackageId, Relevance)] = []
         if let collection = reviewedEvaluationCollections[reviewer],
            let reviewset = collection.first(where: { reviewSet in
@@ -163,7 +145,7 @@ struct SearchRank: Identifiable, Hashable, Codable {
         return finalQueue
     }
 
-    func percentEvaluationComplete(for searchResult: SearchResult, for reviewer: ReviewerID) -> Double {
+    func percentEvaluationComplete(for searchResult: SearchResult, by reviewer: ReviewerID) -> Double {
         if let reviewsFromReviewer = reviewedEvaluationCollections[reviewer],
            let reviewSetToCheck = reviewsFromReviewer.first(where: { reviewSet in
                reviewSet.query_terms == searchResult.query
@@ -179,7 +161,7 @@ struct SearchRank: Identifiable, Hashable, Codable {
         return 0
     }
 
-    func evaluationComplete(for searchResult: SearchResult, for reviewer: ReviewerID) -> Bool {
+    func evaluationComplete(for searchResult: SearchResult, by reviewer: ReviewerID) -> Bool {
         if let reviewsFromReviewer = reviewedEvaluationCollections[reviewer],
            let reviewSetToCheck = reviewsFromReviewer.first(where: { reviewSet in
                reviewSet.query_terms == searchResult.query

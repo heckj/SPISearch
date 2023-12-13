@@ -1,27 +1,14 @@
-//
-//  SearchRank.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 7/4/22.
-//
-
 import Foundation
 import SPISearchResult
 import SwiftUI
 
-// A model that combines collections of searches and the evaluations of those search results
-// by evaluators.
-/// The SPISearch data model that encodes searches and ranked relevance reviews for those searches.
+/// The SPISearch data model that encodes collections of searches and relevance evaluation of the results in for those searches.
 ///
-/// The core data model behind a SearchRank document, it stores search results from Swift Package Index.
-/// The model represents the search results for a single set of query terms.
+/// SearchRank is the core data model that makes up a SearchRank document.
+/// In addition to storing the search results in a primarily read-only format, it stores information about relevancy reviewers and the evaluations to provide a relevance score for the searches.
 ///
-/// Every basic document should include at least `1` search result set. More searches can be stored, but
-/// are expected to have the same set of query terms. The model can then have `0` or more relevance sets,
-/// which are individual relevance assertions by people reviewing the results. A "complete" relevance sets should
-/// cover all of the search results for all stored searches.
-///
-/// Any search, when combined with a relevance review set, should be able to provide specific metrics about the search results.
+/// Search relevancy evaluations are stored based first on the search query terms, and secondarily on the packages returned by searches.
+/// When all of the packages in a search have a reviewed relevancy, the model provides relevancy values, which - with the search result - can provide search metrics.
 struct SearchRank: Identifiable, Hashable, Codable {
     var id = UUID()
 
@@ -38,6 +25,10 @@ struct SearchRank: Identifiable, Hashable, Codable {
         }
     }
 
+    /// Creates a new SearchRank model
+    /// - Parameters:
+    ///   - id: A unique identifier for this model, defaults to a random UUID.
+    ///   - result: A collection of search results with which to initialize the model.
     init(id: UUID = UUID(), _ result: [SearchResult] = []) {
         self.id = id
         searchResultCollection = result
@@ -46,6 +37,9 @@ struct SearchRank: Identifiable, Hashable, Codable {
 
     // REVIEW ACCESSORS
 
+    /// Returns the name of the reviewer as stored in the model for the identifier you provide.
+    /// - Parameter reviewerId: The id of the reviewer.
+    /// - Returns: The name of the reviewer, or "unknown" if the reviewer ID doesn't have a value recorded.
     func nameOfReviewer(reviewerId: UUID) -> String {
         if let name = reviewerNames[reviewerId] {
             return name
@@ -54,6 +48,8 @@ struct SearchRank: Identifiable, Hashable, Codable {
         }
     }
 
+    /// Returns a collection of the search query terms that the reviewer has, at least partially, evaluated.
+    /// - Parameter reviewer: The id of the reviewer.
     func queriesReviewed(by reviewer: UUID) -> [String] {
         if let collection = reviewedEvaluationCollections[reviewer] {
             let queries = collection.reduce(into: Set<String>()) { partialResult, reviewSet in
@@ -64,6 +60,10 @@ struct SearchRank: Identifiable, Hashable, Codable {
         return []
     }
 
+    /// Returns a collection of the package relevancies for the query string and reviewer identity that you provide.
+    /// - Parameters:
+    ///   - reviewer: The id of the reviewer.
+    ///   - query: The search query string.
     func reviews(by reviewer: UUID, query: String) -> [(SearchResult.Package.PackageId, Relevance)] {
         var listToReturn: [(SearchResult.Package.PackageId, Relevance)] = []
         if let collection = reviewedEvaluationCollections[reviewer],
@@ -82,10 +82,20 @@ struct SearchRank: Identifiable, Hashable, Codable {
 
     // UPDATING EVALUATIONS
 
+    /// Adds or updates the name of the reviewer for the reviewer id you provide.
+    /// - Parameters:
+    ///   - reviewerId: The id of the reviewer.
+    ///   - reviewerName: The name of the reviewer.
     mutating func addOrUpdateEvaluator(reviewerId: UUID, reviewerName: String) {
         reviewerNames[reviewerId] = reviewerName
     }
 
+    /// Updates the SearchRank model to store a relevancy evaluation.
+    /// - Parameters:
+    ///   - reviewer: The id of the reviewer.
+    ///   - query: The search query being reviewed.
+    ///   - packageId: The package being reviewed.
+    ///   - relevance: The relevancy value of the package for the search query.
     mutating func addOrUpdateRelevanceEvaluation(reviewer: UUID, query: String, packageId: SearchResult.Package.PackageId, relevance: Relevance) {
         if let reviewSets = reviewedEvaluationCollections[reviewer] {
             if let set = reviewSets.first(where: { reviewSet in
@@ -102,6 +112,8 @@ struct SearchRank: Identifiable, Hashable, Codable {
         }
     }
 
+    /// Returns a collection of packages to evaluate from the searches stored in the model.
+    /// - Parameter reviewerId: The id of the reviewer
     func queueOfReviews(reviewerId: UUID) -> [PackageToEvaluate] {
         var packagesToReview: [String: Set<SearchResult.Package>] = [:]
         var matched_keywords: [String: [String]] = [:]
@@ -147,6 +159,11 @@ struct SearchRank: Identifiable, Hashable, Codable {
 
     // EVALUATION COMPLETENESS
 
+    /// Returns a percentage complete for the relevancy of packages for a search result by a reviewer
+    /// - Parameters:
+    ///   - searchResult: The search result
+    ///   - reviewer: The id of the reviewer
+    /// - Returns: A percentage value (0.0 ... 1.0)
     func percentEvaluationComplete(for searchResult: SearchResult, by reviewer: ReviewerID) -> Double {
         if let reviewsFromReviewer = reviewedEvaluationCollections[reviewer],
            let reviewSetToCheck = reviewsFromReviewer.first(where: { reviewSet in
@@ -163,6 +180,10 @@ struct SearchRank: Identifiable, Hashable, Codable {
         return 0
     }
 
+    /// Returns a Boolean value that indicates whether the search result is fully evaluated by a single reviewer.
+    /// - Parameters:
+    ///   - searchResult: The search result.
+    ///   - reviewer: The id of the reviewer.
     func evaluationComplete(for searchResult: SearchResult, by reviewer: ReviewerID) -> Bool {
         if let reviewsFromReviewer = reviewedEvaluationCollections[reviewer],
            let reviewSetToCheck = reviewsFromReviewer.first(where: { reviewSet in
@@ -177,6 +198,8 @@ struct SearchRank: Identifiable, Hashable, Codable {
         return false
     }
 
+    /// Returns a Boolean value that indicates whether the search result is fully evaluated across all reviewers.
+    /// - Parameter searchResult: The search result.
     func evaluationGloballyComplete(for searchResult: SearchResult) -> Bool {
         // grabs all the reviewSets (from all reviewers) where the query terms match the searchresult
         let setsToCheck = reviewedEvaluationCollections.flatMap { (_: ReviewerID, reviewSets: [ReviewSet]) in
@@ -199,6 +222,9 @@ struct SearchRank: Identifiable, Hashable, Codable {
 
     // METRICS COLLECTION
 
+    /// Returns the averaged relevancy values across all reviewers for the search result you provide.
+    /// - Parameter searchResult: The search result.
+    /// - Returns: The relevancy values or nil if the evaluation is incomplete.
     func medianRelevancyValues(for searchResult: SearchResult) -> RelevancyValues? {
         var values = RelevancyValues(query_terms: searchResult.query, relevanceValue: [:])
         let setsToCheck = reviewedEvaluationCollections.flatMap { (_: ReviewerID, reviewSets: [ReviewSet]) in
@@ -230,6 +256,11 @@ struct SearchRank: Identifiable, Hashable, Codable {
         return values
     }
 
+    /// Returns the relevancy values across all reviewers by the reviewer and for the search result you provide.
+    /// - Parameters:
+    ///   - searchResult: The search result.
+    ///   - reviewer: The reviewer id.
+    /// - Returns: The relevancy values or nil if the evaluation is incomplete.
     func relevancyValues(for searchResult: SearchResult, by reviewer: ReviewerID) -> RelevancyValues? {
         var values = RelevancyValues(query_terms: searchResult.query, relevanceValue: [:])
         guard let reviewSet = reviewedEvaluationCollections[reviewer]?.first(where: { set in

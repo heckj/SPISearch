@@ -8,6 +8,10 @@ class ReviewSet: Hashable, Codable {
     /// A combined set of relevance choices for the packages from all searches matching the query terms.
     var reviews: [SearchResult.Package.PackageId: Relevance]
 
+    /// Creates a new review set
+    /// - Parameters:
+    ///   - query_terms: The search terms
+    ///   - reviews: A dictionary of package Ids to relevance values.
     init(query_terms: String, reviews: [SearchResult.Package.PackageId: Relevance]) {
         self.query_terms = query_terms
         self.reviews = reviews

@@ -1,10 +1,3 @@
-//
-//  SearchRankDocument.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 7/4/22.
-//
-
 import SPISearchResult
 import SwiftUI
 import UniformTypeIdentifiers
@@ -22,6 +15,10 @@ struct SearchRankDocument: FileDocument {
 
     init(_ searchResultCollection: [SPISearchResult.SearchResult] = []) {
         searchRanking = SearchRank(id: UUID(), searchResultCollection)
+    }
+
+    init(_ searchRank: SearchRank) {
+        searchRanking = searchRank
     }
 
     static var readableContentTypes: [UTType] { [.SPISearchRank] }

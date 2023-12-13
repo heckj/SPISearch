@@ -1,10 +1,3 @@
-//
-//  RelevanceResultView.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 7/10/22.
-//
-
 import SwiftUI
 
 struct RelevanceResultView: View {

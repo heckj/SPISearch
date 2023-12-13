@@ -1,10 +1,3 @@
-//
-//  SPISearchAPI.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 11/20/23.
-//
-
 import Foundation
 import SPISearchResult
 

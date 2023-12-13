@@ -1,10 +1,3 @@
-//
-//  RelevanceTests.swift
-//  SPISearchTests
-//
-//  Created by Joseph Heck on 12/1/23.
-//
-
 import XCTest
 
 final class RelevanceTests: XCTestCase {

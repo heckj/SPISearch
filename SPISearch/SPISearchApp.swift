@@ -1,10 +1,3 @@
-//
-//  SPISearchApp.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 7/2/22.
-//
-
 import Foundation
 import SwiftUI
 

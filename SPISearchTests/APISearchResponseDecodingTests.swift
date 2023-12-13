@@ -1,10 +1,3 @@
-//
-//  APISearchResponseDecodingTests.swift
-//  SPISearchTests
-//
-//  Created by Joseph Heck on 12/5/23.
-//
-
 import SPISearchResult
 import XCTest
 

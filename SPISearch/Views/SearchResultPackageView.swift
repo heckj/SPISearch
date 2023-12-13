@@ -1,10 +1,3 @@
-//
-//  SearchResultPackageView.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 7/3/22.
-//
-
 import SPISearchResult
 import SwiftUI
 
@@ -21,13 +14,14 @@ struct SearchResultPackageView: View {
                 .font(.title)
             Text(package.summary ?? "")
                 .fixedSize(horizontal: false, vertical: true)
+
             HStack(alignment: .firstTextBaseline) {
                 Text("Matching keywords:")
                 #if os(iOS)
                     .font(horizontalSizeClass == .compact ? .caption : .body)
                 #endif
                     .font(.body)
-                OverflowGrid(horizontalSpacing: 4) {
+                FlowLayout(spacing: 4) {
                     ForEach(package.package_keywords, id: \.self) { word in
                         CapsuleText(word)
                             .textSelection(.enabled)
@@ -43,7 +37,8 @@ struct SearchResultPackageView: View {
                 Text("\(package.id.description)")
                 Image(systemName: "star.fill")
                 Text("\(package.stars) stars")
-            }.font(.caption)
+            }
+            .font(.caption)
         }
         .textSelection(.enabled)
     }
@@ -57,7 +52,15 @@ struct SearchResultPackageView: View {
 struct SearchResultPackageView_Previews: PreviewProvider {
     static var previews: some View {
         SearchResultPackageView(
+            SearchResult.exampleCollection[1].packages[0],
+            keywords: SearchResult.exampleCollection[1].keywords
+        )
+        SearchResultPackageView(
             SearchResult.exampleCollection[1].packages[1],
+            keywords: SearchResult.exampleCollection[1].keywords
+        )
+        SearchResultPackageView(
+            SearchResult.exampleCollection[1].packages[2],
             keywords: SearchResult.exampleCollection[1].keywords
         )
     }

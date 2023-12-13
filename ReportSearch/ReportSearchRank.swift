@@ -1,10 +1,3 @@
-//
-//  ReportSearchRank.swift
-//  ReportSearch
-//
-//  Created by Joseph Heck on 7/11/22.
-//
-
 import ArgumentParser
 import Foundation
 

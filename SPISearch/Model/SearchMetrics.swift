@@ -133,10 +133,8 @@ struct SearchMetrics {
     /// search metrics.
     static func calculateNDCG(searchResult: SearchResult, ranking: RelevancyValues) -> Double {
         let relevanceValues: [Double] = searchResult.packages.map { result in
-            print("package: \(result.id.description) => ranking.relevanceValue[result.id]")
-            let value = ranking.relevanceValue[result.id] ?? 0.0
-            print("returning \(value)")
-            return value
+            // print("package: \(result.id.description) => ranking.relevanceValue[result.id]")
+            ranking.relevanceValue[result.id] ?? 0.0
         }
         let dcg = relevanceValues.enumerated()
             .map { indexPosition, value in

@@ -2,16 +2,29 @@ import SPISearchResult
 import SwiftUI
 
 struct SearchResultView: View {
+    @Binding var model: SearchRank
     let recordedSearch: SearchResult
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text("**\(recordedSearch.packages.count)** results recorded  \(recordedSearch.timestamp.formatted())")
-                .textSelection(.enabled)
+            HStack {
+                Text("**\(recordedSearch.packages.count)** results recorded  \(recordedSearch.timestamp.formatted())")
+                    .textSelection(.enabled)
+            }
 
             Form {
                 Section("Query") {
                     Text(recordedSearch.query)
+                }
+                Section("Score") {
+                    if let metrics = model.medianMetrics(for: recordedSearch) {
+                        HStack {
+                            Text("Precision: \(metrics.precision.formatted())")
+                            Text("NDCG: \(metrics.ndcg.formatted())")
+                        }
+                    } else {
+                        Text("Review is \(model.percentEvaluationComplete(for: recordedSearch, by: SPISearchApp.reviewerID()).formatted(.percent)) percent complete")
+                    }
                 }
                 Section("Matched Keywords") {
                     FlowLayout(spacing: 4) {
@@ -31,21 +44,25 @@ struct SearchResultView: View {
         .padding()
     }
 
-    init(_ recordedSearch: SearchResult) {
-        self.recordedSearch = recordedSearch
+    init(_ model: Binding<SearchRank>, for sr: SearchResult) {
+        _model = model
+        recordedSearch = sr
     }
 }
 
 struct SearchResultsView_Previews: PreviewProvider {
     static var previews: some View {
         SearchResultView(
-            SearchResult.exampleCollection[0]
+            .constant(SearchRankDocument(SearchRank.exampleWithReviews()).searchRanking),
+            for: SearchResult.exampleCollection[0]
         )
         SearchResultView(
-            SearchResult.exampleCollection[1]
+            .constant(SearchRankDocument(SearchRank.exampleWithReviews()).searchRanking),
+            for: SearchResult.exampleCollection[1]
         )
         SearchResultView(
-            SearchResult.exampleCollection[2]
+            .constant(SearchRankDocument(SearchRank.exampleWithReviews()).searchRanking),
+            for: SearchResult.exampleCollection[2]
         )
     }
 }

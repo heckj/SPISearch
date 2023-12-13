@@ -280,4 +280,24 @@ struct SearchRank: Identifiable, Hashable, Codable {
         }
         return values
     }
+
+    /// Returns the search metrics for a search result as reviewed by the reviewer you provide, if complete.
+    /// - Parameters:
+    ///   - searchResult: The search result.
+    ///   - reviewer: The reviewer id
+    func metrics(for searchResult: SearchResult, by reviewer: ReviewerID) -> SearchMetrics? {
+        if let relevancyValues = relevancyValues(for: searchResult, by: reviewer) {
+            return SearchMetrics(searchResult: searchResult, reviews: relevancyValues)
+        }
+        return nil
+    }
+
+    /// Returns the combined search metrics from all reviews, if complete.
+    /// - Parameter searchResult: The search result.
+    func medianMetrics(for searchResult: SearchResult) -> SearchMetrics? {
+        if let relevancyValues = medianRelevancyValues(for: searchResult) {
+            return SearchMetrics(searchResult: searchResult, reviews: relevancyValues)
+        }
+        return nil
+    }
 }

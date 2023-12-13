@@ -45,17 +45,15 @@ struct SearchRankDocumentOverview: View {
                     Text("\(document.searchRanking.reviewedEvaluationCollections.count) evaluations")
                 }
             }
-
             Section("Searches") {
                 LazyVStack(alignment: .leading) {
                     ForEach(document.searchRanking.searchResultCollection) { searchResult in
-                        NavigationLink("Search on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))") {
-                            SearchResultView(searchResult)
+                        NavigationLink("\(searchResult.query) on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))") {
+                            SearchResultView($document.searchRanking, for: searchResult)
                         }
                     }
                 }
             }
-
             Section("Evaluations") {
                 // Well - this doesn't work at all on macOS due to rendering issues with (deprecated) NavigationView
                 NavigationLink("Evaluate") {
@@ -71,22 +69,6 @@ struct SearchRankDocumentOverview: View {
                     }
                 }
             }
-//                header: {
-//                VStack(alignment: .leading) {
-//                    Text("Rankings")
-//                        .font(.title)
-//                    Button {
-//                        if !localReviewer.isEmpty {
-//                            document.searchRanking.addRelevanceSet(for: localReviewer)
-//                        }
-//                    } label: {
-//                        Image(systemName: "plus.circle")
-//                    }
-//                    #if os(iOS)
-//                    .buttonStyle(.borderless)
-//                    #endif
-//                }
-//            }
         }
         #if os(macOS)
         .listStyle(.sidebar)

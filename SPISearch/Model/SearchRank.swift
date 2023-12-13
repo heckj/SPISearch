@@ -145,6 +145,8 @@ struct SearchRank: Identifiable, Hashable, Codable {
         return finalQueue
     }
 
+    // EVALUATION COMPLETENESS
+
     func percentEvaluationComplete(for searchResult: SearchResult, by reviewer: ReviewerID) -> Double {
         if let reviewsFromReviewer = reviewedEvaluationCollections[reviewer],
            let reviewSetToCheck = reviewsFromReviewer.first(where: { reviewSet in
@@ -194,6 +196,8 @@ struct SearchRank: Identifiable, Hashable, Codable {
         }
         return complete
     }
+
+    // METRICS COLLECTION
 
     func medianRelevancyValues(for searchResult: SearchResult) -> RelevancyValues? {
         var values = RelevancyValues(query_terms: searchResult.query, relevanceValue: [:])

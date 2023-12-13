@@ -1,10 +1,3 @@
-//
-//  SearchResultView.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 7/3/22.
-//
-
 import SPISearchResult
 import SwiftUI
 
@@ -12,7 +5,7 @@ struct SearchResultView: View {
     let recordedSearch: SearchResult
 
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Text("**\(recordedSearch.packages.count)** results recorded  \(recordedSearch.timestamp.formatted())")
                 .textSelection(.enabled)
 
@@ -21,13 +14,12 @@ struct SearchResultView: View {
                     Text(recordedSearch.query)
                 }
                 Section("Matched Keywords") {
-                    OverflowGrid(horizontalSpacing: 4) {
+                    FlowLayout(spacing: 4) {
                         ForEach(recordedSearch.keywords, id: \.self) { word in
                             CapsuleText(word)
                                 .textSelection(.enabled)
                         }
                     }
-                    .frame(maxHeight: 50)
                 }
                 Section("\(recordedSearch.packages.count) Packages") {
                     List(recordedSearch.packages) { package in

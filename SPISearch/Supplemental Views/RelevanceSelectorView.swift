@@ -1,10 +1,3 @@
-//
-//  RelevanceSelectorView.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 7/3/22.
-//
-
 import SwiftUI
 
 struct RelevanceSelectorView: View {

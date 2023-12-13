@@ -1,10 +1,3 @@
-//
-//  EvaluateAvailableSearchResults.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 7/4/22.
-//
-
 import SPISearchResult
 import SwiftUI
 

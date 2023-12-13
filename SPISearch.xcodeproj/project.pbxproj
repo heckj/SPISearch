@@ -22,6 +22,8 @@
 		1A2B94F52B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EE2B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift */; };
 		1A2B94F92B195C94005B92E1 /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2B94F82B195C94005B92E1 /* Collections */; };
 		1A2B94FB2B195C94005B92E1 /* DequeModule in Frameworks */ = {isa = PBXBuildFile; productRef = 1A2B94FA2B195C94005B92E1 /* DequeModule */; };
+		1A2BBD062B2A404F001163EB /* FlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BBD052B2A404F001163EB /* FlowLayout.swift */; };
+		1A2BBD082B2A4167001163EB /* Sequence+unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2BBD072B2A4167001163EB /* Sequence+unique.swift */; };
 		1A372C94287C61A30020CFAC /* ReportSearchRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A372C93287C61A30020CFAC /* ReportSearchRank.swift */; };
 		1A372C9A287C62070020CFAC /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 1A372C99287C62070020CFAC /* ArgumentParser */; };
 		1A372C9C287C63C50020CFAC /* SearchRankDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7850002873380B00AFB33F /* SearchRankDocument.swift */; };
@@ -34,7 +36,6 @@
 		1A45A5F82B25225E00895305 /* PackageToEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45A5F72B25225E00895305 /* PackageToEvaluate.swift */; };
 		1A45A5F92B25228400895305 /* PackageToEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45A5F72B25225E00895305 /* PackageToEvaluate.swift */; };
 		1A45D916287634650077EC9E /* SearchMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D915287634650077EC9E /* SearchMetricsTests.swift */; };
-		1A4BED222B27AC1200BDC595 /* OverflowGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4BED212B27AC1200BDC595 /* OverflowGrid.swift */; };
 		1A562F6E2878C681006B29A8 /* RelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* RelevancyValues.swift */; };
 		1A5F6C132B2507D400780F91 /* searchcollection_staging_9dec2023.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A5F6C122B2507D400780F91 /* searchcollection_staging_9dec2023.txt */; };
 		1A5F92C52B28D72400B2B3CB /* ReviewSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5F92C42B28D72400B2B3CB /* ReviewSetsView.swift */; };
@@ -143,12 +144,13 @@
 		1A2B94ED2B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftPackageIndexAPI+Package.swift"; sourceTree = "<group>"; };
 		1A2B94EE2B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftPackageIndexAPI+PackageId.swift"; sourceTree = "<group>"; };
 		1A2B94FC2B195D43005B92E1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1A2BBD052B2A404F001163EB /* FlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowLayout.swift; sourceTree = "<group>"; };
+		1A2BBD072B2A4167001163EB /* Sequence+unique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+unique.swift"; sourceTree = "<group>"; };
 		1A372C91287C61A30020CFAC /* ReportSearch */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReportSearch; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A372C93287C61A30020CFAC /* ReportSearchRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSearchRank.swift; sourceTree = "<group>"; };
 		1A39750A2B1E9182009F9FF7 /* ReviewSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSet.swift; sourceTree = "<group>"; };
 		1A45A5F72B25225E00895305 /* PackageToEvaluate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PackageToEvaluate.swift; sourceTree = "<group>"; };
 		1A45D915287634650077EC9E /* SearchMetricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetricsTests.swift; sourceTree = "<group>"; };
-		1A4BED212B27AC1200BDC595 /* OverflowGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverflowGrid.swift; sourceTree = "<group>"; };
 		1A562F6D2878C681006B29A8 /* RelevancyValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevancyValues.swift; sourceTree = "<group>"; };
 		1A5F6C122B2507D400780F91 /* searchcollection_staging_9dec2023.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = searchcollection_staging_9dec2023.txt; sourceTree = "<group>"; };
 		1A5F92C42B28D72400B2B3CB /* ReviewSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewSetsView.swift; sourceTree = "<group>"; };
@@ -348,7 +350,8 @@
 		1AC55378287363930050F0D6 /* Supplemental Views */ = {
 			isa = PBXGroup;
 			children = (
-				1A4BED212B27AC1200BDC595 /* OverflowGrid.swift */,
+				1A2BBD052B2A404F001163EB /* FlowLayout.swift */,
+				1A2BBD072B2A4167001163EB /* Sequence+unique.swift */,
 				1ACF873F287C9D9B00D72B9C /* ConfigureReviewer.swift */,
 				1AEADD512877916900023487 /* SettingsFormView.swift */,
 				1A9D79DD287B3EBD0068DF3A /* RelevanceResultView.swift */,
@@ -545,13 +548,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A789D7728721EE700E8108A /* SearchResultPackageView.swift in Sources */,
+				1A2BBD062B2A404F001163EB /* FlowLayout.swift in Sources */,
 				1A1650442870F98F00AC4DB2 /* SPISearchApp.swift in Sources */,
 				1A45A5F82B25225E00895305 /* PackageToEvaluate.swift in Sources */,
 				1A1CBC9528734A7A0033EE43 /* Documentation.docc in Sources */,
 				1A2B94F42B195BE9005B92E1 /* SwiftPackageIndexAPI+Package.swift in Sources */,
 				1A032CFE287A24F9007DA587 /* SearchMetricsView.swift in Sources */,
 				1A78500528733F0500AFB33F /* SearchRankEditorView.swift in Sources */,
-				1A4BED222B27AC1200BDC595 /* OverflowGrid.swift in Sources */,
 				1A2B94F52B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift in Sources */,
 				1A5F92C52B28D72400B2B3CB /* ReviewSetsView.swift in Sources */,
 				1A2B94F22B195BE9005B92E1 /* SwiftPackageIndexAPI.swift in Sources */,
@@ -575,6 +578,7 @@
 				1A8144AE287218F900F58B48 /* RelevanceSelectorView.swift in Sources */,
 				1A2B94F02B195BE9005B92E1 /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */,
 				1A9D79DE287B3EBD0068DF3A /* RelevanceResultView.swift in Sources */,
+				1A2BBD082B2A4167001163EB /* Sequence+unique.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

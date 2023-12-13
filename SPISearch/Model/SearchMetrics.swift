@@ -1,9 +1,3 @@
-//
-//  SearchMetrics.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 7/6/22.
-//
 import Foundation
 import SPISearchResult
 

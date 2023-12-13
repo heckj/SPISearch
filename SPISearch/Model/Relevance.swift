@@ -1,9 +1,3 @@
-//
-//  RelevanceRecord.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 7/4/22.
-//
 import Foundation
 import SPISearchResult
 

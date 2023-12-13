@@ -1,10 +1,3 @@
-//
-//  SearchRankDocumentOverview.swift
-//  SPISearch
-//
-//  Created by Joseph Heck on 7/6/22.
-//
-
 import SPISearchResult
 import SwiftUI
 
@@ -54,9 +47,11 @@ struct SearchRankDocumentOverview: View {
             }
 
             Section("Searches") {
-                ForEach(document.searchRanking.searchResultCollection) { searchResult in
-                    NavigationLink("Search on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))") {
-                        SearchResultView(searchResult)
+                LazyVStack(alignment: .leading) {
+                    ForEach(document.searchRanking.searchResultCollection) { searchResult in
+                        NavigationLink("Search on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))") {
+                            SearchResultView(searchResult)
+                        }
                     }
                 }
             }

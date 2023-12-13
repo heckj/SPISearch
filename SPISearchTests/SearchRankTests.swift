@@ -1,12 +1,6 @@
-//
-//  SearchRankTests.swift
-//  SPISearchTests
-//
-//  Created by Joseph Heck on 7/4/22.
-//
-
 import SPISearchResult
 import XCTest
+
 final class SearchRankTests: XCTestCase {
     var searchrank: SearchRank = .init()
 

@@ -227,6 +227,7 @@ struct SearchRank: Identifiable, Hashable, Codable {
 
         for pkg in searchResult.packages {
             let listOfRelevance = setsToCheck.compactMap { reviewSet in
+                // print("checking \(reviewSet) (q: \(reviewSet.query_terms) - pkg: \(pkg.id) is  \(reviewSet.reviews[pkg.id])")
                 reviewSet.reviews[pkg.id]
             }
             if listOfRelevance.isEmpty {

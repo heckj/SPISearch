@@ -10,7 +10,7 @@ struct SearchResultPackageView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(package.name)
+            Text(package.name ?? "")
                 .font(.title)
             Text(package.summary ?? "")
                 .fixedSize(horizontal: false, vertical: true)

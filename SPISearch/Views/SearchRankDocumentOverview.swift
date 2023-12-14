@@ -22,7 +22,7 @@ struct SearchRankDocumentOverview: View {
                         Button {
                             importerEnabled = true
                         } label: {
-                            Label("Import", image: "square.and.arrow.down.on.square")
+                            Label("Import", systemImage: "square.and.arrow.down.on.square")
                         }
                         .fileImporter(isPresented: $importerEnabled, allowedContentTypes: [.text]) { result in
                             switch result {

@@ -12,32 +12,34 @@ struct ReviewSetsView: View {
     ]
 
     var body: some View {
-        VStack(alignment: .leading) {
-            if let reviewerID {
-                Text("Reviewer: \(searchrank.nameOfReviewer(reviewerId: reviewerID))")
-                Text("\(reviewerID.uuidString)").font(.caption)
+        ScrollView(.vertical) {
+            VStack(alignment: .leading) {
+                if let reviewerID {
+                    Text("Reviewer: \(searchrank.nameOfReviewer(reviewerId: reviewerID))")
+                    Text("\(reviewerID.uuidString)").font(.caption)
 
-                ForEach(searchrank.queriesReviewed(by: reviewerID), id: \.self) { queryterm in
-                    VStack(alignment: .leading) {
-                        Text("Search for: \(queryterm)")
-                        LazyVStack(alignment: .leading) {
-                            ForEach(searchrank.reviews(by: reviewerID, query: queryterm), id: \.0) { pkgId, relevance in
-                                // key => [(SearchResult.Package.PackageId, Relevance)]
-
-                                LazyVGrid(columns: columns, alignment: .leading, content: {
-                                    Text("\(pkgId.description)")
-                                    RelevanceResultView(relevance)
-                                    Text("\(relevance.description)")
-                                })
+                    ForEach(searchrank.queriesReviewed(by: reviewerID), id: \.self) { queryterm in
+                        VStack(alignment: .leading) {
+                            Text("Search for: \(queryterm)")
+                            LazyVStack(alignment: .leading) {
+                                ForEach(searchrank.reviews(by: reviewerID, query: queryterm), id: \.0) { pkgId, relevance in
+                                    // key => [(SearchResult.Package.PackageId, Relevance)]
+                                    LazyVGrid(columns: columns, alignment: .leading, content: {
+                                        Text("\(pkgId.description)")
+                                        RelevanceResultView(relevance)
+                                        Text("\(relevance.description)")
+                                    })
+                                }
                             }
                         }
                     }
-                }
-                Spacer()
-            } else {
-                EmptyView()
-            }
-        }.padding(.horizontal)
+                    Spacer()
+                } else {
+                    EmptyView()
+                } // if-else reviewerId
+            } // VStack
+            .padding(.horizontal)
+        } // ScrollView
     }
 }
 

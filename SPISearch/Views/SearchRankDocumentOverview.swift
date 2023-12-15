@@ -8,11 +8,11 @@ struct SearchRankDocumentOverview: View {
     @State private var configureReviewerSheetShown = false
 
     var body: some View {
-        List {
+        VStack {
             // #if DEBUG
-//    #if os(macOS)
-//            let _ = Self._printChanges()
-//    #endif
+            //    #if os(macOS)
+            //            let _ = Self._printChanges()
+            //    #endif
             // #endif
             Section("Summary") {
                 // only display import on an empty document?
@@ -46,33 +46,29 @@ struct SearchRankDocumentOverview: View {
                 }
             }
             Section("Searches") {
-                LazyVStack(alignment: .leading) {
-                    ForEach(document.searchRanking.searchResultCollection) { searchResult in
-                        NavigationLink("\(searchResult.query) on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))") {
-                            SearchResultView($document.searchRanking, for: searchResult)
-                        }
-                    }
+                List(document.searchRanking.searchResultCollection) { searchResult in
+                    NavigationLink("\(searchResult.query) on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))", value: searchResult)
                 }
+                .navigationDestination(for: SearchResult.self, destination: { result in
+                    SearchResultView($document.searchRanking, for: result)
+                })
             }
             Section("Evaluations") {
-                // Well - this doesn't work at all on macOS due to rendering issues with (deprecated) NavigationView
-                NavigationLink("Evaluate") {
-                    EvaluateAvailableSearchResults(searchRankDoc: $document)
+                #if os(iOS)
+                    // Well - this doesn't work at all on macOS due to rendering issues with (deprecated) NavigationView
+                    NavigationLink("Evaluate", destination: {
+                        EvaluateAvailableSearchResults(searchRankDoc: $document)
+                    })
+                #endif
+                List(document.searchRanking.reviewers, id: \.self) { reviewerId in
+                    NavigationLink("\(document.searchRanking.nameOfReviewer(reviewerId: reviewerId)) has \(document.searchRanking.reviewedEvaluationCollections[reviewerId]?.count ?? 0) evaluations stored", value: reviewerId)
                 }
-
-                ForEach(document.searchRanking.reviewers, id: \.self) { reviewerId in
-                    HStack {
-                        Text("\(document.searchRanking.nameOfReviewer(reviewerId: reviewerId)) has \(document.searchRanking.reviewedEvaluationCollections[reviewerId]?.count ?? 0) evaluations stored")
-                        NavigationLink("") {
-                            ReviewSetsView(reviewerID: reviewerId, searchrank: document.searchRanking)
-                        }
-                    }
-                }
+                .navigationDestination(for: UUID.self, destination: { reviewerID in
+                    ReviewSetsView(reviewerID: reviewerID, searchrank: document.searchRanking)
+                })
             }
+            Spacer()
         }
-        #if os(macOS)
-        .listStyle(.sidebar)
-        #endif
         .sheet(isPresented: $configureReviewerSheetShown) {
             ConfigureReviewer(document: $document)
         }

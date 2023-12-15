@@ -25,10 +25,11 @@ struct RelevanceSelectorView: View {
                 model.addOrUpdateRelevanceEvaluation(reviewer: SPISearchApp.reviewerID(),
                                                      query: query,
                                                      packageId: package.id,
-                                                     relevance: .not)
+                                                     relevance: .relevant)
             }, label: {
-                Image(systemName: "hand.thumbsdown")
+                Image(systemName: "hand.thumbsup")
             })
+
             Button(action: {
                 model.addOrUpdateRelevanceEvaluation(reviewer: SPISearchApp.reviewerID(),
                                                      query: query,
@@ -37,14 +38,16 @@ struct RelevanceSelectorView: View {
             }, label: {
                 Image(systemName: "minus.square")
             })
+
             Button(action: {
                 model.addOrUpdateRelevanceEvaluation(reviewer: SPISearchApp.reviewerID(),
                                                      query: query,
                                                      packageId: package.id,
-                                                     relevance: .relevant)
+                                                     relevance: .not)
             }, label: {
-                Image(systemName: "hand.thumbsup")
+                Image(systemName: "hand.thumbsdown")
             })
+
         })
         .buttonStyle(.borderless)
         .font(.title)

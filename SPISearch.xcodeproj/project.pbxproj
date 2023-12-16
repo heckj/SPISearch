@@ -36,6 +36,7 @@
 		1A45A5F82B25225E00895305 /* PackageToEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45A5F72B25225E00895305 /* PackageToEvaluate.swift */; };
 		1A45A5F92B25228400895305 /* PackageToEvaluate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45A5F72B25225E00895305 /* PackageToEvaluate.swift */; };
 		1A45D916287634650077EC9E /* SearchMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A45D915287634650077EC9E /* SearchMetricsTests.swift */; };
+		1A48DDF02B2D2CEB00034182 /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 1A48DDEF2B2D2CEB00034182 /* SwiftUINavigation */; };
 		1A562F6E2878C681006B29A8 /* RelevancyValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A562F6D2878C681006B29A8 /* RelevancyValues.swift */; };
 		1A5F6C132B2507D400780F91 /* searchcollection_staging_9dec2023.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1A5F6C122B2507D400780F91 /* searchcollection_staging_9dec2023.txt */; };
 		1A5F92C52B28D72400B2B3CB /* ReviewSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5F92C42B28D72400B2B3CB /* ReviewSetsView.swift */; };
@@ -189,6 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A48DDF02B2D2CEB00034182 /* SwiftUINavigation in Frameworks */,
 				1A2B94FB2B195C94005B92E1 /* DequeModule in Frameworks */,
 				1AFF37DE2B1D51CE009E518B /* SPISearchResult in Frameworks */,
 				1A2B94F92B195C94005B92E1 /* Collections in Frameworks */,
@@ -397,6 +399,7 @@
 				1A2B94F82B195C94005B92E1 /* Collections */,
 				1A2B94FA2B195C94005B92E1 /* DequeModule */,
 				1AFF37DD2B1D51CE009E518B /* SPISearchResult */,
+				1A48DDEF2B2D2CEB00034182 /* SwiftUINavigation */,
 			);
 			productName = SPISearch;
 			productReference = 1A1650402870F98F00AC4DB2 /* SPISearch.app */;
@@ -507,6 +510,7 @@
 				1A2B94F72B195C94005B92E1 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				1AFF37DC2B1D51CE009E518B /* XCRemoteSwiftPackageReference "SPISearchResult" */,
 				1A448FC42B2928AE000929E4 /* XCRemoteSwiftPackageReference "swift-custom-dump" */,
+				1A48DDEE2B2D2CEB00034182 /* XCRemoteSwiftPackageReference "swiftui-navigation" */,
 			);
 			productRefGroup = 1A1650412870F98F00AC4DB2 /* Products */;
 			projectDirPath = "";
@@ -1034,6 +1038,14 @@
 				minimumVersion = 1.1.2;
 			};
 		};
+		1A48DDEE2B2D2CEB00034182 /* XCRemoteSwiftPackageReference "swiftui-navigation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swiftui-navigation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 		1AEDE79A287BA55A009B1CA4 /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
@@ -1072,6 +1084,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1A448FC42B2928AE000929E4 /* XCRemoteSwiftPackageReference "swift-custom-dump" */;
 			productName = CustomDump;
+		};
+		1A48DDEF2B2D2CEB00034182 /* SwiftUINavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1A48DDEE2B2D2CEB00034182 /* XCRemoteSwiftPackageReference "swiftui-navigation" */;
+			productName = SwiftUINavigation;
 		};
 		1A6E759E2B1FDAA2004A1A17 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;

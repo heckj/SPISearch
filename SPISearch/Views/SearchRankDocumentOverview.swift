@@ -1,5 +1,9 @@
 import SPISearchResult
 import SwiftUI
+import SwiftUINavigation
+
+// nav docs: https://pointfreeco.github.io/swiftui-navigation/main/documentation/swiftuinavigation/navigation/
+// nav example: https://github.com/pointfreeco/swiftui-navigation/blob/main/Examples/Inventory/Inventory.swift
 
 struct SearchRankDocumentOverview: View {
     @Binding var document: SearchRankDocument

@@ -10,9 +10,16 @@ struct SearchRankDocumentOverview: View {
 
     @State private var importerEnabled = false
     @State private var configureReviewerSheetShown = false
+    @State private var destination: Destination?
+
+    enum Destination: Hashable {
+        case search(SearchResult)
+        case evals(SearchRank.ReviewerID)
+        case evaluate
+    }
 
     var body: some View {
-        VStack {
+        List {
             // #if DEBUG
             //    #if os(macOS)
             //            let _ = Self._printChanges()
@@ -50,29 +57,41 @@ struct SearchRankDocumentOverview: View {
                 }
             }
             Section("Searches") {
-                List(document.searchRanking.searchResultCollection) { searchResult in
-                    NavigationLink("\(searchResult.query) on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))", value: searchResult)
+                ForEach(document.searchRanking.searchResultCollection) { searchResult in
+                    NavigationLink("\(searchResult.query) on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))", value: Destination.search(searchResult))
                 }
-                .navigationDestination(for: SearchResult.self, destination: { result in
-                    SearchResultView($document.searchRanking, for: result)
-                })
             }
             Section("Evaluations") {
-                #if os(iOS)
-                    // Well - this doesn't work at all on macOS due to rendering issues with (deprecated) NavigationView
-                    NavigationLink("Evaluate", destination: {
-                        EvaluateAvailableSearchResults(searchRankDoc: $document)
-                    })
-                #endif
-                List(document.searchRanking.reviewers, id: \.self) { reviewerId in
-                    NavigationLink("\(document.searchRanking.nameOfReviewer(reviewerId: reviewerId)) has \(document.searchRanking.reviewedEvaluationCollections[reviewerId]?.count ?? 0) evaluations stored", value: reviewerId)
-                }
-                .navigationDestination(for: UUID.self, destination: { reviewerID in
-                    ReviewSetsView(reviewerID: reviewerID, searchrank: document.searchRanking)
+                Button(action: {
+                    destination = .evaluate
+                }, label: {
+                    Text("Evaluate")
                 })
+//                #if os(iOS)
+//                    // Well - this doesn't work at all on macOS due to rendering issues with (deprecated) NavigationView
+//                    NavigationLink("Evaluate", destination: {
+//                        EvaluateAvailableSearchResults(searchRankDoc: $document)
+//                    })
+//                #endif
+                ForEach(document.searchRanking.reviewers, id: \.self) { reviewerId in
+                    NavigationLink("\(document.searchRanking.nameOfReviewer(reviewerId: reviewerId)) has \(document.searchRanking.reviewedEvaluationCollections[reviewerId]?.count ?? 0) evaluations stored", value: Destination.evals(reviewerId))
+                }
             }
             Spacer()
         }
+        .navigationDestination(for: Destination.self, destination: { result in
+            switch result {
+            case let .search(searchResult):
+                SearchResultView($document.searchRanking, for: searchResult)
+            case let .evals(reviewerID):
+                ReviewSetsView(reviewerID: reviewerID, searchrank: document.searchRanking)
+            case .evaluate:
+                EvaluateAvailableSearchResults(searchRankDoc: $document)
+            }
+        })
+        #if os(macOS)
+        .listStyle(.sidebar)
+        #endif
         .sheet(isPresented: $configureReviewerSheetShown) {
             ConfigureReviewer(document: $document)
         }

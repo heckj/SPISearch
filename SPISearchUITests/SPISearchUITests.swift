@@ -20,6 +20,7 @@ final class SPISearchUITests: XCTestCase {
         // This method is called after the invocation of each test method in the class.
     }
 
+    @available(macOS 14.0, *)
     func testAutomatedAccessibility() {
         // https://holyswift.app/xcode-15-new-feature-streamlined-accessibility-audits/
         let myApp = XCUIApplication()

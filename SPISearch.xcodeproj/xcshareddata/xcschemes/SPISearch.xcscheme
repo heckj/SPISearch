@@ -40,6 +40,17 @@
                ReferencedContainer = "container:SPISearch.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1A7C9D832B6C244400AC3114"
+               BuildableName = "SPISearchUITests.xctest"
+               BlueprintName = "SPISearchUITests"
+               ReferencedContainer = "container:SPISearch.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

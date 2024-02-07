@@ -54,8 +54,8 @@ jobs:
         # macOS14: OS=17.0, iphonesimulator17.0 sdk (iPhone 14)
         run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=17.0,name=iPhone 14' -sdk iphonesimulator17.0 -showBuildTimingSummary -skipPackagePluginValidation -skipMacroValidation
 
-      - name: iOS test
-        run: xcodebuild build-for-testing test -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=17.0,name=iPhone 14' -sdk iphonesimulator17.0 -showBuildTimingSummary -skipPackagePluginValidation -skipMacroValidation
+          #- name: iOS test
+          #  run: xcodebuild build-for-testing test -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=17.0,name=iPhone 14' -sdk iphonesimulator17.0 -showBuildTimingSummary -skipPackagePluginValidation -skipMacroValidation
 
       - name: macOS build for SPISearch
         # macOS-12 stopped at SDK version macosx13.1

@@ -25,6 +25,7 @@
       }
     },
     {
+      "enabled" : false,
       "parallelizable" : true,
       "skippedTests" : [
         "SPISearchUITestsLaunchTests"

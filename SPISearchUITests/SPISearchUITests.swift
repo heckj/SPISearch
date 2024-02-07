@@ -20,7 +20,7 @@ final class SPISearchUITests: XCTestCase {
         // This method is called after the invocation of each test method in the class.
     }
 
-    @available(macOS 14.0, *)
+    @available(macOS 14.0, iOS 17.0, *)
     func testAutomatedAccessibility() {
         // https://holyswift.app/xcode-15-new-feature-streamlined-accessibility-audits/
         let myApp = XCUIApplication()
@@ -29,7 +29,7 @@ final class SPISearchUITests: XCTestCase {
         do {
             try myApp.performAccessibilityAudit()
         } catch {
-            XCTFail("The automated accessibility audit fail because [\(error.localizedDescription)]")
+            XCTFail("The automated accessibility audit failed due to [\(error.localizedDescription)]")
         }
     }
 

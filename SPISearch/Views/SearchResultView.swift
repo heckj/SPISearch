@@ -9,33 +9,38 @@ struct SearchResultView: View {
         ScrollView(.vertical) {
             VStack(alignment: .leading) {
                 HStack {
-                    Text("**\(recordedSearch.packages.count)** results recorded  \(recordedSearch.timestamp.formatted())")
-                        .textSelection(.enabled)
-                }
-
-                Form {
-                    Section("Query") {
+                    Text("query:")
+                    HStack {
                         Text(recordedSearch.query)
+                            .textSelection(.enabled)
+                        Spacer()
+                        Image(systemName: "magnifyingglass")
+                            .opacity(0.5)
                     }
-                    Section("Score") {
-                        if let metrics = model.medianMetrics(for: recordedSearch) {
-                            HStack {
-                                Text("Precision: \(metrics.precision.formatted())")
-                                Text("NDCG: \(metrics.ndcg.formatted())")
-                            }
-                        } else {
-                            Text("Review is \(model.percentEvaluationComplete(for: recordedSearch, by: SPISearchApp.reviewerID()).formatted(.percent)) percent complete")
+                    .font(.title)
+                    .padding(4)
+                    .border(.black)
+                    Text("**\(recordedSearch.packages.count)** at  \(recordedSearch.timestamp.formatted())")
+                        .textSelection(.enabled)
+                        .padding(.leading)
+                }
+                HStack {
+                    Spacer()
+                    if let metrics = model.medianMetrics(for: recordedSearch) {
+                        HStack {
+                            Text("Precision: \(metrics.precision.formatted())")
+                            Text("NDCG: \(metrics.ndcg.formatted())")
                         }
+                    } else {
+                        Text("Review is \(model.percentEvaluationComplete(for: recordedSearch, by: SPISearchApp.reviewerID()).formatted(.percent)) percent complete")
                     }
-                    Section("Matched Keywords") {
-                        FlowLayout(spacing: 4) {
-                            ForEach(recordedSearch.keywords, id: \.self) { word in
-                                CapsuleText(word)
-                                    .textSelection(.enabled)
-                            }
-                        }
-                    }
-                    Section("\(recordedSearch.packages.count) Packages") {
+                    Spacer()
+                }
+                HStack(alignment: .top) {
+                    // first the searches
+                    LazyVStack(alignment: .leading) {
+                        Text("Matching packages")
+                            .font(.title2)
                         ForEach(recordedSearch.packages) { package in
                             HStack {
                                 SearchResultPackageView(package, keywords: recordedSearch.keywords)
@@ -47,7 +52,26 @@ struct SearchResultView: View {
                             }
                         }
                     }
-                } // Form
+                    // second the matched keywords
+                    VStack(alignment: .leading) {
+                        Text("Matching authors")
+                            .font(.title2)
+                        FlowLayout(spacing: 4) {
+                            ForEach(recordedSearch.authors, id: \.self) { word in
+                                CapsuleText(word)
+                                    .textSelection(.enabled)
+                            }
+                        }
+                        Text("Matching keywords")
+                            .font(.title2)
+                        FlowLayout(spacing: 4) {
+                            ForEach(recordedSearch.keywords, id: \.self) { word in
+                                CapsuleText(word)
+                                    .textSelection(.enabled)
+                            }
+                        }
+                    }
+                }
                 Spacer()
             } // VStack
             .padding()
@@ -66,13 +90,16 @@ struct SearchResultsView_Previews: PreviewProvider {
             .constant(SearchRankDocument(SearchRank.exampleWithReviews()).searchRanking),
             for: SearchResult.exampleCollection[0]
         )
+        .background(.thickMaterial)
         SearchResultView(
             .constant(SearchRankDocument(SearchRank.exampleWithReviews()).searchRanking),
             for: SearchResult.exampleCollection[1]
         )
+        .background(.thickMaterial)
         SearchResultView(
             .constant(SearchRankDocument(SearchRank.exampleWithReviews()).searchRanking),
             for: SearchResult.exampleCollection[2]
         )
+        .background(.thickMaterial)
     }
 }

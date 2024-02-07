@@ -9,9 +9,11 @@ on:
 jobs:
   build:
     name: Build and Test default scheme using macOS and the available iPhone simulator
-    runs-on: macos-13
+    runs-on: macos-14
     # https://github.com/actions/virtual-environments/blob/main/images/macos/macos-12-Readme.md
     # target macOS 12.4 isn't supported in default Xcode for macOS 12
+    # macos-14:
+    # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md
 
     #strategy:
     #  matrix:
@@ -51,30 +53,36 @@ jobs:
 
       - name: iOS build
         # macOS 12: run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=16.2,name=iPhone 8' -sdk iphonesimulator16.2 -showBuildTimingSummary
-        # macOS13: OS=16.4, iphonesimulator16.4 sdk
-        run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=16.4,name=iPhone 8' -sdk iphonesimulator16.4 -showBuildTimingSummary
+        # macOS13: OS=16.4, iphonesimulator16.4 sdk (iPhone 8)
+        # macOS14: OS=17.0, iphonesimulator17.0 sdk (iPhone 14)
+        run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=17.0,name=iPhone 14' -sdk iphonesimulator17.0 -showBuildTimingSummary
 
       #- name: iOS test
       #  run: xcodebuild clean test -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=15.5,name=iPhone 8' -sdk iphonesimulator15.5 -showBuildTimingSummary
 
       - name: macOS build for SPISearch
         # macOS-12 stopped at SDK version macosx13.1
-        run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx13.3 -showBuildTimingSummary
+        # macOS-13 - 13.3
+        # macOS 14 - 14.0
+        run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx14.0 -showBuildTimingSummary
 
       - name: macOS build for testing SPISearch
-        run: xcodebuild build-for-testing -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx13.3 -showBuildTimingSummary
+        run: xcodebuild build-for-testing -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx14.0 -showBuildTimingSummary
 
       #- name: macOS test for SPISearch
       #  run: xcodebuild test -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx12.3 -showBuildTimingSummary
 
       - name: macOS build for ReportSearch
-        run: xcodebuild clean build -scheme 'ReportSearch' -destination 'platform=macOS' -sdk macosx13.3 -showBuildTimingSummary
+        run: xcodebuild clean build -scheme 'ReportSearch' -destination 'platform=macOS' -sdk macosx14.0 -showBuildTimingSummary
 
       - name: macOS build for CaptureSearches
-        run: xcodebuild clean build -scheme 'CaptureSearches' -destination 'platform=macOS' -sdk macosx13.3 -showBuildTimingSummary
+        run: xcodebuild clean build -scheme 'CaptureSearches' -destination 'platform=macOS' -sdk macosx14.0 -showBuildTimingSummary
 
 # w/ Xcode 14 beta 3:
 # Local: xcodebuild clean test -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=16.0,name=iPhone 8' -sdk iphonesimulator16.0
+# w/ Xcode 15.4 beta 2:
+# Local:
+# xcodebuild clean test -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=17.2,name=iPhone 15' -sdk iphonesimulator17.4
 
 #export DEVELOPER_DIR=/Applications/Xcode.app
 #xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=15.5,name=iPhone 8' -sdk iphonesimulator15.5

@@ -1,0 +1,40 @@
+{
+  "configurations" : [
+    {
+      "id" : "9E8956C7-21CA-4935-89DD-ED877B6E7FF7",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:SPISearch.xcodeproj",
+      "identifier" : "1A16503F2870F98F00AC4DB2",
+      "name" : "SPISearch"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:SPISearch.xcodeproj",
+        "identifier" : "1AC5537C28736A590050F0D6",
+        "name" : "SPISearchTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "skippedTests" : [
+        "SPISearchUITestsLaunchTests"
+      ],
+      "target" : {
+        "containerPath" : "container:SPISearch.xcodeproj",
+        "identifier" : "1A7C9D832B6C244400AC3114",
+        "name" : "SPISearchUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

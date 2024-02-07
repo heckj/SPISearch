@@ -35,6 +35,10 @@ struct SearchResultPackageView: View {
 
             HStack(alignment: .firstTextBaseline) {
                 Text("\(package.id.description)")
+                if let last_activity = package.last_activity {
+                    Image(systemName: "bubble.right.fill")
+                    Text("Active \(last_activity, style: .relative) ago")
+                }
                 Image(systemName: "star.fill")
                 Text("\(package.stars) stars")
             }

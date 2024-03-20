@@ -49,7 +49,7 @@ jobs:
         # macOS 12: run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=16.2,name=iPhone 8' -sdk iphonesimulator16.2 -showBuildTimingSummary
         # macOS13: OS=16.4, iphonesimulator16.4 sdk (iPhone 8)
         # macOS14: OS=17.0, iphonesimulator17.0 sdk (iPhone 14)
-        run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=17.0,name=iPhone 14' -sdk iphonesimulator17.0 -showBuildTimingSummary -skipPackagePluginValidation -skipMacroValidation
+        run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=17.0.1,name=iPhone 14' -sdk iphonesimulator17.0 -showBuildTimingSummary -skipPackagePluginValidation -skipMacroValidation
 
           #- name: iOS test
           #  run: xcodebuild build-for-testing test -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=17.0,name=iPhone 14' -sdk iphonesimulator17.0 -showBuildTimingSummary -skipPackagePluginValidation -skipMacroValidation

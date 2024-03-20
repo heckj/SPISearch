@@ -1,4 +1,5 @@
 import Foundation
+import OSLog
 import SPISearchResult
 
 enum SearchResultImporter {
@@ -27,10 +28,10 @@ enum SearchResultImporter {
                             let aSearchResult = try decoder.decode(SearchResult.self, from: newDataBlob)
                             searchResults.append(aSearchResult)
                         } catch {
-                            logger.warning("Skipping embedded JSON-encoded search result: Unable to decode search result from \(line): \(error), ")
+                            Logger.app.warning("Skipping embedded JSON-encoded search result: Unable to decode search result from \(line): \(error), ")
                         }
                     } else {
-                        logger.warning("skipping embedded JSON-encoded search result: Unable to convert \(line) back into data using .utf8 encoding.")
+                        Logger.app.warning("skipping embedded JSON-encoded search result: Unable to convert \(line) back into data using .utf8 encoding.")
                     }
                 }
             }

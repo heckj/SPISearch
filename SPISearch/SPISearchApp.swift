@@ -19,8 +19,8 @@ struct SPISearchApp: App {
     }
 
     /// The key used for storing the identity of the reviewer in AppStorage (UserDefaults).
-    static var reviewerIDKey: String = "reviewerId"
-    static var reviewerNameKey: String = "reviewerName"
+    static let reviewerIDKey: String = "reviewerId"
+    static let reviewerNameKey: String = "reviewerName"
 
     /// Returns a reviewer identifier.
     /// - Returns: The UUID that represents this reviewer

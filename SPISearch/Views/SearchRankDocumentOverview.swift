@@ -1,3 +1,4 @@
+import OSLog
 import SPISearchResult
 import SwiftUI
 import SwiftUINavigation
@@ -43,10 +44,10 @@ struct SearchRankDocumentOverview: View {
                                         document.searchRanking.searchResultCollection.append(aSearchResult)
                                     }
                                 } catch {
-                                    logger.warning("Error importing search results: \(error)")
+                                    Logger.app.warning("Error importing search results: \(error)")
                                 }
                             case let .failure(error):
-                                logger.warning("Error attempting to import search results: \(error)")
+                                Logger.app.warning("Error attempting to import search results: \(error)")
                             }
                         }
                         Spacer()

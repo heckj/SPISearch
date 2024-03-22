@@ -58,7 +58,7 @@ jobs:
         # macOS-12 stopped at SDK version macosx13.1
         # macOS-13 - 13.3
         # macOS 14 - 14.0
-        run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx14.0 -showBuildTimingSummary -skipPackagePluginValidation -skipMacroValidation
+        run: xcodebuild clean build -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx14.2 -showBuildTimingSummary -skipPackagePluginValidation -skipMacroValidation
 
       #- name: macOS build for testing SPISearch
       #  run: xcodebuild build-for-testing -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx14.0 -showBuildTimingSummary -skipPackagePluginValidation -skipMacroValidation
@@ -67,10 +67,10 @@ jobs:
       #  run: xcodebuild test -scheme 'SPISearch' -destination 'platform=macOS' -sdk macosx12.3 -showBuildTimingSummary
 
       - name: macOS build for ReportSearch
-        run: xcodebuild clean build -scheme 'ReportSearch' -destination 'platform=macOS' -sdk macosx14.0 -showBuildTimingSummary -skipPackagePluginValidation -skipMacroValidation
+        run: xcodebuild clean build -scheme 'ReportSearch' -destination 'platform=macOS' -sdk macosx14.2 -showBuildTimingSummary -skipPackagePluginValidation -skipMacroValidation
 
       - name: macOS build for CaptureSearches
-        run: xcodebuild clean build -scheme 'CaptureSearches' -destination 'platform=macOS' -sdk macosx14.0 -showBuildTimingSummary -skipPackagePluginValidation -skipMacroValidation
+        run: xcodebuild clean build -scheme 'CaptureSearches' -destination 'platform=macOS' -sdk macosx14.2 -showBuildTimingSummary -skipPackagePluginValidation -skipMacroValidation
 
 # w/ Xcode 14 beta 3:
 # Local: xcodebuild clean test -scheme 'SPISearch' -destination 'platform=iOS Simulator,OS=16.0,name=iPhone 8' -sdk iphonesimulator16.0

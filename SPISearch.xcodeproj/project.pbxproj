@@ -73,7 +73,11 @@
 		1ABC74BF2B19693900B7E6EB /* SwiftPackageIndexAPI+PackageId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2B94EE2B195BE9005B92E1 /* SwiftPackageIndexAPI+PackageId.swift */; };
 		1ABC74C22B19697000B7E6EB /* Collections in Frameworks */ = {isa = PBXBuildFile; productRef = 1ABC74C12B19697000B7E6EB /* Collections */; };
 		1AC5538028736A590050F0D6 /* SearchRankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC5537F28736A590050F0D6 /* SearchRankTests.swift */; };
-		1AC873042BAF54200005A2C1 /* Explore-logs-2024-02-11 19_19_05.json in Resources */ = {isa = PBXBuildFile; fileRef = 1AC873032BAF54200005A2C1 /* Explore-logs-2024-02-11 19_19_05.json */; };
+		1AC873042BAF54200005A2C1 /* loki_export.json in Resources */ = {isa = PBXBuildFile; fileRef = 1AC873032BAF54200005A2C1 /* loki_export.json */; };
+		1AC873072BAF56EA0005A2C1 /* LokiExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC873062BAF56EA0005A2C1 /* LokiExport.swift */; };
+		1AC873092BAF572E0005A2C1 /* ReconstructionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC873082BAF572E0005A2C1 /* ReconstructionTests.swift */; };
+		1AC8730A2BAF59920005A2C1 /* LokiExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC873062BAF56EA0005A2C1 /* LokiExport.swift */; };
+		1AC8730B2BAF59960005A2C1 /* LokiExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AC873062BAF56EA0005A2C1 /* LokiExport.swift */; };
 		1ACF8740287C9D9B00D72B9C /* ConfigureReviewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACF873F287C9D9B00D72B9C /* ConfigureReviewer.swift */; };
 		1AD3E3432878BA120049E655 /* RelevancyScoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3E3422878BA120049E655 /* RelevancyScoreTests.swift */; };
 		1ADB927F2B2251E60022831F /* SearchResultImporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADB927E2B2251E60022831F /* SearchResultImporter.swift */; };
@@ -189,7 +193,9 @@
 		1AAD70B02B2112990001AD0E /* searchcollection_testexample.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = searchcollection_testexample.txt; sourceTree = "<group>"; };
 		1AC5537D28736A590050F0D6 /* SPISearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPISearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AC5537F28736A590050F0D6 /* SearchRankTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRankTests.swift; sourceTree = "<group>"; };
-		1AC873032BAF54200005A2C1 /* Explore-logs-2024-02-11 19_19_05.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Explore-logs-2024-02-11 19_19_05.json"; sourceTree = "<group>"; };
+		1AC873032BAF54200005A2C1 /* loki_export.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loki_export.json; sourceTree = "<group>"; };
+		1AC873062BAF56EA0005A2C1 /* LokiExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LokiExport.swift; sourceTree = "<group>"; };
+		1AC873082BAF572E0005A2C1 /* ReconstructionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReconstructionTests.swift; sourceTree = "<group>"; };
 		1ACF873F287C9D9B00D72B9C /* ConfigureReviewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureReviewer.swift; sourceTree = "<group>"; };
 		1AD3E3422878BA120049E655 /* RelevancyScoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelevancyScoreTests.swift; sourceTree = "<group>"; };
 		1ADA990F287106AD008FACDF /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -291,6 +297,7 @@
 				1AC55377287363610050F0D6 /* Views */,
 				1AC55378287363930050F0D6 /* Supplemental Views */,
 				1AC55374287362930050F0D6 /* Model */,
+				1AC873052BAF56670005A2C1 /* Reconstruction */,
 				1A1650552871014E00AC4DB2 /* Info.plist */,
 				1A1650472870F99000AC4DB2 /* Assets.xcassets */,
 				1A1650492870F99000AC4DB2 /* SPISearch.entitlements */,
@@ -401,7 +408,7 @@
 		1AC5537E28736A590050F0D6 /* SPISearchTests */ = {
 			isa = PBXGroup;
 			children = (
-				1AC873032BAF54200005A2C1 /* Explore-logs-2024-02-11 19_19_05.json */,
+				1AC873032BAF54200005A2C1 /* loki_export.json */,
 				1A5F6C122B2507D400780F91 /* searchcollection_staging_9dec2023.txt */,
 				1AAD70AC2B2112530001AD0E /* queries.txt */,
 				1AAD70B02B2112990001AD0E /* searchcollection_testexample.txt */,
@@ -410,8 +417,17 @@
 				1AC5537F28736A590050F0D6 /* SearchRankTests.swift */,
 				1AD3E3422878BA120049E655 /* RelevancyScoreTests.swift */,
 				1A45D915287634650077EC9E /* SearchMetricsTests.swift */,
+				1AC873082BAF572E0005A2C1 /* ReconstructionTests.swift */,
 			);
 			path = SPISearchTests;
+			sourceTree = "<group>";
+		};
+		1AC873052BAF56670005A2C1 /* Reconstruction */ = {
+			isa = PBXGroup;
+			children = (
+				1AC873062BAF56EA0005A2C1 /* LokiExport.swift */,
+			);
+			path = Reconstruction;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -605,7 +621,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AAD70B12B2112990001AD0E /* searchcollection_testexample.txt in Resources */,
-				1AC873042BAF54200005A2C1 /* Explore-logs-2024-02-11 19_19_05.json in Resources */,
+				1AC873042BAF54200005A2C1 /* loki_export.json in Resources */,
 				1A5F6C132B2507D400780F91 /* searchcollection_staging_9dec2023.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,6 +633,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AC873072BAF56EA0005A2C1 /* LokiExport.swift in Sources */,
 				1A789D7728721EE700E8108A /* SearchResultPackageView.swift in Sources */,
 				1A2BBD062B2A404F001163EB /* FlowLayout.swift in Sources */,
 				1A1650442870F98F00AC4DB2 /* SPISearchApp.swift in Sources */,
@@ -679,6 +696,7 @@
 				1A6E75A32B1FDB4E004A1A17 /* SwiftPackageIndexAPI.swift in Sources */,
 				1A6E75A52B1FDB4E004A1A17 /* SwiftPackageIndexAPI+Package.swift in Sources */,
 				1A6E759A2B1FDA64004A1A17 /* CaptureSearches.swift in Sources */,
+				1AC8730B2BAF59960005A2C1 /* LokiExport.swift in Sources */,
 				1A6E75A82B1FDBBD004A1A17 /* SPIBaseURL+ExpressibleByArgument.swift in Sources */,
 				1A6E75A42B1FDB4E004A1A17 /* SwiftPackageIndexAPI+ImportedModels.swift in Sources */,
 				1A6E75A22B1FDB45004A1A17 /* SPISearchAPI.swift in Sources */,
@@ -714,7 +732,9 @@
 				1AF8A6692B251CF30064B945 /* SearchMetrics.swift in Sources */,
 				1AF8A66B2B251CF30064B945 /* RelevancyValues.swift in Sources */,
 				1AF8A6672B251CBA0064B945 /* SearchRank.swift in Sources */,
+				1AC8730A2BAF59920005A2C1 /* LokiExport.swift in Sources */,
 				1AF8A66E2B251D430064B945 /* SwiftPackageIndexAPI+PackageId.swift in Sources */,
+				1AC873092BAF572E0005A2C1 /* ReconstructionTests.swift in Sources */,
 				1A134E2E2B1A6B5A009478B1 /* RelevanceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

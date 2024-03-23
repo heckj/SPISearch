@@ -7,6 +7,23 @@ Sven generated a zip file with logs from the development server, an export of JS
 The following CLI gets into the list of log lines exported, and pulls out just the content of the line, ignoring the metadata around it:
 
 ```bash
+cat SPISearchTests/Explore-logs-2024-02-11\ 19_19_05.json| jq '.[0]'
+```
+
+```JSON
+{
+  "line": "[ INFO ] SearchLogger: search: {\"query\":\"alamo\",\"searchID\":\"5194EE2C-FF08-495E-AE8E-2A470BFFC777\"} [component: server]\n",
+  "timestamp": "1707119454282289170",
+  "fields": {
+    "component": "server",
+    "filename": "/var/log/f656468e522e9184b4342d740bcf1ad4b43cb831e527246a30ce1e30b71c0b73/f656468e522e9184b4342d740bcf1ad4b43cb831e527246a30ce1e30b71c0b73-json.log",
+    "job": "containers",
+    "stream": "stdout"
+  }
+}
+```
+
+```bash
 cat Explore-logs-2024-02-11\ 19_19_05.json | jq '.[].line'
 ```
 

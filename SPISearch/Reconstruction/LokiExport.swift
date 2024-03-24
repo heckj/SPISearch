@@ -1,5 +1,6 @@
 import Foundation
 
+/// A struct that captures "lines" of data exported from Loki in JSON output format
 public struct LokiLogExport: Codable, Sendable, Comparable {
     public static func < (lhs: LokiLogExport, rhs: LokiLogExport) -> Bool {
         lhs.timestamp < rhs.timestamp
@@ -9,11 +10,15 @@ public struct LokiLogExport: Codable, Sendable, Comparable {
     public let timestamp: String
 }
 
+// MARK: The top two lines that have encoded search query data
+
+// The search query itself - which includes a search ID to use for connecting with fragments
 struct SearchResultQuery: Hashable, Codable {
     let searchID: UUID
     let query: String
 }
 
+// A search result fragment
 struct SearchResultFragment: Hashable, Codable, Sendable {
     let searchID: UUID
     let result: FragmentSearchResult?
@@ -24,46 +29,12 @@ struct SearchResultFragment: Hashable, Codable, Sendable {
     }
 }
 
+// The structure below maps to the SwiftPackageIndex internal fields and structs that
+// are encoded into JSON in the log lines.
 enum FragmentSearchResult: Codable, Hashable, Equatable {
     case author(AuthorResult)
     case keyword(KeywordResult)
     case package(PackageResult)
-
-    var isPackage: Bool {
-        switch self {
-        case .author, .keyword:
-            return false
-        case .package:
-            return true
-        }
-    }
-
-    var authorResult: AuthorResult? {
-        switch self {
-        case let .author(result):
-            return result
-        case .keyword, .package:
-            return nil
-        }
-    }
-
-    var keywordResult: KeywordResult? {
-        switch self {
-        case let .keyword(result):
-            return result
-        case .author, .package:
-            return nil
-        }
-    }
-
-    var packageResult: PackageResult? {
-        switch self {
-        case let .package(result):
-            return result
-        case .author, .keyword:
-            return nil
-        }
-    }
 }
 
 struct AuthorResult: Codable, Hashable, Equatable {
@@ -85,33 +56,4 @@ struct PackageResult: Codable, Hashable, Equatable {
     var summary: String?
     var keywords: [String]?
     var hasDocs: Bool
-
-    init?(packageId: UUID?,
-          packageName: String?,
-          packageURL: String?,
-          repositoryName: String?,
-          repositoryOwner: String?,
-          stars: Int?,
-          lastActivityAt: Date?,
-          summary: String?,
-          keywords: [String]?,
-          hasDocs: Bool)
-    {
-        guard let packageId,
-              let packageURL,
-              let repositoryName,
-              let repositoryOwner
-        else { return nil }
-
-        self.packageId = packageId
-        self.packageName = packageName
-        self.packageURL = packageURL
-        self.repositoryName = repositoryName
-        self.repositoryOwner = repositoryOwner
-        self.stars = stars
-        self.lastActivityAt = lastActivityAt
-        self.summary = summary
-        self.keywords = keywords
-        self.hasDocs = hasDocs
-    }
 }

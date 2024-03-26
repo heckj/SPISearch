@@ -12,6 +12,10 @@ struct SPISearchApp: App {
             Settings {
                 SettingsFormView()
             }
+//        WindowGroup(id: "eval", for: SearchRank) { document in
+//            EvaluateAvailableSearchResults(searchRankDoc: document)
+//        }
+        
         #endif
         //        #if os(macOS) // macOS 13+ only
         //        .defaultSize(width: 1000, height: 650)

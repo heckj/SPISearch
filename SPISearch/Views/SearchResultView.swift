@@ -76,6 +76,7 @@ struct SearchResultView: View {
             } // VStack
             .padding()
         } // ScrollView
+        .id(model.hashValue)
     }
 
     init(_ model: Binding<SearchRank>, for sr: SearchResult) {

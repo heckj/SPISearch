@@ -3,7 +3,7 @@ import SwiftUI
 
 struct ReviewSetsView: View {
     let reviewerID: SearchRank.ReviewerID?
-    let searchrank: SearchRank
+    @Binding var searchrank: SearchRank
 
     let columns: [GridItem] = [
         GridItem(.flexible(minimum: 230, maximum: .infinity)),
@@ -28,6 +28,12 @@ struct ReviewSetsView: View {
                                         Text("\(pkgId.description)")
                                         RelevanceResultView(relevance)
                                         Text("\(relevance.description)")
+                                        Button(role: .destructive) {
+                                            searchrank.removeReview(by: reviewerID, query: queryterm, id: pkgId)
+                                        } label: {
+                                            Text("delete")
+                                        }
+
                                     })
                                 }
                             }
@@ -40,7 +46,9 @@ struct ReviewSetsView: View {
             } // VStack
             .padding(.horizontal)
         } // ScrollView
+        .id(searchrank.hashValue)
     }
+        
 }
 
 struct ReviewSetsView_Previews: PreviewProvider {
@@ -50,6 +58,6 @@ struct ReviewSetsView_Previews: PreviewProvider {
 
     static var previews: some View {
         ReviewSetsView(reviewerID: model.reviewerNames.keys.first,
-                       searchrank: model)
+                       searchrank: .constant(model))
     }
 }

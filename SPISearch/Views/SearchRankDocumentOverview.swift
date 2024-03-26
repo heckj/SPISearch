@@ -8,7 +8,7 @@ import SwiftUINavigation
 
 struct SearchRankDocumentOverview: View {
     @Binding var document: SearchRankDocument
-
+    
     @State private var importerEnabled = false
     @State private var configureReviewerSheetShown = false
     @State private var destination: Destination?
@@ -63,17 +63,12 @@ struct SearchRankDocumentOverview: View {
                 }
             }
             Section("Evaluations") {
-                Button(action: {
-                    destination = .evaluate
-                }, label: {
-                    Text("Evaluate")
-                })
-//                #if os(iOS)
+                #if os(iOS)
 //                    // Well - this doesn't work at all on macOS due to rendering issues with (deprecated) NavigationView
-//                    NavigationLink("Evaluate", destination: {
-//                        EvaluateAvailableSearchResults(searchRankDoc: $document)
-//                    })
-//                #endif
+                    NavigationLink("Evaluate", destination: {
+                        EvaluateAvailableSearchResults(searchRankDoc: $document)
+                    })
+                #endif
                 ForEach(document.searchRanking.reviewers, id: \.self) { reviewerId in
                     NavigationLink("\(document.searchRanking.nameOfReviewer(reviewerId: reviewerId)) has \(document.searchRanking.reviewedEvaluationCollections[reviewerId]?.count ?? 0) evaluations stored", value: Destination.evals(reviewerId))
                 }
@@ -85,7 +80,7 @@ struct SearchRankDocumentOverview: View {
             case let .search(searchResult):
                 SearchResultView($document.searchRanking, for: searchResult)
             case let .evals(reviewerID):
-                ReviewSetsView(reviewerID: reviewerID, searchrank: document.searchRanking)
+                ReviewSetsView(reviewerID: reviewerID, searchrank: $document.searchRanking)
             case .evaluate:
                 EvaluateAvailableSearchResults(searchRankDoc: $document)
             }
@@ -105,6 +100,25 @@ struct SearchRankDocumentOverview: View {
                 configureReviewerSheetShown = true
             }
         })
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                let reviewerID = SPISearchApp.reviewerID()
+                let reviewerName = document.searchRanking.reviewerNames[reviewerID] ?? "unknown"
+                Text("Reviewer: \(reviewerName) (\(reviewerID))")
+            }
+            #if os(macOS)
+            ToolbarItem(placement: .principal) {
+                Button {
+                    print("CLICKING EVALUATE!!")
+                    destination = .evaluate
+                    // THIS Isn't triggering a switch to an eval view - so on macOS, maybe
+                    // we open a new window to run the evaluation with the document
+                } label: {
+                    Text("EVAL")
+                }
+            }
+            #endif
+        }
     }
 
     init(_ document: Binding<SearchRankDocument>) {

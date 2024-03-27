@@ -1,0 +1,23 @@
+Changes:
+- repaired the navigation on iOS and iPadOS
+- switched out SearchResult importer for reconstruction from Loki JSON export
+- sample data (LOKI export) from Dev in Feb24:
+  https://raw.githubusercontent.com/heckj/SPISearch/main/SPISearchTests/loki_export.json
+can be downloaded and imported
+- summary detail of searchresults and scoring is text only
+
+Feedback desired:
+
+- Do any further JSON exports from the dev environment cause issues or fail to
+  import? (importer does logging with OSLog)
+
+Upcoming:
+- revising UI to make a unified "evaluate all the available search results"
+  work on macOS (already does on iOS)
+- adding graphical summary details with swift charts
+- updating the search result review UI to be slightly more consistent -pinning
+  percentage of view or something
+- fixing up/adding reporting exporting from UI and CLI so that you can just
+  get a quick "how's it doing" score value from one or more saved
+  SerachResult documents.
+

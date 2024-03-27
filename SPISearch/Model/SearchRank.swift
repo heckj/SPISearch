@@ -83,12 +83,13 @@ struct SearchRank: Identifiable, Hashable, Codable {
     mutating func removeReview(by reviewer: UUID, query: String, id: SearchResult.Package.PackageId) {
         if let collection = reviewedEvaluationCollections[reviewer],
            let reviewset = collection.first(where: { reviewSet in
-            reviewSet.query_terms == query
-        }) {
+               reviewSet.query_terms == query
+           })
+        {
             reviewset.reviews.removeValue(forKey: id)
         }
     }
-    
+
     // UPDATING EVALUATIONS
 
     /// Adds or updates the name of the reviewer for the reviewer id you provide.

@@ -5,8 +5,8 @@ import SwiftUI
 @main
 struct SPISearchApp: App {
     var body: some Scene {
-        DocumentGroup(newDocument: SearchRankDocument()) { file in
-            SearchRankEditorView(document: file.$document)
+        DocumentGroup(newDocument: SearchRankDocument()) { fileconfig in
+            SearchRankEditorView(document: fileconfig.$document)
         }
         #if os(macOS)
             Settings {
@@ -15,7 +15,7 @@ struct SPISearchApp: App {
 //        WindowGroup(id: "eval", for: SearchRank) { document in
 //            EvaluateAvailableSearchResults(searchRankDoc: document)
 //        }
-        
+
         #endif
         //        #if os(macOS) // macOS 13+ only
         //        .defaultSize(width: 1000, height: 650)

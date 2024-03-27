@@ -8,7 +8,7 @@ import SwiftUINavigation
 
 struct SearchRankDocumentOverview: View {
     @Binding var document: SearchRankDocument
-    
+
     @State private var importerEnabled = false
     @State private var configureReviewerSheetShown = false
     @State private var destination: Destination?
@@ -28,38 +28,42 @@ struct SearchRankDocumentOverview: View {
             // #endif
             Section("Summary") {
                 // only display import on an empty document?
-                if document.searchRanking.searchResultCollection.isEmpty {
-                    HStack {
-                        Spacer()
-                        Button {
-                            importerEnabled = true
-                        } label: {
-                            Label("Import", systemImage: "square.and.arrow.down.on.square")
-                        }
-                        .fileImporter(isPresented: $importerEnabled, allowedContentTypes: [.text]) { result in
-                            switch result {
-                            case let .success(fileURL):
-                                do {
-                                    for aSearchResult in try SearchResultImporter.bestEffort(from: fileURL) {
-                                        document.searchRanking.searchResultCollection.append(aSearchResult)
-                                    }
-                                } catch {
-                                    Logger.app.warning("Error importing search results: \(error)")
-                                }
-                            case let .failure(error):
-                                Logger.app.warning("Error attempting to import search results: \(error)")
-                            }
-                        }
-                        Spacer()
+//                if document.searchRanking.searchResultCollection.isEmpty {
+                HStack {
+                    Spacer()
+                    Button {
+                        importerEnabled = true
+                    } label: {
+                        Label("Import", systemImage: "square.and.arrow.down.on.square")
                     }
-                } else {
-                    Text("\(document.searchRanking.searchResultCollection.count) search collections")
-                    Text("\(document.searchRanking.reviewedEvaluationCollections.count) evaluations")
+                    .fileImporter(isPresented: $importerEnabled, allowedContentTypes: [.text]) { result in
+                        switch result {
+                        case let .success(fileURL):
+                            do {
+                                for aSearchResult in try SearchResultImporter.bestEffort(from: fileURL) {
+                                    document.searchRanking.searchResultCollection.append(aSearchResult)
+                                }
+                            } catch {
+                                Logger.app.warning("Error importing search results: \(error)")
+                            }
+                        case let .failure(error):
+                            Logger.app.warning("Error attempting to import search results: \(error)")
+                        }
+                    }
+                    Spacer()
                 }
+//                } else {
+                Text("\(document.searchRanking.searchResultCollection.count) search collections")
+                Text("\(document.searchRanking.reviewedEvaluationCollections.count) evaluations")
+//                }
             }
             Section("Searches") {
                 ForEach(document.searchRanking.searchResultCollection) { searchResult in
-                    NavigationLink("\(searchResult.query) on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))", value: Destination.search(searchResult))
+                    #if os(iOS)
+                        NavigationLink("\(searchResult.query) on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))", destination: SearchResultView($document.searchRanking, for: searchResult))
+                    #elseif os(macOS)
+                        NavigationLink("\(searchResult.query) on \(searchResult.timestamp.formatted(date: .abbreviated, time: .omitted))", value: Destination.search(searchResult))
+                    #endif
                 }
             }
             Section("Evaluations") {
@@ -68,12 +72,15 @@ struct SearchRankDocumentOverview: View {
                     NavigationLink("Evaluate", destination: {
                         EvaluateAvailableSearchResults(searchRankDoc: $document)
                     })
+                    ForEach(document.searchRanking.reviewers, id: \.self) { reviewerId in
+                        NavigationLink("\(document.searchRanking.nameOfReviewer(reviewerId: reviewerId)) has \(document.searchRanking.reviewedEvaluationCollections[reviewerId]?.count ?? 0) evaluations stored", destination: ReviewSetsView(reviewerID: reviewerId, searchrank: $document.searchRanking))
+                    }
+                #elseif os(macOS)
+                    ForEach(document.searchRanking.reviewers, id: \.self) { reviewerId in
+                        NavigationLink("\(document.searchRanking.nameOfReviewer(reviewerId: reviewerId)) has \(document.searchRanking.reviewedEvaluationCollections[reviewerId]?.count ?? 0) evaluations stored", value: Destination.evals(reviewerId))
+                    }
                 #endif
-                ForEach(document.searchRanking.reviewers, id: \.self) { reviewerId in
-                    NavigationLink("\(document.searchRanking.nameOfReviewer(reviewerId: reviewerId)) has \(document.searchRanking.reviewedEvaluationCollections[reviewerId]?.count ?? 0) evaluations stored", value: Destination.evals(reviewerId))
-                }
             }
-            Spacer()
         }
         .navigationDestination(for: Destination.self, destination: { result in
             switch result {
@@ -107,16 +114,16 @@ struct SearchRankDocumentOverview: View {
                 Text("Reviewer: \(reviewerName) (\(reviewerID))")
             }
             #if os(macOS)
-            ToolbarItem(placement: .principal) {
-                Button {
-                    print("CLICKING EVALUATE!!")
-                    destination = .evaluate
-                    // THIS Isn't triggering a switch to an eval view - so on macOS, maybe
-                    // we open a new window to run the evaluation with the document
-                } label: {
-                    Text("EVAL")
+                ToolbarItem(placement: .principal) {
+                    Button {
+                        print("CLICKING EVALUATE!!")
+                        destination = .evaluate
+                        // THIS Isn't triggering a switch to an eval view - so on macOS, maybe
+                        // we open a new window to run the evaluation with the document
+                    } label: {
+                        Text("EVAL")
+                    }
                 }
-            }
             #endif
         }
     }

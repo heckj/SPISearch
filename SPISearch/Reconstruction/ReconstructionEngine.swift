@@ -1,6 +1,6 @@
-import SPISearchResult
-import RegexBuilder
 import Foundation
+import RegexBuilder
+import SPISearchResult
 
 public struct ReconstructionEngine {
     public struct ParseJSONAsDataError: LocalizedError {
@@ -9,12 +9,14 @@ public struct ReconstructionEngine {
             "Failed to convert JSONString \(jsonString) to data"
         }
     }
+
     public struct ParseTimestampError: LocalizedError {
         let timestamp: String
         public var errorDescription: String? {
             "Failed to convert timestamp \(timestamp) to date"
         }
     }
+
     public struct FatalDiagnostic: LocalizedError {
         let msg: String
         public var errorDescription: String? {
@@ -30,7 +32,7 @@ public struct ReconstructionEngine {
         case missingTimestamp(UUID)
     }
 
-    var timestamps: [UUID:Date] = [:]
+    var timestamps: [UUID: Date] = [:]
     var queries: [UUID: SearchResultQuery] = [:]
     var fragments: [UUID: [Int: SearchResultFragment]] = [:]
     public init() {}
@@ -51,7 +53,6 @@ public struct ReconstructionEngine {
             }
             guard let fragmentDict = fragments[key] else {
                 throw FatalDiagnostic(msg: "fragment key \(key) without any search result fragments")
-                
             }
             guard let minKey = fragmentDict.keys.min(), let maxKey = fragmentDict.keys.max()
             else {
@@ -61,7 +62,7 @@ public struct ReconstructionEngine {
                 problems.append(.fragmentsDontStartZero(key))
             }
             // verify contiguous keys
-            for i in minKey...maxKey {
+            for i in minKey ... maxKey {
                 if fragmentDict[i] == nil {
                     problems.append(.missingFragment(key, i))
                 }
@@ -69,14 +70,14 @@ public struct ReconstructionEngine {
         }
         return problems
     }
-    
+
     public func searchResults() -> [SPISearchResult.SearchResult] {
         var results: [SearchResult] = []
         for searchId in fragments.keys {
-            
             guard let query = queries[searchId]?.query,
                   let fragmentDict = fragments[searchId],
-                  let dateForQuery = timestamps[searchId] else {
+                  let dateForQuery = timestamps[searchId]
+            else {
                 break
             }
             var authors: [String] = []
@@ -85,11 +86,11 @@ public struct ReconstructionEngine {
             for indexPosition in fragmentDict.keys.sorted() {
                 if let fragment: SearchResultFragment = fragmentDict[indexPosition] {
                     switch fragment.result {
-                    case .author(let authorResult):
+                    case let .author(authorResult):
                         authors.append(authorResult.name)
-                    case .keyword(let keywordResult):
+                    case let .keyword(keywordResult):
                         keywords.append(keywordResult.keyword)
-                    case .package(let packageResult):
+                    case let .package(packageResult):
                         let packageId: SearchResult.Package.PackageId = .init(owner: packageResult.repositoryOwner, repository: packageResult.repositoryName)
                         let srPackage = SearchResult.Package(
                             id: packageId,
@@ -98,20 +99,20 @@ public struct ReconstructionEngine {
                             summary: packageResult.summary,
                             stars: packageResult.stars ?? 0,
                             has_docs: packageResult.hasDocs,
-                            last_activity: packageResult.lastActivityAt)
+                            last_activity: packageResult.lastActivityAt
+                        )
                         packages.append(srPackage)
                     case .none:
                         break
                     }
                 }
             }
-            
+
             let newResult = SearchResult(timestamp: dateForQuery, query: query, keywords: keywords, authors: authors, packages: packages)
             results.append(newResult)
         }
         return results
     }
-    
 
     public func searchIds() -> [UUID] {
         let queryIds: Set<UUID> = Set(queries.keys)
@@ -123,7 +124,6 @@ public struct ReconstructionEngine {
     typealias LogArray = [LokiLogExport]
 
     public mutating func loadData(_ data: Data) throws {
-        
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
 
@@ -164,8 +164,8 @@ public struct ReconstructionEngine {
                 let dateFromTimestamp = Date(timeIntervalSince1970: timeStampAsDouble)
                 if let jsonAsData = String(result[jsonRef]).data(using: .utf8) {
                     let result = try decoder.decode(SearchResultQuery.self, from: jsonAsData)
-                    self.addQuery(id: result.searchID, query: result)
-                    self.setTimeStamp(id: result.searchID, dateFromTimestamp)
+                    addQuery(id: result.searchID, query: result)
+                    setTimeStamp(id: result.searchID, dateFromTimestamp)
                 } else {
                     throw ParseJSONAsDataError(jsonString: String(result[jsonRef]))
                 }
@@ -178,7 +178,7 @@ public struct ReconstructionEngine {
                 print("JSON: \(result[jsonRef])")
                 if let jsonAsData = String(result[jsonRef]).data(using: .utf8) {
                     let decoded = try decoder.decode(SearchResultFragment.self, from: jsonAsData)
-                    self.addFragment(id: decoded.searchID, index: result[indexRef], frag: decoded)
+                    addFragment(id: decoded.searchID, index: result[indexRef], frag: decoded)
                 } else {
                     throw ParseJSONAsDataError(jsonString: String(result[jsonRef]))
                 }
@@ -189,7 +189,7 @@ public struct ReconstructionEngine {
     mutating func setTimeStamp(id: UUID, _ date: Date) {
         timestamps[id] = date
     }
-    
+
     mutating func addFragment(id: UUID, index: Int, frag: SearchResultFragment) {
         if var fragForId = fragments[id] {
             fragForId[index] = frag

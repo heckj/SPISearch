@@ -23,4 +23,3 @@ final class ReconstructionTests: XCTestCase {
         XCTAssertTrue(try engine.issues().isEmpty)
     }
 }
-

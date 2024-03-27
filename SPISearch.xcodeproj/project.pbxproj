@@ -296,12 +296,11 @@
 				1A1650432870F98F00AC4DB2 /* SPISearchApp.swift */,
 				1A13C4C82B0BE3B1007D20AD /* SPISearchAPI.swift */,
 				1ADB92802B22542F0022831F /* Logging.swift */,
-				1ADB927E2B2251E60022831F /* SearchResultImporter.swift */,
 				1A2B94E82B195BA8005B92E1 /* SwiftPackageIndexAPI */,
 				1AC55377287363610050F0D6 /* Views */,
 				1AC55378287363930050F0D6 /* Supplemental Views */,
 				1AC55374287362930050F0D6 /* Model */,
-				1AC873052BAF56670005A2C1 /* Reconstruction */,
+				1AC873052BAF56670005A2C1 /* Import */,
 				1A1650552871014E00AC4DB2 /* Info.plist */,
 				1A1650472870F99000AC4DB2 /* Assets.xcassets */,
 				1A1650492870F99000AC4DB2 /* SPISearch.entitlements */,
@@ -426,13 +425,14 @@
 			path = SPISearchTests;
 			sourceTree = "<group>";
 		};
-		1AC873052BAF56670005A2C1 /* Reconstruction */ = {
+		1AC873052BAF56670005A2C1 /* Import */ = {
 			isa = PBXGroup;
 			children = (
+				1ADB927E2B2251E60022831F /* SearchResultImporter.swift */,
 				1AC873062BAF56EA0005A2C1 /* LokiExport.swift */,
 				1AEDC7852BB09CB3002EAA54 /* ReconstructionEngine.swift */,
 			);
-			path = Reconstruction;
+			path = Import;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

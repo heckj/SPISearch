@@ -27,8 +27,7 @@ struct SearchRankDocumentOverview: View {
             //    #endif
             // #endif
             Section("Summary") {
-                // only display import on an empty document?
-//                if document.searchRanking.searchResultCollection.isEmpty {
+                
                 HStack {
                     Spacer()
                     Button {
@@ -40,7 +39,9 @@ struct SearchRankDocumentOverview: View {
                         switch result {
                         case let .success(fileURL):
                             do {
-                                for aSearchResult in try SearchResultImporter.bestEffort(from: fileURL) {
+                                // original importer was streamed search results
+                                // SearchResultImporter.bestEffort(from: fileURL)
+                                for aSearchResult in try ReconstructionEngine.bestEffort(from: fileURL) {
                                     document.searchRanking.searchResultCollection.append(aSearchResult)
                                 }
                             } catch {
@@ -52,10 +53,9 @@ struct SearchRankDocumentOverview: View {
                     }
                     Spacer()
                 }
-//                } else {
+
                 Text("\(document.searchRanking.searchResultCollection.count) search collections")
                 Text("\(document.searchRanking.reviewedEvaluationCollections.count) evaluations")
-//                }
             }
             Section("Searches") {
                 ForEach(document.searchRanking.searchResultCollection) { searchResult in
@@ -68,7 +68,6 @@ struct SearchRankDocumentOverview: View {
             }
             Section("Evaluations") {
                 #if os(iOS)
-//                    // Well - this doesn't work at all on macOS due to rendering issues with (deprecated) NavigationView
                     NavigationLink("Evaluate", destination: {
                         EvaluateAvailableSearchResults(searchRankDoc: $document)
                     })

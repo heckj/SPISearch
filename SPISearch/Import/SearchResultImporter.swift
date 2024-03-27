@@ -2,11 +2,12 @@ import Foundation
 import OSLog
 import SPISearchResult
 
+enum ImportError: Error {
+    case fileAccessError(url: URL)
+    case readError(url: URL)
+}
+
 enum SearchResultImporter {
-    enum ImportError: Error {
-        case fileAccessError(url: URL)
-        case readError(url: URL)
-    }
 
     static func bestEffort(from fileURL: URL) throws -> [SearchResult] {
         var searchResults: [SearchResult] = []

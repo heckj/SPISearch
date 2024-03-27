@@ -1,6 +1,18 @@
 import Foundation
 import RegexBuilder
 import SPISearchResult
+import OSLog
+
+
+// loki JSON export snippet:
+// {"line":"[ INFO ] SearchLogger: search: {\"query\":\"alamo\",\"searchID\":\"5194EE2C-FF08-495E-AE8E-2A470BFFC777\"} [component: server]\n","timestamp":"1707119454282289170","fields":{"component":"server","filename":"/var/log/f656468e522e9184b4342d740bcf1ad4b43cb831e527246a30ce1e30b71c0b73/f656468e522e9184b4342d740bcf1ad4b43cb831e527246a30ce1e30b71c0b73-json.log","job":"containers","stream":"stdout"}}
+// What's the timestamp: UnixNS
+
+//Unix: 1562708916 or with fractions 1562708916.000000123
+//UnixMs: 1562708916414
+//UnixUs: 1562708916414123
+//UnixNs: 1562708916000000123
+//        1707119454282289170
 
 public struct ReconstructionEngine {
     public struct ParseJSONAsDataError: LocalizedError {
@@ -24,7 +36,22 @@ public struct ReconstructionEngine {
         }
     }
 
-    public enum Problems {
+    public enum Problems: CustomStringConvertible {
+        public var description: String {
+            switch self {
+            case .extraQueryWithoutFragments(let uuid):
+                "Extra query (\(uuid.uuidString)) reported without associated fragments"
+            case .fragmentsWithoutQuery(let uuid):
+                "Extra fragement (\(uuid.uuidString)) reported without an associated query"
+            case .fragmentsDontStartZero(let uuid):
+                "Possibly missing fragment for query (\(uuid.uuidString)) the reported fragments dont start at 0"
+            case .missingFragment(let uuid, let intValue):
+                "Missing fragement at index \(intValue) for query (\(uuid.uuidString))"
+            case .missingTimestamp(let uuid):
+                "Query (\(uuid.uuidString)) is missing a timestamp"
+            }
+        }
+        
         case extraQueryWithoutFragments(UUID)
         case fragmentsWithoutQuery(UUID)
         case fragmentsDontStartZero(UUID)
@@ -32,9 +59,35 @@ public struct ReconstructionEngine {
         case missingTimestamp(UUID)
     }
 
+    static func bestEffort(from fileURL: URL) throws -> [SearchResult] {
+        var engine = ReconstructionEngine()
+        var searchResults: [SearchResult] = []
+        // The fileURL provided is a security scoped resource - so we need to request
+        // (synchronous) access before we can use it. It's the stuff returned from
+        // the .fileImporter() view modifier in SwiftUI
+        let gotAccess = fileURL.startAccessingSecurityScopedResource()
+        if !gotAccess { throw ImportError.fileAccessError(url: fileURL) }
+
+        do {
+            let data = try Data(contentsOf: fileURL)
+            try engine.loadData(data)
+            for importIssue in  try engine.issues() {
+                Logger.app.warning("Import problem: \(importIssue)")
+            }
+            searchResults.append(contentsOf: engine.searchResults())
+        } catch {
+            Logger.app.error("Import Error: \(error.localizedDescription)")
+        }
+        
+        // release access to the file
+        fileURL.stopAccessingSecurityScopedResource()
+        return searchResults
+    }
+    
     var timestamps: [UUID: Date] = [:]
     var queries: [UUID: SearchResultQuery] = [:]
     var fragments: [UUID: [Int: SearchResultFragment]] = [:]
+    
     public init() {}
 
     public func issues() throws -> [Problems] {
@@ -161,7 +214,7 @@ public struct ReconstructionEngine {
                 guard let timeStampAsDouble = Double(logStruct.timestamp) else {
                     throw ParseTimestampError(timestamp: logStruct.timestamp)
                 }
-                let dateFromTimestamp = Date(timeIntervalSince1970: timeStampAsDouble)
+                let dateFromTimestamp = Date(timeIntervalSince1970: timeStampAsDouble / 1_000_000_000.0)
                 if let jsonAsData = String(result[jsonRef]).data(using: .utf8) {
                     let result = try decoder.decode(SearchResultQuery.self, from: jsonAsData)
                     addQuery(id: result.searchID, query: result)

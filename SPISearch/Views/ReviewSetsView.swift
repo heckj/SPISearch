@@ -48,7 +48,6 @@ struct ReviewSetsView: View {
         } // ScrollView
         .id(searchrank.hashValue)
     }
-        
 }
 
 struct ReviewSetsView_Previews: PreviewProvider {
